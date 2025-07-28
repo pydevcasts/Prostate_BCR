@@ -1,5 +1,7 @@
 
-
+## ✍️ نویسنده: سیامک عباس‌نژاد (با نام مستعار: pydevcasts)
+### Email: pydevcasts@gmail.com
+---
 # 📖 فصل اول: آشنایی با Tensor در PyTorch
 
 ## 🔹 صفحه ۱ — تعریف، ساخت اولیه و مثال ساده با `torch.tensor`
