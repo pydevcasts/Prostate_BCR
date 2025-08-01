@@ -1,0 +1,131 @@
+بسیار عالی! ✅
+هم‌اکنون وارد **فصل ۴ – صفحه ۱ از ۲** می‌شویم، جایی که مدل رگرسیون خود را حرفه‌ای‌تر و مقاوم‌تر می‌کنیم.
+در این فصل با **رگرسیون‌های منظم‌شده (Regularized)** آشنا می‌شوید: **Ridge** و **Lasso**
+که در پروژه‌های واقعی، مخصوصاً وقتی داده نویزی یا دارای هم‌خطی است، ضروری‌اند.
+
+---
+
+# 📘 فصل ۴: بهبود مدل با رگرسیون منظم‌شده
+
+### ✅ **صفحه ۶– مقابله با Overfitting، هم‌خطی و ویژگی‌های بی‌اثر**
+
+---
+
+## 🎯 چرا باید مدل خود را بهبود دهیم؟
+
+در فصل گذشته، مدل ساده‌ی ما عملکرد خوبی داشت.
+اما در داده‌های واقعی معمولاً با مشکلات زیر مواجهیم:
+
+| مشکل                            | تأثیر منفی               |
+| ------------------------------- | ------------------------ |
+| **ویژگی‌های زیاد و بی‌ربط**     | کاهش دقت مدل             |
+| **هم‌خطی بین ویژگی‌ها**         | ناپایداری ضرایب          |
+| **Overfitting روی داده آموزشی** | عملکرد ضعیف روی داده تست |
+
+برای حل این مشکلات از **مدل‌های Regularized** استفاده می‌کنیم.
+
+---
+
+## 🔧 ۱. Regularization چیست؟
+
+Regularization یعنی **تنبیه کردن ضرایب بزرگ**
+هدف: جلوگیری از پیچیده شدن بیش از حد مدل و کاهش نویز.
+
+---
+
+## 📦 ۲. معرفی دو روش رایج Regularization:
+
+| مدل       | نام کامل          | ویژگی اصلی                                                    |
+| --------- | ----------------- | ------------------------------------------------------------- |
+| **Ridge** | L2 Regularization | کاهش اندازه ضرایب (ولی نگه‌داشتن همه آن‌ها)                   |
+| **Lasso** | L1 Regularization | می‌تواند ضرایب بی‌اثر را **صفر کند** (یعنی ویژگی حذف می‌شود!) |
+
+---
+
+## 📐 ۳. فرمول رگرسیون Ridge و Lasso
+
+### ✅ Ridge:
+
+$$
+\text{Loss} = RSS + \alpha \sum_{j=1}^{p} \beta_j^2
+$$
+
+### ✅ Lasso:
+
+$$
+\text{Loss} = RSS + \alpha \sum_{j=1}^{p} |\beta_j|
+$$
+
+* α: پارامتر تنظیم‌کننده شدت تنبیه
+* هر چه α بزرگ‌تر باشد → ضرایب بیشتر کوچک می‌شوند
+
+---
+
+## 💻 ۴. پیاده‌سازی Ridge Regression
+
+```python
+from sklearn.linear_model import Ridge
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Initialize Ridge model with alpha (regularization strength)
+ridge_model = Ridge(alpha=1.0)
+ridge_model.fit(X_train, y_train)
+
+# Predict
+ridge_pred = ridge_model.predict(X_test)
+
+# Evaluate
+ridge_mse = mean_squared_error(y_test, ridge_pred)
+ridge_r2 = r2_score(y_test, ridge_pred)
+
+print(f"Ridge - MSE: {ridge_mse:.3f}, R²: {ridge_r2:.3f}")
+```
+
+---
+
+## 💡 نکته مهم:
+
+اگر بین ویژگی‌ها **هم‌خطی (Multicollinearity)** باشد،
+مدل Ridge بهتر از LinearRegression معمولی عمل می‌کند چون ضرایب را هموار می‌کند.
+
+---
+
+## 🧬 ۵. پیاده‌سازی Lasso Regression
+
+```python
+from sklearn.linear_model import Lasso
+
+# Initialize Lasso model
+lasso_model = Lasso(alpha=0.1)
+lasso_model.fit(X_train, y_train)
+
+# Predict
+lasso_pred = lasso_model.predict(X_test)
+
+# Evaluate
+lasso_mse = mean_squared_error(y_test, lasso_pred)
+lasso_r2 = r2_score(y_test, lasso_pred)
+
+print(f"Lasso - MSE: {lasso_mse:.3f}, R²: {lasso_r2:.3f}")
+```
+
+---
+
+## 🔍 ۶. تحلیل تفاوت بین Lasso و Ridge
+
+| جنبه                             | Ridge                 | Lasso                       |
+| -------------------------------- | --------------------- | --------------------------- |
+| تنبیه بر اساس                    | مربع ضرایب (L2)       | قدر مطلق ضرایب (L1)         |
+| ضرایب نزدیک صفر                  | بله، ولی صفر نمی‌شوند | بله، بعضی ضرایب صفر می‌شوند |
+| انتخاب ویژگی (Feature Selection) | ❌ ندارد               | ✅ دارد                      |
+| عملکرد در هم‌خطی                 | بسیار مؤثر            | ممکن است ضرایب را صفر کند   |
+
+---
+
+## 📌 بهترین زمان استفاده از این مدل‌ها:
+
+* **Ridge** → وقتی تمام ویژگی‌ها مفید هستند اما هم‌خطی وجود دارد
+* **Lasso** → وقتی فقط برخی ویژگی‌ها مفید هستند (ویژگی‌زدایی خودکار!)
+
+---
+

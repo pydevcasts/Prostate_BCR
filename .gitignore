@@ -270,3 +270,6 @@ pyrightconfig.json
 /video
 video/*
 /video/
+./token.md 
+token.md 
+/token.md/
