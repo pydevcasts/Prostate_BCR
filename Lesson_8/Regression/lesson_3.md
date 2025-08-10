@@ -111,12 +111,14 @@ X_features = np.array([
     [90, 2, 15],
     [110, 3, 8]
 ])
+# Target
+y = np.array([1.2, 1.6, 1.0, 1.4])
 
 model = LinearRegression()
 model.fit(X_features, y)
 
-print("Intercept:", model.intercept_)
-print("Coefficients:", model.coef_)
+print("Intercept:", model.intercept_) #β ضریب
+print("Coefficients:", model.coef_) #تأثیر هر یک از متغیرهای مستقل بر متغیر وابسته هستند
 ```
 
 ---
