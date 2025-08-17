@@ -273,3 +273,7 @@ video/*
 ./token.md 
 token.md 
 /token.md/
+.csv
+./csv
+/csv/
+/.csv
