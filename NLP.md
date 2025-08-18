@@ -66,7 +66,7 @@ nltk.download('all')
 📝 نمونه کدها
 
 ۱. توکنیزه کردن
-
+```python
 from nltk.tokenize import word_tokenize, sent_tokenize
 
 text = "NLTK is a great library for NLP. It makes text analysis easy!"
@@ -82,16 +82,16 @@ lemmatizer = WordNetLemmatizer()
 
 print(stemmer.stem("running"))     # run
 print(lemmatizer.lemmatize("better", pos="a"))  # good
-
+```
 ۳. برچسب‌گذاری اجزای کلام
-
+```python
 import nltk
 from nltk.tokenize import word_tokenize
 
 nltk.download('averaged_perceptron_tagger')
 words = word_tokenize("The quick brown fox jumps over the lazy dog.")
 print(nltk.pos_tag(words))
-
+```
 ۴. شناسایی موجودیت‌ها (NER)
 
 from nltk import ne_chunk, pos_tag, word_tokenize
