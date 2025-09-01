@@ -1,74 +1,71 @@
-## 📖 صفحه ۸: آموزش مدل رگرسیون لجستیک و ارزیابی اولیه
+## 📖 صفحه ۸: پیش‌پردازش داده‌ها برای رگرسیون لجستیک
 
 ✍️ نویسنده: سیامک عباس‌نژاد
 
-بعد از پیش‌پردازش داده‌ها، حالا نوبت به بخش اصلی می‌رسد: **آموزش مدل رگرسیون لجستیک**. این مدل یکی از ساده‌ترین و درعین‌حال پرکاربردترین الگوریتم‌ها در مسائل دسته‌بندی (Classification) است.
+پیش‌پردازش داده‌ها یکی از مراحل کلیدی در علم داده است. اگر داده‌ها کیفیت خوبی نداشته باشند، حتی بهترین الگوریتم‌ها هم عملکرد مطلوبی نخواهند داشت. دیتاست دیابت هم از این قاعده مستثنی نیست و نیاز به آماده‌سازی دقیق دارد.
 
 ---
 
-### 🔹 آموزش مدل رگرسیون لجستیک
+### 🔹 شناسایی مقادیر صفر غیرواقعی
 
-در این مرحله مدل را ساخته و با داده‌های آموزش (Training set) آن را یاد می‌دهیم:
+در برخی ویژگی‌ها مثل **BloodPressure، BMI، Insulin و SkinThickness** مقادیر صفر به‌معنای واقعی صفر نیستند. این مقادیر در واقع نشان‌دهنده‌ی داده‌ی گمشده‌اند. برای شناسایی تعداد مقادیر صفر در هر ستون می‌توانیم کد زیر را اجرا کنیم:
 
 ```python
-from sklearn.linear_model import LogisticRegression
+# Count zero values in each column
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    print(col, (data[col] == 0).sum())
+```
 
-# Create model
-model = LogisticRegression(max_iter=1000)
+📌 نتیجه: مشاهده می‌شود که تعداد زیادی مقدار صفر در ستون‌های **Insulin** و **SkinThickness** وجود دارد که باید اصلاح شوند.
 
-# Train model
-model.fit(X_train, y_train)
+---
+
+### 🔹 جایگزینی مقادیر صفر با میانه (Median Imputation)
+
+یکی از روش‌های متداول برای اصلاح داده‌های گمشده، جایگزینی آن‌ها با میانه یا میانگین است. در این پروژه از **میانه (Median)** استفاده می‌کنیم چون نسبت به داده‌های پرت (Outliers) مقاوم‌تر است.
+
+```python
+# Replace zeros with median values
+for col in ["Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI"]:
+    median = data[col].median()
+    data[col] = data[col].replace(0, median)
 ```
 
 ---
 
-### 🔹 پیش‌بینی با مدل
+### 🔹 مقیاس‌بندی داده‌ها (Feature Scaling)
 
-پس از آموزش، می‌توانیم پیش‌بینی‌های مدل را روی داده‌های تست (Test set) انجام دهیم:
+از آنجایی که ویژگی‌ها در مقیاس‌های متفاوت قرار دارند (مثلاً Age در بازه‌ی ۲۰ تا ۸۰ و Glucose در بازه‌ی ۰ تا ۲۰۰)، باید آن‌ها را نرمال‌سازی کنیم. الگوریتم رگرسیون لجستیک به مقیاس داده‌ها حساس است.
 
 ```python
-# Predictions
-y_pred = model.predict(X_test)
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(data.drop("Outcome", axis=1))
+
+X = pd.DataFrame(scaled_data, columns=data.columns[:-1])
+y = data["Outcome"]
 ```
 
 ---
 
-### 🔹 ارزیابی اولیه مدل
+### 🔹 تقسیم داده‌ها به آموزش و تست
 
-برای بررسی کیفیت مدل از معیارهایی مانند **Accuracy (دقت)**، **Confusion Matrix (ماتریس آشفتگی)** و **Classification Report (گزارش دسته‌بندی)** استفاده می‌کنیم.
+برای ارزیابی مدل باید داده‌ها را به دو بخش تقسیم کنیم:
+
+* داده‌های آموزش (Training set) برای یادگیری مدل
+* داده‌های تست (Test set) برای ارزیابی عملکرد مدل
 
 ```python
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.model_selection import train_test_split
 
-# Accuracy
-acc = accuracy_score(y_test, y_pred)
-print("Accuracy:", acc)
-
-# Confusion Matrix
-cm = confusion_matrix(y_test, y_pred)
-print("Confusion Matrix:\n", cm)
-
-# Classification Report
-print("Classification Report:\n", classification_report(y_test, y_pred))
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
 ```
 
 ---
 
-### 🔹 تحلیل نتایج اولیه
+📍 در این مرحله داده‌ها آماده‌ی استفاده هستند. در صفحه بعد (**صفحه ۸**) وارد بخش اصلی پروژه می‌شویم: **آموزش مدل رگرسیون لجستیک و ارزیابی اولیه‌ی آن**.
 
-* **Accuracy** معمولاً حدود ۷۵٪ تا ۸۰٪ خواهد بود.
-* ماتریس آشفتگی نشان می‌دهد که چه تعداد نمونه‌ها درست و غلط پیش‌بینی شده‌اند.
-* گزارش دسته‌بندی شامل معیارهای مهم **Precision، Recall و F1-score** است که نشان‌دهنده‌ی توانایی مدل در تشخیص درست بیماران مبتلا و غیرمبتلا به دیابت است.
-
----
-
-### 🔹 اهمیت متریک‌ها
-
-* **Precision**: چه تعداد از پیش‌بینی‌های "دیابتی" واقعاً دیابتی بودند.
-* **Recall**: چه تعداد از بیماران واقعی دیابتی به‌درستی شناسایی شدند.
-* **F1-score**: میانگین هماهنگ بین Precision و Recall.
-
----
-
-📍 در صفحه بعد (**صفحه ۹**) به **بهبود مدل** می‌پردازیم. در این بخش از **Feature Selection**، **نرمال‌سازی پارامترها** و مقایسه‌ی عملکرد مدل استفاده خواهیم کرد تا ببینیم آیا دقت و کیفیت پیش‌بینی افزایش می‌یابد یا خیر.
 

@@ -1,79 +1,74 @@
-
-## 📖 صفحه ۹: بهبود مدل با انتخاب ویژگی و تنظیمات بیشتر
+## 📖 صفحه ۹: آموزش مدل رگرسیون لجستیک و ارزیابی اولیه
 
 ✍️ نویسنده: سیامک عباس‌نژاد
 
-در صفحه قبل، مدل رگرسیون لجستیک را آموزش دادیم و نتایج اولیه نسبتاً خوب (حدود ۷۵٪ تا ۸۰٪ دقت) به دست آوردیم. اما در علم داده همیشه مرحله‌ی بعد، **بهبود مدل** است. در این صفحه با چند روش بهینه‌سازی آشنا می‌شویم.
+بعد از پیش‌پردازش داده‌ها، حالا نوبت به بخش اصلی می‌رسد: **آموزش مدل رگرسیون لجستیک**. این مدل یکی از ساده‌ترین و درعین‌حال پرکاربردترین الگوریتم‌ها در مسائل دسته‌بندی (Classification) است.
 
 ---
 
-### 🔹 اهمیت انتخاب ویژگی (Feature Selection)
+### 🔹 آموزش مدل رگرسیون لجستیک
 
-گاهی همه‌ی ویژگی‌ها برای مدل‌سازی مفید نیستند. برخی ویژگی‌ها حتی ممکن است نویز (Noise) ایجاد کنند و دقت مدل را کاهش دهند. بنابراین انتخاب ویژگی‌های مهم می‌تواند به بهبود عملکرد کمک کند.
-
-برای بررسی اهمیت ویژگی‌ها در رگرسیون لجستیک می‌توان از ضرایب مدل استفاده کرد:
+در این مرحله مدل را ساخته و با داده‌های آموزش (Training set) آن را یاد می‌دهیم:
 
 ```python
-# Feature importance using model coefficients
-importance = model.coef_[0]
-for i, col in enumerate(X.columns):
-    print(f"{col}: {importance[i]}")
-```
+from sklearn.linear_model import LogisticRegression
 
-📌 تفسیر: مقدار مثبت نشان‌دهنده‌ی افزایش احتمال ابتلا به دیابت است، و مقدار منفی اثر کاهنده دارد.
+# Create model
+model = LogisticRegression(max_iter=1000)
 
----
-
-### 🔹 تنظیم هایپرپارامترها (Hyperparameter Tuning)
-
-مدل رگرسیون لجستیک پارامترهایی دارد که با تغییر آن‌ها می‌توان عملکرد مدل را بهبود داد:
-
-* **C:** معکوس شدت منظم‌سازی (Regularization). هرچه C کوچک‌تر باشد، محدودیت قوی‌تر است.
-* **Penalty:** نوع نرمال‌سازی (L1 یا L2).
-* **Solver:** الگوریتم بهینه‌سازی (lbfgs، saga، liblinear).
-
-می‌توان با استفاده از جستجوی شبکه‌ای (Grid Search) بهترین مقادیر را پیدا کرد:
-
-```python
-from sklearn.model_selection import GridSearchCV
-
-param_grid = {
-    "C": [0.01, 0.1, 1, 10],
-    "penalty": ["l1", "l2"],
-    "solver": ["liblinear", "saga"]
-}
-
-grid = GridSearchCV(LogisticRegression(max_iter=1000), param_grid, cv=5, scoring="accuracy")
-grid.fit(X_train, y_train)
-
-print("Best Parameters:", grid.best_params_)
-print("Best Score:", grid.best_score_)
+# Train model
+model.fit(X_train, y_train)
 ```
 
 ---
 
-### 🔹 اعتبارسنجی متقاطع (Cross Validation)
+### 🔹 پیش‌بینی با مدل
 
-برای اطمینان از اینکه مدل ما فقط روی داده‌های آموزش خوب کار نمی‌کند (Overfitting)، از **Cross Validation** استفاده می‌کنیم.
+پس از آموزش، می‌توانیم پیش‌بینی‌های مدل را روی داده‌های تست (Test set) انجام دهیم:
 
 ```python
-from sklearn.model_selection import cross_val_score
-
-scores = cross_val_score(model, X, y, cv=5, scoring="accuracy")
-print("Cross-validation accuracy scores:", scores)
-print("Mean accuracy:", scores.mean())
+# Predictions
+y_pred = model.predict(X_test)
 ```
 
-📊 این روش نشان می‌دهد که میانگین دقت مدل در چندین تقسیم مختلف داده چقدر است.
+---
+
+### 🔹 ارزیابی اولیه مدل
+
+برای بررسی کیفیت مدل از معیارهایی مانند **Accuracy (دقت)**، **Confusion Matrix (ماتریس آشفتگی)** و **Classification Report (گزارش دسته‌بندی)** استفاده می‌کنیم.
+
+```python
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Accuracy
+acc = accuracy_score(y_test, y_pred)
+print("Accuracy:", acc)
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:\n", cm)
+
+# Classification Report
+print("Classification Report:\n", classification_report(y_test, y_pred))
+```
 
 ---
 
-### 🔹 نتایج بهبود یافته
+### 🔹 تحلیل نتایج اولیه
 
-* پس از **Feature Selection** و **Tuning** دقت مدل معمولاً به حدود ۸۲٪ تا ۸۵٪ می‌رسد.
-* Recall بیماران مبتلا به دیابت افزایش پیدا می‌کند که از نظر پزشکی اهمیت بالایی دارد.
+* **Accuracy** معمولاً حدود ۷۰٪ تا ۷۵٪ خواهد بود.
+* ماتریس آشفتگی نشان می‌دهد که چه تعداد نمونه‌ها درست و غلط پیش‌بینی شده‌اند.
+* گزارش دسته‌بندی شامل معیارهای مهم **Precision، Recall و F1-score** است که نشان‌دهنده‌ی توانایی مدل در تشخیص درست بیماران مبتلا و غیرمبتلا به دیابت است.
 
 ---
 
-📍 در صفحه بعد (**صفحه ۱۰**) به جمع‌بندی و نتیجه‌گیری پروژه خواهیم پرداخت و به دانشجویان نشان می‌دهیم که چگونه از این مدل ساده می‌توان در مسائل واقعی پزشکی استفاده کرد.
+### 🔹 اهمیت متریک‌ها
+
+* **Precision**: چه تعداد از پیش‌بینی‌های "دیابتی" واقعاً دیابتی بودند.
+* **Recall**: چه تعداد از بیماران واقعی دیابتی به‌درستی شناسایی شدند.
+* **F1-score**: میانگین هماهنگ بین Precision و Recall.
+
+---
+
+📍 در صفحه بعد (**صفحه ۹**) به **بهبود مدل** می‌پردازیم. در این بخش از **Feature Selection**، **نرمال‌سازی پارامترها** و مقایسه‌ی عملکرد مدل استفاده خواهیم کرد تا ببینیم آیا دقت و کیفیت پیش‌بینی افزایش می‌یابد یا خیر.
 
