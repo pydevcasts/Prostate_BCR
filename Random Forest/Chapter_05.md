@@ -40,7 +40,8 @@ df_subset = df[selected_features]
 sns.pairplot(df_subset, hue="target", palette="Set1", diag_kind="kde")
 plt.show()
 ```
-
+---
+![alt text](image.png)
 ---
 
 ### 🔹 تفسیر نمودارها

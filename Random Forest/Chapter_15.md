@@ -42,6 +42,8 @@ plt.xlabel("Importance")
 plt.ylabel("Feature")
 plt.show()
 ```
+---
+![alt text](image-12.png)
 
 ---
 

@@ -58,6 +58,9 @@ plt.title("Boxplot of Mean Radius by Class")
 plt.xticks([0,1], ['Benign', 'Malignant'])
 plt.show()
 ```
+---
+![alt text](image-2.png)
+---
 
 📊 نتیجه:
 

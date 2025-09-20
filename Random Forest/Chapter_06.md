@@ -34,7 +34,9 @@ plt.title("Violinplot of Mean Area by Class")
 plt.xticks([0,1], ['Benign', 'Malignant'])
 plt.show()
 ```
-
+---
+![alt text](image-5.png)
+![alt text](image-4.png)
 ---
 
 ### 🔹 تفسیر نتایج

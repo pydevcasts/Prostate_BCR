@@ -51,7 +51,8 @@ plt.title("ROC Curve Comparison")
 plt.legend(loc="lower right")
 plt.show()
 ```
-
+---
+![alt text](image-11.png)
 ---
 
 ### 🔹 نمونه خروجی (مثال AUC)
@@ -59,17 +60,17 @@ plt.show()
 | Model               | AUC  |
 | ------------------- | ---- |
 | Random Forest       | 0.99 |
-| Logistic Regression | 0.98 |
-| KNN                 | 0.96 |
-| SVM                 | 0.98 |
+| Logistic Regression | 0.99 |
+| KNN                 | 0.98 |
+| SVM                 | 0.99 |
 
 ---
 
 ### 🔹 تفسیر نتایج
 
 * **Random Forest** بالاترین AUC را دارد (≈ 0.99) → بهترین قدرت تفکیک بیماران مثبت و منفی.
-* **Logistic Regression** و **SVM** با AUC ≈ 0.98 رقابت نزدیکی دارند.
-* **KNN** کمی ضعیف‌تر است (≈ 0.96).
+* **Logistic Regression** و **SVM** با AUC ≈ 0.99 رقابت نزدیکی دارند.
+* **KNN** کمی ضعیف‌تر است (≈ 0.98).
 
 ---
 
@@ -77,6 +78,6 @@ plt.show()
 
 * ROC Curve دید بهتری نسبت به عملکرد مدل‌ها در سطوح مختلف آستانه (threshold) می‌دهد.
 * AUC بالا برای همه مدل‌ها نشان‌دهنده کیفیت بسیار خوب این داده‌هاست.
-* Random Forest همچنان بهترین انتخاب است، ولی Logistic Regression و SVM هم عملکرد عالی دارند.
+
 
 

@@ -120,19 +120,19 @@ $$
 
 Outlook سه مقدار دارد: Sunny, Overcast, Rain.
 
-* **Sunny:** 5 رکورد → 2 Yes, 3 No →
+* **Sunny:**  رکورد → 2 Yes, 3 → رکورد No
 
   $$
   Entropy(Sunny) = -\frac{2}{5}\log_2(\frac{2}{5}) - \frac{3}{5}\log_2(\frac{3}{5}) \approx 0.97
   $$
 
-* **Overcast:** 4 رکورد → 4 Yes →
+* **Overcast:**  رکورد → 4  Yes 
 
   $$
   Entropy(Overcast) = 0
   $$
 
-* **Rain:** 5 رکورد → 3 Yes, 2 No →
+* **Rain:**  رکورد → 3 Yes, 2 → رکورد No 
 
   $$
   Entropy(Rain) = -\frac{3}{5}\log_2(\frac{3}{5}) - \frac{2}{5}\log_2(\frac{2}{5}) \approx 0.97

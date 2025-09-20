@@ -29,7 +29,7 @@ models = {
     "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
     "Logistic Regression": LogisticRegression(max_iter=5000, random_state=42),
     "KNN": KNeighborsClassifier(n_neighbors=5),
-    "SVM": SVC(kernel="rbf", random_state=42)
+    "SVM": SVC(kernel="rbf", random_state=42,probability=True)
 }
 
 # Dictionary to store results
@@ -47,20 +47,21 @@ for name, model in models.items():
 ### 🔹 نمونه خروجی (مثال)
 
 ```
-Random Forest -> Mean Accuracy: 0.9600 | Std: 0.0100
-Logistic Regression -> Mean Accuracy: 0.9500 | Std: 0.0120
-KNN -> Mean Accuracy: 0.9400 | Std: 0.0150
-SVM -> Mean Accuracy: 0.9550 | Std: 0.0110
+Random Forest -> Mean Accuracy: 0.9561 | Std: 0.0123
+Logistic Regression -> Mean Accuracy: 0.9737 | Std: 0.0166
+KNN -> Mean Accuracy: 0.9666 | Std: 0.0140
+SVM -> Mean Accuracy: 0.9754 | Std: 0.0195
 ```
 
 ---
 
 ### 🔹 تفسیر نتایج
 
-* **Random Forest (96%)** → بهترین عملکرد، پایدار و مقاوم.
-* **SVM (95.5%)** → عملکرد نزدیک به Random Forest، ولی کمی پایین‌تر.
-* **Logistic Regression (95%)** → ساده و سریع، عملکرد خوب ولی نه به اندازه Random Forest.
-* **KNN (94%)** → قابل قبول، ولی نسبت به مدل‌های دیگر کمی ضعیف‌تر.
+* **Random Forest (95%)** → قابل قبول، ولی نسبت به مدل‌های دیگر کمی ضعیف‌تر.
+* **SVM (97.5%)** → بهترین عملکرد، پایدار و مقاوم.
+ → عملکرد نزدیک به Random Forest، ولی کمی پایین‌تر.
+* **Logistic Regression (97%)** → ساده و سریع، عملکرد خوب ولی نه به اندازه SVM.
+* **KNN (96%)** → عملکرد بهتری نسبت به جنگل تصادفی داشت
 
 ---
 

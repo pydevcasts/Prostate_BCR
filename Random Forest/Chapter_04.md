@@ -26,6 +26,9 @@ sns.heatmap(corr, cmap="coolwarm", annot=False)
 plt.title("Correlation Heatmap of Breast Cancer Features")
 plt.show()
 ```
+---
+![alt text](image-1.png)
+---
 
 📊 نتیجه:
 

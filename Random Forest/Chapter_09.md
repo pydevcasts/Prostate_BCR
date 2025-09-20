@@ -29,6 +29,9 @@ plt.ylabel("Accuracy")
 plt.ylim(0.9, 1.0)
 plt.show()
 ```
+---
+![alt text](image-6.png)
+---
 
 📊 تفسیر:
 
@@ -47,6 +50,9 @@ plt.title("Distribution of Accuracy Scores (Random Forest)")
 plt.ylabel("Accuracy")
 plt.show()
 ```
+---
+![alt text](image-7.png)
+---
 
 📊 تفسیر:
 
@@ -59,11 +65,11 @@ plt.show()
 ### 🔹 مقایسه Barplot و Boxplot
 
 * **Barplot** نشان داد که همه Foldها عملکرد تقریباً یکسان دارند.
-* **Boxplot** این پایداری را تأیید کرد و نشان داد که Random Forest یک مدل پایدار و مقاوم برای این دیتاست است.
+* **Boxplot** نشان داد که جنگل تصادفی یک مدل پایدار و مقاوم برای این دیتاست است.
 
 ---
 
 ### 🔹 نتیجه‌گیری
 
-* Random Forest روی دیتاست Breast Cancer دقت بالای **۹۶٪** با پایداری عالی دارد.
+* **جنگل تصادفی** روی دیتاست Breast Cancer دقت بالای **۹۶٪** با پایداری عالی دارد.
 * نمایش نتایج با نمودارها به درک بهتر عملکرد مدل کمک کرد.

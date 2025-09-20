@@ -25,11 +25,27 @@ sns.pairplot(df, vars=top_features, hue="target", diag_kind="kde", palette="Set1
 plt.suptitle("Pairplot of Top Important Features", y=1.02)
 plt.show()
 ```
+---
+![alt text](image-14.png)
+
+---
 
 📊 تفسیر:
 
-* نقاط قرمز (Malignant) و آبی (Benign) در ویژگی‌های مثل **worst radius** و **mean concave points** تا حد زیادی جدا هستند.
-* این جداسازی بصری تأیید می‌کند که ویژگی‌های انتخاب‌شده واقعاً قدرت تفکیک بالایی دارند.
+---
+
+- **`worst radius` و `worst area`**:  
+  روند خطی قوی و تقاطع کم بین دو کلاس وجود دارد. این نشان‌دهنده این است که اندازه و مساحت حداکثری سلول در تشخیص سرطان نقش کلیدی دارند.
+
+- **`worst concave points` و `mean concave points`**:  
+  تداخل کم و الگوی روشنی بین دو گروه مشاهده می‌شود. این ویژگی‌ها نشان‌دهنده نابسامانی شکل سلول هستند و در سلول‌های بدخیم (Malignant) بیشتر هستند.
+
+- **`worst area` vs `worst concave points`**:  
+  نقاط Malignant در منطقه‌ای با مساحت بالا و خمیدگی زیاد قرار دارند. این نشان می‌دهد که سلول‌های بدخیم هم بزرگ‌تر و هم نابسامان‌تر هستند.
+
+---
+
+✅ این ویژگی‌ها به عنوان **شاخص‌های قوی برای تشخیص سرطان سینه** عمل می‌کنند.
 
 ---
 
@@ -43,7 +59,9 @@ plt.xlabel("Target (0 = Benign, 1 = Malignant)")
 plt.ylabel("Worst Radius")
 plt.show()
 ```
-
+---
+![alt text](image-15.png)
+---
 📊 تفسیر:
 
 * بیماران Malignant معمولاً **worst radius** بالاتری دارند.
@@ -62,11 +80,14 @@ for i, feature in enumerate(top_features, 1):
 plt.tight_layout()
 plt.show()
 ```
+---
+![alt text](image-16.png)
+
+---
 
 📊 تفسیر:
 
-* اکثر ویژگی‌های کلیدی (مانند **mean concave points** و **worst area**) توزیع‌های کاملاً متمایزی برای بیماران سالم و مبتلا دارند.
-* این موضوع توضیح می‌دهد که چرا مدل Random Forest توانسته دقت بسیار بالایی به دست آورد.
+* برخی ویژگی‌ها مثل worst area توزیع‌های بسیار متمایز دارند، اما برخی دیگر مثل concave points تداخل دارند. با این حال، ترکیب این ویژگی‌ها به مدل Random Forest کمک می‌کند تا با دقت بالا تشخیص دهد
 
 ---
 
