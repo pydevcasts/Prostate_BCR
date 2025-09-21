@@ -29,6 +29,9 @@ plt.ylabel("Chi2 Score")
 plt.title("Feature Importance Based on Chi2 Test")
 plt.show()
 ```
+---
+![alt text](image-4.png)
+---
 
 📌 نتیجه: معمولاً **Glucose** بالاترین امتیاز را دارد، سپس **BMI** و **Age**.
 

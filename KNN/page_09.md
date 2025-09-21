@@ -31,7 +31,8 @@ sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Correlation Heatmap of Diabetes Dataset")
 plt.show()
 ```
-
+---
+![alt text](image-5.png)
 ---
 
 ### 🔹 تحلیل Heatmap

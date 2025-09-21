@@ -11,13 +11,17 @@
 
 ```python
 from sklearn.model_selection import train_test_split
-
-# جدا کردن ویژگی‌ها و برچسب‌ها
+# Separate features and target variable
 X = data.drop("Outcome", axis=1)
 y = data["Outcome"]
-
-# تقسیم داده به آموزش و تست (70% آموزش، 30% تست)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+# Split data into training and testing sets (70% train, 30% test)
+# Use stratify=y to preserve class distribution in both sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, 
+    test_size=0.3, 
+    random_state=42, 
+    stratify=y
+)
 ```
 
 ---
@@ -42,15 +46,13 @@ X_test = scaler.transform(X_test)
 
 ```python
 from sklearn.neighbors import KNeighborsClassifier
-
-# مدل با k=5
+# Initialize KNN model with k=5
 knn = KNeighborsClassifier(n_neighbors=5)
+# Train the model on the training data
 knn.fit(X_train, y_train)
-
-# پیش‌بینی
+# Make predictions on the test set
 y_pred = knn.predict(X_test)
 ```
-
 ---
 
 ### 🔹 ارزیابی مدل
@@ -67,7 +69,7 @@ print("Classification Report:\n", classification_report(y_test, y_pred))
 
 📌 خروجی (تقریبی):
 
-* **دقت (Accuracy):** حدود 0.75
+* **دقت (Accuracy):** حدود 0.72
 * **Confusion Matrix:** نشان می‌دهد چند نفر درست یا غلط پیش‌بینی شده‌اند.
 * **Classification Report:** شامل Precision، Recall و F1-Score است.
 
@@ -75,7 +77,7 @@ print("Classification Report:\n", classification_report(y_test, y_pred))
 
 ### 🔹 تفسیر نتایج
 
-* دقت مدل KNN در نسخه اولیه حدود **۷۵٪** است.
+* دقت مدل KNN در نسخه اولیه حدود **۷۲٪** است.
 * مدل توانسته بیماران دیابتی را نسبتاً خوب شناسایی کند اما هنوز جای بهبود دارد.
 * انتخاب **K مناسب** و همچنین **انتخاب ویژگی‌ها (Feature Selection)** می‌تواند کیفیت مدل را بالاتر ببرد.
 

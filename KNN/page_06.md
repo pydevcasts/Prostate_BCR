@@ -23,7 +23,7 @@ from sklearn.metrics import accuracy_score
 
 accuracies = []
 
-# بررسی k از 1 تا 20
+# Test k values from 1 to 20
 for k in range(1, 21):
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(X_train, y_train)
@@ -31,15 +31,17 @@ for k in range(1, 21):
     acc = accuracy_score(y_test, y_pred)
     accuracies.append(acc)
 
-# رسم نمودار
-plt.figure(figsize=(8,5))
+# Plot the results
+plt.figure(figsize=(8, 5))
 plt.plot(range(1, 21), accuracies, marker='o')
-plt.xlabel("تعداد همسایه‌ها (k)")
-plt.ylabel("دقت (Accuracy)")
-plt.title("اثر انتخاب k بر دقت مدل KNN")
+plt.xlabel("Number of Neighbors (k)")
+plt.ylabel("Accuracy")
+plt.title("Effect of k on KNN Model Accuracy")
+plt.grid(True)
 plt.show()
 ```
-
+---
+![alt text](image-3.png)
 ---
 
 ### 🔹 تحلیل نمودار
@@ -47,7 +49,7 @@ plt.show()
 📌 در نمودار معمولاً دیده می‌شود که:
 
 * برای k های خیلی کوچک (مثلاً ۱ یا ۲)، دقت پایین است چون مدل بیش از حد به داده‌های خاص وابسته می‌شود.
-* دقت در مقادیر میانی (مثلاً ۷ تا ۱۲) به بالاترین مقدار خود می‌رسد.
+* دقت در مقادیر میانی (مثلاً ۷ تا ۱۵) به بالاترین مقدار خود می‌رسد.
 * بعد از یک حد خاص، افزایش k باعث کاهش دقت می‌شود چون مدل بیش از حد ساده می‌شود.
 
 ---
@@ -56,6 +58,6 @@ plt.show()
 
 در اکثر اجراها روی دیتاست دیابت:
 
-* بهترین k معمولاً بین **۷ تا ۱۱** است.
+* بهترین k معمولاً بین **۷ تا ۱۷** است.
 * انتخاب k=9 یا k=11 اغلب دقت بالاتری نسبت به k=5 می‌دهد.
 

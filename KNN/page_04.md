@@ -25,6 +25,9 @@ data.hist(bins=20, figsize=(15, 10))
 plt.tight_layout()
 plt.show()
 ```
+---
+![alt text](image.png)
+---
 
 📌 با این دستور، توزیع تمام ویژگی‌ها در قالب هیستوگرام نمایش داده می‌شود.
 
@@ -41,12 +44,14 @@ plt.show()
 ```python
 import seaborn as sns
 
-plt.figure(figsize=(8,5))
+plt.figure(figsize=(8, 5))
 sns.histplot(data=data, x="Glucose", hue="Outcome", kde=True, bins=30)
-plt.title("توزیع Glucose برای بیماران دیابتی و غیردیابتی")
+plt.title("Distribution of Glucose for Diabetic and Non-Diabetic Patients")
 plt.show()
 ```
-
+---
+![alt text](image-1.png)
+---
 📌 نتیجه: بیماران دیابتی معمولاً سطح قند خون بالاتری دارند.
 
 ---
@@ -59,7 +64,9 @@ plt.show()
 sns.pairplot(data[["Glucose", "BMI", "Age", "Outcome"]], hue="Outcome")
 plt.show()
 ```
-
+---
+![alt text](image-2.png)
+---
 📌 نتیجه:
 
 * افراد با **Glucose بالا و BMI بالا** بیشتر در گروه دیابتی‌ها قرار می‌گیرند.
