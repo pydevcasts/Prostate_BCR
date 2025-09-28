@@ -1,63 +1,53 @@
-## 📖 صفحه ۹: تحلیل داده‌ها با Boxplot و توزیع طول ایمیل‌ها
 
-✍️ نویسنده: سیامک عباس‌نژاد
+# 📖 فصل ۹: ساخت مدل ترکیبی (ویژگی‌های متنی + ویژگی‌های عددی)
 
----
+### 🔹 ترکیب ویژگی‌های متنی و عددی
 
-### 🔹 چرا طول ایمیل مهم است؟
+تا اینجا ما داشتیم:
 
-یکی از ویژگی‌های ساده اما مؤثر در تشخیص اسپم، **طول ایمیل** (تعداد کاراکترها یا تعداد کلمات) است.
+* **ویژگی‌های متنی** با استفاده از **TF-IDF** یا **CountVectorizer**
+* **ویژگی‌های عددی** مثل طول پیام، تعداد حروف بزرگ، تعداد علامت تعجب و ...
 
-* ایمیل‌های اسپم معمولاً **کوتاه و پر از کلمات تبلیغاتی** هستند.
-* ایمیل‌های عادی (Ham) معمولاً **طولانی‌تر** هستند و شامل متن‌های واقعی مثل مکاتبات کاری یا شخصی‌اند.
-
-برای بررسی این موضوع، می‌توانیم یک ویژگی جدید به داده‌ها اضافه کنیم: **تعداد کلمات هر ایمیل**.
-
----
-
-### 🔹 اضافه کردن ویژگی طول ایمیل
+حالا این دو نوع ویژگی را با هم ترکیب می‌کنیم تا عملکرد مدل بهبود پیدا کند.
 
 ```python
-# افزودن یک ستون جدید به دیتافریم با تعداد کلمات هر ایمیل
-data['email_length'] = data['text'].apply(lambda x: len(x.split()))
+from scipy.sparse import hstack
+from scipy import sparse
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, classification_report
 
-# نمایش چند نمونه
-print(data[['text','email_length','label']].head())
+# Selecting numeric features
+numeric_features = df[['email_length', 'uppercase_count', 
+                       'exclamation_count', 'digit_count',
+                       'has_free', 'has_win', 'has_urgent', 'has_call']]
+
+# Converting numeric features to sparse matrix for compatibility with TF-IDF
+numeric_sparse = sparse.csr_matrix(numeric_features.values)
+
+# Combining text features (TF-IDF) with numeric features
+X_combined = hstack([X_tfidf, numeric_sparse])
+
+# Splitting the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X_combined, y, test_size=0.2, random_state=42
+)
+
+# Training the Naive Bayes model
+nb_model_combined = MultinomialNB()
+nb_model_combined.fit(X_train, y_train)
+
+# Prediction
+y_pred_combined = nb_model_combined.predict(X_test)
+
+# Evaluation
+print("Accuracy (Hybrid Model):", accuracy_score(y_test, y_pred_combined))
+print(classification_report(y_test, y_pred_combined, target_names=["Ham", "Spam"]))
 ```
 
----
+📊 **نتیجه:**
 
-### 🔹 رسم Boxplot
-
-برای مشاهده توزیع طول ایمیل‌ها در اسپم و Ham:
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-plt.figure(figsize=(8,6))
-sns.boxplot(x='label', y='email_length', data=data, palette="Set2")
-plt.xlabel("نوع ایمیل (0 = Ham , 1 = Spam)")
-plt.ylabel("تعداد کلمات")
-plt.title("مقایسه توزیع طول ایمیل‌ها در Ham و Spam")
-plt.show()
-```
+* مدل ترکیبی که هم از ویژگی‌های متنی و هم از ویژگی‌های عددی استفاده می‌کند، معمولاً عملکرد **بهتری** نسبت به استفاده‌ی تنها از متن دارد.
+* ویژگی‌های عددی مثل **تعداد حروف بزرگ، طول پیام و کلمات کلیدی اسپم** قدرت پیش‌بینی مدل را بیشتر می‌کنند.
 
 ---
-
-### 🔹 تفسیر Boxplot
-
-📌 از نمودار معمولاً نتایج زیر دیده می‌شود:
-
-* **ایمیل‌های اسپم** تمایل دارند **کوتاه‌تر** باشند و تعداد کلمات کمتری دارند.
-* **ایمیل‌های عادی** دامنه‌ی وسیع‌تری دارند و برخی از آن‌ها بسیار طولانی هستند (مثل ایمیل‌های کاری یا خبرنامه‌های رسمی).
-* وجود داده‌های پرت (Outliers) هم طبیعی است، مثلاً بعضی اسپم‌ها خیلی طولانی می‌شوند یا بعضی ایمیل‌های سالم بسیار کوتاه‌اند (مثل پاسخ "OK").
-
----
-
-### 🔹 نتیجه این تحلیل
-
-* طول ایمیل می‌تواند یک ویژگی مفید برای بهبود مدل باشد.
-* اضافه کردن چنین ویژگی‌های ساده‌ای گاهی باعث می‌شود حتی مدل‌های پایه‌ای مثل Naïve Bayes دقت بالاتری پیدا کنند.
-* ترکیب داده‌کاوی آماری (مثل Boxplot) با مدل‌های یادگیری ماشین باعث می‌شود درک ما از داده‌ها عمیق‌تر شود.
-

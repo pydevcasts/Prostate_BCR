@@ -1,106 +1,112 @@
-## 📖 صفحه ۵: ساخت مدل Naïve Bayes و ارزیابی اولیه
 
-✍️ نویسنده: سیامک عباس‌نژاد
+# 📖 فصل ۵: نمونه‌برداری از داده‌ها و بررسی همبستگی ویژگی‌ها
 
----
+### 🔹 نمایش چند نمونه از پیام‌ها
 
-### 🔹 آماده‌سازی داده‌ها
-
-قبل از ساخت مدل، باید داده‌ها را به دو بخش تقسیم کنیم:
-
-* **داده‌های آموزش (Train)** برای یادگیری مدل
-* **داده‌های تست (Test)** برای ارزیابی عملکرد مدل روی داده‌های جدید
-
-همچنین معمولاً برای داده‌های متنی، از روش‌های بردارسازی مثل **CountVectorizer** یا **TF-IDF** استفاده می‌کنیم. این روش‌ها متن را به یک ماتریس عددی تبدیل می‌کنند که مدل بتواند با آن کار کند.
+برای درک بهتر داده‌ها، چند نمونه از پیام‌های اسپم و پیام‌های عادی (Ham) را مشاهده می‌کنیم. این کار به ما کمک می‌کند تا به صورت شهودی تفاوت محتوایی بین پیام‌های اسپم و عادی را ببینیم.
 
 ```python
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer
+# Print a few samples of spam messages
+print("\nSample Spam Messages:")
+print(df[df['label'] == 'spam']['message'].head(3))
 
-# تقسیم داده‌ها به متن (X) و برچسب‌ها (y)
-X = data['text']      # ستون متن ایمیل
-y = data['label']     # ستون برچسب (Spam=1, Ham=0)
-
-# بردارسازی متن
-vectorizer = CountVectorizer(stop_words='english')
-X_vectors = vectorizer.fit_transform(X)
-
-# تقسیم به آموزش و تست
-X_train, X_test, y_train, y_test = train_test_split(
-    X_vectors, y, test_size=0.2, random_state=42
-)
+# Print a few samples of ham messages
+print("\nSample Ham Messages:")
+print(df[df['label'] == 'ham']['message'].head(3))
 ```
+
+📌 **خروجی:**
+
+**نمونه پیام‌های اسپم (Spam):**
+
+```
+Free entry in 2 a wkly comp to win FA Cup fina...
+FreeMsg Hey there darling it's been 3 week's n...
+WINNER!! As a valued network customer you have...
+```
+
+**نمونه پیام‌های عادی (Ham):**
+
+```
+Go until jurong point, crazy.. Available only ...
+Ok lar... Joking wif u oni...
+U dun say so early hor... U c already then say...
+```
+
+📊 همانطور که دیده می‌شود، پیام‌های اسپم معمولاً شامل عباراتی مثل **WINNER!!, Free, Prize** هستند، در حالی که پیام‌های عادی بیشتر مکالمه‌های روزمره‌اند.
 
 ---
 
-### 🔹 آموزش مدل Naïve Bayes
+### 🔹 استخراج ویژگی‌های عددی بیشتر
 
-برای متن، معمولاً از **Multinomial Naïve Bayes** استفاده می‌شود.
+برای آماده‌سازی داده‌ها جهت مدل‌سازی، ویژگی‌های عددی بیشتری ایجاد می‌کنیم. این ویژگی‌ها به مدل کمک می‌کنند تا تفاوت بین پیام‌های اسپم و عادی را بهتر یاد بگیرد.
 
 ```python
-from sklearn.naive_bayes import MultinomialNB
+import numpy as np
 
-# ایجاد مدل
-nb_model = MultinomialNB()
+# Create several numerical features from the text
+df['message_length'] = df['message'].apply(len)  # Length of the message
+df['word_count'] = df['message'].apply(lambda x: len(x.split()))  # Count of words in the message
+df['char_count'] = df['message'].apply(lambda x: len(x.replace(" ", "")))  # Count of characters excluding spaces
+df['avg_word_length'] = df['message'].apply(lambda x: np.mean([len(w) for w in x.split()]) if len(x.split()) > 0 else 0)  # Average word length
+df['exclamation_count'] = df['message'].apply(lambda x: x.count('!'))  # Count of exclamation marks
+df['question_count'] = df['message'].apply(lambda x: x.count('?'))  # Count of question marks
+df['digit_count'] = df['message'].apply(lambda x: sum(c.isdigit() for c in x))  # Count of digits
+df['has_free'] = df['message'].str.contains('free', case=False, na=False).astype(int)  # Presence of the word 'free'
+df['has_win'] = df['message'].str.contains('win', case=False, na=False).astype(int)  # Presence of the word 'win'
+df['has_urgent'] = df['message'].str.contains('urgent', case=False, na=False).astype(int)  # Presence of the word 'urgent'
+df['has_call'] = df['message'].str.contains('call', case=False, na=False).astype(int)  # Presence of the word 'call'
 
-# آموزش مدل روی داده‌های آموزشی
-nb_model.fit(X_train, y_train)
+# Convert labels to numeric
+df['label_num'] = df['label'].map({'ham': 0, 'spam': 1})
+
+print("Available columns after adding 'label_num':")
+print(df.columns)
 ```
+
+📌 در این بخش ویژگی‌هایی مثل:
+
+* تعداد کاراکترها،
+* تعداد کلمات،
+* تعداد علامت‌های تعجب و سؤال،
+* تعداد ارقام،
+* وجود کلمات کلیدی مثل **free, win, urgent, call**
+
+به داده‌ها اضافه شدند. این موارد نقش مهمی در تشخیص اسپم دارند.
 
 ---
 
-### 🔹 پیش‌بینی روی داده‌های تست
+### 🔹 محاسبه ماتریس همبستگی
+
+برای بررسی ارتباط بین ویژگی‌های استخراج‌شده و برچسب‌ها، از **ماتریس همبستگی (Correlation Matrix)** استفاده می‌کنیم. این ابزار کمک می‌کند تا بفهمیم کدام ویژگی‌ها بیشترین ارتباط را با برچسب اسپم یا عادی دارند.
 
 ```python
-# پیش‌بینی روی داده‌های تست
-y_pred = nb_model.predict(X_test)
+# Select numeric columns for correlation calculation
+numeric_cols = [
+    'label_num',           # Numeric representation of the label (spam or ham)
+    'message_length',      # Length of the message
+    'word_count',          # Count of words in the message
+    'char_count',          # Count of characters excluding spaces
+    'avg_word_length',     # Average length of words in the message
+    'exclamation_count',    # Count of exclamation marks
+    'question_count',      # Count of question marks
+    'digit_count',         # Count of digits
+    'has_free',            # Presence of the word 'free'
+    'has_win',             # Presence of the word 'win'
+    'has_urgent',          # Presence of the word 'urgent'
+    'has_call'             # Presence of the word 'call'
+]
+
+# Compute the correlation matrix
+correlation_matrix = df[numeric_cols].corr()
+
+print("Correlation Matrix:")
+print(correlation_matrix)
 ```
+
+📌 **نتیجه:** این ماتریس نشان می‌دهد که ویژگی‌هایی مانند **وجود کلمه‌ی free یا win** بیشترین همبستگی مثبت با اسپم بودن پیام دارند. در حالی که ویژگی‌هایی مثل طول پیام یا میانگین طول کلمات، تأثیر کمتری دارند.
 
 ---
 
-### 🔹 ارزیابی عملکرد مدل
-
-برای ارزیابی، از معیارهای زیر استفاده می‌کنیم:
-
-* **Accuracy** (دقت کلی)
-* **Confusion Matrix** (ماتریس آشفتگی)
-* **Classification Report** (Precision، Recall، F1-score)
-
-```python
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# دقت
-print("Accuracy:", accuracy_score(y_test, y_pred))
-
-# ماتریس آشفتگی
-cm = confusion_matrix(y_test, y_pred)
-plt.figure(figsize=(5,4))
-sns.heatmap(cm, annot=True, fmt='d', cmap="Blues",
-            xticklabels=["Ham","Spam"],
-            yticklabels=["Ham","Spam"])
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("Confusion Matrix")
-plt.show()
-
-# گزارش دسته‌بندی
-print(classification_report(y_test, y_pred, target_names=["Ham","Spam"]))
-```
-
----
-
-### 🔹 جمع‌بندی این مرحله
-
-* داده‌ها را به **آموزش و تست** تقسیم کردیم.
-* مدل **Naïve Bayes** را روی داده‌های آموزش یاد گرفتیم.
-* با استفاده از داده‌های تست، عملکرد مدل را با معیارهای مهم ارزیابی کردیم.
-
-در صفحه‌ی بعد، به **تحلیل دقیق‌تر نتایج** می‌پردازیم:
-
-* بررسی اینکه مدل کدام نوع خطاها را بیشتر انجام می‌دهد.
-* تحلیل اهمیت Precision و Recall در کاربرد واقعی.
-
-
+✅ این بخش (صفحه ۵) به ما کمک کرد تا **ویژگی‌های مهم را شناسایی کنیم** و بفهمیم کدام یک در پیش‌بینی اسپم بودن پیام‌ها مؤثرتر هستند. در مرحله بعد می‌توانیم از این ویژگی‌ها در مدل‌های یادگیری ماشین مثل Naive Bayes استفاده کنیم.
 

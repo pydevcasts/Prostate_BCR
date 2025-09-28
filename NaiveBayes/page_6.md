@@ -1,90 +1,185 @@
-## 📖 صفحه ۶: تحلیل نتایج مدل و اهمیت معیارها در فیلتر اسپم
+# 📖 فصل ۶: اهمیت ویژگی‌ها و ساخت مدل بیز ساده
 
-✍️ نویسنده: سیامک عباس‌نژاد
+### 🔹 تجسم همبستگی ویژگی‌ها
 
----
+بعد از ساخت ویژگی‌های عددی، ماتریس همبستگی را بررسی می‌کنیم تا بفهمیم کدام ویژگی‌ها ارتباط بیشتری با برچسب **اسپم** یا **عادی (Ham)** دارند.
 
-### 🔹 دقت (Accuracy)
+```python
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
+plt.title('Heatmap of Correlation Matrix')
+plt.show()
+```
+![alt text](image-6.png)
 
-دقت نشان می‌دهد که چند درصد از پیش‌بینی‌های مدل درست بوده‌اند:
-
-$$
-Accuracy = \frac{Number of Correct Predictions}{Total Number of Samples}
-$$
-
-اگرچه دقت معیار مهمی است، اما در مسأله‌ی اسپم به‌تنهایی کافی نیست. فرض کنید از ۱۰۰۰ ایمیل فقط ۵۰ ایمیل اسپم باشد. اگر مدل همیشه بگوید «Ham»، دقت آن ۹۵٪ خواهد شد، ولی در عمل هیچ اسپمی را شناسایی نکرده است.
-
----
-
-### 🔹 ماتریس آشفتگی (Confusion Matrix)
-
-ماتریس آشفتگی نشان می‌دهد مدل در هر کلاس چه عملکردی داشته است:
-
-|            | پیش‌بینی Ham        | پیش‌بینی Spam       |
-| ---------- | ------------------- | ------------------- |
-| واقعی Ham  | True Negative (TN)  | False Positive (FP) |
-| واقعی Spam | False Negative (FN) | True Positive (TP)  |
-
-* **TN**: ایمیل عادی درست پیش‌بینی شده.
-* **FP**: ایمیل عادی اشتباه اسپم تشخیص داده شده (خطای مهم چون باعث از دست رفتن ایمیل سالم می‌شود).
-* **FN**: ایمیل اسپم اشتباه عادی تشخیص داده شده (خطرناک چون اسپم به صندوق ورودی می‌رود).
-* **TP**: ایمیل اسپم درست شناسایی شده.
+📊 **تفسیر:**
+ویژگی‌هایی مثل `has_free`، `has_win` و `digit_count` همبستگی بیشتری با برچسب اسپم دارند، درحالی‌که ویژگی‌هایی مثل `message_length` و `char_count` نیز قدرت تمایز خوبی نشان می‌دهند.
 
 ---
 
-### 🔹 Precision و Recall
+### 🔹 باکس‌پلات برای کلمات مهم
 
-دو معیار بسیار مهم در تشخیص اسپم:
+ویژگی‌های خاصی را هم می‌توان بین اسپم و عادی مقایسه کرد. به‌عنوان مثال، واژه‌ی **“call”** در پیام‌های اسپم بیشتر دیده می‌شود.
 
-1. **Precision (دقت مثبت‌ها)**
+```python
+plt.figure(figsize=(6, 4))
+sns.boxplot(x="label", y="has_call", data=df)
+plt.xticks([0, 1], ['Ham', 'Spam'])
+plt.title("Boxplot of the Presence of the Word 'call' in Ham and Spam Emails")
+plt.ylabel("Count of 'call'")
+plt.xlabel("Email Type")
+plt.show()
+```
+![alt text](image-7.png)
 
-$$
-Precision = \frac{TP}{TP+FP}
-$$
-
-این معیار نشان می‌دهد وقتی مدل می‌گوید «این ایمیل اسپم است»، چقدر احتمال دارد درست گفته باشد.
-
-* Precision پایین → ایمیل‌های سالم زیادی به اشتباه اسپم می‌شوند.
-
----
-
-2. **Recall (بازخوانی یا حساسیت)**
-
-$$
-Recall = \frac{TP}{TP+FN}
-$$
-
-این معیار نشان می‌دهد مدل چه درصدی از اسپم‌های واقعی را شناسایی کرده است.
-
-* Recall پایین → تعداد زیادی اسپم از دست می‌رود و وارد صندوق کاربر می‌شود.
+📌 **مشاهده:**
+ایمیل‌های اسپم به‌طور قابل توجهی بیشتر شامل واژه‌ی “call” هستند.
 
 ---
 
-### 🔹 تعادل Precision و Recall
+### 🔹 شناسایی مهم‌ترین ویژگی‌ها
 
-* در فیلتر ایمیل اسپم، هر دو معیار مهم هستند.
-* معمولاً Recall اهمیت بیشتری دارد، چون شناسایی اسپم‌ها حیاتی‌تر است. اما اگر Precision خیلی پایین باشد، کاربر ایمیل‌های مهم خود را از دست می‌دهد.
-* برای ارزیابی کلی، از معیار **F1-score** استفاده می‌کنیم که میانگین هارمونیک Precision و Recall است:
+برای فهمیدن اینکه کدام ویژگی‌ها بیشترین قدرت تمایز را دارند، میانگین ویژگی‌ها در اسپم و عادی را مقایسه می‌کنیم.
 
-$$
-F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall}
-$$
+```python
+spam_means = df[df['label_num'] == 1][numeric_cols].mean()
+ham_means = df[df['label_num'] == 0][numeric_cols].mean()
+feature_diff = (spam_means - ham_means).abs().sort_values(ascending=False)
+print(feature_diff.head(10))
+# output:
+# message_length       67.842504
+# char_count           58.273537
+# digit_count          15.459762
+# word_count            9.650784
+# label_num             1.000000
+# avg_word_length       0.815265
+# exclamation_count     0.551683
+# has_call              0.404836
+# free                  0.252720
+# has_free              0.252720
+# dtype: float64
+```
+
+📊 **نتیجه:** مهم‌ترین ویژگی‌ها عبارتند از:
+
+* **message_length (طول پیام)**
+* **char_count (تعداد کاراکترها)**
+* **digit_count (تعداد اعداد موجود در متن)**
 
 ---
 
-### 🔹 تحلیل نتایج در عمل
+### 🔹 تجسم ویژگی‌های مهم
 
-فرض کنید در گزارش دسته‌بندی نتایج زیر را داریم:
+```python
+# Bar plot of top 10 important features
+plt.figure(figsize=(10,5))
+feature_diff.head(10).plot(kind='bar', color="purple")
+plt.title("Top 10 Important Features (Difference Spam vs Ham)")
+plt.ylabel("Absolute Mean Difference")
+plt.xlabel("Features")
+plt.show()
+```
+![alt text](image-8.png)
 
-* Accuracy = 0.95
-* Precision (Spam) = 0.93
-* Recall (Spam) = 0.91
+```python
+important_features = feature_diff.head(3).index  # Get the top 3 important features
 
-📌 این نتایج نشان می‌دهند:
+plt.figure(figsize=(12, 5))
+for i, feat in enumerate(important_features, 1):
+    plt.subplot(1, 3, i)
+    sns.boxplot(x="label", y=feat, data=df)  # Ensure you use the correct DataFrame
+    plt.xticks([0, 1], ['Ham', 'Spam'])
+    plt.title(f"Boxplot of {feat}")
+plt.tight_layout()
+plt.show()
+```
+![alt text](image-9.png)
 
-* ۹۳٪ از ایمیل‌هایی که مدل به‌عنوان اسپم تشخیص داده واقعاً اسپم بوده‌اند.
-* ۹۱٪ از همه اسپم‌های واقعی توسط مدل شناسایی شده‌اند.
-* تنها درصد کمی از اسپم‌ها به صندوق ورودی کاربر راه یافته‌اند.
+📌 **بینش:**
+ایمیل‌های اسپم معمولاً طولانی‌ترند، کاراکتر بیشتری دارند و شامل تعداد بیشتری عدد نسبت به ایمیل‌های عادی هستند.
 
-این دقت برای یک مدل پایه‌ی Naïve Bayes بسیار خوب و قابل‌قبول است.
+---
+
+### 🔹 تقسیم داده و بردارسازی (Vectorization)
+
+برای آماده‌سازی داده جهت مدل‌سازی، از **CountVectorizer** استفاده می‌کنیم تا متن به داده عددی تبدیل شود.
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+
+X = df['message']
+y = df['label_num']
+
+vectorizer = CountVectorizer(stop_words='english')
+X_vectors = vectorizer.fit_transform(X)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_vectors, y, test_size=0.2, random_state=42
+)
+
+# output
+# Training data shape: (4457, 8404), Training labels shape: (4457,)
+# Testing data shape: (1115, 8404), Testing labels shape: (1115,)
+```
+
+📌 داده‌ها به **۸۰٪ آموزشی** و **۲۰٪ آزمایشی** تقسیم شدند.
+
+---
+
+### 🔹 ساخت مدل بیز ساده (Naive Bayes)
+
+یکی از بهترین الگوریتم‌ها برای طبقه‌بندی متن، **بیز ساده چندجمله‌ای (Multinomial Naive Bayes)** است.
+
+```python
+from sklearn.naive_bayes import MultinomialNB
+
+nb_model = MultinomialNB()
+nb_model.fit(X_train, y_train)
+
+y_pred = nb_model.predict(X_test)
+```
+
+---
+
+### 🔹 ارزیابی مدل
+
+مدل را با معیارهای **دقت (Accuracy)**، **ماتریس آشفتگی** و **گزارش دسته‌بندی** ارزیابی می‌کنیم.
+
+```python
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(5, 4))
+sns.heatmap(cm, annot=True, fmt='d', cmap="Blues",
+            xticklabels=["Ham", "Spam"],
+            yticklabels=["Ham", "Spam"])
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.show()
+
+print(classification_report(y_test, y_pred, target_names=["Ham", "Spam"]))
+# output
+# Accuracy: 0.9802690582959641
+```
+![alt text](image-10.png)
+
+
+📊 **نتایج:**
+
+* **دقت مدل بسیار بالا (۹۷٪ تا ۹۹٪)**
+* **ماتریس آشفتگی:** نشان می‌دهد چند پیام به‌درستی یا اشتباه به‌عنوان اسپم یا عادی دسته‌بندی شدند.
+* **گزارش دسته‌بندی:** شامل مقادیر **Precision، Recall و F1-Score** برای هر کلاس است.
+
+---
+
+✅ در این فصل یاد گرفتیم:
+
+* کدام ویژگی‌ها بیشترین اهمیت را برای تشخیص اسپم دارند.
+* چگونه داده‌های متنی را به عددی تبدیل کنیم.
+* ساخت و آموزش مدل بیز ساده.
+* ارزیابی مدل و مشاهده عملکرد عالی آن.
 
