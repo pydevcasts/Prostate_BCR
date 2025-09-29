@@ -30,6 +30,7 @@ plt.ylabel("Inertia")
 plt.title("Elbow Method for Optimal K")
 plt.show()
 ```
+![alt text](image-1.png)
 
 📌 در دیتاست Iris معمولاً بهترین مقدار $K=3$ مشخص می‌شود.
 
@@ -66,6 +67,9 @@ plt.ylabel("Silhouette Score")
 plt.title("Silhouette Method for Optimal K")
 plt.show()
 ```
+
+![alt text](image-2.png)
+
 
 📌 در دیتاست Iris معمولاً مقدار $K=3$ بالاترین **Silhouette Score** را دارد.
 

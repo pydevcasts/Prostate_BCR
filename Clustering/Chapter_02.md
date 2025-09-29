@@ -14,7 +14,8 @@
 6. تکرار مراحل ۳ تا ۵ تا زمانی که مراکز خوشه تغییر نکنند یا تعداد تکرارها تمام شود.
 
 ---
-
+![alt text](./Kmeans-implementation.png)
+---
 ## 📐 فرمول فاصله اقلیدسی
 
 $$
@@ -59,6 +60,7 @@ plt.ylabel("Sepal width")
 plt.title("KMeans Clustering vs Actual Classes")
 plt.show()
 ```
+![alt text](image.png)
 
 📌 مشاهده:
 
