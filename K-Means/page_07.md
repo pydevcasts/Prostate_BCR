@@ -1,5 +1,5 @@
 
-# 📖 مرحله پنجم: مقایسه روش بدون‌نظارت (K-Means) با روش‌های نظارت‌شده
+### 📖 مرحله پنجم: مقایسه روش بدون‌نظارت (K-Means) با روش‌های نظارت‌شده
 
 ---
 
@@ -41,7 +41,7 @@ print(f"Logistic Regression Accuracy: {acc_lr:.2f}")
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 
-knn = KNeighborsClassifier(n_neighbors=5)
+knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(X_train, y_train)
 y_pred_knn = knn.predict(X_test)
 
@@ -49,7 +49,7 @@ acc_knn = accuracy_score(y_test, y_pred_knn)
 print(f"KNN Accuracy: {acc_knn:.2f}")
 ```
 
-📊 دقت KNN معمولاً حدود **۹۵٪** هست (با انتخاب مناسب k حتی بالاتر می‌ره).
+📊 دقت KNN معمولاً حدود **۹۷٪** هست (با انتخاب مناسب k حتی بالاتر می‌ره).
 
 ---
 
@@ -66,7 +66,7 @@ acc_svm = accuracy_score(y_test, y_pred_svm)
 print(f"SVM Accuracy: {acc_svm:.2f}")
 ```
 
-📊 دقت SVM روی Iris معمولاً به **۹۷٪** می‌رسه.
+📊 دقت SVM روی Iris معمولاً به **۹۹٪** می‌رسه.
 
 ---
 
@@ -91,15 +91,15 @@ plt.title("Comparison of K-Means and Supervised Models on Iris Dataset")
 plt.ylabel("Accuracy")
 plt.show()
 ```
+![alt text](image-7.png)
 
----
 
 ## 🔎 تحلیل نتایج:
 
 * 📌 **K-Means (بدون‌نظارت):** دقت حدود **۸۹٪** → خوبه ولی به پای مدل‌های نظارت‌شده نمی‌رسه.
-* 📌 **Logistic Regression:** دقت حدود **۹۶٪** → سریع و کارآمد.
-* 📌 **KNN:** دقت حدود **۹۵٪** → ساده ولی نیاز به انتخاب درست k داره.
-* 📌 **SVM:** بهترین عملکرد با دقت حدود **۹۷٪**.
+* 📌 **Logistic Regression:** دقت حدود **۹۷٪** → سریع و کارآمد.
+* 📌 **KNN:** دقت حدود **۹۷٪** → ساده ولی نیاز به انتخاب درست k داره.
+* 📌 **SVM:** بهترین عملکرد با دقت حدود **۱۰۰٪**.
 
 ---
 

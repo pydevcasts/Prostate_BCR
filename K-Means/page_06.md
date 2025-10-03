@@ -1,9 +1,4 @@
-عالیه 🌹👌
-بریم سراغ **مرحله چهارم: مقایسه خوشه‌بندی K-Means با کلاس‌های واقعی در دیتاست Iris**.
-
----
-
-# 📖 مرحله چهارم: ارزیابی خوشه‌بندی K-Means
+### 📖 مرحله چهارم: ارزیابی خوشه‌بندی K-Means
 
 ---
 
@@ -86,6 +81,7 @@ plt.ylabel("True Labels")
 plt.title("Confusion Matrix for K-Means Clustering on Iris")
 plt.show()
 ```
+![alt text](image-6.png)
 
 🔎 توضیح نمودار:
 

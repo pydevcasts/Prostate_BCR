@@ -1,4 +1,4 @@
-# 📖 مرحله سوم: اجرای K-Means روی Iris
+### 📖 مرحله سوم: اجرای K-Means روی Iris
 
 ---
 
@@ -37,6 +37,7 @@ plt.ylabel("Inertia (Sum of Squared Distances)")
 plt.grid(True)
 plt.show()
 ```
+![alt text](image-4.png)
 
 🔎 توضیح:
 
@@ -77,6 +78,7 @@ plt.ylabel("Petal Width (cm)")
 plt.legend()
 plt.show()
 ```
+![alt text](image-5.png)
 
 🔎 توضیح نمودار:
 

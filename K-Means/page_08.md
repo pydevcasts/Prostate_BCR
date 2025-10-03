@@ -1,4 +1,4 @@
-# 📖 مرحله ششم: انتخاب تعداد خوشه بهینه
+### 📖 مرحله ششم: انتخاب تعداد خوشه بهینه
 
 در K-Means باید مقدار **k** (تعداد خوشه‌ها) رو مشخص کنیم.
 دو روش پرکاربرد برای انتخاب k:
@@ -30,6 +30,7 @@ plt.ylabel("Inertia")
 plt.title("Elbow Method for Optimal k")
 plt.show()
 ```
+![alt text](image-9.png)
 
 📊 تحلیل:
 
@@ -65,6 +66,7 @@ plt.ylabel("Silhouette Score")
 plt.title("Silhouette Analysis for Optimal k")
 plt.show()
 ```
+![alt text](image-8.png)
 
 📊 تحلیل:
 
