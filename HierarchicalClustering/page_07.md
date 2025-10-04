@@ -20,6 +20,8 @@ plt.scatter(X_moons[:,0], X_moons[:,1], c=y_moons, cmap="viridis", s=50)
 plt.title("Synthetic Moons Dataset")
 plt.show()
 ```
+![alt text](image-8.png)
+
 📌 **نتیجه**: همانطور که می‌بینیم، داده‌ها به شکل دو نیم‌دایره هستند که از هم جدا شده‌اند.
 
 ### 🔹 مرحله ۲: اجرای خوشه‌بندی سلسله‌مراتبی

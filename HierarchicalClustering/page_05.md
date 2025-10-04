@@ -43,6 +43,8 @@ sns.scatterplot(x=df["petal length (cm)"], y=df["petal width (cm)"], hue=df["clu
 plt.title("Clusters Visualization on Petal Features")
 plt.show()
 ```
+![alt text](image-4.png)
+
 📌 **نتیجه**: مشاهده می‌کنیم که خوشه‌ها به خوبی جدا شده‌اند و گونه **Setosa** کاملاً مستقل است، اما در بین **Versicolor** و **Virginica** مقداری همپوشانی وجود دارد.
 
 ### 🔹 جمع‌بندی

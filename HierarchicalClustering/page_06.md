@@ -20,6 +20,8 @@ plt.scatter(X_circles[:,0], X_circles[:,1], c=y_circles, cmap="viridis", s=50)
 plt.title("Synthetic Circles Dataset")
 plt.show()
 ```
+![alt text](image-5.png)
+
 📌 **نتیجه**: همانطور که می‌بینیم، داده‌ها به صورت دو دایره تو در تو تولید شده‌اند. این نوع داده‌ها برای بررسی توانایی الگوریتم‌ها در تشخیص ساختارهای غیرخطی بسیار مناسب هستند.
 
 ### 🔹 مرحله ۲: اجرای خوشه‌بندی سلسله‌مراتبی
@@ -36,6 +38,8 @@ dendrogram(Z_circles, truncate_mode="level", p=5)
 plt.title("Dendrogram for Circles Dataset")
 plt.show()
 ```
+![alt text](image-6.png)
+
 📌 **نتیجه**: دندروگرام نشان می‌دهد که الگوریتم چگونه داده‌ها را در سطوح مختلف ادغام کرده است.
 
 ### 🔹 مرحله ۳: تشکیل خوشه‌ها
@@ -49,6 +53,8 @@ plt.scatter(X_circles[:,0], X_circles[:,1], c=clusters_circles, cmap="Set1", s=5
 plt.title("Hierarchical Clustering Results on Circles Dataset")
 plt.show()
 ```
+![alt text](image-7.png)
+
 📌 **نتیجه**: همانطور که مشاهده می‌کنیم، خوشه‌بندی سلسله‌مراتبی توانست تا حدی دو خوشه را تشکیل دهد، اما شکل واقعی دایره‌ها به خوبی شناسایی نشده است.
 
 ### 🔹 مرحله ۴: مقایسه با برچسب‌های واقعی

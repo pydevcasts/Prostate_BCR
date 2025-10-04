@@ -38,6 +38,8 @@ df.drop("target", axis=1).boxplot()
 plt.title("Boxplot of Iris Features")
 plt.show()
 ```
+![alt text](image.png)
+
 📌 **نتیجه**: نمودار باکس‌پلات به ما نشان می‌دهد که ویژگی‌ها در چه بازه‌ای قرار دارند و آیا داده‌های پرت (outliers) وجود دارند یا نه.
 
 #### بررسی همبستگی ویژگی‌ها با Heatmap
@@ -48,6 +50,8 @@ sns.heatmap(df.drop("target",axis=1).corr(), annot=True, cmap="coolwarm")
 plt.title("Correlation Heatmap of Features")
 plt.show()
 ```
+![alt text](image-1.png)
+
 📌 **نتیجه**: برخی ویژگی‌ها مثل طول و عرض گلبرگ همبستگی بالایی دارند، پس احتمالاً نقش کلیدی در خوشه‌بندی خواهند داشت.
 
 ### 🔹 مرحله ۳: استانداردسازی داده‌ها
@@ -73,6 +77,8 @@ plt.xlabel("Samples")
 plt.ylabel("Distance")
 plt.show()
 ```
+![alt text](image-2.png)
+
 📌 **نتیجه**: در دندروگرام مشاهده می‌کنیم که داده‌ها چگونه به مرور ادغام می‌شوند. با برش در ارتفاع مناسب می‌توان تعداد خوشه‌ها را تعیین کرد.
 
 ### 🔹 مرحله ۶: انتخاب تعداد خوشه‌ها
@@ -90,6 +96,8 @@ df['cluster'] = clusters
 sns.pairplot(df, vars=iris.feature_names, hue="cluster", palette="Set1")
 plt.show()
 ```
+![alt text](image-3.png)
+
 📌 **نتیجه**: داده‌ها به سه خوشه اصلی تقسیم شده‌اند که تقریباً با کلاس‌های واقعی (Setosa, Versicolor, Virginica) هم‌پوشانی دارند.
 
 ✅ در این فصل توانستیم با استفاده از پایتون و دیتاست **Iris**، الگوریتم خوشه‌بندی سلسله‌مراتبی را پیاده‌سازی کرده و با ابزارهای تصویری مختلف تحلیل کنیم.
