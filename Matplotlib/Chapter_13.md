@@ -72,7 +72,6 @@
 * برای **مقایسه چندین گروه داده**، باکس پلات ابزاری فوق‌العاده کارآمد است.
 
 ---📄
----
 
 ## 🧠  مثال
 
@@ -83,25 +82,27 @@
 ## 💻 کد پایتون کامل و توضیح‌دار
 
 ```python
-# 📦 نصب کتابخانه‌ها (در صورت نیاز)
-# !pip install matplotlib seaborn
-
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
-# 🎓 داده نمونه (نمرات دانش‌آموزان)
-scores = [45, 50, 52, 55, 58, 60, 62, 63, 65, 66, 68, 70, 72, 74, 76, 78, 80, 85, 90, 100]
+# Sample Data: A simpler set of scores for clear visualization
+# Note: This data set will likely have no outliers, focusing on the box structure.
+scores = [10, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-# 📊 ایجاد نمودار باکس پلات
+# Set up the plot
 plt.figure(figsize=(6, 4))
+
+# Create the boxplot using seaborn
+# The data is provided as a list/array, so we use the 'data' argument.
 sns.boxplot(data=scores, color="skyblue", width=0.4)
 
-# ✨ تنظیمات ظاهری نمودار
-plt.title("📦 نمودار باکس پلات نمرات دانش‌آموزان", fontsize=14)
-plt.ylabel("نمره", fontsize=12)
+# Adjust plot aesthetics
+plt.title("📦 Box Plot Example (Simple Data)", fontsize=14)
+plt.ylabel("Score Value", fontsize=12)
 plt.grid(axis='y', linestyle='--', alpha=0.6)
 
-# 🧩 نمایش نمودار
+# Display the plot (This will save the image in the sandbox)
 plt.show()
 ```
 
