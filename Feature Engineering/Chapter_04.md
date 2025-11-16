@@ -1,95 +1,137 @@
-# 📘 فصل چهارم: انتخاب ویژگی‌ها (Feature Selection)
 
-🔹 هدف انتخاب ویژگی این است که از بین ۳۰ ویژگی دیتاست سرطان سینه، فقط آن‌هایی را نگه داریم که بیشترین نقش را در پیش‌بینی کلاس خروجی (Benign یا Malignant) دارند.
+## 🧭 فصل ۱: آشنایی با مهندسی ویژگی
+
+### 📄 صفحه ۴ از ۵
+
+✍️ *نویسنده: سیامک عباس‌نژاد*
+🌐 *[https://github.com/pydevcasts](https://github.com/pydevcasts)*
 
 ---
 
-## 📊 ۱. انتخاب ویژگی بر اساس همبستگی
+### 🌈 تفاوت Feature Engineering با Feature Selection
 
-گاهی ویژگی‌ها اطلاعات مشابهی را منتقل می‌کنند. مثلاً **mean radius**، **mean perimeter** و **mean area** همگی تقریباً یکدیگر را تکرار می‌کنند.
+گاهی دانشجوها این دو تا مفهوم رو با هم قاطی می‌کنن، ولی در واقع دوتا مرحله‌ی جدا هستن که پشت‌سر هم میان.
+
+| مقایسه     | مهندسی ویژگی (Feature Engineering) | انتخاب ویژگی (Feature Selection) |
+| :--------- | :--------------------------------- | :------------------------------- |
+| 🎯 هدف     | ساخت ویژگی‌های بهتر و جدید         | حذف ویژگی‌های غیرضروری           |
+| 🧩 عملیات  | اضافه کردن یا تغییر دادن ستون‌ها   | حذف ستون‌های بی‌اثر              |
+| 🧠 نوع کار | خلاقانه و تحلیلی                   | تحلیلی و آماری                   |
+| 📈 نتیجه   | داده‌های غنی‌تر                    | مدل سبک‌تر و دقیق‌تر             |
+
+به زبان ساده:
+
+> اول با Feature Engineering داده‌ها رو «بهتر» می‌کنیم،
+> بعد با Feature Selection داده‌ها رو «کم‌تر ولی مفیدتر» می‌کنیم.
+
+---
+
+### 💬 مثال برای درک تفاوت:
+
+فرض کن یه دیتاست داری از مشتری‌ها با ستون‌های زیر:
+`سن، درآمد، وضعیت تأهل، تعداد خرید، مبلغ خرید، شهر`
+
+🔹 توی **Feature Engineering** میای اینا رو به ویژگی‌های جدید تبدیل می‌کنی مثل:
+
+* میانگین مبلغ خرید در ماه
+* نسبت درآمد به تعداد خرید
+* یا حتی ساختن ویژگی “درآمد به ازای هر خرید”
+
+🔹 بعد در مرحله‌ی **Feature Selection** می‌گی:
+
+> از بین این همه ویژگی، فقط اونایی که بیشترین تأثیر رو روی پیش‌بینی دارن نگه دار.
+
+---
+
+### ⚙️ یک مثال عددی واقعی
+
+|  سن |    درآمد   | تعداد خرید | مبلغ خرید کل | ویژگی جدید (درآمد/خرید) |
+| :-: | :--------: | :--------: | :----------: | :---------------------: |
+|  30 |  9,000,000 |      6     |   3,000,000  |        1,500,000        |
+|  45 | 15,000,000 |     10     |   8,000,000  |        1,500,000        |
+|  25 |  4,000,000 |      4     |   2,000,000  |        1,000,000        |
+
+در اینجا، ستون آخر با مهندسی ویژگی ساخته شده.
+بعداً با انتخاب ویژگی‌ها، ممکنه مدل یاد بگیره که “درآمد” خیلی تأثیر کمتری نسبت به “درآمد به ازای خرید” داره، پس درآمد رو حذف می‌کنه.
+
+---
+
+### 💻 کد پایتون برای تفاوت دو مرحله:
 
 ```python
-import numpy as np
+import pandas as pd
+from sklearn.feature_selection import SelectKBest, f_regression
 
-# Calculate correlation
-corr_matrix = df.drop("target", axis=1).corr().abs()
+# داده‌ی نمونه
+data = pd.DataFrame({
+    'age': [30, 45, 25, 38, 50],
+    'income': [9000000, 15000000, 4000000, 10000000, 18000000],
+    'purchases': [6, 10, 4, 8, 12],
+    'total_spent': [3000000, 8000000, 2000000, 5000000, 10000000]
+})
 
-# Upper triangle of correlation matrix
-upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+# ⚙️ مرحله مهندسی ویژگی (ساخت ویژگی جدید)
+data['income_per_purchase'] = data['income'] / data['purchases']
 
-# Select features with high correlation
-to_drop = [column for column in upper.columns if any(upper[column] > 0.9)]
-to_drop
+# 🧠 مرحله انتخاب ویژگی (حذف ویژگی‌های بی‌اثر)
+X = data[['age', 'income', 'purchases', 'income_per_purchase']]
+y = data['total_spent']
+
+selector = SelectKBest(score_func=f_regression, k=2)
+selector.fit(X, y)
+
+selected = X.columns[selector.get_support()]
+print("Selected Features:", list(selected))
 ```
 
-📌 نتیجه: برخی ویژگی‌ها مثل **mean perimeter** و **mean area** همبستگی بالای ۰.۹ دارند و می‌توانیم یکی از آن‌ها را حذف کنیم.
+📊 خروجی فرضی:
+
+```
+Selected Features: ['purchases', 'income_per_purchase']
+```
+
+می‌بینی؟ 😎
+مدل خودش فهمیده که ویژگی جدیدی که ساختیم (“درآمد به ازای خرید”) مهم‌تر از “سن” یا حتی “درآمد خام” بوده.
 
 ---
 
-## 🌳 ۲. انتخاب ویژگی با استفاده از اهمیت ویژگی‌ها (Random Forest)
+### 💡 نکته‌ی آموزشی:
 
-مدل‌های درختی مثل **Random Forest** به ما می‌گویند هر ویژگی چه مقدار در پیش‌بینی کلاس تأثیر دارد.
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-
-# Train Random Forest
-X = df.drop("target", axis=1)
-y = df["target"]
-model = RandomForestClassifier(random_state=42)
-model.fit(X, y)
-
-# Feature Importance
-importances = pd.Series(model.feature_importances_, index=X.columns)
-importances.sort_values(ascending=False).head(10)
-```
-
-📌 تفسیر:
-ویژگی‌هایی مثل **worst concave points**، **worst perimeter** و **mean concavity** بیشترین اهمیت را دارند.
+> همیشه قبل از انتخاب ویژگی‌ها، اول باید اون‌ها رو بسازی.
+> چون اگر داده‌ی اولیه درست مهندسی نشده باشه، هیچ انتخابی نمی‌تونه معجزه کنه.
 
 ---
 
-## 📊 نمایش اهمیت ویژگی‌ها با نمودار Barplot
+### 🎨 تصویر پیشنهادی
 
-```python
-plt.figure(figsize=(10,6))
-importances.sort_values(ascending=False).head(10).plot(kind="bar", color="teal")
-plt.title("Top 10 Important Features (Random Forest)")
-plt.ylabel("Importance Score")
-plt.show()
-```
-
-📌 نتیجه:
-می‌توانیم ببینیم که ویژگی‌های مربوط به **worst measurements** معمولاً اهمیت بالایی دارند و مدل آن‌ها را کلیدی تشخیص داده است.
+> تصویر دو مرحله‌ای از مسیر داده‌ها:
+> مرحله اول (Feature Engineering): چرخ‌دنده‌هایی داده خام را به ویژگی‌های جدید تبدیل می‌کنند.
+> مرحله دوم (Feature Selection): فیلترهایی فقط ویژگی‌های مؤثر را عبور می‌دهند.
+> نماد چرخ‌دنده ⚙️ و فیلتر 🧠 در دو مرحله‌ی مجزا.
 
 ---
 
-## 🔁 ۳. انتخاب ویژگی با روش Recursive Feature Elimination (RFE)
+### 🎯 تمرین فکری:
 
-RFE یک روش تکراری است که به تدریج ویژگی‌های کم‌اهمیت را حذف می‌کند.
+در داده‌های زیر، یک ویژگی جدید بساز که بتواند به مدل برای پیش‌بینی «میزان وفاداری مشتری» کمک کند 👇
 
-```python
-from sklearn.feature_selection import RFE
-from sklearn.linear_model import LogisticRegression
+| بازدید ماهانه | خرید ماهانه |  سن |
+| :-----------: | :---------: | :-: |
+|      100      |      5      |  30 |
+|      200      |      10     |  40 |
+|      150      |      3      |  25 |
 
-# Logistic Regression for RFE
-model = LogisticRegression(max_iter=5000)
-rfe = RFE(model, n_features_to_select=10)
-fit = rfe.fit(X, y)
-
-selected_features = X.columns[fit.support_]
-selected_features
-```
-
-📌 خروجی:
-لیست ۱۰ ویژگی منتخب بر اساس RFE. این ویژگی‌ها بیشترین تأثیر را در پیش‌بینی دارند.
+(مثلاً نرخ تبدیل = خرید / بازدید یا تعامل = بازدید × سن)
 
 ---
 
-## ✨ جمع‌بندی فصل
+### ❓ سؤال تستی:
 
-در این فصل یاد گرفتیم:
+کدام گزینه ترتیب درست مراحل کار در مهندسی ویژگی است؟
+A) انتخاب ویژگی → تمیز کردن → ساخت ویژگی
+B) تمیز کردن → ساخت ویژگی → انتخاب ویژگی ✅
+C) انتخاب ویژگی → حذف داده → تبدیل ویژگی
+D) ساخت ویژگی → حذف داده → انتخاب مدل
 
-1. با استفاده از همبستگی، ویژگی‌های تکراری را حذف کنیم.
-2. با Random Forest مهم‌ترین ویژگی‌ها را شناسایی کنیم.
-3. با RFE مجموعه‌ای از ویژگی‌های بهینه برای مدل‌سازی انتخاب کنیم.
+---
+
