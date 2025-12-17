@@ -33,20 +33,17 @@ A = np.array([[1, 2, 3], [4, 5, 6]])
 
 print("Original Matrix:\n", A)
 print("Transpose:\n", A.T)
-```
-مطمئناً! در زیر متن به فرمت Markdown با استفاده از  برای نمایش معادلات ریاضی نوشته شده است:
-
-        
-        markdown
+```  
         
     
-  
-      # ماتریس معکوس برای ماتریس \( 2 \times 2 \)
 
 برای یک ماتریس \( 2 \times 2 \):
 
 $$
-A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+A = \begin{pmatrix} 
+a & b \\ 
+c & d 
+\end{pmatrix}
 $$
 
 ## دترمینان
@@ -62,7 +59,10 @@ $$
 ماتریس هم‌انباشت به صورت زیر است:
 
 $$
-\text{adj}(A) = \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+\text{adj}(A) = \begin{pmatrix} 
+d & -b \\ 
+-c & a 
+\end{pmatrix}
 $$
 
 ## ماتریس معکوس
@@ -70,12 +70,16 @@ $$
 بنابراین، ماتریس معکوس به شکل زیر خواهد بود:
 
 $$
-A^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+A^{-1} = \frac{1}{ad - bc} 
+\begin{pmatrix} 
+d & -b \\ 
+-c & a 
+\end{pmatrix}
 $$
 
 ## نتیجه‌گیری
 
-ماتریس معکوس تنها در صورتی وجود دارد که دترمینان \( A \) نابرابر صفر باشد (\( \text{det}(A) \neq 0 \)).
+ماتریس معکوس تنها در صورتی وجود دارد که دترمینان \( A \) نابرابر صفر باشد (\( \text{det}(A) \neq 0 \))..
 
 
 
