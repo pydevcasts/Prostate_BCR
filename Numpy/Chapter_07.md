@@ -38,6 +38,29 @@ print("Transpose:\n", A.T)
 📌 با `.T` می‌توان ماتریس را ترانهاده کرد.
 
 ---
+برای یک ماتریس 2×2 2 \times 2 :
+
+A=(abcd)
+A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+
+
+دترمینان آن به صورت زیر محاسبه می‌شود:
+
+det(A)=ad−bc
+\text{det}(A) = ad - bc
+
+
+ماتریس هم‌انباشت به صورت زیر است:
+
+adj(A)=(d−b−ca)
+\text{adj}(A) = \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+
+
+بنابراین، ماتریس معکوس به شکل زیر خواهد بود:
+
+A−1=1ad−bc(d−b−ca)
+A^{-1} = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+
 
 ### 🔹 ۳. معکوس ماتریس (Inverse)
 
