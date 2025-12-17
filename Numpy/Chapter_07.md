@@ -108,6 +108,8 @@ print("Determinant:", det_A)
 
 📌 مقدار دترمینان برای بررسی وارون‌پذیری ماتریس مهم است. اگر `det ≠ 0`، ماتریس معکوس‌پذیر است
 ---
+
+
 ### مقادیر ویژه و بردارهای ویژه
 
 برای یک ماتریس مربعی \( A \)، اگر یک عدد \( \lambda \) و یک بردار غیرصفر \( \mathbf{v} \) وجود داشته باشد به طوری که:
@@ -156,13 +158,16 @@ $$
 **برای \( \lambda_1 = 1 \)**:
 
 $$
-(A - I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} 2 - 1 & 1 \\ 1 & 2 - 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+(A - I) \mathbf{v} = 0 \quad \Rightarrow \quad 
+\begin{pmatrix} 2 - 1 & 1 \\ 1 & 2 - 1 \end{pmatrix} 
+\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
 $$
 
 که به شکل زیر ساده می‌شود:
 
 $$
-\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} 
+\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 $$
 
 نتیجه می‌دهد:
@@ -174,13 +179,16 @@ $$
 **برای \( \lambda_2 = 3 \)**:
 
 $$
-(A - 3I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} 2 - 3 & 1 \\ 1 & 2 - 3 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+(A - 3I) \mathbf{v} = 0 \quad \Rightarrow \quad 
+\begin{pmatrix} 2 - 3 & 1 \\ 1 & 2 - 3 \end{pmatrix} 
+\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
 $$
 
 که به شکل زیر ساده می‌شود:
 
 $$
-\begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix} 
+\begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 $$
 
 نتیجه می‌دهد:
@@ -188,23 +196,35 @@ $$
 $$
 -v_1 + v_2 = 0 \quad \Rightarrow \quad \mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
+
 ### نتیجه‌گیری
 
 برای ماتریس \( A \):
 
 - مقدار ویژه اول:
-  - $$( \lambda_1 = 1 \)$$ 
+  - \( \lambda_1 = 1 \) 
   - بردار ویژه متناظر: 
-  $$ 
+  $$
   \mathbf{v_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} 
   $$
 
 - مقدار ویژه دوم:
-  - $$( \lambda_2 = 3 \)$$
+  - \( \lambda_2 = 3 \)
   - بردار ویژه متناظر: 
-  $$(\mathbf{v_2})$$ = $$(\begin{pmatrix})$$ 1 \\ 1 $$(\end{pmatrix})$$
+  $$
+  \mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} 
+  $$
 
-این مفهوم به ما می‌گوید که چگونه یک ماتریس می‌تواند بر روی بردارها تأثیر بگذارد!
+این مفهوم به ما می‌گوید که چگونه یک ماتریس می‌تواند بر روی بردارها تأثیر بگذارد. !
+```
+
+### اصلاحات انجام شده:
+
+1. **جداسازی عناصر در ماتریس**: از `\\` برای جداسازی عناصر در ماتریس‌ها استفاده شده است.
+2. **فرمت مناسب**: مقادیر ویژه و بردارهای ویژه به صورت واضح و با استفاده از فرمت صحیح نشان داده شده‌اند.
+3. **وضوح و خوانایی**: متن به گونه‌ای تنظیم شده است که بهتر قابل خواندن و درک باشد.
+
+شما می‌توانید این متن را در یک ویرایشگر Markdown یا محیطی که از LaTeX پشتیبانی می‌کند، استفاده کنید. اگر هنوز مشکلی وجود دارد یا نیاز به اصلاحات بیشتری دارید، لطفاً بفرمایید!!
 ### 🔹 ۵. مقادیر ویژه و بردارهای ویژه (Eigenvalues & Eigenvectors)
 
 ```python
