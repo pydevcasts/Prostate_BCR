@@ -106,9 +106,8 @@ det_A = np.linalg.det(A)
 print("Determinant:", det_A)
 ```
 
-📌 مقدار دترمینان برای بررسی وارون‌پذیری ماتریس مهم است. اگر `det ≠ 0`، ماتریس معکوس‌پذیر است.
-
----مطمئناً! در زیر خلاصه‌ای از مفهوم مقادیر ویژه و بردارهای ویژه با استفاده از فرمت ریاضی ارائه می‌شود.
+📌 مقدار دترمینان برای بررسی وارون‌پذیری ماتریس مهم است. اگر `det ≠ 0`، ماتریس معکوس‌پذیر است
+---
 
 ### مقادیر ویژه و بردارهای ویژه
 
@@ -158,25 +157,37 @@ $$
 **برای \( \lambda_1 = 1 \)**:
 
 $$
-(A - I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+(A - I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} 2 - 1 & 1 \\ 1 & 2 - 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+$$
+
+که به شکل زیر ساده می‌شود:
+
+$$
+\begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 $$
 
 نتیجه می‌دهد:
 
 $$
-\mathbf{v_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+v_1 + v_2 = 0 \quad \Rightarrow \quad \mathbf{v_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
 $$
 
 **برای \( \lambda_2 = 3 \)**:
 
 $$
-(A - 3I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+(A - 3I) \mathbf{v} = 0 \quad \Rightarrow \quad \begin{pmatrix} 2 - 3 & 1 \\ 1 & 2 - 3 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 0
+$$
+
+که به شکل زیر ساده می‌شود:
+
+$$
+\begin{pmatrix} -1 & 1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}
 $$
 
 نتیجه می‌دهد:
 
 $$
-\mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+-v_1 + v_2 = 0 \quad \Rightarrow \quad \mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}
 $$
 
 ### نتیجه‌گیری
@@ -188,8 +199,6 @@ $$
   - \( \lambda_2 = 3 \) با بردار ویژه \( \mathbf{v_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \)
 
 این مفهوم به ما می‌گوید که چگونه یک ماتریس می‌تواند بر روی بردارها تأثیر بگذارد. اگر سوال دیگری دارید، خوشحال می‌شوم کمک کنم!
-
-
 
 ### 🔹 ۵. مقادیر ویژه و بردارهای ویژه (Eigenvalues & Eigenvectors)
 
