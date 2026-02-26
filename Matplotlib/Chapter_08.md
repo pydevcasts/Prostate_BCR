@@ -22,7 +22,7 @@ x = np.sin(t)
 y = np.cos(t)
 z = t
 
-ax.plot3D(x, y, z, color="blue")
+ax.plot(x, y, z, color="blue")
 ax.set_title("3D Line Plot")
 plt.show()
 ```
