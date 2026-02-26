@@ -41,6 +41,10 @@ print(df.info())
 
 # Check missing values
 print(df.isnull().sum())
+
+# convert str Sex to boolean 
+df["Sex"]= df["Sex"].str.lower().map({"man":1,"female":0})
+
 ```
 
 📌 می‌بینیم ستون‌هایی مثل **Age** و **Cabin** داده‌های ناقص دارند.
