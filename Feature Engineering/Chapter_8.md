@@ -29,7 +29,7 @@
 
 ---
 
-### 💡 ۱. Label Encoding (برچسب‌گذاری عددی)
+### 💡 ۱.  برچسب‌گذاری عددی (Label Encoding)
 
 برای داده‌های دارای ترتیب مثل سطح تحصیلات یا سایز لباس.
 
@@ -57,13 +57,13 @@ print(data)
 
 ---
 
-### 💡 ۲. One-Hot Encoding (رمزگذاری تک‌گرمی)
+### 💡 ۲. رمزگذاری تک‌گرمی (One-Hot Encoding)
 
 برای داده‌های بدون ترتیب مثل شهر، کشور، یا جنسیت.
 
 ```python
 data = pd.DataFrame({'city': ['Tehran', 'Isfahan', 'Shiraz', 'Tehran']})
-encoded = pd.get_dummies(data, columns=['city'])
+encoded = pd.get_dummies(data, columns=['city']).astype(int)
 print(encoded)
 ```
 
@@ -80,7 +80,7 @@ print(encoded)
 
 ---
 
-### 💡 ۳. Frequency Encoding (رمزگذاری بر اساس فراوانی)
+### 💡 ۳.  رمزگذاری بر اساس فراوانی (Frequency Encoding)
 
 وقتی تعداد دسته‌ها زیاد باشه (مثلاً صدها شهر مختلف)، One-Hot Encoding باعث زیاد شدن ستون‌ها می‌شه.
 در این حالت از **فراوانی تکرار هر دسته** استفاده می‌کنیم:
@@ -163,8 +163,12 @@ print(data)
 ### ❓ پرسش چهارگزینه‌ای
 
 در کدام حالت بهتر است از One-Hot Encoding استفاده کنیم؟
+
 A) سطح تحصیلات (دیپلم، کارشناسی، ارشد)
+
 B) رنگ ماشین (قرمز، آبی، سبز) ✅
+
 C) رتبه مشتری (Bronze, Silver, Gold)
+
 D) اندازه لباس (S, M, L, XL)
 

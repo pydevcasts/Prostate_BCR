@@ -1,8 +1,3 @@
-عالی! 🎯
-اکنون ادامه می‌دهیم با **صفحه ۲ از فصل ۳** — اینجاست که مدل واقعی رگرسیون چندمتغیره را روی داده‌ای صنعتی آموزش می‌دهیم، آن را ارزیابی می‌کنیم و نتایج را **بصری و عددی تحلیل** می‌کنیم.
-
----
-
 # 📘 فصل ۳: پروژه واقعی – پیش‌بینی قیمت خانه
 
 ### ✅ **صفحه ۵ – آموزش مدل، ارزیابی و تحلیل نتایج**
@@ -111,8 +106,34 @@ for name, coef in zip(selected_features, model.coef_):
     print(f"{name}: {coef:.3f}")
 ```
 
-> این خروجی به ما می‌گوید **کدام ویژگی‌ها بیشترین تأثیر مثبت یا منفی را دارند.**
+> این خروجی به ما می‌گوید **کدام ویژگی‌ها بیشترین تأثیر مثبت یا منفی را دارند** در زیر نمودار بصری برای درک بهتر آورده شده است. 
+```python
 
+coefficients = model.coef_
+# Create a figure and an axes object
+fig, ax = plt.subplots(figsize=(10, 6))
+# Create bar chart
+bars = ax.bar(selected_features, coefficients, color='skyblue')
+
+# Add labels and title
+ax.set_xlabel("Features")
+ax.set_ylabel("Coefficient Value")
+ax.set_title("Impact of Features on House Price")
+
+# Add coefficient values on top of the bars
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2.0, yval, f"{yval:.3f}", va='bottom' if yval >= 0 else 'top') # va: vertical alignment
+    #get_x  vertical position
+    #get_width half of horizental bar
+
+# Improve layout
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Save the plot to a file
+plt.savefig("./feature_impact_plot.png")
+```
 ---
 
 ## 🧭 ۶. آیا مدل برای استفاده در پروژه واقعی آماده است؟
