@@ -21,7 +21,7 @@
 
 ---
 
-# 🧠 ۱. Feature Transformation یعنی چه؟
+# 🧠 ۱. تبدیل ویژگی (Feature Transformation) یعنی چه؟
 
 «تبدیل ویژگی» یعنی **تغییر شکل دادن داده‌ها** برای اینکه:
 
@@ -121,7 +121,7 @@ x_std = (x - mean) / std
 
 ---
 
-# 🔁 ۷. Box-Cox Transformation
+# 🔁 ۷. روش Box-Cox Transformation
 
 یک تبدیل پیشرفته برای نرمال‌کردن داده‌های مثبت.
 
@@ -139,7 +139,7 @@ pt = PowerTransformer(method='box-cox')
 
 ---
 
-# 🌀 ۸. Yeo-Johnson
+# 🌀 ۸. روش Yeo-Johnson
 
 نسخهٔ بهتر Box-Cox چون داده‌های **منفی** را هم پشتیبانی می‌کند.
 
@@ -187,7 +187,7 @@ new_features = poly.fit_transform(data)
 ⚠️ شروع هر خط فارسی تا چپ‌چین نشود.
 
 ```python
-# نمونه کامل از تبدیل‌های مهم
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, PolynomialFeatures, PowerTransformer
@@ -244,7 +244,11 @@ print(data)
 # ❓ آزمون چهارگزینه‌ای صفحه
 
 **کدام تبدیل برای داده‌های مثبت و بسیار skewed بهترین انتخاب است؟**
+
 A) Standardization
+
 B) MinMax Scaling
+
 C) Log Transform ✅
+
 D) One-Hot Encoding

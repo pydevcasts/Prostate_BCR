@@ -12,12 +12,15 @@
 ### 🎯 هدف این صفحه
 
 ✅ درک دقیق مفهوم Wrapper Methods
+
 ✅ آشنایی با سه روش اصلی:
 
 * Recursive Feature Elimination (RFE)
 * Forward Selection
 * Backward Elimination
+
   ✅ پیاده‌سازی در پایتون
+
   ✅ بررسی مزایا و معایب این روش‌ها
 
 ---
@@ -50,7 +53,7 @@
 
 مدل را با هر ترکیب از این ویژگی‌ها اجرا می‌کنی و دقتش را می‌سنجی:
 
-* فقط A → دقت 60%
+* A → دقت 60%
 * A + B → دقت 70%
 * A + B + C → دقت 78%
 * A + B + C + D → دقت 77%
@@ -86,41 +89,89 @@ print(rfe.ranking_)
 
 ---
 
-## 🔁 ۵. Forward Selection (افزایشی)
+## 🔁 ۵. افزایشی (Forward Selection)
 
 در این روش از هیچ ویژگی شروع می‌کنی و در هر گام ویژگی‌ای را اضافه می‌کنی که **بیشترین بهبود دقت** را ایجاد کند.
 
 📘 شبه‌کد ساده:
 
-```
-شروع با هیچ ویژگی
-تا زمانی که دقت افزایش دارد:
-    هر ویژگی باقی‌مانده را اضافه کن
-    مدلی آموزش بده و دقت را اندازه بگیر
-    ویژگی با بیشترین بهبود را نگه دار
+
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+# Simplest data: 3 samples, 2 features
+X = [[1, 0], [2, 0], [3, 1]]  # Second feature (0,0,1) is almost useless
+y = [0, 0, 1]
+
+model = LogisticRegression()
+
+# Step 1: With all features
+model.fit(X, y)
+score_all = model.score(X, y)
+print(f"With all features: Accuracy = {score_all}")
+
+# Step 2: Only first feature
+X1 = [[x[0]] for x in X]
+model.fit(X1, y)
+score_1 = model.score(X1, y)
+print(f"Only first feature: Accuracy = {score_1}")
+
+# Step 3: Only second feature
+X2 = [[x[1]] for x in X]
+model.fit(X2, y)
+score_2 = model.score(X2, y)
+print(f"Only second feature: Accuracy = {score_2}")
+
+# Result: Second feature is the weakest
+print("\n→ Second feature gets removed because it doesn't improve accuracy")
 ```
 
 🔹 مزیت: سریع‌تر از تست همه‌ی ترکیب‌ها
+
 🔹 عیب: ممکن است در ابتدای انتخاب، انتخاب اشتباه اثر زنجیره‌ای داشته باشد
 
 ---
 
-## 🔄 ۶. Backward Elimination (حذفی)
+## 🔄 ۶. حذفی (Backward Elimination)
 
 در مقابل، از همه‌ی ویژگی‌ها شروع می‌کنی و در هر مرحله ضعیف‌ترین ویژگی را حذف می‌کنی.
 
 📘 شبه‌کد:
 
-```
-شروع با همه‌ی ویژگی‌ها
-تا زمانی که دقت کاهش زیادی ندارد:
-    هر بار یک ویژگی را حذف کن
-    مدلی آموزش بده و دقت را بررسی کن
-    ضعیف‌ترین را حذف کن
+```python
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LogisticRegression
+
+X = [[1,2],[2,3],[3,4],[4,5],[5,6]]  # 2 features only
+y = [0,0,1,1,1]
+
+model = LogisticRegression()
+
+# Try with both features
+score_all = cross_val_score(model, X, y, cv=2).mean()
+
+# Try with just first feature
+X1 = [[x[0]] for x in X]
+score_1 = cross_val_score(model, X1, y, cv=2).mean()
+
+# Try with just second feature  
+X2 = [[x[1]] for x in X]
+score_2 = cross_val_score(model, X2, y, cv=2).mean()
+
+# Remove worst feature
+if score_1 >= score_all:
+    print(f"Keep only feature 0, Score: {score_1:.2f}")
+elif score_2 >= score_all:
+    print(f"Keep only feature 1, Score: {score_2:.2f}")
+else:
+    print(f"Keep both, Score: {score_all:.2f}")
 ```
 
 🔹 مناسب وقتی ویژگی زیاد داری ولی منابع محاسباتی کافی داری
+
 🔹 اما زمان‌بر است
+
 
 ---
 
@@ -158,9 +209,13 @@ print(rfe.ranking_)
 ## ❓ پرسش چهارگزینه‌ای
 
 در روش RFE، ویژگی‌ها چگونه انتخاب می‌شوند؟
+
 A) به‌صورت تصادفی
+
 B) با حذف تدریجی ویژگی‌های کم‌اهمیت ✅
+
 C) با محاسبه همبستگی
+
 D) بدون نیاز به مدل
 
 ---

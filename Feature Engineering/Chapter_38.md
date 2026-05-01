@@ -83,7 +83,7 @@ print(data)
 
 ---
 
-## 🔹 ۳. Count Vectorization (شمارش کلمات)
+## 🔹 ۳. شمارش کلمات (Count Vectorization)
 
 ساده‌ترین روش: بشمار چند بار هر کلمه در هر جمله اومده 🧾
 
@@ -113,13 +113,14 @@ print(X.toarray())
 
 ---
 
-## 🔹 ۴. TF-IDF (Term Frequency – Inverse Document Frequency)
+## 🔹 ۴. فراوانی واژه – معکوس فراوانی سند (TF-IDF)
+#### Term Frequency – Inverse Document Frequency
 
 روش TF-IDF به جای شمردن ساده، بررسی می‌کنه **کدوم کلمه مهم‌تره** 📈
 
-[
+$$
 TF\text{-}IDF = TF(word) × \log\frac{N}{DF(word)}
-]
+$$
 
 که در اون:
 
@@ -154,7 +155,7 @@ print(X_tfidf.toarray())
 
 ---
 
-## 🔹 ۵. Word Embeddings (بردارهای معنایی)
+## 🔹 ۵. بردارهای معنایی (Word Embeddings)
 
 در روش‌های جدیدتر (مثل Word2Vec یا BERT)،
 هر کلمه به یه **بردار عددی چندبعدی** تبدیل می‌شه که معنای اون کلمه رو در خودش داره 🤖
@@ -217,8 +218,12 @@ TF-IDF برای داده‌های کوچیک و مدل‌های کلاسیک ع�
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام روش وزن بیشتری به کلمات خاص‌تر و کمتر تکرارشده می‌دهد؟
+
 A) Count Vectorizer
+
 B) Word2Vec
+
 C) TF-IDF ✅
+
 D) One-Hot Encoding
 

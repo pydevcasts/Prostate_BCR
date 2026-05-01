@@ -20,9 +20,9 @@
 
 ---
 
-# 🧠 ۱. Feature Interaction چیست؟
+# 🧠 ۱. ساخت ویژگی‌های جدید (Feature Interaction) چیست؟
 
-Feature Interaction یعنی **ساخت ویژگی‌های جدید با ترکیب دو یا چند ویژگی**
+یعنی **ساخت ویژگی‌های جدید با ترکیب دو یا چند ویژگی**
 به‌طوری که اطلاعات جدیدی ایجاد شود که قبلاً در هیچ ویژگی تکی وجود نداشت.
 
 📘 *یک جملهٔ طلایی:*
@@ -56,7 +56,7 @@ Age * Income = 20 * 3 = 60
 
 # 📊 ۳. انواع تعامل‌های مهم
 
-## **۱) تعامل ضربی (Multiplicative Interaction)**
+## ۱) تعامل ضربی (Multiplicative Interaction)
 
 🔹 مهم‌ترین نوع تعامل
 🔹 مدل‌های خطی بسیار از آن سود می‌برند
@@ -70,7 +70,7 @@ Temperature * Humidity
 
 ---
 
-## **۲) تعامل جمعی (Additive Interaction)**
+## ۲) تعامل جمعی (Additive Interaction)
 
 مثال:
 
@@ -81,7 +81,7 @@ Revenue + Profit
 
 ---
 
-## **۳) تعامل تفاوتی (Difference Interaction)**
+## ۳) تعامل تفاوتی (Difference Interaction)
 
 ```
 Price - Cost
@@ -90,7 +90,7 @@ Income - Expenses
 
 ---
 
-## **۴) تعامل منطقی (Logical Interaction)**
+## ۴) تعامل منطقی (Logical Interaction)
 
 ```
 Is_Adult = (Age >= 18)
@@ -99,7 +99,7 @@ High_Risk = (Age < 25) & (Speed > 120)
 
 ---
 
-## **۵) تعامل دسته‌ای (Categorical Interaction)**
+## ۵) تعامل دسته‌ای (Categorical Interaction)
 
 برای ویژگی‌های متنی:
 
@@ -132,7 +132,7 @@ Financial_Power = Age * Income
 
 نتیجه:
 
-| Age | Income | Age*Income | Car_Price |
+| Age | Income | Financial_Power | Car_Price |
 | --- | ------ | ---------- | --------- |
 | 22  | 3.1    | 68.2       | 220       |
 | 45  | 8.2    | 369        | 410       |
@@ -144,10 +144,8 @@ Financial_Power = Age * Income
 
 # 💻 ۵. ساخت تعامل‌ها در پایتون
 
-⚠️ شروع خط فارسی تا چپ‌چین نشود.
-
 ```python
-# ایجاد تعامل‌های مختلف
+
 import pandas as pd
 
 data = pd.DataFrame({
@@ -213,8 +211,12 @@ print(data)
 # ❓ آزمون چهارگزینه‌ای صفحه
 
 **کدام گزینه نمونه‌ای از تعامل ویژگی‌هاست؟**
+
 A) Age → فقط مقدار سن
+
 B) Income → مقدار درآمد
+
 C) Age * Income → ترکیب دو ویژگی با هم ✅
+
 D) حذف کردن ویژگی
 

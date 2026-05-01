@@ -23,7 +23,7 @@
 
 ---
 
-# 🔵 ۱. ویژگی‌های آماری (Statistical Features)
+## 🔵 ۱. ویژگی‌های آماری (Statistical Features)
 
 این ویژگی‌ها برای داده‌هایی مثل:
 
@@ -81,7 +81,7 @@ df['min_val']  = df['signal'].rolling(window=10).min()
 
 ---
 
-# 🟣 ۲. ویژگی‌های Rolling Window (برای سری زمانی)
+## 🟣 ۲. ویژگی‌های Rolling Window (برای سری زمانی)
 
 ویژگی‌های "پنجره‌ای" قدرت سری زمانی را چند برابر می کنند.
 
@@ -94,7 +94,7 @@ df['min_val']  = df['signal'].rolling(window=10).min()
 
 ---
 
-## 📌 مثال عددی
+### 📌 مثال عددی
 
 فروش ۵ روز اخیر:
 
@@ -112,7 +112,7 @@ df['min_val']  = df['signal'].rolling(window=10).min()
 
 ---
 
-## 📌 نمونه کد پایتون
+### 📌 نمونه کد پایتون
 
 ```
 df['rolling_mean_7'] = df['sales'].rolling(window=7).mean()
@@ -122,7 +122,7 @@ df['rolling_max_30'] = df['sales'].rolling(window=30).max()
 
 ---
 
-# 🔥 ۳. ویژگی‌های سیگنالی (Signal Features)
+## 🔥 ۳. ویژگی‌های سیگنالی (Signal Features)
 
 برای داده‌های صوتی، حسگری، ECG، IMU و شتاب‌سنج بسیار مهم‌اند.
 
@@ -137,7 +137,7 @@ df['rolling_max_30'] = df['sales'].rolling(window=30).max()
 
 ---
 
-## 📌 انرژی سیگنال
+### 📌 انرژی سیگنال
 
 ```
 energy = sum(x²)
@@ -152,7 +152,7 @@ energy = 4 + 9 + 1 = 14
 
 ---
 
-## 📌 نمونه کد پایتون (FFT)
+### 📌 نمونه کد پایتون (FFT)
 
 ```
 import numpy as np
@@ -162,7 +162,7 @@ df['fft_energy'] = np.abs(np.fft.fft(df['signal']))**2
 
 ---
 
-# 🟩 ۴. ویژگی‌های مبتنی بر Domain Knowledge
+## 🟩 ۴. ویژگی‌های مبتنی بر Domain Knowledge
 
 اینجاست که مهارت واقعی یک Data Scientist مشخص می‌شود.
 
@@ -196,7 +196,7 @@ df['fft_energy'] = np.abs(np.fft.fft(df['signal']))**2
 
 ---
 
-# 🎨 تصویر پیشنهادی این صفحه
+## 🎨 تصویر پیشنهادی این صفحه
 
 یک سیگنال (مثلاً موج ECG)
 
@@ -205,7 +205,7 @@ df['fft_energy'] = np.abs(np.fft.fft(df['signal']))**2
 
 ---
 
-# 🧠 تمرین پیشنهادی
+## 🧠 تمرین پیشنهادی
 
 یکی از موارد زیر را انتخاب کن و یک ویژگی بساز:
 
@@ -223,13 +223,16 @@ df['fft_energy'] = np.abs(np.fft.fft(df['signal']))**2
 
 ---
 
-# ❓ آزمون چهارگزینه‌ای صفحه
+## ❓ آزمون چهارگزینه‌ای صفحه
 
 ویژگی Rolling Window معمولاً برای چه نوع داده‌ای استفاده می‌شود؟
 
 A) داده‌های بدون زمان
+
 B) تصاویر
+
 C) سری زمانی **✔️**
+
 D) داده‌های طبقه‌بندی‌شده
 
 ---

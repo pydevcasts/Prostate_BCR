@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
 
-x = np.linspace(0, 2*np.pi, 200)
+x = np.linspace(0, 2*np.pi, 200) #3.14
 y = np.sin(x)
 
 fig, ax = plt.subplots()
@@ -38,6 +38,10 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=100, interval=50, blit=True)
 plt.show()
 ```
+- `set_ydata()` این متد (تابع) مقدار داده‌های محور y را برای خط (line) به‌روزرسانی می‌کند. به عبارت دیگر، موقعیت.
+- `np.sin(x + frame/10)`باعث می‌شود موج سینوسی جا‌به‌جا شود و انیمیشن ایجاد گردد.
+- `frames=100` تعداد فریم‌های انیمیشن را تعیین می‌کند؛ یعنی تابع `update` دقیقاً ۱۰۰ بار اجرا می‌شود.  
+- `interval=50` فاصله زمانی بین نمایش هر فریم را مشخص می‌کند؛ یعنی هر فریم ۵۰ میلی‌ثانیه روی صفحه می‌ماند.
 
 📌 این کد یک موج سینوسی متحرک ایجاد می‌کند.
 
