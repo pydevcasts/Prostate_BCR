@@ -164,3 +164,30 @@ D) همه موارد فوق
 
 **پاسخ صحیح:** D
 
+```python
+import numpy as np
+from scipy.stats.mstats import winsorize
+from scipy.stats import skew
+import pandas as pd
+# نمونه داده
+data = pd.DataFrame({
+    'PSA': [0.1, 0.2, 0.5, 1.2, 2.5, 5.0, 10.0, 25.0, 50.0, 200.0],
+    'Age': [55, 58, 60, 62, 63, 65, 67, 68, 70, 72],
+    'Gene1': [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 10.0]
+})
+
+print("داده اصلی:")
+print(data)
+
+# 1. شناسایی ستون‌های با چولگی بالا
+for col in data.columns:
+    skew_val = skew(data[col])
+    print(f"{col}: چولگی = {skew_val:.2f}")
+    
+    if abs(skew_val) > 2:
+        print(f"   ← اعمال تبدیل لگاریتمی")
+        data[col] = np.log1p(data[col])
+
+print("\nپس از تبدیل لگاریتمی:")
+print(data)
+```
