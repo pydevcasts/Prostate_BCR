@@ -107,33 +107,53 @@ X_test_scaled = scaler.transform(X_test)
 ## 📘 ۶. آزمون فصل (چهارگزینه‌ای)
 
 ۱️⃣ کدام یک از روش‌های زیر نسبت به داده‌های پرت مقاوم‌تر است؟
+
 A) StandardScaler
+
 B) MinMaxScaler
+
 C) RobustScaler ✅
+
 D) MaxAbsScaler
 
 ۲️⃣ اگر داده‌ها دارای مقادیر منفی و مثبت هستند، از کدام روش بهتر است استفاده کنیم؟
+
 A) StandardScaler
+
 B) RobustScaler
+
 C) MinMaxScaler
+
 D) MaxAbsScaler ✅
 
 ۳️⃣ برای مدل SVM کدام گزینه بهترین است؟
+
 A) بدون Scaling
+
 B) StandardScaler ✅
+
 C) Decision Tree
+
 D) RobustScaler
 
 ۴️⃣ خطای رایج در Scaling چیست؟
+
 A) فقط استفاده از StandardScaler
+
 B) Fit کردن Scaler روی داده تست ✅
+
 C) Transform کردن داده آموزش
+
 D) Normalization داده متنی
 
 ۵️⃣ کدام مدل‌ها معمولاً به مقیاس داده بی‌تفاوت هستند؟
+
 A) Neural Network
+
 B) Random Forest ✅
+
 C) SVM
+
 D) KNN
 
 ---

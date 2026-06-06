@@ -170,8 +170,12 @@ KNN با Scaling: 0.95 ✅
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام مدل بیشترین وابستگی به مقیاس‌بندی داده‌ها را دارد؟
+
 A) Decision Tree
+
 B) Random Forest
+
 C) Support Vector Machine ✅
+
 D) Naive Bayes
 

@@ -35,12 +35,12 @@
 
 ---
 
-### 💡 ۱. Min-Max Scaling
+### 💡 ۱. نرمال‌سازی Min-Max Scaling
 
 فرمول:
-[
+$$
 x_{scaled} = \frac{x - x_{min}}{x_{max} - x_{min}}
-]
+$$
 
 📘 مثال:
 
@@ -66,12 +66,12 @@ print(data)
 
 ---
 
-### 💡 ۲. Standardization (Z-Score)
+### 💡 ۲.استاندارد سازی Standardization (Z-Score)
 
 فرمول:
-[
+$$
 z = \frac{x - \mu}{\sigma}
-]
+$$
 یعنی فاصله هر داده از میانگین تقسیم بر انحراف معیار.
 
 ```python
@@ -96,7 +96,7 @@ print(data)
 
 ---
 
-### 💡 ۳. Robust Scaling
+### 💡 ۳. مقیاس‌بندی مقاوم Robust Scaling
 
 استفاده از میانه به‌جای میانگین برای مقابله با Outlierها:
 
@@ -154,7 +154,11 @@ print(data)
 ### ❓ پرسش چهارگزینه‌ای
 
 اگر داده‌ها دارای مقادیر پرت باشند، کدام روش مناسب‌تر است؟
+
 A) Min-Max Scaling
+
 B) Standardization
+
 C) Robust Scaling ✅
+
 D) هیچ‌کدام

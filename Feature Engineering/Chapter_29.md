@@ -143,9 +143,13 @@ print("با Scaling:", model_scaled.predict(X_test_scaled).tolist())
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام مدل بیشترین حساسیت را نسبت به مقیاس ویژگی‌ها دارد؟
+
 A) Decision Tree
+
 B) K-Nearest Neighbors ✅
+
 C) Naive Bayes
+
 D) Random Forest
 
 ---

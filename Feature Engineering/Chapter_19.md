@@ -35,9 +35,9 @@
 #### 🔹 Min-Max Scaling
 
 فرمول:
-[
+$$
 X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
-]
+$$
 
 ```python
 from sklearn.preprocessing import MinMaxScaler
@@ -161,8 +161,12 @@ print(data)
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام روش برای تبدیل داده‌ی متنی به عددی استفاده می‌شود؟
+
 A) Scaling
+
 B) Normalization
+
 C) One-Hot Encoding ✅
+
 D) Binning
 

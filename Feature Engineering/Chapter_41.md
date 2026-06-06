@@ -55,7 +55,7 @@
 
 | ویژگی              | Standardization                      | Normalization                                  |
 | :----------------- | :----------------------------------- | :--------------------------------------------- |
-| فرمول              | ( z = \frac{x - \mu}{\sigma} )       | ( x' = \frac{x - x_{min}}{x_{max} - x_{min}} ) |
+| فرمول              | $$( z = \frac{x - \mu}{\sigma} )$$       | $$( x' = \frac{x - x_{min}}{x_{max} - x_{min}} )$$ |
 | بازه خروجی         | -∞ تا +∞                             | معمولاً بین 0 تا 1                             |
 | حساسیت به داده پرت | کمتر                                 | بیشتر                                          |
 | مناسب برای         | الگوریتم‌های آماری مثل SVM، Logistic | شبکه‌های عصبی و kNN                            |
@@ -163,9 +163,13 @@ print("\n🔹 Normalized:\n", pd.DataFrame(data_norm, columns=data.columns))
 ### ❓ پرسش چهارگزینه‌ای
 
 در کدام روش داده‌ها حول میانگین صفر و انحراف معیار ۱ قرار می‌گیرند؟
+
 A) Normalization
+
 B) Standardization ✅
+
 C) Robust Scaling
+
 D) Min-Max Scaling
 
 ---

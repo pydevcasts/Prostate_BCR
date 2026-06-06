@@ -155,8 +155,12 @@ print(importance)
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام گزینه یکی از روش‌های Embedded محسوب می‌شود؟
+
 A) Chi-Square
+
 B) RFE
+
 C) Lasso ✅
+
 D) Forward Selection
 

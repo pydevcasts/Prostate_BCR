@@ -54,19 +54,48 @@ df.to_excel("output.xlsx", index=False, sheet_name="MyData")
 
 ---
 
-### 🔹 ۵. خواندن داده از SQL Database
+### 🔹 ۵. چهار عمل اصلی داده در SQL Database
 
 اگر داده‌های شما در دیتابیس ذخیره شده باشد، می‌توانید مستقیم آن را با Pandas بخوانید.
 
 ```python
 import sqlite3
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# اتصال به دیتابیس
-conn = sqlite3.connect("my_database.db")
+conn = sqlite3.connect("data.db")
+c = conn.cursor()
+
+# c.execute('''
+#     CREATE TABLE IF NOT EXISTS hotel (
+#         FIND INTEGER PRIMARY KEY NOT NULL,
+#         FNAME TEXT NOT NULL,
+#         COST INTEGER NOT NULL,
+#         WEIGHT INTEGER,
+#         PASSWORD TEXT NOT NULL
+#     )
+# ''')
+
+# def add_hotel(id, fname, cost, weight, password):
+#     hashed = hashlib.sha256(password.encode('utf-8')).hexdigest()
+#     c.execute("INSERT INTO hotel (FIND, FNAME, COST, WEIGHT, PASSWORD) VALUES (?,?,?,?,?)", (id, fname, cost, weight, password))
+# add_hotel(1,"Maryam", 24, 58,"123")
+# برای زمانی که پسورد نداشته باشیم
+
+# c.execute("INSERT INTO hotel (FIND, FNAME, COST, WEIGHT) VALUES (3, 'iceream', 200, 30)")
+# print(x.fetchall())
+
+# x = c.execute("SELECT FNAME FROM hotel WHERE FNAME='Cakes'")
+# x = c.execute("UPDATE hotel SET FNAME='Icecream' WHERE FIND=3")
+
+# DROP FROM hotel  emit table
+# c.execute("DELETE FROM hotel where FIND > 2")
+# c.execute("ALTER TABLE hotel DROP COLUMN FNAME")
+conn.commit()
+conn.close()
 
 # خواندن جدول به صورت DataFrame
-df_sql = pd.read_sql_query("SELECT * FROM students", conn)
-
+df_sql = pd.read_sql_query("SELECT * FROM hotel", conn)
 print(df_sql.head())
 ```
 

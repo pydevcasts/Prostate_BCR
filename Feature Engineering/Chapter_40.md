@@ -192,8 +192,12 @@ pd.DataFrame(poly_features, columns=poly.get_feature_names_out(['A', 'B']))
 ## ❓ پرسش چهارگزینه‌ای
 
 کدام گزینه نمونه‌ای از **ویژگی تعاملی (Cross Feature)** است؟
+
 A) `Age`
+
 B) `Salary`
+
 C) `Age * Salary` ✅
+
 D) `Salary / 12`
 

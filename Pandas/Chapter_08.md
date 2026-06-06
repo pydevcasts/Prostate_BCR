@@ -51,6 +51,8 @@ print(result)
 * **Outer Join** → همه داده‌ها از هر دو جدول
 
 ```python
+import pandas as pd
+
 students = pd.DataFrame({
     "ID": [1, 2, 3, 4],
     "Name": ["Ali", "Sara", "Reza", "Omid"]
@@ -61,18 +63,39 @@ scores = pd.DataFrame({
     "Score": [85, 90, 95]
 })
 
-# Inner Join
+print("--- Inner Join ---")
 print(pd.merge(students, scores, on="ID", how="inner"))
 
-# Left Join
+print("\n--- Left Join ---")
 print(pd.merge(students, scores, on="ID", how="left"))
 
-# Outer Join
+print("\n--- Outer Join ---")
 print(pd.merge(students, scores, on="ID", how="outer"))
+
 ```
+```
+--- Inner Join ---
+   ID  Name  Score
+0   1   Ali   85.0
+1   2  Sara   90.0
 
+--- Left Join ---
+   ID  Name  Score
+0   1   Ali   85.0
+1   2  Sara   90.0
+2   3  Reza    NaN
+3   4  Omid    NaN
+
+--- Outer Join ---
+   ID  Name  Score
+0   1   Ali   85.0
+1   2  Sara   90.0
+2   3  Reza    NaN
+3   4  Omid    NaN
+4   5   NaN   95.0
+
+```
 ---
-
 ### 🔹 ۴. ادغام با چندین ستون
 
 ```python

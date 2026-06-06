@@ -84,10 +84,10 @@ print("Selected Features:", list(selected_features))
 📈 خروجی:
 
 ```
-Selected Features: ['study_hours', 'attendance']
+Selected Features: ['study_hours', 'sleep_hours']
 ```
 
-✅ نتیجه: ساعت مطالعه و حضور در کلاس مهم‌ترین ویژگی‌ها برای پیش‌بینی نمره هستن 🎯
+✅ نتیجه: ساعت مطالعه و ساعت خواب در کلاس مهم‌ترین ویژگی‌ها برای پیش‌بینی نمره هستن 🎯
 
 ---
 
@@ -117,8 +117,12 @@ Selected Features: ['study_hours', 'attendance']
 ### ❓ پرسش چهارگزینه‌ای
 
 در روش Wrapper چه چیزی مبنای انتخاب ویژگی‌هاست؟
+
 A) میانگین مقادیر ویژگی‌ها
+
 B) عملکرد مدل یادگیری ✅
+
 C) مقادیر گمشده
+
 D) نوع داده‌ها
 

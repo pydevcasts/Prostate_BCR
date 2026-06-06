@@ -95,3 +95,8 @@ print(df.sort_values("Score", ascending=False))
 print(df[df["Name"].isin(["Ali", "Reza"])])
 ```
 
+### 🔹 ۸ پیدا کردن نام دانش اموزی که بیشترین نمره را گرفته
+
+```python
+df.loc[df["Score"].idxmax(), "Name"]
+```
