@@ -285,26 +285,56 @@ print(df)
 
 ---------------------------------------------
 
-## 🔹 ۱۳. مدل‌سازی با رگرسیون جنگل تصادفی (Random Forest)
+## 🔹۱۳. پیدا کردن ردیف‌هایی که شامل مقادیر Null هستند
 
-### ۱۳.۱ آماده‌سازی داده‌ها
+**جواب:**  
+می‌توانیم با استفاده از توابع `isnull` ،`isna` و دستورات شرطی، ایندکس ردیف‌هایی که شامل مقادیر Null هستند را پیدا کنیم.  
+
+```python
+import pandas as pd
+
+# حلقه برای پیدا کردن ایندکس‌هایی که تمام مقادیرشان در آن ردیف null است
+for i in df.index:
+    # بررسی اینکه آیا هر مقدار در این ردیف null است یا خیر
+    if pd.isnull(df.loc[i, df.columns]).any():
+        print(i)
+
+# پیدا کردن ایندکس‌هایی که مقدار ستون 'Sale Price' برابر NaN است
+# nan_sale_price_indices = df[df['Sale Price'].isna()].index.tolist()
+# print("\nIndices where 'Sale Price' is NaN:", nan_sale_price_indices)
+
+# پیدا کردن ردیف‌هایی که در هر یک از ستون‌های مشخص شده مقدار NaN دارند
+# mask = df[['Sale Price', 'Mrp', 'Sale Date']].isna().any(axis=1)
+# indices_with_nans = df[mask].index.tolist()
+
+# print("Indices with NaN values in selected columns:", indices_with_nans)
+```
+## 🔹 ۱۴. مدل‌سازی با رگرسیون جنگل تصادفی (Random Forest)
+
+### ۱۴.۱ آماده‌سازی داده‌ها
+
 ```python
 X = df[['Number Of Ratings']]
 y = df['Sale Price']
 ```
 
-### ۱۳.۲ تقسیم داده‌ها  
+### ۱۴.۲ تقسیم داده‌ها  
+
 ```python
 X_train, X_test, y_train, y_test = train_test_split(...)
 ```
 
-### ۱۳.۳ آموزش مدل  
+
+### ۱۴.۳ آموزش مدل  
+
 ```python
 model = RandomForestRegressor()
 model.fit(X_train, y_train)
 ```
 
-### ۱۳.۴ پیش‌بینی و ارزیابی  
+
+### ۱۴.۴ پیش‌بینی و ارزیابی  
+
 ```python
 y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)

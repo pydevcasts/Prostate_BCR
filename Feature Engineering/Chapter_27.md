@@ -62,9 +62,15 @@ print(standard_scaled)
 
 اینجا داده‌ها در بازه‌ی [0, 1] (یا بازه‌ای دلخواه) قرار می‌گیرن:
 
+<<<<<<< HEAD
 $$
 X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
 $$
+=======
+$$[
+X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
+]$$
+>>>>>>> ee65aefff0adf33ad00321883297aacb15cdcc3c
 
 📘 ساده‌ترین و پرکاربردترین روش.
 
@@ -99,8 +105,14 @@ print(minmax_scaled)
 برای جلوگیری از تأثیر زیاد آن‌ها، از **میانه (Median)** و **چارک‌ها (IQR)** استفاده می‌کنیم:
 
 $$
+<<<<<<< HEAD
 X_{scaled} = \frac{X - \text{Median}(X)}{IQR}
 $$
+=======
+[
+X_{scaled} = \frac{X - \text{Median}(X)}{IQR}
+]$$
+>>>>>>> ee65aefff0adf33ad00321883297aacb15cdcc3c
 
 💻 مثال:
 
@@ -130,14 +142,14 @@ print(robust_scaled)
 
 ---
 
-### 💡 ۴️⃣ MaxAbs Scaling (مقیاس با مقدار مطلق)
+### 💡 ۴️⃣ (مقیاس با مقدار مطلق) MaxAbs Scaling 
 
 این روش داده‌ها رو بر اساس بیشترین مقدار **مطلق** نرمال می‌کنه.
 برای داده‌های دارای مقادیر مثبت و منفی که **پراکندگی متقارن** دارن، عالیه 🔁
 
-[
+$$[
 X_{scaled} = \frac{X}{|X_{max}|}
-]
+]$$
 
 💻 مثال:
 
@@ -201,9 +213,13 @@ print(maxabs_scaled)
 ### ❓ پرسش چهارگزینه‌ای
 
 کدام‌یک از روش‌های زیر در برابر داده‌های پرت (Outlier) مقاوم‌تر است؟
+
 A) StandardScaler
+
 B) MinMaxScaler
+
 C) RobustScaler ✅
+
 D) MaxAbsScaler
 
 ---

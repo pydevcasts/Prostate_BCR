@@ -19,7 +19,7 @@
 
 ---
 
-## 📏 ۱. StandardScaler
+## 📏 ۱.  تعریف ساده StandardScaler
 
 ### 💡 مفهوم:
 
@@ -95,7 +95,7 @@ print(df_scaled)
 
 ---
 
-## 📉 ۲. MinMaxScaler
+## 📉 ۲.تعریف ساده MinMaxScaler
 
 ### 💡 مفهوم:
 

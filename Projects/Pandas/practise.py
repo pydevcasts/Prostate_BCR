@@ -281,3 +281,24 @@ df["Sum"] = df.apply(lambda x:x["A"] + x["B"], axis=1)
 # df = pd.DataFrame({'Name': ['Ali', 'Sara', 'Reza'], 'Score': [85, 60, 45]})
 # df['Status'] = df['Score'].apply(lambda x: 'Pass' if x >= 50 else 'Fail')
 print(df)
+
+
+
+import pandas as pd
+
+# حلقه برای پیدا کردن ایندکس‌هایی که تمام مقادیرشان در آن ردیف null است
+for i in df.index:
+    # بررسی می‌کنیم که آیا تمام مقادیر در این ردیف null هستند یا خیر
+    # .all(axis=0) اطمینان حاصل می‌کند که تمام ستون‌ها بررسی می‌شوند
+    if pd.isnull(df.loc[i, df.columns]).any():
+        print(i)
+
+
+# nan_sale_price_indices = df[df['Sale Price'].isna()].index.tolist()
+# print("\nIndices where 'Sale Price' is NaN:",nan_sale_price_indices)
+
+# پیدا کردن ردیف‌هایی که در هر یک از ستون‌های مشخص شده مقدار NaN دارند
+# mask = df[['Sale Price', 'Mrp', 'Sale Date']].isna().any(axis=1)
+# indices_with_nans = df[mask].index.tolist()
+
+# print("Indices with NaN values in selected columns:", indices_with_nans)

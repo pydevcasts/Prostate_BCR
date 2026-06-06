@@ -49,7 +49,7 @@
 
 ---
 
-## 🔢 ۲. Label Encoding
+## 🔢 ۲.تعریف  Label Encoding
 
 ### 💡 مفهوم:
 

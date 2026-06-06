@@ -95,7 +95,7 @@ df.loc[df.isnull().any(axis=1), "Name"]
 
 ```python
 df["Age"].fillna(df["Age"].mean(), inplace=True)     # پر کردن با میانگین
-df["Score"].fillna(df["Score"].median(), inplace=True)  # پر کردن با میانه
+df["Score"] = df["Score"].fillna(df["Score"].median(), inplace=True)  # پر کردن با میانه
 ```
 
 📌 حالا ستون‌ها کامل می‌شوند و دیگر مقدار NaN نخواهند داشت.

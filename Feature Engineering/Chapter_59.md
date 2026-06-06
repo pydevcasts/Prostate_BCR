@@ -23,7 +23,7 @@
 
 ---
 
-# 🧩 ۱. Binning — گروه‌بندی عددی
+## 🧩 ۱. گروه‌بندی عددی — Binning 
 
 گاهی ویژگی عددی خیلی خام است.
 مثال ساده:
@@ -50,8 +50,8 @@ Age = 1, 2, 3, ..., 90
 پایتون:
 
 ```python
-# گروه‌بندی سن
 bins = [0, 12, 20, 40, 60, 100]
+# گروه‌بندی سن
 labels = ["kid", "teen", "adult", "mid_age", "senior"]
 
 data["age_group"] = pd.cut(data["age"], bins=bins, labels=labels)
@@ -59,7 +59,7 @@ data["age_group"] = pd.cut(data["age"], bins=bins, labels=labels)
 
 ---
 
-# 🔢 ۲. Rank Features
+## 🔢 ۲. رتبه ویژگی Rank Features
 
 در بسیاری از پروژه‌ها *مقدار مطلق مهم نیست* → رتبه مهم است.
 
@@ -81,13 +81,14 @@ data["age_group"] = pd.cut(data["age"], bins=bins, labels=labels)
 مثال پایتون:
 
 ```python
-# ساخت رتبه
+
 data["income_rank"] = data["income"].rank()
+# ساخت رتبه
 ```
 
 ---
 
-# ➗ ۳. Ratio Features — ویژگی‌های نسبت
+## ➗ ۳. ویژگی‌های نسبت — Ratio Features  
 
 نسبت‌ها یکی از **قوی‌ترین** نوع ویژگی‌ها هستند.
 
@@ -111,7 +112,7 @@ data["debt_to_income"] = data["debt"] / data["income"]
 
 ---
 
-# ✖️ ۴. Feature Crossing — ترکیب ویژگی‌ها
+## ✖️ ۴. ترکیب ویژگی‌ها — Feature Crossing 
 
 در این روش چند ویژگی را داخل هم ضرب می‌کنیم تا تعامل پیچیده‌تر ساخته شود.
 
@@ -135,7 +136,7 @@ YouTube, Google, Recommender Systems
 
 ---
 
-# 📊 ۵. Statistical Encoding — ویژگی‌های آماری روی دسته‌ها
+## 📊 ۵. ویژگی‌های آماری روی دسته‌ها  — Statistical Encoding
 
 برای دسته‌های مختلف آماری جدید می‌سازیم.
 
@@ -158,7 +159,7 @@ data["city_mean_sales"] = city_mean
 
 ---
 
-# 🔢 ۶. Frequency & Count Encoding
+## 🔢 ۶. تکرار Frequency & Count Encoding
 
 برای دسته‌هایی با تعداد بالا فوق‌العاده مؤثر است.
 
@@ -180,12 +181,12 @@ data["product_freq"] = data["product"].map(freq)
 این روش از One-Hot بهتر است وقتی:
 
 * دسته‌ها زیاد هستند
-* sparse زیاد تولید نشود
+* و (sparse) زیاد تولید نشود
 * حافظه کم باشد
 
 ---
 
-# 🧠 ۷. Target Encoding (نسخهٔ حرفه‌ای)
+## 🧠 ۷. (نسخهٔ حرفه‌ای) Target Encoding 
 
 برای هر دسته میانگین مقدار هدف (y) را محاسبه می‌کنیم.
 
@@ -209,11 +210,11 @@ data["city_target_enc"] = target_mean
 
 ---
 
-# 🧮 ۸. کد پایتون — ترکیب همهٔ روش‌های پیشرفته
+## 🧮 ۸. کد پایتون — ترکیب همهٔ روش‌های پیشرفته
 
 ```python
-# ترکیب چند تکنیک پیشرفته
 import pandas as pd
+# ترکیب چند تکنیک پیشرفته
 
 data = pd.DataFrame({
     "age": [10, 20, 35, 50, 70],
@@ -245,7 +246,7 @@ print(data)
 
 ---
 
-# 🎨 ۹. تصویر پیشنهادی
+## 🎨 ۹. تصویر پیشنهادی
 
 > نمودار Heatmap از Feature Crossings
 > برای نشان دادن تعامل ویژگی‌های جدید
@@ -265,8 +266,12 @@ print(data)
 # ❓ آزمون چهارگزینه‌ای صفحه
 
 **کدام روش برای ویژگی‌های دسته‌ای که تعداد زیادی سطح (Category) دارند مناسب‌تر است؟**
+
 A) One-Hot Encoding
+
 B) Frequency Encoding ✅
+
 C) Standardization
+
 D) Polynomial Features
 

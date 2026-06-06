@@ -37,7 +37,7 @@
 
 ---
 
-## 🧩 ۲. RobustScaler — مقاوم در برابر Outlier
+## 🧩 ۲.  تعریف RobustScaler — مقاوم در برابر Outlier
 
 ### 💡 مفهوم:
 
@@ -102,7 +102,7 @@ print(df_scaled)
 
 ---
 
-## ⚙️ ۳. MaxAbsScaler — مناسب داده‌های مثبت و منفی
+## ⚙️ ۳.تعریف  MaxAbsScaler — مناسب داده‌های مثبت و منفی
 
 ### 💡 مفهوم:
 

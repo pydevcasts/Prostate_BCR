@@ -123,6 +123,30 @@ Freq: D, dtype: float64
 ```
 
 ---
+### 🔹۷.   اضافه کردن ستون سن کاربر و مدت زمان گذشته از آخرین خرید
+```python
+import pandas as pd
+from datetime import datetime
+
+data = pd.DataFrame({
+    'name': ['Ali', 'Sara', 'Reza'],
+    'birth_date': ['1998-07-15', '1985-01-12', '2002-05-03'],
+    'purchase_amount': [320000, 920000, 180000],
+    'last_purchase': ['2024-11-10', '2024-11-05', '2024-10-22']
+})
+
+df = pd.DataFrame(data)
+df["birth_date"] = pd.to_datetime(df["birth_date"])
+df['last_purchase'] = pd.to_datetime(data['last_purchase'])
+df.info()
+
+today = datetime(2026,2,2)
+df["age"] = (today - df['birth_date']).dt.days // 365
+
+# 🕓 ساخت ویژگی فاصله از آخرین خرید
+df['days_since_last_purchase'] = (today - df['last_purchase']).dt.days
+df
+```
 
 ### 🔹 ۷. تمرین پیشنهادی
 

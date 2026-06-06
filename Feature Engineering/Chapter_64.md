@@ -24,13 +24,13 @@
 
 ---
 
-# 🟣 ۱. Hashing Encoding
+## 🟣 ۱.  مفهوم Hashing Encoding
 
-Hashing یکی از سریع‌ترین روش‌های Encoding است که:
+ یکی از سریع‌ترین روش‌های Encoding است که:
 
 * تعداد دسته‌ها خیلی زیاد باشد
-* One-Hot ترکیده باشد
-* Target Encoding باعث Leakage شود
+* با One-Hot ترکیده باشد
+* با Target Encoding باعث Leakage شود
 * یا مدل باید خیلی بزرگ و real-time باشد
 
 ✔️ هیچ Look-up جدول لازم ندارد
@@ -47,22 +47,18 @@ Hashing یکی از سریع‌ترین روش‌های Encoding است که:
 فرض کن ۵۰۰هزار دسته داریم
 ولی ما فقط ۵۰ ستون می‌خواهیم.
 
-Hashing همه آنها را به ۵۰ ستون نگاشت می‌کند.
+خوب Hashing همه آنها را به ۵۰ ستون نگاشت می‌کند.
 
 ---
 
 ## ⚠️ مشکل اصلی
 
-Collision
-یعنی چند دسته در یک ستون هش شوند.
-
-اما در کاربردهای بزرگ این طبیعی و قابل قبول است.
+با Collision
+یعنی چند دسته در یک ستون هش شوند. اما در کاربردهای بزرگ این طبیعی و قابل قبول است.
 
 ---
 
 ## 💻 کد پایتون — Hashing Encoding
-
-(با راست‌چین و بدون شروع خط با حرف انگلیسی)
 
 ```python
 from sklearn.feature_extraction import FeatureHasher
@@ -73,7 +69,9 @@ df = pd.DataFrame({
 })
 
 h = FeatureHasher(n_features=5, input_type='string')
-hashed = h.transform(df["city"])
+# Convert column to list of lists
+input_data = df[["city"]].values.tolist()  # Alternative method
+hashed = h.transform(input_data)
 hashed_df = pd.DataFrame(hashed.toarray())
 
 print(hashed_df)
@@ -81,7 +79,7 @@ print(hashed_df)
 
 ---
 
-# 🟣 ۲. Leave-One-Out Encoding
+## 🟣 ۲.  مفهوم Leave-One-Out Encoding
 
 این روش بسیار شبیه Target Encoding است
 اما یک تفاوت طلایی دارد:
@@ -162,7 +160,7 @@ print(df)
 
 ---
 
-# 🟣 ۳. CatBoost Encoding
+## 🟣 ۳. مفهوم CatBoost Encoding
 
 پیشرفته‌ترین و امن‌ترین نوع Target Encoding
 که در الگوریتم CatBoost معرفی شده است.
@@ -175,11 +173,11 @@ print(df)
 ✔️ برای داده‌های خیلی بزرگ عالی است
 ✔️ در مدل‌های درختی بهترین انتخاب است
 
-CatBoost به دنبال خودکارسازی این روش، آن را تبدیل به استاندارد صنعتی کرد.
+الگوریتم CatBoost به دنبال خودکارسازی این روش، آن را تبدیل به استاندارد صنعتی کرد.
 
 ---
 
-## CatBoost Encoding چگونه کار می‌کند؟
+## چگونه کار می‌کند؟ CatBoost Encoding 
 
 برای هر ردیف:
 
@@ -212,7 +210,7 @@ print(df)
 
 ---
 
-# 🔥 نکات فوق‌حرفه‌ای (Industrial)
+## 🔥 نکات فوق‌حرفه‌ای (Industrial)
 
 ### ✔️ زمانی که دسته‌ها بسیار زیاد هستند
 
@@ -236,7 +234,7 @@ Hashing Encoding بهترین انتخاب است.
 
 ---
 
-# 🎨 تصویر پیشنهادی
+## 🎨 تصویر پیشنهادی
 
 > یک نمودار که Hashing → فشرده‌سازی دسته‌ها
 > Leave-One-Out → محاسبه میانگین بدون ردیف جاری
@@ -245,7 +243,7 @@ Hashing Encoding بهترین انتخاب است.
 
 ---
 
-# 🧠 تمرین
+## 🧠 تمرین
 
 یک ستون شامل ۲۰۰ دسته بساز
 سه نسخه از آن را با روش‌های زیر Encode کن:
@@ -264,13 +262,16 @@ Hashing Encoding بهترین انتخاب است.
 
 ---
 
-# ❓ آزمون چهارگزینه‌ای
+## ❓ آزمون چهارگزینه‌ای
 
 **کدام روش برای دسته‌های بسیار زیاد (۵۰هزار+) مناسب‌تر است؟**
 
 A) One-Hot
+
 B) Label Encoding
+
 C) Hashing Encoding   ✅
+
 D) Ordinal Encoding
 
 ---

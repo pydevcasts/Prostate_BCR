@@ -24,9 +24,9 @@
 
 ---
 
-# 🧠 ۱. Encoding چیست؟
+## 🧠 ۱. مفهوم Encoding
 
-Encoding یعنی **تبدیل داده‌های غیرعددی (مثل شهر، رنگ، جنسیت، محصول)** به دادهٔ عددی که مدل بتواند آن را بفهمد.
+یعنی **تبدیل داده‌های غیرعددی (مثل شهر، رنگ، جنسیت، محصول)** به دادهٔ عددی که مدل بتواند آن را بفهمد.
 
 مثال:
 
@@ -61,7 +61,7 @@ Tehran < Tabriz < Shiraz !!!
 
 ---
 
-# 🎨 ۲. چرا مدل به Encoding نیاز دارد؟
+## 🎨 ۲. چرا مدل به Encoding نیاز دارد؟
 
 مدل‌های زیر **اجباری** نیاز به Encoding دارند:
 
@@ -76,9 +76,9 @@ Tehran < Tabriz < Shiraz !!!
 
 ---
 
-# 🧩 ۳. Categorical Feature Types (دو نوع اصلی)
+## 🧩 ۳.(دو نوع اصلی) Categorical Feature Types 
 
-## 🔵 **A. Nominal دسته‌ای بدون ترتیب**
+## 🔵  دسته‌ای بدون ترتیب  Nominal
 
 مثال:
 
@@ -90,7 +90,7 @@ Tehran < Tabriz < Shiraz !!!
 
 ---
 
-## 🟣 **B. Ordinal دسته‌ای با ترتیب**
+## 🟣   دسته‌ای با ترتیب Ordinal
 
 مثال:
 
@@ -102,7 +102,7 @@ Tehran < Tabriz < Shiraz !!!
 
 ---
 
-# ⚠️ ۴. خطاهای رایج Encoding
+## ⚠️ ۴. خطاهای رایج Encoding
 
 ❌ اشتباه: Label Encoding برای داده‌های بدون ترتیب
 ❌ اشتباه: One-Hot برای داده‌هایی با ۵۰۰۰ دسته
@@ -111,11 +111,9 @@ Tehran < Tabriz < Shiraz !!!
 
 ---
 
-# 🔥 ۵. دسته‌بندی انواع Encoding (مهم‌ترین بخش مقدمه)
+## 🔥 ۵. دسته‌بندی انواع Encoding (مهم‌ترین بخش مقدمه)
 
-Encoding سه رده دارد:
-
-## **۱) Encoding ساده (سریع و سبک)**
+## ۱)  ساده (سریع و سبک) Encoding
 
 * One-Hot
 * Label Encoding
@@ -125,7 +123,7 @@ Encoding سه رده دارد:
 
 ---
 
-## **۲) Encoding متوسط (دقیق‌تر و هوشمندتر)**
+## ۲)  متوسط (دقیق‌تر و هوشمندتر) Encoding
 
 * Frequency Encoding
 * Count Encoding
@@ -135,7 +133,7 @@ Encoding سه رده دارد:
 
 ---
 
-## **۳) Encoding پیشرفته (در Kaggle و صنعت رایج)**
+## ۳)  پیشرفته (در Kaggle و صنعت رایج) Encoding
 
 * Target Encoding
 * CatBoost Encoding
@@ -147,7 +145,7 @@ Encoding سه رده دارد:
 
 ---
 
-# 🧮 ۶. مثال ساده از Encoding
+## 🧮 ۶. مثال ساده از Encoding
 
 فرض کنیم ستون City داریم:
 
@@ -189,11 +187,11 @@ Shiraz → 200
 
 ---
 
-# 💻 ۷. کد پایتون — نمایش چند Encoding ساده
+## 💻 ۷. کد پایتون — نمایش چند Encoding ساده
 
 ```python
-# نمونه Encoding برای یک ستون
 import pandas as pd
+# نمونه Encoding برای یک ستون
 
 data = pd.DataFrame({
     "city": ["Tehran", "Tabriz", "Shiraz", "Tehran"]
@@ -215,31 +213,38 @@ print(data)
 
 ---
 
-# 🎨 ۸. تصویر پیشنهادی
+## 🎨 ۸. تصویر پیشنهادی
 
 > نمودار میله‌ای مقایسه تعداد دسته‌ها قبل/بعد One-Hot Encoding
 > یا نمودار تفاوت Label vs One-Hot vs Frequency
 
 ---
 
-# 🧠 ۹. تمرین ساده
+## 🧠 ۹. تمرین ساده
 
 ۱) یک ستون دسته‌ای انتخاب کن (شهر، رنگ یا محصول)
+
 ۲) سه نوع Encoding روی آن اعمال کن:
 
 * Label
 * One-Hot
 * Frequency
+
   ۳) نتایج را مقایسه کن
+
   ۴) بررسی کن کدام روش دقت مدل را بهتر کرد
 
 ---
 
-# ❓ آزمون چهارگزینه‌ای صفحه
+## ❓ آزمون چهارگزینه‌ای صفحه
 
 **کدام روش برای داده‌های بدون ترتیب و تعداد دسته کم مناسب‌تر است؟**
+
 A) Label Encoding
+
 B) One-Hot Encoding ✅
+
 C) Frequency Encoding
+
 D) Hashing Encoding
 
