@@ -52,6 +52,7 @@ df = pd.DataFrame({
 # Sum of each column
 print(df.apply(sum))
 
+print(df.map(lambda x:x).sum())
 # Apply function on each row
 print(df.apply(lambda x: x["A"] + x["B"], axis=1))
 ```
@@ -95,6 +96,13 @@ print(df.applymap(lambda x: x * 10))
 # Normalize data (between 0 and 1)
 df_normalized = df.apply(lambda col: (col - col.min()) / (col.max() - col.min()))
 print(df_normalized)
+# با روش map
+for i in df.columns:
+    df_data = df[i]
+    df_max = df_data.max()
+    df_min = df_data.min()
+    print(df_data.map(lambda x:(x - df_min) / (df_max - df_min)))
+
 ```
 
 📌 خروجی:

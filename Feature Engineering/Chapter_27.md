@@ -62,9 +62,15 @@ print(standard_scaled)
 
 اینجا داده‌ها در بازه‌ی [0, 1] (یا بازه‌ای دلخواه) قرار می‌گیرن:
 
+<<<<<<< HEAD
+$$
+X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
+$$
+=======
 $$[
 X_{scaled} = \frac{X - X_{min}}{X_{max} - X_{min}}
 ]$$
+>>>>>>> ee65aefff0adf33ad00321883297aacb15cdcc3c
 
 📘 ساده‌ترین و پرکاربردترین روش.
 
@@ -99,9 +105,14 @@ print(minmax_scaled)
 برای جلوگیری از تأثیر زیاد آن‌ها، از **میانه (Median)** و **چارک‌ها (IQR)** استفاده می‌کنیم:
 
 $$
+<<<<<<< HEAD
+X_{scaled} = \frac{X - \text{Median}(X)}{IQR}
+$$
+=======
 [
 X_{scaled} = \frac{X - \text{Median}(X)}{IQR}
 ]$$
+>>>>>>> ee65aefff0adf33ad00321883297aacb15cdcc3c
 
 💻 مثال:
 

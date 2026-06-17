@@ -284,6 +284,7 @@ print(df)
 ```
 
 ---------------------------------------------
+
 ## 🔹۱۳. پیدا کردن ردیف‌هایی که شامل مقادیر Null هستند
 
 **جواب:**  
@@ -311,23 +312,29 @@ for i in df.index:
 ## 🔹 ۱۴. مدل‌سازی با رگرسیون جنگل تصادفی (Random Forest)
 
 ### ۱۴.۱ آماده‌سازی داده‌ها
+
 ```python
 X = df[['Number Of Ratings']]
 y = df['Sale Price']
 ```
 
 ### ۱۴.۲ تقسیم داده‌ها  
+
 ```python
 X_train, X_test, y_train, y_test = train_test_split(...)
 ```
 
+
 ### ۱۴.۳ آموزش مدل  
+
 ```python
 model = RandomForestRegressor()
 model.fit(X_train, y_train)
 ```
 
+
 ### ۱۴.۴ پیش‌بینی و ارزیابی  
+
 ```python
 y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
