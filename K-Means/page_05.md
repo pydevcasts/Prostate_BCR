@@ -15,12 +15,16 @@ inertias = []
 for k in range(2, 6):
     model = KMeans(n_clusters=k, random_state=42, n_init=10)
     model.fit(df.iloc[:, :-1])
-    inertias.append(model.inertia_)  # Sum of squared distances
+    inertias.append(model.inertia_)  # Sum of squared distances یا (میزان فشردگی یا کیفیت خوشه‌بندی)
 
 # Print inertia values
 print("Inertia for different k values:", inertias)
 ```
+- وقتی شما n_init=10 را تعیین می‌کنید، یعنی به الگوریتم دستور می‌دهید:
 
+* ۱۰ بار الگوریتم را با شروع‌های تصادفیِ متفاوت اجرا کن.
+در هر بار اجرا، مدل را به صورت کامل تا رسیدن به نتیجه نهایی (همگرایی) پیش ببر.
+در پایان، از بین این ۱۰ بار اجرا، بهترین مدل (یعنی مدلی که کمترین میزان inertia_ یا همان کمترین مجموع فواصل نقاط تا مراکز را داشته باشد) را به عنوان نتیجه نهایی انتخاب کن.
 ---
 
 ## 🔹 رسم نمودار Elbow (روش آرنج)
