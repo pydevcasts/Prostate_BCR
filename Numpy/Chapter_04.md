@@ -30,7 +30,7 @@ print("Power:", arr1 ** 2)
 arr = np.array([1, 4, 9, 16, 25])
 
 print("Square root:", np.sqrt(arr))
-print("Exponential:", np.exp(arr))
+print("Exponential:", np.exp(arr)) #e=2.718
 print("Logarithm:", np.log(arr))
 print("Sine:", np.sin(arr))
 ```
