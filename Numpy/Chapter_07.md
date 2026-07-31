@@ -128,20 +128,29 @@ print("Eigenvectors:\n", eig_vecs)
 ### 🔹 ۶. تمرین تصویری 🎨
 
 ```python
+import numpy as np
 import matplotlib.pyplot as plt
 
-A = np.array([[2, 1], [1, 3]])
-
+A = np.array([[2, 4], [7, 8]])
 eig_vals, eig_vecs = np.linalg.eig(A)
 
-# نمایش بردارهای ویژه روی نمودار
-origin = [0, 0]
-plt.quiver(*origin, eig_vecs[0, :], eig_vecs[1, :], angles='xy', scale_units='xy', scale=1, color=['r','b'])
-plt.xlim(-1, 2)
-plt.ylim(-1, 2)
+X = [0, 0]
+Y = [0, 0]
+
+U = eig_vecs[0, :]
+V = eig_vecs[1, :]
+
+plt.figure(figsize=(6, 6))
+plt.quiver(X, Y, U, V, angles='xy', scale_units='xy', scale=1, color=['r', 'b'])
+
+plt.xlim(-1, 1)
+plt.ylim(-1, 1)
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(0, color='black', linewidth=0.5)
 plt.grid(True)
 plt.title("Eigenvectors of Matrix A")
 plt.show()
+
 ```
 
 📌 در این مثال بردارهای ویژه ماتریس `A` رسم شده‌اند.
