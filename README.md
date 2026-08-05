@@ -122,6 +122,3 @@ All feature selection and preprocessing are fitted **exclusively on training fol
 - xgboost, lightgbm, catboost
 - shap, matplotlib, joblib
 
-## License
-
-MIT
