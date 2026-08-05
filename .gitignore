@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# Virtual Environment
+venv/
+.venv/
+env/
+.env
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Project Outputs (keep raw data out of Git)
+
+data/processed/
+outputs/models/
+outputs/figures/
+outputs/tables/
+
+# CatBoost artifacts
+catboost_info/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Misc
+*.log
+*.tmp
+@@@
+./@@@
+./@
+data/processed/*
+outputs/models/*
+outputs/figures/*
+outputs/tables/*
+./data/processed/*
+./outputs/models/*
+./outputs/figures/*
+./outputs/tables/*
+processed/*
+models/*
+figures/*
+tables/*
