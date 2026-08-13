@@ -98,7 +98,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ### 🔎 Topics
 `machine-learning` `deep-learning` `reinforcement-learning` `data-science` `python` `jupyter-notebook` `cnn` `rnn` `lstm` `gan` `pca` `t-sne` `xgboost` `random-forest` `svm` `knn` `k-means` `dbscan` `feature-engineering` `prostate-cancer` `persian-machine-learning`
 
-<div align="center">
-  <i>If you find this repository helpful, please consider giving it a ⭐ to support the project!</i>
-</div>
-# test
+
