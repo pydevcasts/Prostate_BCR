@@ -1,61 +1,45 @@
-# Python
+```
+# Compiled Python files
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-*.egg-info/
+
+# Jupyter notebooks checkpoints
+**/.ipynb_checkpoints/
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Dependencies
+.venv/
+venv/
+node_modules/
+
+# Build artifacts
 dist/
 build/
-*.egg
-*.whl
+*.egg-info/
 
-# Virtual Environment
-venv/
-.venv/
-env/
-.env
+# Logs
+*.log
 
-# IDE & OS
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
+
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Project Outputs (keep raw data out of Git)
+# Testing
+.coverage
+htmlcov/
+.coverage.*
+.pytest_cache/
+.mypy_cache/
 
-data/processed/
-outputs/models/
-outputs/figures/
-outputs/tables/
-
-# CatBoost artifacts
-catboost_info/
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# Misc
-*.log
-*.tmp
-@@@
-./@@@
-./@
-data/processed/*
-outputs/models/*
-outputs/figures/*
-outputs/tables/*
-./data/processed/*
-./outputs/models/*
-./outputs/figures/*
-./outputs/tables/*
-processed/*
-models/*
-figures/*
-tables/**.csv
-*.joblib
-*.pkl
-core/data/processed/*
+# Distribution / packaging
+*.tar.gz
+*.whl
+```
