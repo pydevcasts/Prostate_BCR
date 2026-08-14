@@ -1,2 +1,0 @@
-roc_auc,roc_auc_ci_low,roc_auc_ci_high,pr_auc,accuracy,precision,recall,sensitivity,specificity,f1_score,mcc,balanced_accuracy,model
-0.7889,0.6791,0.8887,0.4445,0.6512,0.2407,0.7647,0.7647,0.6339,0.3662,0.2733,0.6993,XGBoost + PSO
