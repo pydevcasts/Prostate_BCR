@@ -55,4 +55,7 @@ outputs/tables/*
 processed/*
 models/*
 figures/*
-tables/*
+tables/**.csv
+*.joblib
+*.pkl
+core/data/processed/*
