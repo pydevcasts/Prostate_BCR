@@ -14,7 +14,7 @@ All selectors must be fitted on training data only.
 
 from __future__ import annotations
 
-from typing import Any, Callable
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -24,18 +24,38 @@ from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 
 import config
+from src.features_config import (
+    AR_GENES,
+    GLEASON_PRIMARY_COL,
+    GLEASON_SECONDARY_COL,
+    LYMPH_NODE_COL,
+    MARGIN_COL,
+    MIN_GENES_FOR_PATHWAY,
+    PROLIF_GENES,
+    PSA_GENES,
+)
 from src.io import logger
 
 
 # ---------------------------------------------------------------------------
 # Feature Engineering: Interaction & Pathway Features
 # ---------------------------------------------------------------------------
-def create_engineered_features(X: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
+def create_engineered_features(
+    X: pd.DataFrame,
+    strict_mode: bool = False,
+    required_genes: Optional[Dict[str, List[str]]] = None,
+) -> Tuple[pd.DataFrame, List[str]]:
     """Create clinically meaningful engineered features.
     
     Compensates for removed post-operative PSA (leakage) by capturing
     similar biological information through pre-operative clinical variables
     and gene expression pathways.
+    
+    Args:
+        X: Input DataFrame
+        strict_mode: If True, only create pathway scores if ALL required genes present
+        required_genes: Optional dict mapping score name to required gene list.
+                       If provided, overrides default gene sets.
     
     Returns:
         Tuple of (DataFrame with new features, list of new feature names)
@@ -44,21 +64,19 @@ def create_engineered_features(X: pd.DataFrame) -> tuple[pd.DataFrame, list[str]
     created_features = []
     
     # ── 1. Gleason-based features ──
-    if 'Gleason pattern primary' in X.columns and 'Gleason pattern secondary' in X.columns:
-        X['Gleason_Total'] = X['Gleason pattern primary'] + X['Gleason pattern secondary']
+    if GLEASON_PRIMARY_COL in X.columns and GLEASON_SECONDARY_COL in X.columns:
+        X['Gleason_Total'] = X[GLEASON_PRIMARY_COL] + X[GLEASON_SECONDARY_COL]
         X['High_Risk_Gleason'] = (
-            (X['Gleason pattern primary'] >= 4) | 
-            (X['Gleason pattern secondary'] >= 4)
+            (X[GLEASON_PRIMARY_COL] >= 4) | 
+            (X[GLEASON_SECONDARY_COL] >= 4)
         ).astype(int)
         created_features.extend(['Gleason_Total', 'High_Risk_Gleason'])
         logger.info("Engineered: Gleason_Total, High_Risk_Gleason")
 
     # ── 2. Margin × Lymph Node interaction ──
-    margin_col = 'Surgical Margin Resection Status_R1'
-    lymph_col = 'Primary Lymph Node Presentation Assessment Ind-3_YES'
-    if margin_col in X.columns and lymph_col in X.columns:
+    if MARGIN_COL in X.columns and LYMPH_NODE_COL in X.columns:
         X['Margin_x_LymphNode'] = (
-            X[margin_col].astype(float) * X[lymph_col].astype(float)
+            X[MARGIN_COL].astype(float) * X[LYMPH_NODE_COL].astype(float)
         )
         created_features.append('Margin_x_LymphNode')
         logger.info("Engineered: Margin_x_LymphNode")
@@ -71,28 +89,51 @@ def create_engineered_features(X: pd.DataFrame) -> tuple[pd.DataFrame, list[str]
         logger.info("Engineered: T_Stage_Risk")
 
     # ── 4. PSA Pathway Score (gene expression) ──
-    psa_genes = ['KLK3', 'KLK2', 'ACPP', 'TMPRSS2', 'AR', 'NKX3-1', 'STEAP2']
+    psa_genes = list(required_genes.get('PSA', PSA_GENES) if required_genes else PSA_GENES)
     available_psa = [g for g in psa_genes if g in X.columns]
-    if len(available_psa) >= 3:
-        X['PSA_Pathway_Score'] = X[available_psa].mean(axis=1)
-        created_features.append('PSA_Pathway_Score')
-        logger.info(f"Engineered: PSA_Pathway_Score (from {len(available_psa)} genes)")
+    
+    if strict_mode:
+        # STRICT MODE: Only create if ALL genes are available
+        if set(psa_genes).issubset(set(X.columns)):
+            X['PSA_Pathway_Score'] = X[psa_genes].mean(axis=1)
+            created_features.append('PSA_Pathway_Score')
+            logger.info(f"Engineered: PSA_Pathway_Score (strict mode, {len(psa_genes)} genes)")
+    else:
+        # LENIENT MODE: Create if at least MIN_GENES_FOR_PATHWAY genes available
+        if len(available_psa) >= MIN_GENES_FOR_PATHWAY:
+            X['PSA_Pathway_Score'] = X[available_psa].mean(axis=1)
+            created_features.append('PSA_Pathway_Score')
+            logger.info(f"Engineered: PSA_Pathway_Score (from {len(available_psa)} genes)")
 
     # ── 5. AR Signaling Score ──
-    ar_genes = ['AR', 'FKBP5', 'KLK3', 'KLK2', 'TMPRSS2', 'NKX3-1', 'STEAP2', 'CAMKK2']
+    ar_genes = list(required_genes.get('AR', AR_GENES) if required_genes else AR_GENES)
     available_ar = [g for g in ar_genes if g in X.columns]
-    if len(available_ar) >= 3:
-        X['AR_Signaling_Score'] = X[available_ar].mean(axis=1)
-        created_features.append('AR_Signaling_Score')
-        logger.info(f"Engineered: AR_Signaling_Score (from {len(available_ar)} genes)")
+    
+    if strict_mode:
+        if set(ar_genes).issubset(set(X.columns)):
+            X['AR_Signaling_Score'] = X[ar_genes].mean(axis=1)
+            created_features.append('AR_Signaling_Score')
+            logger.info(f"Engineered: AR_Signaling_Score (strict mode, {len(ar_genes)} genes)")
+    else:
+        if len(available_ar) >= MIN_GENES_FOR_PATHWAY:
+            X['AR_Signaling_Score'] = X[available_ar].mean(axis=1)
+            created_features.append('AR_Signaling_Score')
+            logger.info(f"Engineered: AR_Signaling_Score (from {len(available_ar)} genes)")
 
     # ── 6. Proliferation Score ──
-    prolif_genes = ['MKI67', 'TOP2A', 'CCNB1', 'CCNE1', 'CDK1', 'AURKA', 'BIRC5']
+    prolif_genes = list(required_genes.get('PROLIF', PROLIF_GENES) if required_genes else PROLIF_GENES)
     available_prolif = [g for g in prolif_genes if g in X.columns]
-    if len(available_prolif) >= 3:
-        X['Proliferation_Score'] = X[available_prolif].mean(axis=1)
-        created_features.append('Proliferation_Score')
-        logger.info(f"Engineered: Proliferation_Score (from {len(available_prolif)} genes)")
+    
+    if strict_mode:
+        if set(prolif_genes).issubset(set(X.columns)):
+            X['Proliferation_Score'] = X[prolif_genes].mean(axis=1)
+            created_features.append('Proliferation_Score')
+            logger.info(f"Engineered: Proliferation_Score (strict mode, {len(prolif_genes)} genes)")
+    else:
+        if len(available_prolif) >= MIN_GENES_FOR_PATHWAY:
+            X['Proliferation_Score'] = X[available_prolif].mean(axis=1)
+            created_features.append('Proliferation_Score')
+            logger.info(f"Engineered: Proliferation_Score (from {len(available_prolif)} genes)")
 
     return X, created_features
 
