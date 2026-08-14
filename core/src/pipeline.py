@@ -7,6 +7,13 @@ happen inside CV folds to prevent data leakage.
 """
 
 from __future__ import annotations
+import sys
+from pathlib import Path
+project_root = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(project_root))
+
+import config as config
+from src.io import logger
 
 from typing import Any
 
@@ -240,3 +247,4 @@ def evaluate_final_model(
     logger.info("=" * 60)
 
     return metrics
+
