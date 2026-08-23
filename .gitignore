@@ -1,27 +1,27 @@
-# Compiled Python files
-*.pyc
+```
+# Data and model outputs
+core/data/processed/
+core/outputs/
+
+# Python specific
 __pycache__/
-
-# Jupyter notebooks checkpoints
-**/.ipynb_checkpoints/
-
-# Environment files
-.env
-.env.local
-*.env.*
+*.pyc
+*.pyo
+*.pyd
+*.py~
 
 # Dependencies
 .venv/
 venv/
-node_modules/
+env/
+.env
+.env.local
+.env.*
 
-# Build artifacts
-dist/
-build/
-*.egg-info/
-
-# Logs
+# Logs and temp files
 *.log
+*.tmp
+*.swp
 
 # Editors
 .vscode/
@@ -31,14 +31,13 @@ build/
 .DS_Store
 Thumbs.db
 
-# Testing
+# Coverage reports
 .coverage
+coverage/
 htmlcov/
-.coverage.*
-.pytest_cache/
-.mypy_cache/
 
 # Distribution / packaging
-*.tar.gz
-*.whl
-external/
+dist/
+build/
+*.egg-info/
+```
