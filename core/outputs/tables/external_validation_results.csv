@@ -1,0 +1,2 @@
+cohort,strategy,n_samples,n_positive,auc,ci_low,ci_high,n_features_used,missing_features
+GSE70769,Refit on intersection (37 features),93,45,0.5354,0.4715,0.5924,37,RNF3A;LRR1;SCA11;CHAMP1;CCDC157;GSAP;Primary Lymph Node Presentation Assessment Ind-3_YES;PCNXL4;KIAA1254;Margin_x_LymphNode
