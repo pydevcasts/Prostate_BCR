@@ -25,6 +25,7 @@ et_xmlfile==2.0.0
 executing==2.2.1
 fastapi==0.138.1
 fonttools==4.63.0
+GEOparse==2.0.4
 graphviz==0.21
 greenlet==3.5.2
 h11==0.16.0
