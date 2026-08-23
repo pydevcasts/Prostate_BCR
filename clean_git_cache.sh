@@ -1,24 +1,11 @@
-#!/bin/bash
+# 1. حذف فایل‌های بزرگ از تاریخچه Git
+git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch 'core/data/processed/X_features_final.csv' 'core/data/processed/X_train_preprocessed.csv' 571da6228bcfe4c4626b0aa564ba6d012fb85a23" \
+  --prune-empty --tag-name-filter cat -- --all
 
-echo -e "\033[1;33mحذف فایل‌های بزرگ مشخص شده...\033[0m"
-
-# لیست فایل‌های بزرگ شما
-FILES=(
-    "core/data/processed/X_test_preprocessed.csv"
-    "core/data/processed/X_train_preprocessed.csv"
-    "core/data/raw/data_mrna_seq_v2_rsem.txt"
-    "core/data/processed/X_features_final.csv"
-)
-
-# حذف هر فایل
-for FILE in "${FILES[@]}"; do
-    echo -e "\033[0;32mحذف: $FILE\033[0m"
-    git filter-repo --path "$FILE" --invert-paths --force
-done
-
-# پاکسازی نهایی
+# 2. پاکسازی
 git reflog expire --expire=now --all
 git gc --prune=now --aggressive
 
-echo -e "\033[0;32m✅ پاکسازی کامل شد!\033[0m"
-echo -e "حجم جدید: $(du -sh .git | awk '{print $1}')"
+# 3. Push مجدد
+git push origin main --force
