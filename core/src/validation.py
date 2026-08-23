@@ -1,6 +1,5 @@
 """
 Validation utilities for the Prostate BCR prediction pipeline.
-
 Provides functions to validate feature consistency, model inputs, and pipeline integrity.
 """
 

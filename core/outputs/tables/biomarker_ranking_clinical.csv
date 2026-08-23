@@ -1,0 +1,3 @@
+rank,feature,importance,feature_type
+1,Primary Lymph Node Presentation Assessment Ind-3_YES,0.078534946,clinical
+2,Gleason_Total,0.058702253,clinical
