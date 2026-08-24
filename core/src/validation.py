@@ -121,6 +121,7 @@ def verify_pipeline_consistency(config: Any) -> dict:
             - passed: bool indicating if all checks passed
             - issues: list of issue descriptions
             - artifacts: dictionary of artifact metadata
+            - skipped: list of checks that were skipped due to missing prerequisites
             
     Raises:
         FileNotFoundError: If critical artifacts are missing
@@ -131,32 +132,34 @@ def verify_pipeline_consistency(config: Any) -> dict:
     results = {
         "passed": True,
         "issues": [],
-        "artifacts": {}
+        "artifacts": {},
+        "skipped": []
     }
     
     # Check 1: Feature list consistency
+    final_set = None
     try:
         final_features_path = config.TABLES_DIR / "selected_features_final.csv"
         pso_features_path = config.TABLES_DIR / "selected_features.csv"
         
         if not final_features_path.exists():
             results["issues"].append(
-                f"Missing final features file: {final_features_path}"
+                f"Missing final features file: {final_features_path}. "
+                f"Run Notebook 05 (Model Training) first to generate artifacts."
             )
             results["passed"] = False
+            results["skipped"].append("Feature consistency check")
         else:
             final_features = pd.read_csv(final_features_path)
             final_set = set(final_features["feature"])
             results["artifacts"]["final_feature_count"] = len(final_set)
         
-        if not pso_features_path.exists():
-            logger.warning(f"PSO features file not found: {pso_features_path}")
-        else:
+        if pso_features_path.exists():
             pso_features = pd.read_csv(pso_features_path)
             pso_set = set(pso_features["feature"])
             results["artifacts"]["pso_feature_count"] = len(pso_set)
             
-            if 'final_set' in locals() and not pso_set.issubset(final_set):
+            if final_set is not None and not pso_set.issubset(final_set):
                 results["issues"].append(
                     "PSO features not subset of final features"
                 )
@@ -170,18 +173,28 @@ def verify_pipeline_consistency(config: Any) -> dict:
     try:
         test_data_path = config.PROCESSED_DIR / "X_test_selected.csv"
         if not test_data_path.exists():
-            results["issues"].append(f"Missing test data file: {test_data_path}")
+            results["issues"].append(
+                f"Missing test data file: {test_data_path}. "
+                f"Run Notebook 05 (Model Training) first to generate artifacts."
+            )
             results["passed"] = False
+            results["skipped"].append("Test data consistency check")
         else:
             X_test = pd.read_csv(test_data_path)
             results["artifacts"]["test_sample_count"] = len(X_test)
             results["artifacts"]["test_feature_count"] = X_test.shape[1]
             
-            if 'final_set' in locals():
-                if set(X_test.columns) != final_set:
+            if final_set is not None:
+                test_cols_set = set(X_test.columns)
+                if test_cols_set != final_set:
+                    # Provide detailed diagnostic information
+                    missing_in_test = final_set - test_cols_set
+                    extra_in_test = test_cols_set - final_set
                     results["issues"].append(
-                        f"Test data columns ({len(X_test.columns)}) don't match "
-                        f"final features ({len(final_set)})"
+                        f"Test data columns ({len(test_cols_set)}) don't match "
+                        f"final features ({len(final_set)}). "
+                        f"Missing in test: {list(missing_in_test)[:5]}{'...' if len(missing_in_test) > 5 else ''}. "
+                        f"Extra in test: {list(extra_in_test)[:5]}{'...' if len(extra_in_test) > 5 else ''}."
                     )
                     results["passed"] = False
                     
@@ -193,8 +206,12 @@ def verify_pipeline_consistency(config: Any) -> dict:
     try:
         model_path = config.MODELS_DIR / "best_model_xgboost.joblib"
         if not model_path.exists():
-            results["issues"].append("Model file not found")
+            results["issues"].append(
+                f"Model file not found: {model_path}. "
+                f"Run Notebook 05 (Model Training) first to generate artifacts."
+            )
             results["passed"] = False
+            results["skipped"].append("Model existence check")
         else:
             results["artifacts"]["model_exists"] = True
     except Exception as e:
