@@ -40,4 +40,7 @@ htmlcov/
 dist/
 build/
 *.egg-info/
-```
+*.csv
+*.txt
+*.gz
+data/
