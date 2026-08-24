@@ -271,8 +271,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For questions or collaborations, please contact:
-- Email: your.email@institution.edu
-- GitHub Issues: [Open an issue](https://github.com/yourusername/prostate_bcr_prediction/issues)
+- Email: pydevcasts@gmail.com
+- GitHub Issues: [Open an issue](https://github.com/pydevcasts/Prostate_BCR/branches/issues)
 
 ## Acknowledgments
 
