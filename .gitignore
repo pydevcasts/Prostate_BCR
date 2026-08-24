@@ -12,10 +12,11 @@ dist/
 build/
 target/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
+# Dependencies
+pip-wheel-metadata/
+.tox/
+.coverage
+htmlcov/
 
 # Environment
 .env
