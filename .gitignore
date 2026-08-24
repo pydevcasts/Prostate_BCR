@@ -1,46 +1,31 @@
 ```
-# Data and model outputs
-core/data/processed/
-core/outputs/
-
-# Python specific
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.py~
-
-# Dependencies
-.venv/
+.Python
 venv/
-env/
+.venv/
 .env
 .env.local
 .env.*
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
+# Dependencies
+pip-wheel-metadata/
+.tox/
+.coverage
+htmlcov/
 
-# Editors
-.vscode/
-.idea/
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
 
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# Coverage reports
-.coverage
-coverage/
-htmlcov/
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-*.csv
-*.txt
-*.gz
-data/
+```
