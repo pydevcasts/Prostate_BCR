@@ -12,6 +12,9 @@ xgboost>=1.7.0
 lightgbm>=3.3.0
 catboost>=1.0.0
 
+# Hyperparameter Optimization
+optuna>=3.0.0
+
 # Feature selection and optimization
 # (PSO implementation uses custom code in src/feature_selection.py)
 
