@@ -1,6 +1,8 @@
-```
-# Python
+# ============================================
+# Python & Environment
+# ============================================
 __pycache__/
+*.py[cod]
 *.pyc
 *.pyo
 *.pyd
@@ -10,25 +12,98 @@ venv/
 .env
 .env.local
 .env.*
+ENV/
+env/
+virtualenv/
 
-# Dependencies
+# ============================================
+# Build & Dependencies
+# ============================================
 pip-wheel-metadata/
 .tox/
 .coverage
 htmlcov/
-
-# Build artifacts
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 build/
 dist/
 *.egg-info/
+*.egg
+wheels/
 
-# Logs
-*.log
-
-# OS generated files
+# ============================================
+# IDE & OS
+# ============================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 .DS_Store
 Thumbs.db
+desktop.ini
+
+
+
+# ============================================
+# Project Data & Outputs
+# ============================================
+# پوشه‌های داده و خروجی (همه محتویات)
 data/
+outputs/
+models/
+logs/
+results/
+figures/
+plots/
+reports/
+
+# ============================================
+# Data File Types
+# ============================================
 *.csv
+*.tsv
+*.xls
+*.xlsx
 *.txt
-```
+*.json
+*.jsonl
+*.xml
+*.yaml
+*.yml
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+
+# ============================================
+# Images & Binary Files
+# ============================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.eps
+*.pth
+*.pt
+*.onnx
+*.pb
+*.weights
+*.bin
+
+# ============================================
+# Logs & Temp Files
+# ============================================
+*.log
+*.bak
+*.tmp
+*.temp
+*.pid
+*.seed
