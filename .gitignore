@@ -107,3 +107,11 @@ reports/
 *.temp
 *.pid
 *.seed
+core/outputs/
+core/outputs/**
+*.png
+*.jpg
+*.jpeg
+*.joblib
+*.json
+*.tsv
