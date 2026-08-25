@@ -1,46 +1,42 @@
 ```
-# Compiled and build artifacts
-*.pyc
+# Model outputs and training artifacts
+core/outputs/catboost_info/
+
+# Python cache
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# Dependencies
-.venv/
-venv/
-node_modules/
-*.egg-info/
-dist/
-build/
-target/
+# Logs
+*.log
 
-# Dependencies
-pip-wheel-metadata/
-.tox/
-.coverage
-htmlcov/
+# Temporary files
+*.tmp
+*.temp
 
-# Environment
+# Environment files
 .env
 .env.local
 *.env.*
 
-# Editors
-.vscode/
-.idea/
-
-# Coverage
-.coverage
+# Coverage reports
 coverage/
 htmlcov/
+*.coverage
 
-# Jupyter notebooks
-.ipynb_checkpoints/
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# CatBoost outputs
-core/outputs/catboost_info/
+# OS specific
+.DS_Store
+Thumbs.db
 
-# Python cache
-*.pyc
-*.pyo
-*.pyd
-.Python
+# Build directories
+dist/
+build/
+target/
 ```
