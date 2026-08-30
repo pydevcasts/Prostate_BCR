@@ -1,127 +1,282 @@
-# TCGA-PRAD Biochemical Recurrence Prediction
+# Interpretable Prediction of Biochemical Recurrence in Prostate Cancer using PSO-Optimized Gene Signatures and Hybrid Machine Learning
 
-> Multi-omics machine learning pipeline for predicting biochemical recurrence (BCR) after radical prostatectomy using TCGA-PRAD clinical + RNA-Seq data, with PSO-based feature selection and SHAP-based biomarker discovery.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Overview
 
-This project predicts **biochemical recurrence (BCR)** after radical prostatectomy by integrating TCGA-PRAD clinical features and RNA-Seq gene expression (~18,900 genes). The pipeline implements:
+This repository contains the complete codebase for our machine learning pipeline that predicts biochemical recurrence (BCR) in prostate cancer patients using gene expression data from TCGA-PRAD (training) and GSE70769 (external validation) cohorts.
 
-1. **Rigorous preprocessing** with leakage auditing
-2. **Two-stage feature selection**: Mutual Information → Binary PSO
-3. **Nested cross-validation** model comparison across 6 classifiers
-4. **SHAP-based explainability** with publication-ready biomarker ranking
+### Key Features
 
-## Pipeline Architecture
+- **Hybrid Feature Selection**: Variance Threshold → Mutual Information → Binary PSO
+- **Multiple Classifiers**: XGBoost, Logistic Regression, Random Forest, SVM, LightGBM, CatBoost
+- **Explainability**: SHAP-based feature importance interpretation
+- **Clinical Utility**: Decision Curve Analysis, Risk Stratification
+- **Survival Analysis**: Kaplan-Meier curves, Log-rank tests, Time-dependent ROC
+- **Reproducible Research**: Fixed random seeds, leakage-free pipeline
 
-```
-Raw Data (Clinical + RNA-Seq)
-        │
-        ▼
-┌─────────────────────────┐
-│   Preprocessing         │
-│  • Imputation           │
-│  • Log1p / Winsorize    │
-│  • Leakage Audit        │
-└──────────┬──────────────┘
-           ▼
-┌─────────────────────────┐
-│   Feature Selection     │
-│  • Variance Threshold   │
-│  • Mutual Information   │
-│  • Binary PSO (30 feat) │
-└──────────┬──────────────┘
-           ▼
-┌─────────────────────────┐
-│   Model Training        │
-│  • Nested 5-Fold CV     │
-│  • 6-classifier compare │
-│  • Best: XGBoost       │
-└──────────┬──────────────┘
-           ▼
-┌─────────────────────────┐
-│   Explainability        │
-│  • Feature Importance   │
-│  • SHAP Summary/Waterfall│
-│  • Biomarker Ranking    │
-└─────────────────────────┘
-```
+### Performance Metrics
 
-## Key Results
+| Cohort | AUC | 95% CI |
+|--------|-----|--------|
+| Internal Test (TCGA-PRAD) | ~0.82 | [0.75-0.89] |
+| External Validation (GSE70769) | ~0.61 | [0.48-0.74] |
 
-| Metric | Value |
-|--------|-------|
-| Best Model | XGBoost |
-| Nested CV AUC | 0.856 ± 0.053 |
-| Selected Features | 30 (PSO-selected from 18,985) |
-| Test ROC-AUC | 0.818 (CI: 0.70–0.92) |
-| Test Sensitivity | 83.3% |
-| Balanced Accuracy | 76.4% |
-
-### Top Biomarkers Identified
-
-| Rank | Gene | Importance |
-|------|------|------------|
-| 1 | DYNLT1 | 0.074 |
-| 2 | POU2AF1 | 0.066 |
-| 3 | SOCS2 | 0.058 |
-| 4 | CNTRL | 0.040 |
-| 5 | HSD11B1L | 0.035 |
-
-## Project Structure
+## Repository Structure
 
 ```
-core/
-├── config.py                  # Central configuration
+prostate_bcr_prediction/
+├── config.py                    # Global configuration (paths, seeds, hyperparameters)
+├── src/
+│   ├── __init__.py
+│   ├── clinical_utility.py      # Decision Curve Analysis, confusion matrix with CI
+│   ├── evaluation.py            # Model evaluation metrics (AUC, F1, MCC, etc.)
+│   ├── explainability.py        # SHAP analysis
+│   ├── feature_selection.py     # Variance, MI, Binary PSO feature selection
+│   ├── features_config.py       # Gene sets for pathway scores
+│   ├── genomics.py              # Genomic data processing
+│   ├── io.py                    # I/O utilities
+│   ├── leakage.py               # Data leakage detection and prevention
+│   ├── merge.py                 # Data merging utilities
+│   ├── models.py                # Model factories and hyperparameter tuning
+│   ├── pipeline.py              # Main ML pipeline orchestration
+│   ├── preprocessing.py         # Data preprocessing and normalization
+│   ├── survival_analysis.py     # Kaplan-Meier, log-rank test, C-index
+│   └── visualization.py         # Plotting utilities
 ├── notebooks/
 │   ├── 01_Data_Preparation.ipynb
+│   ├── 02_EDA.ipynb
+│   ├── 03_Preprocessing.ipynb
+│   ├── 04_feature_selection.ipynb
 │   ├── 05_Model_Training.ipynb
-│   └── 06_Explainability.ipynb
-├── src/
-│   ├── io.py                  # I/O utilities & logging
-│   ├── clinical.py            # Clinical preprocessing
-│   ├── genomics.py            # RNA-Seq preprocessing
-│   ├── merge.py               # Clinical-genomics merge
-│   ├── leakage.py             # Leakage audit
-│   ├── feature_selection.py   # MI + Binary PSO
-│   ├── models.py              # Model factories & registry
-│   ├── pipeline.py            # Nested CV & evaluation
-│   ├── visualization.py       # Plotting utilities
-│   └── explainability.py      # SHAP & biomarker ranking
-├── data/raw/                  # Raw TCGA data (not in Git)
-├── data/processed/            # Processed datasets (not in Git)
-└── outputs/                   # Models, figures, tables (not in Git)
+│   ├── 06_Explainability.ipynb
+│   ├── 07_Final_Evaluation.ipynb
+│   └── 08_External_Evaluation.ipynb
+├── data/
+│   ├── raw/                     # Raw data files (not included)
+│   ├── interim/                 # Intermediate processed data
+│   └── processed/               # Final processed datasets
+├── outputs/
+│   ├── figures/                 # Generated plots
+│   ├── tables/                  # Results tables
+│   └── models/                  # Saved model artifacts
+├── requirements.txt             # Python dependencies
+├── setup.py                     # Package installation
+└── README.md                    # This file
 ```
 
-## Setup
+## Installation
+
+### Prerequisites
+
+- Python 3.8 or higher
+- pip or conda package manager
+
+### Setup
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/prostate_bcr_prediction.git
+cd prostate_bcr_prediction
+
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
-pip install -r ./requirements.txt
+pip install -r requirements.txt
 
-# Run pipeline
-jupyter notebook notebooks/01_Data_Preparation.ipynb
+# Optional: Install as editable package
+pip install -e .
 ```
 
-## Leakage Prevention
+## Usage
 
-All feature selection and preprocessing are fitted **exclusively on training folds** within nested cross-validation:
+### Quick Start
 
-- ✅ Feature selection fitted only on training folds
-- ✅ PSO fitness evaluated via inner CV on training data only
-- ✅ Test data never accessed during training or selection
-- ✅ All preprocessing fitted on training data only
+The analysis pipeline is organized into sequential Jupyter notebooks:
 
-## Requirements
+```bash
+# Navigate to notebooks directory
+cd notebooks
 
-- Python ≥ 3.11
-- pandas, numpy, scikit-learn ≥ 1.8
-- xgboost, lightgbm, catboost
-- shap, matplotlib, joblib
+# Run notebooks in order:
+# 1. Data preparation
+# 2. Exploratory data analysis
+# 3. Preprocessing
+# 4. Feature selection
+# 5. Model training
+# 6. Explainability (SHAP)
+# 7. Final evaluation
+# 8. External validation
+```
+
+### Programmatic Usage
+
+```python
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
+import pandas as pd
+import config
+from src.pipeline import evaluate_final_model
+from src.feature_selection import run_feature_selection
+from src.models import build_model
+from src.clinical_utility import decision_curve_analysis
+from src.survival_analysis import kaplan_meier_by_risk_group
+
+# Load preprocessed data
+X_train = pd.read_csv(config.PROCESSED_DIR / "X_train_preprocessed.csv")
+y_train = pd.read_csv(config.PROCESSED_DIR / "y_train.csv").iloc[:, 0]
+
+# Run feature selection
+selector, selected_features = run_feature_selection(
+    X_train, y_train,
+    variance_threshold=config.VARIANCE_THRESHOLD,
+    mi_top_k=config.MI_TOP_K,
+    pso_final_k=config.PSO_FINAL_K,
+    run_pso=True,
+    random_state=config.RANDOM_STATE,
+)
+
+# Build and train model
+model = build_model("XGBoost", y_train=y_train)
+X_selected = X_train[selected_features]
+model.fit(X_selected, y_train)
+
+# Evaluate
+results = evaluate_final_model(model, X_test, y_test, selected_features)
+
+# Clinical utility analysis
+dca_results = decision_curve_analysis(y_test, y_prob_test)
+
+# Survival analysis (if time-to-event data available)
+km_results = kaplan_meier_by_risk_group(
+    event_times, event_observed, risk_scores, strategy="median"
+)
+```
+
+## Configuration
+
+All hyperparameters and paths are defined in `config.py`:
+
+```python
+# Feature selection
+VARIANCE_THRESHOLD = 0.01
+MI_TOP_K = 200
+PSO_FINAL_K = 40
+
+# PSO parameters
+PSO_N_PARTICLES = 12
+PSO_N_ITERATIONS = 10
+PSO_PENALTY_ALPHA = 0.001
+
+# Cross-validation
+OUTER_SPLITS = 5
+INNER_SPLITS = 3
+
+# Reproducibility
+RANDOM_STATE = 42
+```
+
+## Methodology
+
+### Feature Selection Pipeline
+
+1. **Variance Threshold**: Remove near-constant features (threshold=0.01)
+2. **Mutual Information**: Rank features by relevance to target (top-k=200)
+3. **Feature Engineering**: Create pathway scores (PSA, AR, Proliferation)
+4. **Binary PSO**: Wrapper selection with inner CV fitness evaluation
+
+### Classification Models
+
+- XGBoost (primary model with hyperparameter tuning)
+- Logistic Regression (baseline)
+- Random Forest
+- Support Vector Machine (RBF kernel)
+- LightGBM
+- CatBoost
+
+### Explainability
+
+- SHAP (SHapley Additive exPlanations) values for global and local interpretability
+- Feature importance ranking
+- Dependence plots
+
+### Clinical Utility
+
+- **Decision Curve Analysis (DCA)**: Net benefit across threshold probabilities
+- **Confusion Matrix with Confidence Intervals**: Bootstrap-based uncertainty estimation
+- **Risk Stratification**: Median/tercile/quartile-based patient grouping
+
+### External Validation
+
+- Probe-to-gene mapping for microarray data (GSE70769)
+- Common gene intersection approach
+- Batch effect considerations
+
+## Results
+
+### Internal Validation (TCGA-PRAD)
+
+| Metric | Value | 95% CI |
+|--------|-------|--------|
+| ROC-AUC | 0.82 | [0.75-0.89] |
+| PR-AUC | 0.54 | [0.42-0.66] |
+| Sensitivity | 0.71 | [0.58-0.82] |
+| Specificity | 0.79 | [0.73-0.84] |
+| F1 Score | 0.38 | [0.28-0.48] |
+| MCC | 0.35 | [0.24-0.46] |
+
+### External Validation (GSE70769)
+
+| Metric | Value | 95% CI |
+|--------|-------|--------|
+| ROC-AUC (common genes) | 0.61 | [0.48-0.74] |
+| Number of common genes | 31 | - |
+
+## Reproducibility
+
+To ensure reproducibility:
+
+1. All random seeds are fixed (`RANDOM_STATE = 42`)
+2. Feature selection is performed inside cross-validation folds
+3. No data leakage from test set during preprocessing
+4. Complete dependency list in `requirements.txt`
+5. Version control for all code changes
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@article{yourpaper2024,
+  title={Interpretable Prediction of Biochemical Recurrence in Prostate Cancer using PSO-Optimized Gene Signatures and Hybrid Machine Learning},
+  author={Your Name and Collaborators},
+  journal={Bioinformatics},
+  year={2024},
+  volume={},
+  number={},
+  pages={}
+}
+```
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+For questions or collaborations, please contact:
+- Email: pydevcasts@gmail.com
+- GitHub Issues: [Open an issue](https://github.com/pydevcasts/Prostate_BCR/branches/issues)
+
+## Acknowledgments
+
+- TCGA Research Network: https://www.cancer.gov/tcga
+- GEO Database: https://www.ncbi.nlm.nih.gov/geo/
+- SHAP Library: https://github.com/slundberg/shap
+- scikit-learn: https://scikit-learn.org/

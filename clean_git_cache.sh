@@ -16,7 +16,7 @@ git gc --prune=now --aggressive
 git remote add origin https://github.com/pydevcasts/Prostate_BCR.git
 
 # ۴. Push با --force
-git push origin pso-optimized-gene-signatures-for-prostate-cancer-prediction-3cd90 --force
+# git push origin pso-optimized-gene-signatures-for-prostate-cancer-prediction-3cd90 --force
 # # ۱. نصب
 # pip install git-filter-repo
 
@@ -28,3 +28,11 @@ git push origin pso-optimized-gene-signatures-for-prostate-cancer-prediction-3cd
 
 # # ۴. Push
 # git push origin pso-optimized-gene-signatures-for-prostate-cancer-prediction-3cd90 --force
+# ۱. با filter-repo همه فایل‌های outputs را حذف کنید
+# git filter-repo --path core/outputs/ --invert-paths --force
+
+# # ۲. ریموت را دوباره اضافه کنید
+# git remote add origin https://github.com/pydevcasts/Prostate_BCR.git
+
+# # ۳. push کنید
+# git push origin prostate-cancer-bcr-prediction-enhancement-8b910 --force
