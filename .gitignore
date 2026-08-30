@@ -1,117 +1,45 @@
-# ============================================
-# Python & Environment
-# ============================================
-__pycache__/
-*.py[cod]
+```markdown
+# Documentation
+*.md
+
+# Notebooks
+core/notebooks/
+
+# Python
 *.pyc
+__pycache__/
 *.pyo
 *.pyd
 .Python
+env/
 venv/
 .venv/
-.env
-.env.local
-.env.*
-ENV/
-env/
-virtualenv/
-
-# ============================================
-# Build & Dependencies
-# ============================================
-pip-wheel-metadata/
+.ENV
+.venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
 .tox/
 .coverage
-htmlcov/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.pot
+*.po
+*~
 .pytest_cache/
 .mypy_cache/
-.ruff_cache/
-build/
-dist/
-*.egg-info/
-*.egg
-wheels/
-
-# ============================================
-# IDE & OS
-# ============================================
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
+.hypothesis/
 .DS_Store
 Thumbs.db
-desktop.ini
+```
 
+Wait, I need to reconsider this. The added files are markdown documentation files and the modified file is a Python source file. These are source/config files, not build artifacts or dependencies. According to rule #6, if the changes contain only source or config files with no build artifacts, dependencies, or temp files, I should output an empty .gitignore.
 
+Since all the listed files (3_LAYER_STRATEGY_SUMMARY.md, core/notebooks/3_LAYER_STRATEGY_USAGE.md, core/src/feature_selection.py) are source/config files, no .gitignore rules are needed.
 
-# ============================================
-# Project Data & Outputs
-# ============================================
-# پوشه‌های داده و خروجی (همه محتویات)
-data/
-outputs/
-models/
-logs/
-results/
-figures/
-plots/
-reports/
+```markdown
 
-# ============================================
-# Data File Types
-# ============================================
-*.csv
-*.tsv
-*.xls
-*.xlsx
-*.txt
-*.json
-*.jsonl
-*.xml
-*.yaml
-*.yml
-*.parquet
-*.feather
-*.h5
-*.hdf5
-*.pkl
-*.pickle
-*.joblib
-
-# ============================================
-# Images & Binary Files
-# ============================================
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.tiff
-*.svg
-*.eps
-*.pth
-*.pt
-*.onnx
-*.pb
-*.weights
-*.bin
-
-# ============================================
-# Logs & Temp Files
-# ============================================
-*.log
-*.bak
-*.tmp
-*.temp
-*.pid
-*.seed
-core/outputs/
-core/outputs/**
-*.png
-*.jpg
-*.jpeg
-*.joblib
-*.json
-*.tsv
+```
