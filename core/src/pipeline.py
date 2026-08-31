@@ -45,7 +45,7 @@ def compare_models_nested_cv(
         DataFrame with mean/std scores for each model
     """
     if model_names is None:
-        model_names = ["XGBoost", "RandomForest", "LogisticRegression"]
+        model_names = ["XGBoost", "Random Forest", "Logistic Regression"]
     
     results = []
     outer_cv = StratifiedKFold(n_splits=outer_splits, shuffle=True, random_state=random_state)
