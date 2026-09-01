@@ -63,7 +63,7 @@ PSO_INNER_SPLITS: int = 3
 # ---------------------------------------------------------------------------
 VARIANCE_THRESHOLD: float = 0.01
 MI_TOP_K: int = 200
-PSO_FINAL_K: int = 30
+PSO_FINAL_K: int = 50
 PSO_N_PARTICLES: int = 12
 PSO_N_ITERATIONS: int = 10
 PSO_W: float = 0.7        # inertia weight
