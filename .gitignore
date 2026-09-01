@@ -1,1 +1,11 @@
-Nothing needs to be added to the .gitignore file based on the provided changes. The only modified file is a Python source file (`core/src/pipeline.py`), which should not be ignored.
+```
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Archives
+*.tar.gz
+
+# Original rules preserved
+core/src/feature_selection.py
+```
