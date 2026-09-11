@@ -1,0 +1,10 @@
+,value
+n_samples,429
+n_features,19020
+n_leakage_columns,0
+leakage_columns,
+n_duplicate_patients,0
+n_target_missing,0
+temporal_skipped,False
+temporal_n_yes_cases,52
+temporal_n_psa_at_or_after_recurrence,52
