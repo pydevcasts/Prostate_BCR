@@ -30,27 +30,27 @@ def create_clinical_features(
     required_genes: Optional[dict[str, list[str]]] = None,
 ) -> Tuple[pd.DataFrame, List[str]]:
     """Create clinically meaningful engineered features.
-    
+
     This is the Clinical Branch of Late Fusion - it creates features from
     clinical variables ONLY (Gleason scores, tumor stage, surgical margins, etc.).
-    
+
     Args:
         X_clinical: Input DataFrame with clinical features
         strict_mode: If True, only create pathway scores if ALL required genes present
         required_genes: Optional dict mapping score name to required gene list.
                        If provided, overrides default gene sets.
-    
+
     Returns:
         Tuple of (DataFrame with new features, list of new feature names)
     """
     X = X_clinical.copy()
     created_features = []
-    
+
     # ── 1. Gleason-based features ──
     if GLEASON_PRIMARY_COL in X.columns and GLEASON_SECONDARY_COL in X.columns:
         X['Gleason_Total'] = X[GLEASON_PRIMARY_COL] + X[GLEASON_SECONDARY_COL]
         X['High_Risk_Gleason'] = (
-            (X[GLEASON_PRIMARY_COL] >= 4) | 
+            (X[GLEASON_PRIMARY_COL] >= 4) |
             (X[GLEASON_SECONDARY_COL] >= 4)
         ).astype(int)
         created_features.extend(['Gleason_Total', 'High_Risk_Gleason'])
@@ -74,7 +74,7 @@ def create_clinical_features(
     # ── 4. PSA Pathway Score (gene expression) ──
     psa_genes = list(required_genes.get('PSA', PSA_GENES) if required_genes else PSA_GENES)
     available_psa = [g for g in psa_genes if g in X.columns]
-    
+
     if strict_mode:
         if set(psa_genes).issubset(set(X.columns)):
             X['PSA_Pathway_Score'] = X[psa_genes].mean(axis=1)
@@ -89,7 +89,7 @@ def create_clinical_features(
     # ── 5. AR Signaling Score ──
     ar_genes = list(required_genes.get('AR', AR_GENES) if required_genes else AR_GENES)
     available_ar = [g for g in ar_genes if g in X.columns]
-    
+
     if strict_mode:
         if set(ar_genes).issubset(set(X.columns)):
             X['AR_Signaling_Score'] = X[ar_genes].mean(axis=1)
@@ -104,7 +104,7 @@ def create_clinical_features(
     # ── 6. Proliferation Score ──
     prolif_genes = list(required_genes.get('PROLIF', PROLIF_GENES) if required_genes else PROLIF_GENES)
     available_prolif = [g for g in prolif_genes if g in X.columns]
-    
+
     if strict_mode:
         if set(prolif_genes).issubset(set(X.columns)):
             X['Proliferation_Score'] = X[prolif_genes].mean(axis=1)
@@ -121,7 +121,7 @@ def create_clinical_features(
 
 def get_clinical_feature_names() -> list[str]:
     """Return the standard list of clinical engineered feature names.
-    
+
     Returns:
         List of clinical feature names in order of creation
     """
@@ -142,23 +142,23 @@ def prepare_clinical_branch(
     strict_mode: bool = False,
 ) -> tuple[pd.DataFrame, list[str], pd.DataFrame | None]:
     """Prepare clinical features for the Late Fusion Clinical Branch.
-    
+
     Args:
         X_train_clinical: Training clinical data
         X_test_clinical: Optional test clinical data
         strict_mode: Whether to use strict mode for pathway scores
-        
+
     Returns:
         Tuple of (X_train_engineered, clinical_feature_names, X_test_engineered or None)
     """
     X_train_eng, clinical_features = create_clinical_features(
         X_train_clinical, strict_mode=strict_mode
     )
-    
+
     X_test_eng = None
     if X_test_clinical is not None:
         X_test_eng, _ = create_clinical_features(
             X_test_clinical, strict_mode=strict_mode
         )
-    
+
     return X_train_eng, clinical_features, X_test_eng

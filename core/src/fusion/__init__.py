@@ -3,7 +3,7 @@ Late Fusion architecture module for Prostate BCR Prediction.
 
 This package implements the Late Fusion approach where:
 - Genomic Branch: Uses MI + PSO for feature selection on gene expression data ONLY
-- Clinical Branch: Uses domain-specific engineered features (Gleason, Stage, etc.) ONLY  
+- Clinical Branch: Uses domain-specific engineered features (Gleason, Stage, etc.) ONLY
 - Fusion Layer: Combines probabilities from both branches using weighted average
 """
 

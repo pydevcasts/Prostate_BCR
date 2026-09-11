@@ -59,14 +59,14 @@ def fit_genomic_selector(
     random_state: int = config.RANDOM_STATE,
 ) -> dict[str, Any]:
     """Fit Variance Threshold + Mutual Information selectors on genomic data ONLY.
-    
+
     Args:
         X_genomic: Gene expression data (samples x genes)
         y: Target variable
         variance_threshold: Threshold for variance filtering
         mi_top_k: Number of top MI features to select
         random_state: Random seed for reproducibility
-        
+
     Returns:
         Dictionary containing fitted imputer, variance selector, and selected features
     """
@@ -106,12 +106,12 @@ def transform_genomic(
     features: list[str] | None = None,
 ) -> pd.DataFrame:
     """Transform genomic data using a fitted selector.
-    
+
     Args:
         X_genomic: Gene expression data to transform
         fitted_selector: Fitted selector dictionary from fit_genomic_selector
         features: Optional list of specific features to select
-        
+
     Returns:
         Transformed DataFrame with selected features
     """
@@ -119,7 +119,7 @@ def transform_genomic(
     X_imp = imputer.transform(X_genomic)
     X_imp = pd.DataFrame(X_imp, columns=X_genomic.columns, index=X_genomic.index)
     selected = fitted_selector["mi_features"] if features is None else features
-    
+
     valid_features = [f for f in selected if f in X_imp.columns]
     return X_imp[valid_features].copy()
 
@@ -140,9 +140,9 @@ def pso_feature_select_genomic(
     random_state: int = config.RANDOM_STATE,
 ) -> tuple[list[str], float]:
     """Binary PSO for genomic feature selection WITH PENALTY.
-    
+
     This is the genomic branch of Late Fusion - it selects genes ONLY.
-    
+
     Args:
         X_genomic: Gene expression data
         y: Target variable
@@ -154,7 +154,7 @@ def pso_feature_select_genomic(
         w, c1, c2: PSO hyperparameters
         penalty_alpha: Penalty coefficient for feature count
         random_state: Random seed
-        
+
     Returns:
         Tuple of (selected feature names, best fitness score)
     """
@@ -204,10 +204,10 @@ def pso_feature_select_genomic(
             fold_scores.append(roc_auc_score(yva, p))
 
         mean_auc = float(np.mean(fold_scores))
-        
+
         penalty = penalty_alpha * n_features
         final_fitness = mean_auc - penalty
-        
+
         cache[key] = final_fitness
         return final_fitness
 
@@ -278,13 +278,13 @@ def run_genomic_feature_selection(
     random_state: int = config.RANDOM_STATE,
 ) -> tuple[dict[str, Any], list[str]]:
     """Run the full genomic feature selection pipeline.
-    
+
     This is the Genomic Branch of Late Fusion architecture.
     Steps:
         1. Variance Threshold on genes
         2. Mutual Information ranking on genes
         3. Binary PSO wrapper selection on genes ONLY
-        
+
     Args:
         X_train_genomic: Training gene expression data
         y_train: Training target
@@ -293,7 +293,7 @@ def run_genomic_feature_selection(
         pso_final_k: Final PSO feature count
         run_pso: Whether to run PSO (default True)
         random_state: Random seed
-        
+
     Returns:
         Tuple of (fitted_selector dict, final_selected_feature_names)
     """
@@ -305,7 +305,7 @@ def run_genomic_feature_selection(
     )
 
     mi_features = fitted_selector["mi_features"]
-    
+
     if run_pso:
         final_features, pso_score = pso_feature_select_genomic(
             X_train_genomic,
