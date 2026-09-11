@@ -1,0 +1,55 @@
+feature,importance,branch
+Primary Lymph Node Presentation Assessment Ind-3_YES,0.20275952,clinical
+Gleason_Total,0.08769294,clinical
+Primary Lymph Node Presentation Assessment Ind-3_NO,0.06061171,genomic
+American Joint Committee on Cancer Tumor Stage Code_T2c,0.049401283,clinical
+American Joint Committee on Cancer Tumor Stage Code_T2b,0.025846053,clinical
+American Joint Committee on Cancer Tumor Stage Code_T4,0.024300193,clinical
+ERICH6,0.023203863,genomic
+LINC00926,0.022801008,genomic
+GSAP,0.022009103,genomic
+DHX57,0.020950215,genomic
+SLC20A1,0.020696761,genomic
+SPATA31A2,0.018890005,genomic
+CNKSR1,0.018159905,genomic
+DLEU2,0.017845726,genomic
+ERGIC1,0.017470168,genomic
+TYW1,0.017410366,genomic
+BZW2,0.017141357,genomic
+RPS10,0.016221045,genomic
+MID2,0.015584911,genomic
+TRPM1,0.015135606,genomic
+AEBP2,0.014802365,genomic
+SYT9,0.014646998,genomic
+NOG,0.014231094,genomic
+DIO3,0.014101286,genomic
+CD109,0.013837686,genomic
+CCDC127,0.0136646405,genomic
+CGGBP1,0.013659404,genomic
+SLC38A8,0.013305197,genomic
+ANXA6,0.013295863,genomic
+RBBP7,0.01321711,genomic
+IZUMO1,0.013052796,genomic
+SPACA9,0.012881,genomic
+RNF3A,0.012344357,genomic
+GBAP1,0.012071962,genomic
+CHAF1B,0.011500722,genomic
+TNC,0.011240514,genomic
+SYT17,0.010152263,genomic
+COLEC12,0.009805676,genomic
+C1QTNF7,0.009695468,genomic
+SZRD1,0.009313989,genomic
+ADAM10,0.008660426,genomic
+FAM53A,0.008166339,genomic
+LOC100170939,0.007746759,genomic
+C20orf65,0.0067851436,genomic
+GRK1,0.0036891995,genomic
+Gleason pattern secondary,0.0,clinical
+American Joint Committee on Cancer Tumor Stage Code_T2a,0.0,clinical
+Surgical Margin Resection Status_R1,0.0,clinical
+Gleason pattern primary,0.0,clinical
+American Joint Committee on Cancer Tumor Stage Code_T3a,0.0,clinical
+American Joint Committee on Cancer Tumor Stage Code_T3b,0.0,clinical
+High_Risk_Gleason,0.0,clinical
+Margin_x_LymphNode,0.0,clinical
+T_Stage_Risk,0.0,clinical

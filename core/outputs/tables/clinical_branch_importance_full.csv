@@ -1,0 +1,15 @@
+feature,importance
+Primary Lymph Node Presentation Assessment Ind-3_YES,0.5198962
+Gleason_Total,0.2248537
+American Joint Committee on Cancer Tumor Stage Code_T2c,0.12666996
+American Joint Committee on Cancer Tumor Stage Code_T2b,0.06627193
+American Joint Committee on Cancer Tumor Stage Code_T4,0.06230819
+Gleason pattern secondary,0.0
+American Joint Committee on Cancer Tumor Stage Code_T2a,0.0
+Surgical Margin Resection Status_R1,0.0
+Gleason pattern primary,0.0
+American Joint Committee on Cancer Tumor Stage Code_T3a,0.0
+American Joint Committee on Cancer Tumor Stage Code_T3b,0.0
+High_Risk_Gleason,0.0
+Margin_x_LymphNode,0.0
+T_Stage_Risk,0.0

@@ -1,3 +1,4 @@
+
 # Archive Manifest
 
 ## Archive Date: 2024-09-11
@@ -7,7 +8,7 @@ This archive contains obsolete files that have been moved to preserve project hi
 
 **Important**: Notebooks 01, 02, and 03 are **ESSENTIAL** and have been PRESERVED:
 - `01_Data_Preparation.ipynb` → Prepares raw TCGA data
-- `02_EDA.ipynb` → Exploratory data analysis  
+- `02_EDA.ipynb` → Exploratory data analysis
 - `03_Preprocessing.ipynb` → Produces preprocessed train/test data
 
 ## Archived Files
