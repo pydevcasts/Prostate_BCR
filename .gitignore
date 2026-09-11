@@ -1,121 +1,60 @@
-```
-# Python
+# === Large data files ===
+core/data/
+data/
+datasets/
+*.csv
+*.tsv
+*.txt
+*.gz
+*.tar.gz
+*.zip
+*.h5
+*.hdf5
+
+# === Models ===
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+core/outputs/models/
+
+# === Figures (regenerable) ===
+core/outputs/figures/
+
+# === Python ===
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-.Python
-*.so
-*.egg-info/
-dist/
-build/
-*.egg
-
-# Virtual environments
-venv/
-.venv/
-env/
-ENV/
-
-# Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb_checkpoints
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Dependencies
-.node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# === Environment ===
+.venv/
+venv/
+env/
+.conda/
 
-# Logs
-*.log
-
-# Environment variables
-.env
-.env.local
-.env.*
-!.env.example
-
-# IDE specific
+# === IDE ===
 .vscode/
 .idea/
 *.swp
-*.swo
 *~
+
+# === OS ===
 .DS_Store
 Thumbs.db
 
-# Testing
-.coverage
-htmlcov/
-.coverage.*
-.nyc_output/
-coverage/
+# === Logs / backups ===
+*.log
+archive/
+archive_*/
+*_backup/
 
-# MyPy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# PyTest
-.pytest_cache/
-
-# Coverage
-coverage.xml
-*.gcov
-*.lcov
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# PDM
-pdm.lock
-.pdm-python
-__pypackages__/
-
-# Celery
-celerybeat-schedule
-celerybeat.pid
-
-# Sage
-.hg/
-.svn/
-.git/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-```
+# === Secrets ===
+.env
+.env.*
+*.key
+*.pem
