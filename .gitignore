@@ -1,44 +1,8 @@
-# Compiled Python files
-*.pyc
+```
 __pycache__/
-
-# Jupyter notebooks checkpoints
-**/.ipynb_checkpoints/
-
-# Environment files
-.env
-.env.local
-*.env.*
-
-# Dependencies
-.venv/
-venv/
-node_modules/
-
-# Build artifacts
-dist/
-build/
-*.egg-info/
-
-# Logs
-*.log
-
-# Editors
-.vscode/
-.idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Testing
-.coverage
-htmlcov/
-.coverage.*
-.pytest_cache/
-.mypy_cache/
-
-# Distribution / packaging
-*.tar.gz
-*.whl
-external/
+*.pyc
+*.pyo
+*.pyd
+.jupyter
+.ipynb_checkpoints/
+```
