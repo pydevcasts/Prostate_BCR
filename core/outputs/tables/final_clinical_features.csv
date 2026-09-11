@@ -1,0 +1,15 @@
+feature
+Gleason pattern primary
+Gleason pattern secondary
+Primary Lymph Node Presentation Assessment Ind-3_YES
+Surgical Margin Resection Status_R1
+American Joint Committee on Cancer Tumor Stage Code_T2a
+American Joint Committee on Cancer Tumor Stage Code_T2b
+American Joint Committee on Cancer Tumor Stage Code_T2c
+American Joint Committee on Cancer Tumor Stage Code_T3a
+American Joint Committee on Cancer Tumor Stage Code_T3b
+American Joint Committee on Cancer Tumor Stage Code_T4
+Gleason_Total
+High_Risk_Gleason
+Margin_x_LymphNode
+T_Stage_Risk
