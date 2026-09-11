@@ -172,9 +172,20 @@ class LateFusionPredictor:
         Returns:
             DataFrame with feature names and importance scores
         """
+        # Helper to extract importance from Pipeline or direct model
+        def _extract_from_pipeline(model):
+            if hasattr(model, 'named_steps'):
+                # It's a sklearn Pipeline
+                for step_name, step_model in model.named_steps.items():
+                    if hasattr(step_model, 'feature_importances_'):
+                        return step_model.feature_importances_
+            elif hasattr(model, 'feature_importances_'):
+                return model.feature_importances_
+            return None
+        
         # Get importance from each model
-        genomic_importance = getattr(self.genomic_model, 'feature_importances_', None)
-        clinical_importance = getattr(self.clinical_model, 'feature_importances_', None)
+        genomic_importance = _extract_from_pipeline(self.genomic_model)
+        clinical_importance = _extract_from_pipeline(self.clinical_model)
         
         importance_data = []
         

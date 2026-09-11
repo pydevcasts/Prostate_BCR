@@ -1,8 +1,54 @@
 ```
-__pycache__/
+# Compiled Python files
 *.pyc
+__pycache__/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Dependencies
+.venv/
+venv/
+env/
+node_modules/
+
+# Build/dist directories
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+.coverage
+coverage/
+htmlcov/
+
+# Python cache
+*.pyc
+__pycache__/
 *.pyo
 *.pyd
-.jupyter
-.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.mypy_cache/
 ```

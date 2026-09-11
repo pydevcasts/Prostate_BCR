@@ -138,7 +138,7 @@ def pso_feature_select_genomic(
     c2: float = config.PSO_C2,
     penalty_alpha: float = config.PSO_PENALTY_ALPHA,
     random_state: int = config.RANDOM_STATE,
-) -> tuple[list[str], float]:
+) -> tuple[list[str], float, list[float], list[float]]:
     """Binary PSO for genomic feature selection WITH PENALTY.
     
     This is the genomic branch of Late Fusion - it selects genes ONLY.
@@ -156,7 +156,7 @@ def pso_feature_select_genomic(
         random_state: Random seed
         
     Returns:
-        Tuple of (selected feature names, best fitness score)
+        Tuple of (selected feature names, best fitness score, fitness_history, raw_auc_history)
     """
     from src.models import make_xgb, xgb_safe_frame
 
@@ -167,7 +167,7 @@ def pso_feature_select_genomic(
             "PSO skipped: %d candidates ≤ %d target features",
             len(candidate_features), n_features,
         )
-        return candidate_features, np.nan
+        return candidate_features, np.nan, [], []
 
     Xc = X_genomic[candidate_features].copy()
     imputer = SimpleImputer(strategy="median")
@@ -180,6 +180,10 @@ def pso_feature_select_genomic(
     )
 
     cache: dict[tuple[int, ...], float] = {}
+    
+    # History tracking for convergence analysis
+    fitness_history = []
+    raw_auc_history = []
 
     def default_fitness(mask: np.ndarray) -> float:
         """Default fitness: mean inner-CV ROC-AUC MINUS penalty."""
@@ -254,8 +258,12 @@ def pso_feature_select_genomic(
             gbest_pos = pbest_pos[best_idx].copy()
             gbest_score = float(pbest_score[best_idx])
 
+        # Track history
+        fitness_history.append(gbest_score)
+        raw_auc = gbest_score + (penalty_alpha * n_features)
+        raw_auc_history.append(raw_auc)
+
         if (iteration + 1) % 5 == 0 or iteration == n_iterations - 1:
-            raw_auc = gbest_score + (penalty_alpha * n_features)
             logger.info(
                 "  Genomic PSO iter %d/%d: best Fitness=%.4f (Raw AUC ≈ %.4f)",
                 iteration + 1, n_iterations, gbest_score, raw_auc,
@@ -264,7 +272,7 @@ def pso_feature_select_genomic(
     selected = [candidate_features[i] for i in np.flatnonzero(gbest_pos)]
     logger.info("Genomic PSO selected %d features with final fitness=%.4f", len(selected), gbest_score)
 
-    return selected, gbest_score
+    return selected, gbest_score, fitness_history, raw_auc_history
 
 
 def run_genomic_feature_selection(
