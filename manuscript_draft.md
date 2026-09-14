@@ -166,7 +166,11 @@ These are preliminary single-split results. They should not be presented as defi
 
 The current three-fold clinical benchmark ranked variance filtering plus PSO with 30 features first by mean ROC-AUC (0.7690 +/- 0.0254), closely followed by all clinical features (0.7681 +/- 0.0254). This benchmark is useful for hypothesis generation, but it is not a replacement for repeated nested CV or external validation.
 
-### 6.4 External validation limitation
+### 6.4 Out-of-fold fusion correction
+
+As a first correction for fusion-weight optimism, each current branch model was refit in five stratified folds and generated predictions only for its held-out fold. Fusion weights were selected from the complete OOF predictions, rather than from in-sample training predictions. The resulting weights were 0.48 for the genomic branch and 0.52 for the clinical branch, with OOF fusion ROC-AUC of 0.8530. Applying these frozen weights and an OOF-derived threshold to the untouched internal test set produced ROC-AUC of 0.7376, sensitivity of 58.3%, specificity of 70.3%, and F1-score of 0.3415. This corrected estimate is more conservative than the previous training-optimized fusion result (ROC-AUC 0.7534) and should be preferred for interpretation until full repeated nested CV is complete.
+
+### 6.5 External validation limitation
 
 The external cohort currently contains only a subset of the selected genomic predictors. The 30-gene experiment found 10 of 33 selected gene/pathway columns available in the external matrix. Filling missing genes with imputation is not equivalent to measuring them and may explain the poor transferability. The final external model should use a prespecified common-feature intersection or, preferably, robust pathway-level scores computed from genes available in both cohorts.
 
@@ -280,6 +284,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 | 2026-09-15 | Created manuscript draft from current Late Fusion outputs. |
 | 2026-09-15 | Documented the controlled PSO target-30 experiment and restored the default target to 40. |
 | 2026-09-15 | Identified the external common-feature limitation and training-based fusion-weight optimism. |
+| 2026-09-15 | Added OOF fusion weight/threshold estimation and recorded the first corrected internal test result. |
 
 ## 13. Source Artifacts
 
@@ -287,7 +292,9 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - Feature selection: `core/src/genomic_selector.py`, `core/src/clinical_selector.py`
 - Clinical benchmark: `core/src/clinical_benchmark.py`
 - Late fusion: `core/src/fusion/late_fusion.py`
+- OOF fusion utility: `core/src/fusion/late_fusion.py` (`estimate_oof_fusion`)
 - Current internal metrics: `core/outputs/tables/final_evaluation.json`
+- OOF fusion metrics: `core/outputs/tables/oof_fusion_results.json`
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`
 - PSO target-30 experiment: `core/outputs/tables/experiment_k30_results.json`
 - External predictions: `core/outputs/tables/external_validation_results.csv`
