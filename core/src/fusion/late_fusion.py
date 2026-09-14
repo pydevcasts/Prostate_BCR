@@ -18,6 +18,14 @@ from sklearn.model_selection import StratifiedKFold
 
 import config
 from src.io import logger
+from src.models import xgb_safe_frame
+
+
+def _prepare_branch_input(model: Any, X: pd.DataFrame) -> pd.DataFrame:
+    """Apply the same column-name normalization used when training XGBoost."""
+    if hasattr(model, "get_booster"):
+        return xgb_safe_frame(X)
+    return X
 
 
 class LateFusionPredictor:
@@ -77,8 +85,12 @@ class LateFusionPredictor:
             Array of shape (n_samples, 2) with class probabilities
         """
         # Get probabilities from each branch
-        proba_genomic = self.genomic_model.predict_proba(X_genomic)
-        proba_clinical = self.clinical_model.predict_proba(X_clinical)
+        proba_genomic = self.genomic_model.predict_proba(
+            _prepare_branch_input(self.genomic_model, X_genomic)
+        )
+        proba_clinical = self.clinical_model.predict_proba(
+            _prepare_branch_input(self.clinical_model, X_clinical)
+        )
         
         # Weighted average fusion
         fused_proba = (
@@ -131,8 +143,12 @@ class LateFusionPredictor:
         best_clinical_weight = 0.5
         
         # Get individual model predictions
-        proba_genomic = self.genomic_model.predict_proba(X_genomic_val)[:, 1]
-        proba_clinical = self.clinical_model.predict_proba(X_clinical_val)[:, 1]
+        proba_genomic = self.genomic_model.predict_proba(
+            _prepare_branch_input(self.genomic_model, X_genomic_val)
+        )[:, 1]
+        proba_clinical = self.clinical_model.predict_proba(
+            _prepare_branch_input(self.clinical_model, X_clinical_val)
+        )[:, 1]
         
         # Search over weight combinations
         for i in range(n_steps + 1):
@@ -287,8 +303,12 @@ def evaluate_late_fusion(
     accuracy = (predictions == y_test).mean()
     
     # Get individual branch performance
-    proba_genomic = fusion_predictor.genomic_model.predict_proba(X_test_genomic)[:, 1]
-    proba_clinical = fusion_predictor.clinical_model.predict_proba(X_test_clinical)[:, 1]
+    proba_genomic = fusion_predictor.genomic_model.predict_proba(
+        _prepare_branch_input(fusion_predictor.genomic_model, X_test_genomic)
+    )[:, 1]
+    proba_clinical = fusion_predictor.clinical_model.predict_proba(
+        _prepare_branch_input(fusion_predictor.clinical_model, X_test_clinical)
+    )[:, 1]
     
     auc_genomic = roc_auc_score(y_test, proba_genomic)
     auc_clinical = roc_auc_score(y_test, proba_clinical)
@@ -331,7 +351,9 @@ def fallback_to_genomic_only(
     """
     if has_clinical and X_clinical is not None:
         # Use genomic model only (this is the fallback)
-        return genomic_model.predict_proba(X_genomic)
+        return genomic_model.predict_proba(
+            _prepare_branch_input(genomic_model, X_genomic)
+        )
     else:
         # Clinical data missing - use genomic only
         logger.warning("Clinical data missing - using genomic model only")

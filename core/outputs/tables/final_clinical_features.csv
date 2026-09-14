@@ -1,15 +1,41 @@
 feature
-Gleason pattern primary
-Gleason pattern secondary
-Primary Lymph Node Presentation Assessment Ind-3_YES
-Surgical Margin Resection Status_R1
-American Joint Committee on Cancer Tumor Stage Code_T2a
-American Joint Committee on Cancer Tumor Stage Code_T2b
-American Joint Committee on Cancer Tumor Stage Code_T2c
-American Joint Committee on Cancer Tumor Stage Code_T3a
-American Joint Committee on Cancer Tumor Stage Code_T3b
-American Joint Committee on Cancer Tumor Stage Code_T4
-Gleason_Total
-High_Risk_Gleason
-Margin_x_LymphNode
+Person Neoplasm Status_WITH TUMOR
+Primary Therapy Outcome Success Type_Progressive Disease
 T_Stage_Risk
+Gleason pattern tertiary_4
+Did patient start adjuvant postoperative radiotherapy?_NO
+Primary Therapy Outcome Success Type_Partial Remission/Response
+Radical Prostatectomy Gleason Score for Prostate Cancer
+"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3"
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T3a
+Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count
+Ct scan ab pelvis indicator_YES
+Year Cancer Initial Diagnosis
+American Joint Committee on Cancer Tumor Stage Code_T3b
+Tissue Retrospective Collection Indicator_YES
+Tissue Prospective Collection Indicator_NO
+Gleason pattern secondary
+Mri results_No Evidence of Extraprostatic Extension
+Gleason pattern tertiary_3
+Ct scan ab pelvis results_No Evidence of Extraprostatic Extension
+Patient Primary Tumor Site_Peripheral Zone
+Diagonstic MRI Result_NO
+Tumor Level_Base
+Patient Primary Tumor Site_Overlapping / Multiple Zones
+Gleason pattern tertiary_5
+Cause of death source_Medical Record
+Surgical Margin Resection Status_R1
+Diagonstic MRI Result_YES
+Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1]
+Primary Lymph Node Presentation Assessment Ind-3_NO
+Prior Cancer Diagnosis Occurence_Yes
+Tissue Prospective Collection Indicator_YES
+Tumor Level_Apex|Base
+"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy"
+Primary Therapy Outcome Success Type_Complete Remission/Response
+Did patient start adjuvant postoperative radiotherapy?_YES
+American Joint Committee on Cancer Tumor Stage Code_T2c
+American Joint Committee on Cancer Tumor Stage Code_T2b
+American Joint Committee on Cancer Tumor Stage Code_T2a
+"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3"
+Neoplasm Disease Lymph Node Stage American Joint Committee on Cancer Code_N1

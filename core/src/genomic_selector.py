@@ -138,6 +138,7 @@ def pso_feature_select_genomic(
     c2: float = config.PSO_C2,
     penalty_alpha: float = config.PSO_PENALTY_ALPHA,
     random_state: int = config.RANDOM_STATE,
+    branch_name: str = "Genomic",
 ) -> tuple[list[str], float, list[float], list[float]]:
     """Binary PSO for genomic feature selection WITH PENALTY.
     
@@ -231,7 +232,8 @@ def pso_feature_select_genomic(
     gbest_score = float(pbest_score[gbest_idx])
 
     logger.info(
-        "Genomic PSO: %d particles, %d iterations, target %d features, alpha=%.4f",
+        "%s PSO: %d particles, %d iterations, target %d features, alpha=%.4f",
+        branch_name,
         n_particles, n_iterations, n_features, penalty_alpha,
     )
 
@@ -265,12 +267,13 @@ def pso_feature_select_genomic(
 
         if (iteration + 1) % 5 == 0 or iteration == n_iterations - 1:
             logger.info(
-                "  Genomic PSO iter %d/%d: best Fitness=%.4f (Raw AUC ≈ %.4f)",
+                "  %s PSO iter %d/%d: best Fitness=%.4f (Raw AUC ~= %.4f)",
+                branch_name,
                 iteration + 1, n_iterations, gbest_score, raw_auc,
             )
 
     selected = [candidate_features[i] for i in np.flatnonzero(gbest_pos)]
-    logger.info("Genomic PSO selected %d features with final fitness=%.4f", len(selected), gbest_score)
+    logger.info("%s PSO selected %d features with final fitness=%.4f", branch_name, len(selected), gbest_score)
 
     return selected, gbest_score, fitness_history, raw_auc_history
 
@@ -315,7 +318,12 @@ def run_genomic_feature_selection(
     mi_features = fitted_selector["mi_features"]
     
     if run_pso:
-        final_features, pso_score = pso_feature_select_genomic(
+        (
+            final_features,
+            pso_score,
+            fitness_history,
+            raw_auc_history,
+        ) = pso_feature_select_genomic(
             X_train_genomic,
             y_train,
             mi_features,
@@ -325,6 +333,14 @@ def run_genomic_feature_selection(
     else:
         final_features = mi_features[:pso_final_k]
         pso_score = np.nan
+        fitness_history = []
+        raw_auc_history = []
+
+    fitted_selector.update({
+        "pso_score": pso_score,
+        "pso_fitness_history": fitness_history,
+        "pso_raw_auc_history": raw_auc_history,
+    })
 
     logger.info(
         "Genomic feature selection complete: %d → %d → %d features",

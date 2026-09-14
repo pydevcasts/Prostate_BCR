@@ -36,6 +36,10 @@ class EngineeredFeaturesConfig:
         'High_Risk_Gleason',
         'Margin_x_LymphNode',
         'T_Stage_Risk',
+    )
+
+    # Molecular pathway feature names belong to the genomic branch.
+    MOLECULAR_PATHWAY_FEATURE_NAMES: Tuple[str, ...] = (
         'PSA_Pathway_Score',
         'AR_Signaling_Score',
         'Proliferation_Score',
@@ -59,4 +63,5 @@ AR_GENES = EngineeredFeaturesConfig.AR_GENES
 PROLIF_GENES = EngineeredFeaturesConfig.PROLIF_GENES
 
 ENGINEERED_FEATURE_NAMES = EngineeredFeaturesConfig.ENGINEERED_FEATURE_NAMES
+MOLECULAR_PATHWAY_FEATURE_NAMES = EngineeredFeaturesConfig.MOLECULAR_PATHWAY_FEATURE_NAMES
 MIN_GENES_FOR_PATHWAY = EngineeredFeaturesConfig.MIN_GENES_FOR_PATHWAY

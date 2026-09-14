@@ -99,6 +99,7 @@ def save_dataframe(
 
 def save_figure(fig: Any, filename: str, dpi: int = config.FIGURE_DPI) -> Path:
     """Save a matplotlib figure to the figures directory."""
+    config.FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     path = config.FIGURES_DIR / filename
     fig.savefig(path, dpi=dpi, bbox_inches="tight")
     logger.info("Saved figure → %s", path)

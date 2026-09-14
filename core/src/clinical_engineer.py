@@ -12,14 +12,10 @@ from typing import List, Optional, Tuple
 import pandas as pd
 
 from src.features_config import (
-    AR_GENES,
     GLEASON_PRIMARY_COL,
     GLEASON_SECONDARY_COL,
     LYMPH_NODE_COL,
     MARGIN_COL,
-    MIN_GENES_FOR_PATHWAY,
-    PROLIF_GENES,
-    PSA_GENES,
 )
 from src.io import logger
 
@@ -71,51 +67,6 @@ def create_clinical_features(
         created_features.append('T_Stage_Risk')
         logger.info("Clinical: T_Stage_Risk")
 
-    # ── 4. PSA Pathway Score (gene expression) ──
-    psa_genes = list(required_genes.get('PSA', PSA_GENES) if required_genes else PSA_GENES)
-    available_psa = [g for g in psa_genes if g in X.columns]
-    
-    if strict_mode:
-        if set(psa_genes).issubset(set(X.columns)):
-            X['PSA_Pathway_Score'] = X[psa_genes].mean(axis=1)
-            created_features.append('PSA_Pathway_Score')
-            logger.info(f"Clinical: PSA_Pathway_Score (strict mode, {len(psa_genes)} genes)")
-    else:
-        if len(available_psa) >= MIN_GENES_FOR_PATHWAY:
-            X['PSA_Pathway_Score'] = X[available_psa].mean(axis=1)
-            created_features.append('PSA_Pathway_Score')
-            logger.info(f"Clinical: PSA_Pathway_Score (from {len(available_psa)} genes)")
-
-    # ── 5. AR Signaling Score ──
-    ar_genes = list(required_genes.get('AR', AR_GENES) if required_genes else AR_GENES)
-    available_ar = [g for g in ar_genes if g in X.columns]
-    
-    if strict_mode:
-        if set(ar_genes).issubset(set(X.columns)):
-            X['AR_Signaling_Score'] = X[ar_genes].mean(axis=1)
-            created_features.append('AR_Signaling_Score')
-            logger.info(f"Clinical: AR_Signaling_Score (strict mode, {len(ar_genes)} genes)")
-    else:
-        if len(available_ar) >= MIN_GENES_FOR_PATHWAY:
-            X['AR_Signaling_Score'] = X[available_ar].mean(axis=1)
-            created_features.append('AR_Signaling_Score')
-            logger.info(f"Clinical: AR_Signaling_Score (from {len(available_ar)} genes)")
-
-    # ── 6. Proliferation Score ──
-    prolif_genes = list(required_genes.get('PROLIF', PROLIF_GENES) if required_genes else PROLIF_GENES)
-    available_prolif = [g for g in prolif_genes if g in X.columns]
-    
-    if strict_mode:
-        if set(prolif_genes).issubset(set(X.columns)):
-            X['Proliferation_Score'] = X[prolif_genes].mean(axis=1)
-            created_features.append('Proliferation_Score')
-            logger.info(f"Clinical: Proliferation_Score (strict mode, {len(prolif_genes)} genes)")
-    else:
-        if len(available_prolif) >= MIN_GENES_FOR_PATHWAY:
-            X['Proliferation_Score'] = X[available_prolif].mean(axis=1)
-            created_features.append('Proliferation_Score')
-            logger.info(f"Clinical: Proliferation_Score (from {len(available_prolif)} genes)")
-
     return X, created_features
 
 
@@ -130,9 +81,6 @@ def get_clinical_feature_names() -> list[str]:
         'High_Risk_Gleason',
         'Margin_x_LymphNode',
         'T_Stage_Risk',
-        'PSA_Pathway_Score',
-        'AR_Signaling_Score',
-        'Proliferation_Score',
     ]
 
 

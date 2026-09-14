@@ -14,7 +14,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any
-
 import numpy as np
 import pandas as pd
 from scipy.stats import skew
@@ -193,17 +192,32 @@ def identify_column_groups(
             "International", "American", "Race", "Ethnicity",
             "Adjuvant", "Tissue", "Form", "Year", "Overall",
             "Disease", "Stage", "Sex", "Informed", "ICD",
+            "High_Risk", "Margin_x", "T_Stage", "PSA_Pathway",
+            "AR_Signaling", "Proliferation",
+            "Radical", "Positive", "Prior", "Diagonstic", "Cause",
         ]
+
+    normalized_prefixes = sorted(
+        {p.lower().replace(" ", "_") for p in clinical_prefixes},
+        key=len, reverse=True,
+    )
 
     clinical_cols = []
     gene_cols = []
 
     for col in X.columns:
-        is_clinical = any(
-            col.lower().startswith(p.lower()) or col.lower().startswith(p.lower().replace(" ", "_"))
-            for p in clinical_prefixes
+        col_norm = col.lower().replace(" ", "_")
+
+        # word-boundary match: prefix must be the whole token or be
+        # followed by '_', not just any leading characters
+        is_prefix_match = any(
+            col_norm == p or col_norm.startswith(p + "_")
+            for p in normalized_prefixes
         )
-        if is_clinical:
+
+        # Known clinical names take precedence over capitalization. Gene
+        # symbols are assigned only after all clinical naming rules fail.
+        if is_prefix_match:
             clinical_cols.append(col)
         else:
             gene_cols.append(col)
