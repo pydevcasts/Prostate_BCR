@@ -176,6 +176,12 @@ The external cohort currently contains only a subset of the selected genomic pre
 
 The validation code now includes an explicit common-feature alignment utility that preserves reference-column order and reports missing predictors without fabricating them. External performance should be regenerated with this rule after the common-gene or pathway-only model is locked.
 
+### 6.6 Nested feature-selection and OOF fusion experiment
+
+The first five-fold nested experiment performed MI/PSO selection separately within each fold, fitted both branch models only on fold-specific training data, and generated held-out predictions for every observation. Fusion weights and the operating threshold were then estimated from the complete OOF predictions. The resulting genomic and clinical weights were 0.62 and 0.38. OOF fusion performance was ROC-AUC 0.8606, PR-AUC 0.5533, accuracy 0.8513, balanced accuracy 0.7947, sensitivity 0.7174, specificity 0.8721, and F1-score 0.5641.
+
+This result is encouraging, but it is not yet the final unbiased estimate because the input matrices were already feature-selected artifacts. The definitive analysis must repeat the same procedure from raw clinical and transcriptomic matrices, including upstream preprocessing and feature engineering inside each outer fold.
+
 ## 7. Next Experimental Stage
 
 ### Current decision: defer external validation
@@ -196,6 +202,8 @@ Implement repeated nested CV with the following order inside each outer training
 8. Evaluate once on the untouched outer validation fold.
 
 This is the most important next step because a high training fusion AUC is not evidence of generalization.
+
+The first implementation is available as `evaluate_nested_late_fusion` in `core/src/fusion/nested_evaluation.py`. It provides fold-level results, OOF probabilities, OOF-derived weights, and an OOF-derived Youden threshold. The next revision should wrap raw-data preprocessing and selection around this function so that no preselected artifact enters an outer validation fold.
 
 ### Priority 2: Improve internal model stability
 
@@ -297,6 +305,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 | 2026-09-15 | Documented the controlled PSO target-30 experiment and restored the default target to 40. |
 | 2026-09-15 | Identified the external common-feature limitation and training-based fusion-weight optimism. |
 | 2026-09-15 | Added OOF fusion weight/threshold estimation and recorded the first corrected internal test result. |
+| 2026-09-15 | Added five-fold nested feature selection with OOF fusion and recorded the first corrected OOF metrics. |
 
 ## 13. Source Artifacts
 
@@ -308,6 +317,8 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - External feature alignment: `core/src/validation.py` (`align_common_features`)
 - Current internal metrics: `core/outputs/tables/final_evaluation.json`
 - OOF fusion metrics: `core/outputs/tables/oof_fusion_results.json`
+- Nested fusion implementation: `core/src/fusion/nested_evaluation.py`
+- Nested fusion metrics: `core/outputs/tables/nested_late_fusion_results.json`
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`
 - PSO target-30 experiment: `core/outputs/tables/experiment_k30_results.json`
 - External predictions: `core/outputs/tables/external_validation_results.csv`

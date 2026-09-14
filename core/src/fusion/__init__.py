@@ -13,10 +13,12 @@ from src.fusion.late_fusion import (
     evaluate_late_fusion,
     fallback_to_genomic_only,
 )
+from src.fusion.nested_evaluation import evaluate_nested_late_fusion
 
 __all__ = [
     "LateFusionPredictor",
     "train_late_fusion_models",
     "evaluate_late_fusion",
     "fallback_to_genomic_only",
+    "evaluate_nested_late_fusion",
 ]
