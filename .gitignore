@@ -51,4 +51,10 @@ __pycache__/
 # Testing
 .pytest_cache/
 .mypy_cache/
+
+# Large local datasets and generated experiment artifacts
+data/
+core/data/
+outputs/
+core/outputs/
 ```
