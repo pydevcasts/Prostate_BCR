@@ -178,6 +178,10 @@ The validation code now includes an explicit common-feature alignment utility th
 
 ## 7. Next Experimental Stage
 
+### Current decision: defer external validation
+
+External validation is intentionally deferred until the combined clinical-plus-expression cohort is downloaded, its outcome definition is confirmed, and the feature schema is harmonized. The downloaded data should be stored locally under `core/data/external/`; it must not be committed or used to tune the current internal model.
+
 ### Priority 1: Correct evaluation optimism
 
 Implement repeated nested CV with the following order inside each outer training fold:
@@ -193,7 +197,13 @@ Implement repeated nested CV with the following order inside each outer training
 
 This is the most important next step because a high training fusion AUC is not evidence of generalization.
 
-### Priority 2: Improve external compatibility
+### Priority 2: Improve internal model stability
+
+Run repeated nested CV for the current internal cohort before changing the final feature count. Compare all clinical features, variance filtering plus PSO, and MI plus PSO using the same outer folds. Select the configuration using mean performance, uncertainty, and feature-selection stability rather than a single test accuracy.
+
+The current benchmark slightly favors variance filtering plus PSO with 30 clinical features (mean ROC-AUC 0.7690) over all clinical features (0.7681), while the current 40-feature Late Fusion test result remains the strongest single-split fusion result. This difference is too small to justify a final choice without repeated validation.
+
+### Priority 3: Improve external compatibility
 
 Create a genomic common-feature pipeline using only genes reliably measured in both development and external cohorts. Add pathway scores calculated from common genes. Compare:
 
@@ -203,7 +213,7 @@ Create a genomic common-feature pipeline using only genes reliably measured in b
 
 Do not silently treat absent external genes as observed data.
 
-### Priority 3: Compare selection settings
+### Priority 4: Compare selection settings
 
 Run repeated nested CV for:
 
@@ -214,11 +224,11 @@ Run repeated nested CV for:
 
 Select a configuration using mean performance, uncertainty, and feature-selection stability. A small performance difference with much better stability and external compatibility should be preferred.
 
-### Priority 4: Calibration and clinical utility
+### Priority 5: Calibration and clinical utility
 
 Calibrate the final probabilities using training folds only. Report calibration curves, Brier score, calibration intercept/slope, and decision-curve analysis. Select a threshold according to the clinical use case rather than maximizing accuracy on the test set.
 
-### Priority 5: Reproducibility and reporting
+### Priority 6: Reproducibility and reporting
 
 Freeze the final configuration, rerun notebooks 04, 05, 07, and 08 from a clean environment, and save:
 
