@@ -174,6 +174,8 @@ As a first correction for fusion-weight optimism, each current branch model was 
 
 The external cohort currently contains only a subset of the selected genomic predictors. The 30-gene experiment found 10 of 33 selected gene/pathway columns available in the external matrix. Filling missing genes with imputation is not equivalent to measuring them and may explain the poor transferability. The final external model should use a prespecified common-feature intersection or, preferably, robust pathway-level scores computed from genes available in both cohorts.
 
+The validation code now includes an explicit common-feature alignment utility that preserves reference-column order and reports missing predictors without fabricating them. External performance should be regenerated with this rule after the common-gene or pathway-only model is locked.
+
 ## 7. Next Experimental Stage
 
 ### Priority 1: Correct evaluation optimism
@@ -293,6 +295,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - Clinical benchmark: `core/src/clinical_benchmark.py`
 - Late fusion: `core/src/fusion/late_fusion.py`
 - OOF fusion utility: `core/src/fusion/late_fusion.py` (`estimate_oof_fusion`)
+- External feature alignment: `core/src/validation.py` (`align_common_features`)
 - Current internal metrics: `core/outputs/tables/final_evaluation.json`
 - OOF fusion metrics: `core/outputs/tables/oof_fusion_results.json`
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`

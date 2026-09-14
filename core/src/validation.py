@@ -49,6 +49,27 @@ def validate_features_available(
     return valid, missing
 
 
+def align_common_features(
+    X_data: pd.DataFrame,
+    reference_features: List[str],
+    context: str = "",
+    strict: bool = False,
+) -> Tuple[pd.DataFrame, List[str]]:
+    """Align a dataset to measured reference features without fabricating data.
+
+    Features are returned in the exact order supplied by ``reference_features``.
+    Missing features are reported separately; they are never added or imputed by
+    this helper. Use ``strict=True`` when a model requires the complete space.
+    """
+    valid_features, missing_features = validate_features_available(
+        X_data,
+        reference_features,
+        context=context,
+        strict=strict,
+    )
+    return X_data.loc[:, valid_features].copy(), missing_features
+
+
 def validate_model_input(
     model: Any,
     X_data: pd.DataFrame,
