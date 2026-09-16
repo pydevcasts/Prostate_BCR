@@ -18,7 +18,7 @@ This project predicts **biochemical recurrence (BCR)** after radical prostatecto
 1. **Rigorous preprocessing** with leakage auditing
 2. **Two parallel branches**:
    - 🔬 **Genomic branch**: Variance filter → Mutual Information → Binary PSO (40 genes)
-   - 🏥 **Clinical branch**: domain-informed engineered features (Gleason risk, stage risk, margin × lymph node)
+   - 🏥 **Clinical branch**: domain-informed engineered features (Gleason risk, stage risk, margin × lymph node) — the four engineered features are currently part of the 40 clinically selected features; a pure 4-feature branch is a pending simplification
 3. **Late Fusion layer**: weighted average of both branch probabilities, with weights estimated from **out-of-fold (OOF)** predictions
 4. **SHAP-based explainability** with publication-ready biomarker ranking
 
@@ -54,7 +54,7 @@ Raw Data (Clinical + RNA-Seq)
            ▼
 ┌─────────────────────────┐    ┌─────────────────────────┐
 │   Explainability        │    │  External Validation    │
-│  • SHAP Summary         │    │  GSE54460 cohort        │
+│  • SHAP Summary         │    │  GSE54460 · MSKCC 2010  │
 │  • Biomarker Ranking    │    │  Genomic-only fallback  │
 └─────────────────────────┘    └─────────────────────────┘
 ```
@@ -65,16 +65,23 @@ Raw Data (Clinical + RNA-Seq)
 
 | Metric | Genomic | Clinical | Late Fusion |
 |--------|--------:|---------:|------------:|
-| Test ROC-AUC | 0.686 | 0.721 | **0.753** |
-| OOF-fused test ROC-AUC (corrected) | — | — | **0.738** |
+| Test ROC-AUC (legacy train-optimized weights) | 0.686 | 0.721 | 0.753 |
+| **OOF-fused test ROC-AUC (reference, leakage-free)** | — | — | **0.738** |
 | Nested 5-fold OOF ROC-AUC | — | — | 0.861* |
+
+The **OOF-fused** row is the leakage-free reference result: fusion weights (genomic 0.48 / clinical 0.52) and the Youden threshold (~0.312) are estimated exclusively from out-of-fold predictions. The legacy 0.753 comes from the old train-optimized `optimize_weights` method (kept for comparison only). The nested 5-fold evaluation yields balanced accuracy 0.795 with OOF weights genomic 0.62 / clinical 0.38.
 
 `*` Computed on pre-selected feature artifacts; the definitive estimate must rerun selection from raw data inside every outer fold.
 
 ### Selected Features
 
 - 🔬 **Genomic**: 40 genes by Binary PSO (from ~18,905 after variance filtering) + 3 pathway scores (`PSA_Pathway_Score`, `AR_Signaling_Score`, `Proliferation_Score`)
-- 🏥 **Clinical**: engineered features (`Gleason_Total`, `High_Risk_Gleason`, `Margin_x_LymphNode`, `T_Stage_Risk`) plus selected clinical variables
+- 🏥 **Clinical**: engineered features (`Gleason_Total`, `High_Risk_Gleason`, `Margin_x_LymphNode`, `T_Stage_Risk`) plus selected clinical variables (40 selected features in current artifacts)
+
+## External Validation
+
+- **GSE54460** (done): genomic-only fallback (no clinical data available), 106 samples (55 BCR-positive), ROC-AUC = **0.560** — highlights cross-cohort transferability challenges.
+- **MSKCC 2010** (downloaded, pending): the gold-standard prostatectomy cohort (`prad_mskcc.tar.gz` and `GSE70769_family.soft.gz` in `core/data/external/`) is ready for the same genomic-only validation pipeline.
 
 ## Project Structure
 
