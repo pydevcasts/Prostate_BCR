@@ -22,7 +22,7 @@
 | External cohort 2 (primary) | MSKCC 2010: 131 primary-tumor samples (27 events, 20.6%), six prespecified transferable features, frozen late fusion ROC-AUC 0.711-0.717 |
 | Headline external finding | The frozen transferable fusion performs on par with a three-feature pure-clinical baseline (0.695); the added value of the genomic branch externally is NOT demonstrated and is reported as a documented limitation |
 | Strategic decision (2026-09-18) | Clinical-centric narrative locked; no further external transfer attempts without a new prespecified hypothesis (external overfitting risk) |
-| Final analysis | Repeated nested CV from raw TCGA data and manuscript drafting remain before submission |
+| Final analysis | Repeated nested CV from raw TCGA complete: mean OOF ROC-AUC 0.7551 +/- 0.0199 (5 folds x 3 repeats, fully fold-local); stability analysis and manuscript drafting remain |
 
 ## 3. Abstract (Working Version)
 
@@ -229,15 +229,36 @@ Calibration on MSKCC (post-hoc diagnostics): the rank-transfer fusion had the be
 
 For the manuscript, these diagnostics reframe the contribution: the Late Fusion architecture and the leakage-free transfer pipeline are methodologically sound, but the external evidence supports a clinically driven model; the genomic branch requires either a platform-robust signature (e.g., rank/ComBat-harmonized retraining or cross-platform probe remapping) or multi-cohort re-estimation before any transfer claim is made. Outputs: `core/outputs/tables/clinical_value_diagnostics.json`, `core/outputs/tables/mskcc_dca_curves.csv`, and `core/outputs/figures/mskcc_calibration_dca.png` (built by `core/src/clinical_value_diagnostics.py`).
 
+### 6.12 Repeated nested CV from raw TCGA (definitive internal estimate)
+
+The final internal estimate was computed with repeated nested CV directly from the raw merged TCGA table (429 samples x 19,019 features) so that no preselected artifact enters an outer validation fold. Inside every outer fold the complete pipeline was refitted: preprocessing (log1p transformation, winsorization, z-scaling via `build_combined_pipeline`), variance filtering, mutual-information screening (top 200 per branch), binary PSO selection (target 40 per branch), and both XGBoost branch models. Fusion weights and the operating threshold were then estimated only from the aggregate out-of-fold predictions of all 343 training rows of that repeat. Three repeats (seeds 42, 43, 44) were run; the procedure was executed twice end-to-end and produced identical repeat AUCs, confirming determinism.
+
+| Repeat seed | OOF fusion AUC | Genomic/clinical weights | OOF threshold | Runtime |
+|---|---:|---|---:|---:|
+| 42 | 0.7773 | 0.98 / 0.02 | 0.0625 | 11.5 min |
+| 43 | 0.7391 | 0.78 / 0.22 | 0.1582 | 11.7 min |
+| 44 | 0.7489 | 0.91 / 0.09 | 0.1107 | 20.0 min |
+| **Mean +/- SD** | **0.7551 +/- 0.0199** | 0.89 / 0.11 (mean) | — | 41.7 min total |
+
+Fold-level branch AUCs ranged 0.638-0.841 (genomic) and 0.464-0.713 (clinical) across the 15 outer folds; per-fold PSO selected exactly 40 genomic and 40 clinical features in every fold. Three findings matter for interpretation:
+
+1. The definitive internal estimate is 0.7551 +/- 0.0199, materially below the 0.861 artifact-based nested estimate (6.6). The earlier nested experiment ran MI/PSO selection on top of already-preselected matrices and inherited their optimism; this run repeats preprocessing, screening, and selection from raw data inside every fold and is the number that should headline the paper.
+2. Branch balance flips relative to the artifact-based run (6.6): OOF weights now favor the genomic branch (0.78-0.98) whereas the artifact-based run weighted clinical at 0.62. With fold-local preprocessing, the clinical branch selected within a fold is weaker (fold AUCs 0.46-0.71), and the OOF procedure assigns the weight accordingly. This is a reportable methodological finding: branch strength — and therefore fusion weights — depends on where preprocessing and selection sit in the pipeline.
+3. The OOF-derived thresholds are low (0.0625-0.1582), consistent with scale_pos_weight-adjusted XGBoost probabilities under the 13.5% event rate; thresholds must be reported with this caveat and recalibrated before any deployment framing.
+
+Per-fold PSO selections for both branches were logged for all 15 folds (`nested_cv_raw_pso_selections.csv`), providing the empirical selection-frequency input for the feature-stability analysis (next stage).
+
+Outputs: `core/outputs/tables/nested_cv_raw_results.json`, `nested_cv_raw_folds.csv`, `nested_cv_raw_oof_predictions.csv`, and `nested_cv_raw_pso_selections.csv` (built by `core/src/nested_cv_raw.py`).
+
 ## 7. Next Experimental Stage
 
 ### Current decision: defer external validation
 
 External validation is intentionally deferred until the combined clinical-plus-expression cohort is downloaded, its outcome definition is confirmed, and the feature schema is harmonized. The downloaded data should be stored locally under `core/data/external/`; it must not be committed or used to tune the current internal model.
 
-### Priority 1: Correct evaluation optimism
+### Priority 1: Correct evaluation optimism — COMPLETED (see 6.12)
 
-Implement repeated nested CV with the following order inside each outer training fold:
+The raw-data repeated nested CV is implemented as `core/src/nested_cv_raw.py` and reported in section 6.12. The prespecified order inside each outer training fold:
 
 1. Fit preprocessing.
 2. Fit feature selection.
@@ -250,7 +271,7 @@ Implement repeated nested CV with the following order inside each outer training
 
 This is the most important next step because a high training fusion AUC is not evidence of generalization.
 
-The first implementation is available as `evaluate_nested_late_fusion` in `core/src/fusion/nested_evaluation.py`. It provides fold-level results, OOF probabilities, OOF-derived weights, and an OOF-derived Youden threshold. The next revision should wrap raw-data preprocessing and selection around this function so that no preselected artifact enters an outer validation fold.
+The artifact-level first implementation (`evaluate_nested_late_fusion` in `core/src/fusion/nested_evaluation.py`) provided fold-level results, OOF probabilities, OOF-derived weights, and an OOF-derived Youden threshold. The raw-data wrapper (`core/src/nested_cv_raw.py`) wraps preprocessing and selection around the same recipe so that no preselected artifact enters an outer validation fold; its result (mean OOF AUC 0.7551 +/- 0.0199) is the definitive internal estimate.
 
 ### Priority 2: Improve internal model stability
 
@@ -357,6 +378,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 | 2026-09-18 | Retrained the late fusion on transferable features and applied it frozen to MSKCC (ROC-AUC 0.711; genomic branch collapsed under the raw scaler). |
 | 2026-09-18 | Prespecified rank-based genomic transfer, executed once: external fusion 0.717, genomic branch 0.586, platform artifact removed by construction. |
 | 2026-09-18 | Added the pure-clinical baseline, paired bootstrap comparisons, calibration, and DCA: fusion vs baseline statistically indistinguishable; clinical-centric narrative locked. |
+| 2026-09-19 | Repeated nested CV from raw TCGA (5 folds x 3 repeats, fully fold-local): mean OOF AUC 0.7551 +/- 0.0199 vs 0.861 artifact-based; PSO selections logged for stability analysis. |
 
 ## 13. Source Artifacts
 
@@ -370,6 +392,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - OOF fusion metrics: `core/outputs/tables/oof_fusion_results.json`
 - Nested fusion implementation: `core/src/fusion/nested_evaluation.py`
 - Nested fusion metrics: `core/outputs/tables/nested_late_fusion_results.json`
+- Repeated nested CV from raw data: `core/src/nested_cv_raw.py`, `core/outputs/tables/nested_cv_raw_results.json`, `core/outputs/tables/nested_cv_raw_folds.csv`, `core/outputs/tables/nested_cv_raw_oof_predictions.csv`, `core/outputs/tables/nested_cv_raw_pso_selections.csv`
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`
 - PSO target-30 experiment: `core/outputs/tables/experiment_k30_results.json`
 - External predictions: `core/outputs/tables/external_validation_results.csv`
@@ -390,6 +413,6 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - [x] Add 95% confidence intervals and statistical comparisons (external paired bootstrap).
 - [x] Add calibration and decision-curve analysis (MSKCC external).
 - [x] Report class counts, missingness, and cohort flow (MSKCC filter audit).
-- [ ] Run repeated nested CV from raw TCGA data as the final internal estimate.
+- [x] Run repeated nested CV from raw TCGA data as the final internal estimate (mean OOF AUC 0.7551 +/- 0.0199, 5 folds x 3 repeats).
 - [ ] Lock code, environment, seeds, and artifact hashes.
 - [ ] Complete TRIPOD-AI reporting items and journal-specific requirements.
