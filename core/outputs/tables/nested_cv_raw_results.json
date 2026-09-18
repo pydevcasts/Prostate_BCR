@@ -6,43 +6,43 @@
     44
   ],
   "outer_splits": 5,
-  "mean_oof_auc": 0.7551042538030176,
-  "std_oof_auc": 0.01988453254312038,
-  "min_oof_auc": 0.7390556743191746,
-  "max_oof_auc": 0.7773491960219352,
-  "mean_genomic_weight": 0.89,
-  "total_runtime_minutes": 41.7,
-  "timestamp": "2026-09-18T21:52:34.746874+00:00",
+  "mean_oof_auc": 0.7818880317253772,
+  "std_oof_auc": 0.02033235076018944,
+  "min_oof_auc": 0.7616414164885214,
+  "max_oof_auc": 0.8023050469374476,
+  "mean_genomic_weight": 0.22333333333333336,
+  "total_runtime_minutes": 28.9,
+  "timestamp": "2026-09-18T23:14:50.839860+00:00",
   "per_repeat": [
     {
       "repeat_seed": 42,
-      "oof_auc": 0.7773491960219352,
-      "genomic_weight": 0.98,
-      "clinical_weight": 0.020000000000000018,
-      "threshold": 0.062497268170118345,
-      "fold_mean_genomic_auc": 0.77097542997543,
-      "fold_mean_clinical_auc": 0.593031122031122,
-      "total_seconds": 682.6999999999999
+      "oof_auc": 0.7817176317501627,
+      "genomic_weight": 0.33,
+      "clinical_weight": 0.6699999999999999,
+      "threshold": 0.27120821546763185,
+      "fold_mean_genomic_auc": 0.604973791973792,
+      "fold_mean_clinical_auc": 0.7778042588042589,
+      "total_seconds": 576.3000000000001
     },
     {
       "repeat_seed": 43,
-      "oof_auc": 0.7390556743191746,
-      "genomic_weight": 0.78,
-      "clinical_weight": 0.21999999999999997,
-      "threshold": 0.15815491795539857,
-      "fold_mean_genomic_auc": 0.7198443898443898,
-      "fold_mean_clinical_auc": 0.6593013923013922,
-      "total_seconds": 614.0
+      "oof_auc": 0.8023050469374476,
+      "genomic_weight": 0.0,
+      "clinical_weight": 1.0,
+      "threshold": 0.16018114984035492,
+      "fold_mean_genomic_auc": 0.5942809172809173,
+      "fold_mean_clinical_auc": 0.8054045864045865,
+      "total_seconds": 576.8
     },
     {
       "repeat_seed": 44,
-      "oof_auc": 0.7489078910679432,
-      "genomic_weight": 0.91,
-      "clinical_weight": 0.08999999999999997,
-      "threshold": 0.11069440804421903,
-      "fold_mean_genomic_auc": 0.7538378378378379,
-      "fold_mean_clinical_auc": 0.6170241605241605,
-      "total_seconds": 1202.4
+      "oof_auc": 0.7616414164885214,
+      "genomic_weight": 0.34,
+      "clinical_weight": 0.6599999999999999,
+      "threshold": 0.18809535369276997,
+      "fold_mean_genomic_auc": 0.6726863226863227,
+      "fold_mean_clinical_auc": 0.7508079443079443,
+      "total_seconds": 580.8
     }
   ]
 }

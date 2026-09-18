@@ -59,6 +59,7 @@ from src.models import make_xgb, xgb_safe_frame
 from src.preprocessing import (
     build_combined_pipeline,
     fit_preprocessing,
+    identify_column_groups,
     transform_data,
 )
 
@@ -76,41 +77,12 @@ REPEAT_SEEDS = (42, 43, 44)          # full run: 3 repeats
 REPEAT_SEEDS_PILOT = (42,)           # pilot: 1 repeat
 OUTER_SPLITS = config.OUTER_SPLITS   # 5
 
-# Clinical (non-gene) columns of the merged table, verified against the file.
-# Numeric clinical columns carry these base names; one-hot clinical columns
-# are prefixed by them. Everything else is a gene symbol.
-CLINICAL_BASE_NAMES = [
-    "Gleason pattern primary",
-    "Gleason pattern secondary",
-    "Gleason pattern tertiary",
-    "Radical Prostatectomy Gleason Score for Prostate Cancer",
-    "American Joint Committee on Cancer Tumor Stage Code",
-    "Primary Lymph Node Presentation Assessment Ind-3",
-    "Surgical Margin Resection Status",
-    "Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count",
-    "Neopl Disease Lymph Node Stage American Joint Committee on Cancer Code",
-    "Person Neopl Status",
-    "Primary Therapy Outcome Success Type",
-    "Did patient start adjuvant postoperative radiotherapy?",
-    "International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code",
-    "Neopl American Joint Committee on Cancer Clinical Primary Tumor T Stage",
-    "Ct scan ab pelvis indicator",
-    "Year Cancer Initial Diagnosis",
-    "Tissue Retrospective Collection Indicator",
-    "Tissue Prospective Collection Indicator",
-    "Mri results",
-    "Ct scan ab pelvis results",
-    "Patient Primary Tumor Site",
-    "Diagonstic MRI Result",
-    "Tumor Level",
-    "Cause of death source",
-    "Prior Cancer Diagnosis Occurence",
-]
-
-
-def _is_clinical_column(col: str) -> bool:
-    """True if the merged-table column belongs to the clinical branch."""
-    return any(col == base or col.startswith(base + "_") for base in CLINICAL_BASE_NAMES)
+# NOTE (2026-09-19 bugfix): branch masks MUST come from the project's
+# canonical grouper `identify_column_groups` — the same function
+# `build_combined_pipeline` uses internally. An earlier hand-rolled
+# prefix list caught only 70 of 115 clinical columns, leaking 45 one-hot
+# clinical features (e.g. "Tumor Other Histologic Subtype_*") into the
+# genomic branch and shifting the positional column split.
 
 
 def load_raw_merged() -> tuple[pd.DataFrame, pd.Series]:
@@ -119,6 +91,20 @@ def load_raw_merged() -> tuple[pd.DataFrame, pd.Series]:
     y = pd.read_csv(Y_FINAL_CSV).iloc[:, 0]
     if len(X) != len(y):
         raise RuntimeError("X_features_final and y_target_final misaligned")
+    # Branch-mask consistency gate: the masks used for branch slicing must
+    # reproduce the ColumnTransformer's own grouping exactly (115/18904).
+    clinical_mask, gene_mask = identify_column_groups(X)
+    pre = build_combined_pipeline(X)
+    ref_clin = list(pre.transformers[0][2])
+    ref_gene = list(pre.transformers[1][2])
+    if clinical_mask != ref_clin or gene_mask != ref_gene:
+        raise RuntimeError(
+            "Branch mask mismatch with build_combined_pipeline "
+            f"(clinical {len(clinical_mask)} vs {len(ref_clin)})"
+        )
+    logger.info(
+        "Branch masks verified: %d clinical / %d gene", len(clinical_mask), len(gene_mask)
+    )
     logger.info("Raw merged table: %d samples x %d features", *X.shape)
     return X, y
 
@@ -142,8 +128,9 @@ def run_single_fold(
     X_train = X_raw.iloc[train_idx].reset_index(drop=True)
     X_valid = X_raw.iloc[valid_idx].reset_index(drop=True)
 
-    clinical_mask = [c for c in X_raw.columns if _is_clinical_column(c)]
-    gene_mask = [c for c in X_raw.columns if not _is_clinical_column(c)]
+    # Canonical grouping — identical to the ColumnTransformer inside
+    # build_combined_pipeline, so the positional split below stays aligned.
+    clinical_mask, gene_mask = identify_column_groups(X_raw)
     Xc_train_raw = X_train[clinical_mask]
     Xc_valid_raw = X_valid[clinical_mask]
     Xg_train_raw = X_train[gene_mask]
