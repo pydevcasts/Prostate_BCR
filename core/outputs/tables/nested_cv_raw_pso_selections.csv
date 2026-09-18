@@ -1,0 +1,1201 @@
+repeat_seed,fold,branch,feature,rank
+42,1,genomic,DCE,1
+42,1,genomic,WDR49,2
+42,1,genomic,BUB1B,3
+42,1,genomic,EIF5B,4
+42,1,genomic,Tumor Other Histologic Subtype_acinar and cribriform,5
+42,1,genomic,AHNAK2,6
+42,1,genomic,RB1,7
+42,1,genomic,DCAF4,8
+42,1,genomic,SNAPC3,9
+42,1,genomic,SRRM5,10
+42,1,genomic,CCNA2,11
+42,1,genomic,CD300A,12
+42,1,genomic,TMC6,13
+42,1,genomic,TRAF3IP3,14
+42,1,genomic,CIT,15
+42,1,genomic,SPAG5,16
+42,1,genomic,CDRT4,17
+42,1,genomic,HCG27,18
+42,1,genomic,SH3RF2,19
+42,1,genomic,TERT,20
+42,1,genomic,SSX2IP,21
+42,1,genomic,KIF18B,22
+42,1,genomic,RBFOX2,23
+42,1,genomic,RPS27L,24
+42,1,genomic,EPO,25
+42,1,genomic,NAA35,26
+42,1,genomic,SLC25A43,27
+42,1,genomic,FAT1,28
+42,1,genomic,GABRA2,29
+42,1,genomic,SRCIN1,30
+42,1,genomic,NKX6-1,31
+42,1,genomic,KIAA0729,32
+42,1,genomic,SLC34A3,33
+42,1,genomic,FAM71E1,34
+42,1,genomic,NDUFAF8,35
+42,1,genomic,DGUOK,36
+42,1,genomic,ZBTB34,37
+42,1,genomic,WFIKKN1,38
+42,1,genomic,LILRA1,39
+42,1,genomic,CEP57,40
+42,1,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,1
+42,1,clinical,Gleason pattern primary,2
+42,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,3
+42,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,4
+42,1,clinical,Cause of death source_Death Certificate,5
+42,1,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],6
+42,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,7
+42,1,clinical,Mri results_Distant Metastasis [e.g. cM1],8
+42,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),9
+42,1,clinical,Ct scan ab pelvis indicator_YES,10
+42,1,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,11
+42,1,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",12
+42,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",13
+42,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,14
+42,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",15
+42,1,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,16
+42,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",17
+42,1,clinical,Surgical Margin Resection Status_RX,18
+42,1,clinical,Surgical Margin Resection Status_R2,19
+42,1,clinical,Patient Primary Tumor Site_Central Zone,20
+42,1,clinical,Tissue Retrospective Collection Indicator_NO,21
+42,1,clinical,Tissue Retrospective Collection Indicator_YES,22
+42,1,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,23
+42,1,clinical,Year Cancer Initial Diagnosis,24
+42,1,clinical,Tissue Prospective Collection Indicator_YES,25
+42,1,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",26
+42,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],27
+42,1,clinical,Mri results_Equivocal,28
+42,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),29
+42,1,clinical,Diagonstic MRI Result_YES,30
+42,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],31
+42,1,clinical,Diagonstic MRI Result_NO,32
+42,1,clinical,Ct scan ab pelvis results_Equivocal,33
+42,1,clinical,Mri results_No Evidence of Extraprostatic Extension,34
+42,1,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,35
+42,1,clinical,Surgical Margin Resection Status_R0,36
+42,1,clinical,Primary Therapy Outcome Success Type_Stable Disease,37
+42,1,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,38
+42,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",39
+42,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+42,2,genomic,ACAD9,1
+42,2,genomic,RSPO2,2
+42,2,genomic,ZNF324,3
+42,2,genomic,PBLD,4
+42,2,genomic,LIG1,5
+42,2,genomic,ACVRL1,6
+42,2,genomic,SULF2,7
+42,2,genomic,SLC19A1,8
+42,2,genomic,SLC30A1,9
+42,2,genomic,CD63,10
+42,2,genomic,RASSF2,11
+42,2,genomic,PHKB,12
+42,2,genomic,DBI,13
+42,2,genomic,SOX7,14
+42,2,genomic,ZNF286A,15
+42,2,genomic,CHTF18,16
+42,2,genomic,HSPC059,17
+42,2,genomic,TGD,18
+42,2,genomic,HMX2,19
+42,2,genomic,CATSPER1,20
+42,2,genomic,PIN1P1,21
+42,2,genomic,ACOX1,22
+42,2,genomic,PTPRS,23
+42,2,genomic,UBL7,24
+42,2,genomic,ANKRD26,25
+42,2,genomic,FAM72B,26
+42,2,genomic,KCNE1,27
+42,2,genomic,KCNA4,28
+42,2,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,29
+42,2,genomic,RHOF,30
+42,2,genomic,SNORA74A,31
+42,2,genomic,EXD1,32
+42,2,genomic,UBE2C,33
+42,2,genomic,SUCLG2,34
+42,2,genomic,CLN8,35
+42,2,genomic,MMP13,36
+42,2,genomic,SPAG5,37
+42,2,genomic,RNF34,38
+42,2,genomic,PPP1CA,39
+42,2,genomic,UBB,40
+42,2,clinical,Gleason pattern primary,1
+42,2,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,2
+42,2,clinical,Patient Primary Tumor Site_Central Zone,3
+42,2,clinical,Diagonstic MRI Result_YES,4
+42,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",5
+42,2,clinical,Mri results_No Evidence of Extraprostatic Extension,6
+42,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,7
+42,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",8
+42,2,clinical,Gleason pattern secondary,9
+42,2,clinical,Ct scan ab pelvis results_Equivocal,10
+42,2,clinical,Mri results_Distant Metastasis [e.g. cM1],11
+42,2,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],12
+42,2,clinical,Diagonstic MRI Result_NO,13
+42,2,clinical,Ct scan ab pelvis indicator_NO,14
+42,2,clinical,Tissue Retrospective Collection Indicator_YES,15
+42,2,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,16
+42,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",17
+42,2,clinical,Primary Therapy Outcome Success Type_Partial Remission/Response,18
+42,2,clinical,Cause of death source_Death Certificate,19
+42,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,20
+42,2,clinical,Year Cancer Initial Diagnosis,21
+42,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],22
+42,2,clinical,Mri results_Equivocal,23
+42,2,clinical,Tissue Prospective Collection Indicator_YES,24
+42,2,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,25
+42,2,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,26
+42,2,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,27
+42,2,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,28
+42,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),29
+42,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],30
+42,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),31
+42,2,clinical,Ct scan ab pelvis indicator_YES,32
+42,2,clinical,Surgical Margin Resection Status_RX,33
+42,2,clinical,Surgical Margin Resection Status_R0,34
+42,2,clinical,Primary Therapy Outcome Success Type_Stable Disease,35
+42,2,clinical,Surgical Margin Resection Status_R2,36
+42,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",37
+42,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",38
+42,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,39
+42,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+42,3,genomic,GAD1,1
+42,3,genomic,LOC155060,2
+42,3,genomic,Tumor Other Histologic Subtype_acinar and cribriform,3
+42,3,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,4
+42,3,genomic,PARP2,5
+42,3,genomic,SARSM,6
+42,3,genomic,LINC00205,7
+42,3,genomic,BRCA2,8
+42,3,genomic,ACTN2,9
+42,3,genomic,KLK4,10
+42,3,genomic,MED1,11
+42,3,genomic,C10orf88,12
+42,3,genomic,NKX6-1,13
+42,3,genomic,OXR1,14
+42,3,genomic,KIAA0729,15
+42,3,genomic,SF3B3,16
+42,3,genomic,SMO,17
+42,3,genomic,PRR3,18
+42,3,genomic,COLEC11,19
+42,3,genomic,PNPLA4,20
+42,3,genomic,AFF3,21
+42,3,genomic,NISCH,22
+42,3,genomic,NPAS3,23
+42,3,genomic,ASH2L,24
+42,3,genomic,TROAP,25
+42,3,genomic,NTHL1,26
+42,3,genomic,CDCA8,27
+42,3,genomic,ADGRL1,28
+42,3,genomic,NDUFAF8,29
+42,3,genomic,C16orf91,30
+42,3,genomic,CD81,31
+42,3,genomic,CSMD2,32
+42,3,genomic,CARD19,33
+42,3,genomic,IGDCC3,34
+42,3,genomic,SUCLA2,35
+42,3,genomic,DNAH12,36
+42,3,genomic,NPLOC4,37
+42,3,genomic,FLJ20092,38
+42,3,genomic,WDR75,39
+42,3,genomic,DCAF8,40
+42,3,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,1
+42,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,2
+42,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,3
+42,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",4
+42,3,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,5
+42,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,6
+42,3,clinical,Mri results_Distant Metastasis [e.g. cM1],7
+42,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",8
+42,3,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,9
+42,3,clinical,Patient Primary Tumor Site_Central Zone,10
+42,3,clinical,Year Cancer Initial Diagnosis,11
+42,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,12
+42,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],13
+42,3,clinical,Tissue Prospective Collection Indicator_YES,14
+42,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",15
+42,3,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,16
+42,3,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,17
+42,3,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],18
+42,3,clinical,Diagonstic MRI Result_YES,19
+42,3,clinical,Gleason pattern secondary,20
+42,3,clinical,Primary Therapy Outcome Success Type_Stable Disease,21
+42,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,22
+42,3,clinical,Mri results_Equivocal,23
+42,3,clinical,Ct scan ab pelvis results_Equivocal,24
+42,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,25
+42,3,clinical,Tissue Retrospective Collection Indicator_YES,26
+42,3,clinical,Tissue Retrospective Collection Indicator_NO,27
+42,3,clinical,Ct scan ab pelvis indicator_NO,28
+42,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",29
+42,3,clinical,Mri results_No Evidence of Extraprostatic Extension,30
+42,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),31
+42,3,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),32
+42,3,clinical,Ct scan ab pelvis indicator_YES,33
+42,3,clinical,Primary Therapy Outcome Success Type_Progressive Disease,34
+42,3,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,35
+42,3,clinical,Surgical Margin Resection Status_RX,36
+42,3,clinical,Surgical Margin Resection Status_R2,37
+42,3,clinical,Surgical Margin Resection Status_R0,38
+42,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",39
+42,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",40
+42,4,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,1
+42,4,genomic,ACAP3,2
+42,4,genomic,UBL7,3
+42,4,genomic,MANEA,4
+42,4,genomic,SPAG5,5
+42,4,genomic,DFNB42,6
+42,4,genomic,MMP13,7
+42,4,genomic,GNB2L1,8
+42,4,genomic,TUBA3FP,9
+42,4,genomic,CDC37L1,10
+42,4,genomic,CARD19,11
+42,4,genomic,AFMID,12
+42,4,genomic,E2F3,13
+42,4,genomic,SPACA6P,14
+42,4,genomic,IL1A,15
+42,4,genomic,CYP19A1,16
+42,4,genomic,SUPT7L,17
+42,4,genomic,RECQL5,18
+42,4,genomic,Tumor Other Histologic Subtype_acinar and cribriform,19
+42,4,genomic,ATG10,20
+42,4,genomic,CEP170,21
+42,4,genomic,UBA2,22
+42,4,genomic,IL4I1,23
+42,4,genomic,SRGAP2,24
+42,4,genomic,DKFZp547O146,25
+42,4,genomic,TRAPPC8,26
+42,4,genomic,CREB3L2,27
+42,4,genomic,GIGYF2,28
+42,4,genomic,YTHDC2,29
+42,4,genomic,HSD11B1L,30
+42,4,genomic,C6orf89,31
+42,4,genomic,SUGT1P4-STRA6LP-CCDC180,32
+42,4,genomic,DNMT3B,33
+42,4,genomic,VENTXP7,34
+42,4,genomic,ZNF343,35
+42,4,genomic,SLC25A43,36
+42,4,genomic,SGK1,37
+42,4,genomic,OGT,38
+42,4,genomic,IREB2,39
+42,4,genomic,LCN2,40
+42,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,1
+42,4,clinical,Surgical Margin Resection Status_R2,2
+42,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",3
+42,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,4
+42,4,clinical,Year Cancer Initial Diagnosis,5
+42,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),6
+42,4,clinical,Ct scan ab pelvis indicator_NO,7
+42,4,clinical,Tissue Prospective Collection Indicator_YES,8
+42,4,clinical,Primary Therapy Outcome Success Type_Progressive Disease,9
+42,4,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,10
+42,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),11
+42,4,clinical,Tissue Retrospective Collection Indicator_NO,12
+42,4,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,13
+42,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",14
+42,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,15
+42,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],16
+42,4,clinical,Surgical Margin Resection Status_R0,17
+42,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,18
+42,4,clinical,Primary Therapy Outcome Success Type_Stable Disease,19
+42,4,clinical,Patient Primary Tumor Site_Central Zone,20
+42,4,clinical,Tissue Retrospective Collection Indicator_YES,21
+42,4,clinical,Gleason pattern secondary,22
+42,4,clinical,Gleason pattern primary,23
+42,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",24
+42,4,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],25
+42,4,clinical,Ct scan ab pelvis results_Equivocal,26
+42,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,27
+42,4,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,28
+42,4,clinical,Mri results_No Evidence of Extraprostatic Extension,29
+42,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],30
+42,4,clinical,Mri results_Equivocal,31
+42,4,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,32
+42,4,clinical,Diagonstic MRI Result_YES,33
+42,4,clinical,Ct scan ab pelvis indicator_YES,34
+42,4,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,35
+42,4,clinical,Surgical Margin Resection Status_RX,36
+42,4,clinical,Cause of death source_Death Certificate,37
+42,4,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,38
+42,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",39
+42,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,40
+42,5,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,1
+42,5,genomic,Tumor Other Histologic Subtype_acinar and cribriform,2
+42,5,genomic,GNB2L1,3
+42,5,genomic,TRPM1,4
+42,5,genomic,SH3RF2,5
+42,5,genomic,ELAVL3,6
+42,5,genomic,KLHL33,7
+42,5,genomic,PKMYT1,8
+42,5,genomic,CLDN22,9
+42,5,genomic,ATG9A,10
+42,5,genomic,METTL17,11
+42,5,genomic,MAB21L2,12
+42,5,genomic,SNORA71E,13
+42,5,genomic,VNN2,14
+42,5,genomic,FLJ10432,15
+42,5,genomic,ATRAID,16
+42,5,genomic,DCAF4,17
+42,5,genomic,CDCA8,18
+42,5,genomic,AQP3,19
+42,5,genomic,FMNL3,20
+42,5,genomic,CUL3,21
+42,5,genomic,PRKCQ,22
+42,5,genomic,ZNF717,23
+42,5,genomic,DFNB68,24
+42,5,genomic,ST7L,25
+42,5,genomic,KIAA0753,26
+42,5,genomic,RSPO2,27
+42,5,genomic,TGM3,28
+42,5,genomic,CEP72,29
+42,5,genomic,RPL15,30
+42,5,genomic,KAT,31
+42,5,genomic,XAF1,32
+42,5,genomic,FADS2,33
+42,5,genomic,PPA1,34
+42,5,genomic,MAP3K1,35
+42,5,genomic,GDAP1,36
+42,5,genomic,CAPN12,37
+42,5,genomic,LHFP,38
+42,5,genomic,SERF1A,39
+42,5,genomic,HSPC252,40
+42,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],1
+42,5,clinical,Gleason pattern secondary,2
+42,5,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,3
+42,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,4
+42,5,clinical,Gleason pattern primary,5
+42,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],6
+42,5,clinical,Primary Therapy Outcome Success Type_Stable Disease,7
+42,5,clinical,Cause of death source_Death Certificate,8
+42,5,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,9
+42,5,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",10
+42,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",11
+42,5,clinical,Patient Primary Tumor Site_Overlapping / Multiple Zones,12
+42,5,clinical,Patient Primary Tumor Site_Central Zone,13
+42,5,clinical,Tissue Retrospective Collection Indicator_YES,14
+42,5,clinical,Surgical Margin Resection Status_R2,15
+42,5,clinical,Mri results_Equivocal,16
+42,5,clinical,Mri results_No Evidence of Extraprostatic Extension,17
+42,5,clinical,Tissue Retrospective Collection Indicator_NO,18
+42,5,clinical,Year Cancer Initial Diagnosis,19
+42,5,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],20
+42,5,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,21
+42,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),22
+42,5,clinical,Ct scan ab pelvis indicator_NO,23
+42,5,clinical,Ct scan ab pelvis indicator_YES,24
+42,5,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,25
+42,5,clinical,Diagonstic MRI Result_YES,26
+42,5,clinical,Mri results_Distant Metastasis [e.g. cM1],27
+42,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),28
+42,5,clinical,Ct scan ab pelvis results_Equivocal,29
+42,5,clinical,Surgical Margin Resection Status_R0,30
+42,5,clinical,Surgical Margin Resection Status_RX,31
+42,5,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,32
+42,5,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,33
+42,5,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,34
+42,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",35
+42,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",36
+42,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",37
+42,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,38
+42,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,39
+42,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+43,1,genomic,UBL7,1
+43,1,genomic,ANO8,2
+43,1,genomic,ATP6V0E2-AS1,3
+43,1,genomic,TROAP,4
+43,1,genomic,TAL1,5
+43,1,genomic,CCNA2,6
+43,1,genomic,SULT1A1,7
+43,1,genomic,ALG5,8
+43,1,genomic,L3MBTL4,9
+43,1,genomic,GCLC,10
+43,1,genomic,"Patient Death Reason_Other, non-malignant disease",11
+43,1,genomic,PF4,12
+43,1,genomic,DFNB42,13
+43,1,genomic,C17orf75,14
+43,1,genomic,ZNF146,15
+43,1,genomic,ADGRL1,16
+43,1,genomic,TGD,17
+43,1,genomic,ZNF623,18
+43,1,genomic,FTSJ2,19
+43,1,genomic,TICRR,20
+43,1,genomic,YWHAH,21
+43,1,genomic,RRS1,22
+43,1,genomic,PBLD,23
+43,1,genomic,CASR,24
+43,1,genomic,SH3RF2,25
+43,1,genomic,SYNJ1,26
+43,1,genomic,ATG9A,27
+43,1,genomic,UNKL,28
+43,1,genomic,SCAND2P,29
+43,1,genomic,FLJ11328,30
+43,1,genomic,HTR1B,31
+43,1,genomic,INHBE,32
+43,1,genomic,HAUS6,33
+43,1,genomic,NR2F1-AS1,34
+43,1,genomic,ASPN,35
+43,1,genomic,WNT3A,36
+43,1,genomic,SDHAF4,37
+43,1,genomic,RER1,38
+43,1,genomic,COX7B,39
+43,1,genomic,ARHGEF11,40
+43,1,clinical,Patient Primary Tumor Site_Overlapping / Multiple Zones,1
+43,1,clinical,Ct scan ab pelvis results_Equivocal,2
+43,1,clinical,Gleason pattern secondary,3
+43,1,clinical,Diagonstic MRI Result_YES,4
+43,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],5
+43,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",6
+43,1,clinical,Primary Therapy Outcome Success Type_Partial Remission/Response,7
+43,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,8
+43,1,clinical,Gleason pattern primary,9
+43,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),10
+43,1,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",11
+43,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,12
+43,1,clinical,Patient Primary Tumor Site_Central Zone,13
+43,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,14
+43,1,clinical,Ct scan ab pelvis indicator_YES,15
+43,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",16
+43,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",17
+43,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",18
+43,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,19
+43,1,clinical,Tissue Retrospective Collection Indicator_YES,20
+43,1,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,21
+43,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],22
+43,1,clinical,Surgical Margin Resection Status_R2,23
+43,1,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,24
+43,1,clinical,Year Cancer Initial Diagnosis,25
+43,1,clinical,Ct scan ab pelvis indicator_NO,26
+43,1,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",27
+43,1,clinical,Tissue Retrospective Collection Indicator_NO,28
+43,1,clinical,Mri results_No Evidence of Extraprostatic Extension,29
+43,1,clinical,Mri results_Distant Metastasis [e.g. cM1],30
+43,1,clinical,Mri results_Equivocal,31
+43,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),32
+43,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,33
+43,1,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,34
+43,1,clinical,Primary Therapy Outcome Success Type_Stable Disease,35
+43,1,clinical,Cause of death source_Death Certificate,36
+43,1,clinical,Surgical Margin Resection Status_R0,37
+43,1,clinical,Surgical Margin Resection Status_RX,38
+43,1,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,39
+43,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,40
+43,2,genomic,Tumor Other Histologic Subtype_acinar and cribriform,1
+43,2,genomic,AOX1,2
+43,2,genomic,UBL7,3
+43,2,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,4
+43,2,genomic,NAE1,5
+43,2,genomic,CYSRT1,6
+43,2,genomic,COX7B2,7
+43,2,genomic,LYG1,8
+43,2,genomic,ODF2,9
+43,2,genomic,ZRANB2,10
+43,2,genomic,SMO,11
+43,2,genomic,IL4I1,12
+43,2,genomic,KCNK12,13
+43,2,genomic,HSD11B1L,14
+43,2,genomic,ADGRV1,15
+43,2,genomic,TECRL,16
+43,2,genomic,POLD2,17
+43,2,genomic,AFF3,18
+43,2,genomic,AHNAK2,19
+43,2,genomic,DEFA5,20
+43,2,genomic,ANO8,21
+43,2,genomic,RNF34,22
+43,2,genomic,PWWP2A,23
+43,2,genomic,MRPL46,24
+43,2,genomic,TMEM211,25
+43,2,genomic,DUSP12,26
+43,2,genomic,RGS17,27
+43,2,genomic,OLIG3,28
+43,2,genomic,NPIPA1,29
+43,2,genomic,MAPRE3,30
+43,2,genomic,CANT1,31
+43,2,genomic,BZRAP1,32
+43,2,genomic,GCA,33
+43,2,genomic,MBD4,34
+43,2,genomic,AJM1,35
+43,2,genomic,NQO1,36
+43,2,genomic,KLHL36,37
+43,2,genomic,CHTF18,38
+43,2,genomic,UHRF1,39
+43,2,genomic,DUSP14,40
+43,2,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,1
+43,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",2
+43,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,3
+43,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",4
+43,2,clinical,Year Cancer Initial Diagnosis,5
+43,2,clinical,Gleason pattern secondary,6
+43,2,clinical,Surgical Margin Resection Status_R2,7
+43,2,clinical,Patient Primary Tumor Site_Overlapping / Multiple Zones,8
+43,2,clinical,Tissue Prospective Collection Indicator_YES,9
+43,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",10
+43,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),11
+43,2,clinical,Ct scan ab pelvis indicator_NO,12
+43,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,13
+43,2,clinical,Primary Therapy Outcome Success Type_Partial Remission/Response,14
+43,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],15
+43,2,clinical,Cause of death source_Death Certificate,16
+43,2,clinical,Mri results_Equivocal,17
+43,2,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,18
+43,2,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],19
+43,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),20
+43,2,clinical,Ct scan ab pelvis results_Equivocal,21
+43,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",22
+43,2,clinical,Tissue Retrospective Collection Indicator_YES,23
+43,2,clinical,Patient Primary Tumor Site_Central Zone,24
+43,2,clinical,Ct scan ab pelvis indicator_YES,25
+43,2,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,26
+43,2,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,27
+43,2,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,28
+43,2,clinical,Mri results_No Evidence of Extraprostatic Extension,29
+43,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],30
+43,2,clinical,Mri results_Distant Metastasis [e.g. cM1],31
+43,2,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,32
+43,2,clinical,Primary Therapy Outcome Success Type_Stable Disease,33
+43,2,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,34
+43,2,clinical,Surgical Margin Resection Status_R0,35
+43,2,clinical,Surgical Margin Resection Status_RX,36
+43,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",37
+43,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",38
+43,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,39
+43,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+43,3,genomic,Tumor Other Histologic Subtype_acinar and cribriform,1
+43,3,genomic,INSRR,2
+43,3,genomic,C8orf58,3
+43,3,genomic,PKMYT1,4
+43,3,genomic,RNF149,5
+43,3,genomic,FTSJ2,6
+43,3,genomic,PPIL1,7
+43,3,genomic,ZFAND1,8
+43,3,genomic,TPX2,9
+43,3,genomic,SIPA1L2,10
+43,3,genomic,ANXA8,11
+43,3,genomic,PIK3R1,12
+43,3,genomic,CD63,13
+43,3,genomic,UBL7,14
+43,3,genomic,EJM1,15
+43,3,genomic,NEDD4,16
+43,3,genomic,C2ORF48,17
+43,3,genomic,ATP6V0E2-AS1,18
+43,3,genomic,TBC1D31,19
+43,3,genomic,DYT6,20
+43,3,genomic,RPS20,21
+43,3,genomic,FLJ20216,22
+43,3,genomic,RSPO2,23
+43,3,genomic,XPO1,24
+43,3,genomic,DEPDC4,25
+43,3,genomic,INE2,26
+43,3,genomic,DCAF4,27
+43,3,genomic,TIE1,28
+43,3,genomic,TMC6,29
+43,3,genomic,STK36,30
+43,3,genomic,Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T3b,31
+43,3,genomic,ZNF702P,32
+43,3,genomic,ASAP2,33
+43,3,genomic,DFNB42,34
+43,3,genomic,ZSWIM8,35
+43,3,genomic,KANK1,36
+43,3,genomic,TATDN2,37
+43,3,genomic,LINC00115,38
+43,3,genomic,PIK3R2,39
+43,3,genomic,CCL7,40
+43,3,clinical,Ct scan ab pelvis indicator_NO,1
+43,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",2
+43,3,clinical,Mri results_No Evidence of Extraprostatic Extension,3
+43,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",4
+43,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),5
+43,3,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,6
+43,3,clinical,Gleason pattern primary,7
+43,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,8
+43,3,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,9
+43,3,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,10
+43,3,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,11
+43,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,12
+43,3,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],13
+43,3,clinical,Primary Therapy Outcome Success Type_Progressive Disease,14
+43,3,clinical,Ct scan ab pelvis results_Equivocal,15
+43,3,clinical,Cause of death source_Death Certificate,16
+43,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,17
+43,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],18
+43,3,clinical,Tissue Retrospective Collection Indicator_YES,19
+43,3,clinical,Patient Primary Tumor Site_Central Zone,20
+43,3,clinical,Tissue Prospective Collection Indicator_YES,21
+43,3,clinical,Tissue Retrospective Collection Indicator_NO,22
+43,3,clinical,Year Cancer Initial Diagnosis,23
+43,3,clinical,Gleason pattern secondary,24
+43,3,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,25
+43,3,clinical,Ct scan ab pelvis indicator_YES,26
+43,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,27
+43,3,clinical,Mri results_Distant Metastasis [e.g. cM1],28
+43,3,clinical,Mri results_Equivocal,29
+43,3,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),30
+43,3,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],31
+43,3,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,32
+43,3,clinical,Diagonstic MRI Result_NO,33
+43,3,clinical,Diagonstic MRI Result_YES,34
+43,3,clinical,Primary Therapy Outcome Success Type_Stable Disease,35
+43,3,clinical,Surgical Margin Resection Status_R2,36
+43,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",37
+43,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",38
+43,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",39
+43,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+43,4,genomic,ZNF324,1
+43,4,genomic,ATP13A3,2
+43,4,genomic,ARF6,3
+43,4,genomic,HN1,4
+43,4,genomic,IFNL1,5
+43,4,genomic,TEDC2,6
+43,4,genomic,CARD19,7
+43,4,genomic,MMP13,8
+43,4,genomic,IL23A,9
+43,4,genomic,NTHL1,10
+43,4,genomic,C4orf3,11
+43,4,genomic,Tumor Other Histologic Subtype_acinar and cribriform,12
+43,4,genomic,RGPD4,13
+43,4,genomic,STK36,14
+43,4,genomic,GPRC6A,15
+43,4,genomic,ADAT2,16
+43,4,genomic,SULF2,17
+43,4,genomic,C17orf64,18
+43,4,genomic,FAM24B,19
+43,4,genomic,OR51T1,20
+43,4,genomic,INHBE,21
+43,4,genomic,OGT,22
+43,4,genomic,GCDH,23
+43,4,genomic,GCNT7,24
+43,4,genomic,PCDHA4,25
+43,4,genomic,CCDC33,26
+43,4,genomic,CDK8,27
+43,4,genomic,NT5C3A,28
+43,4,genomic,SERPIND1,29
+43,4,genomic,ASAP2,30
+43,4,genomic,MGME1,31
+43,4,genomic,UNKL,32
+43,4,genomic,XKR5,33
+43,4,genomic,CDK2,34
+43,4,genomic,RAB24,35
+43,4,genomic,SPRR2A,36
+43,4,genomic,ARID1A,37
+43,4,genomic,SMAD4,38
+43,4,genomic,STK38L,39
+43,4,genomic,PRPF31,40
+43,4,clinical,Tissue Retrospective Collection Indicator_NO,1
+43,4,clinical,Gleason pattern primary,2
+43,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",3
+43,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",4
+43,4,clinical,Surgical Margin Resection Status_R2,5
+43,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,6
+43,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,7
+43,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",8
+43,4,clinical,Mri results_Distant Metastasis [e.g. cM1],9
+43,4,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,10
+43,4,clinical,Surgical Margin Resection Status_RX,11
+43,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],12
+43,4,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,13
+43,4,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,14
+43,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",15
+43,4,clinical,Patient Primary Tumor Site_Central Zone,16
+43,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",17
+43,4,clinical,Tissue Retrospective Collection Indicator_YES,18
+43,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",19
+43,4,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,20
+43,4,clinical,Year Cancer Initial Diagnosis,21
+43,4,clinical,Tissue Prospective Collection Indicator_YES,22
+43,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),23
+43,4,clinical,Ct scan ab pelvis results_Equivocal,24
+43,4,clinical,Ct scan ab pelvis indicator_NO,25
+43,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,26
+43,4,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,27
+43,4,clinical,Mri results_No Evidence of Extraprostatic Extension,28
+43,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),29
+43,4,clinical,Diagonstic MRI Result_YES,30
+43,4,clinical,Mri results_Equivocal,31
+43,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],32
+43,4,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,33
+43,4,clinical,Ct scan ab pelvis indicator_YES,34
+43,4,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],35
+43,4,clinical,Surgical Margin Resection Status_R0,36
+43,4,clinical,Cause of death source_Death Certificate,37
+43,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,38
+43,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,39
+43,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,40
+43,5,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,1
+43,5,genomic,ACVRL1,2
+43,5,genomic,RASSF4,3
+43,5,genomic,NDFIP2,4
+43,5,genomic,FBXL18,5
+43,5,genomic,BRCA2,6
+43,5,genomic,SGPP2,7
+43,5,genomic,MTCH1,8
+43,5,genomic,TANK,9
+43,5,genomic,PHKB,10
+43,5,genomic,DFNB42,11
+43,5,genomic,SUCLA2,12
+43,5,genomic,MIR99AHG,13
+43,5,genomic,CCNA2,14
+43,5,genomic,TICRR,15
+43,5,genomic,CTSC,16
+43,5,genomic,TEDC2,17
+43,5,genomic,MYCT1,18
+43,5,genomic,FAT1,19
+43,5,genomic,OIP5,20
+43,5,genomic,DBI,21
+43,5,genomic,TOM1L1,22
+43,5,genomic,FBXO16,23
+43,5,genomic,FAM24B,24
+43,5,genomic,ZNF547,25
+43,5,genomic,SCDOS,26
+43,5,genomic,SMG6,27
+43,5,genomic,BAIAP2,28
+43,5,genomic,WNT10A,29
+43,5,genomic,SYCE1,30
+43,5,genomic,NIFK,31
+43,5,genomic,ZNF346,32
+43,5,genomic,PFKP,33
+43,5,genomic,C2CD5,34
+43,5,genomic,CETP,35
+43,5,genomic,IGDCC3,36
+43,5,genomic,MRC1,37
+43,5,genomic,Tumor Other Histologic Subtype_acinar and cribriform,38
+43,5,genomic,CAPS2,39
+43,5,genomic,SGK1,40
+43,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,1
+43,5,clinical,Year Cancer Initial Diagnosis,2
+43,5,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,3
+43,5,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,4
+43,5,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,5
+43,5,clinical,Diagonstic MRI Result_YES,6
+43,5,clinical,Surgical Margin Resection Status_R0,7
+43,5,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",8
+43,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),9
+43,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",10
+43,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",11
+43,5,clinical,Surgical Margin Resection Status_RX,12
+43,5,clinical,Cause of death source_Death Certificate,13
+43,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),14
+43,5,clinical,Mri results_Distant Metastasis [e.g. cM1],15
+43,5,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,16
+43,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",17
+43,5,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,18
+43,5,clinical,Tissue Retrospective Collection Indicator_YES,19
+43,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,20
+43,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],21
+43,5,clinical,Ct scan ab pelvis results_Equivocal,22
+43,5,clinical,Mri results_Equivocal,23
+43,5,clinical,Ct scan ab pelvis indicator_YES,24
+43,5,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,25
+43,5,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",26
+43,5,clinical,Tissue Retrospective Collection Indicator_NO,27
+43,5,clinical,Patient Primary Tumor Site_Central Zone,28
+43,5,clinical,Tissue Prospective Collection Indicator_YES,29
+43,5,clinical,Ct scan ab pelvis indicator_NO,30
+43,5,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],31
+43,5,clinical,Diagonstic MRI Result_NO,32
+43,5,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,33
+43,5,clinical,Mri results_No Evidence of Extraprostatic Extension,34
+43,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],35
+43,5,clinical,Surgical Margin Resection Status_R2,36
+43,5,clinical,Primary Therapy Outcome Success Type_Stable Disease,37
+43,5,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,38
+43,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",39
+43,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,40
+44,1,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,1
+44,1,genomic,TAL1,2
+44,1,genomic,MRPS28,3
+44,1,genomic,Tumor Other Histologic Subtype_acinar and cribriform,4
+44,1,genomic,RSF1,5
+44,1,genomic,ANO8,6
+44,1,genomic,MPP5,7
+44,1,genomic,GIT2,8
+44,1,genomic,IFITM3,9
+44,1,genomic,POFUT1,10
+44,1,genomic,OVOL2,11
+44,1,genomic,FSHB,12
+44,1,genomic,MRPL20,13
+44,1,genomic,Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2c,14
+44,1,genomic,CD300A,15
+44,1,genomic,RSPO2,16
+44,1,genomic,NDUFAF2,17
+44,1,genomic,SRGAP1,18
+44,1,genomic,TANK,19
+44,1,genomic,NARFL,20
+44,1,genomic,PPP1CA,21
+44,1,genomic,AHNAK,22
+44,1,genomic,MGRN1,23
+44,1,genomic,CRNN,24
+44,1,genomic,SSTR3,25
+44,1,genomic,SORBS3,26
+44,1,genomic,APOC4,27
+44,1,genomic,CRTC3,28
+44,1,genomic,SAMD14,29
+44,1,genomic,CDK11B,30
+44,1,genomic,HTR3C,31
+44,1,genomic,RET,32
+44,1,genomic,ESF1,33
+44,1,genomic,ADCY9,34
+44,1,genomic,STK39,35
+44,1,genomic,APLP2,36
+44,1,genomic,SMO,37
+44,1,genomic,MGME1,38
+44,1,genomic,KIF23,39
+44,1,genomic,PRRG4,40
+44,1,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,1
+44,1,clinical,Gleason pattern secondary,2
+44,1,clinical,Gleason pattern primary,3
+44,1,clinical,Year Cancer Initial Diagnosis,4
+44,1,clinical,Primary Therapy Outcome Success Type_Stable Disease,5
+44,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",6
+44,1,clinical,Patient Primary Tumor Site_Central Zone,7
+44,1,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,8
+44,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],9
+44,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,10
+44,1,clinical,Tissue Prospective Collection Indicator_YES,11
+44,1,clinical,Surgical Margin Resection Status_R0,12
+44,1,clinical,Mri results_Equivocal,13
+44,1,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),14
+44,1,clinical,Diagonstic MRI Result_YES,15
+44,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,16
+44,1,clinical,Ct scan ab pelvis indicator_YES,17
+44,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],18
+44,1,clinical,Tissue Retrospective Collection Indicator_NO,19
+44,1,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",20
+44,1,clinical,Tissue Retrospective Collection Indicator_YES,21
+44,1,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,22
+44,1,clinical,Ct scan ab pelvis indicator_NO,23
+44,1,clinical,Ct scan ab pelvis results_Equivocal,24
+44,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,25
+44,1,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,26
+44,1,clinical,Mri results_No Evidence of Extraprostatic Extension,27
+44,1,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),28
+44,1,clinical,Mri results_Distant Metastasis [e.g. cM1],29
+44,1,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],30
+44,1,clinical,Surgical Margin Resection Status_R2,31
+44,1,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,32
+44,1,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,33
+44,1,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,34
+44,1,clinical,Cause of death source_Death Certificate,35
+44,1,clinical,Surgical Margin Resection Status_RX,36
+44,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",37
+44,1,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",38
+44,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,39
+44,1,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+44,2,genomic,PARP2,1
+44,2,genomic,ORC2,2
+44,2,genomic,COG6,3
+44,2,genomic,RSPO2,4
+44,2,genomic,Tumor Other Histologic Subtype_acinar and cribriform,5
+44,2,genomic,SH3RF2,6
+44,2,genomic,GNB2L1,7
+44,2,genomic,GAD1,8
+44,2,genomic,PASK,9
+44,2,genomic,TANK,10
+44,2,genomic,"Tumor Other Histologic Subtype_Prostate Adenocarcinoma, Not Otherwised Specified, with ductal featues",11
+44,2,genomic,ACAP3,12
+44,2,genomic,NPAS3,13
+44,2,genomic,MMP1,14
+44,2,genomic,CHTF18,15
+44,2,genomic,GFPT1,16
+44,2,genomic,FMNL3,17
+44,2,genomic,MATK,18
+44,2,genomic,PDZD3,19
+44,2,genomic,NHLH1,20
+44,2,genomic,APBB3,21
+44,2,genomic,SRPX,22
+44,2,genomic,CECR2,23
+44,2,genomic,NKAPL,24
+44,2,genomic,VWA5B2,25
+44,2,genomic,KIAA1508,26
+44,2,genomic,SUMO1,27
+44,2,genomic,SBNO2,28
+44,2,genomic,NOTUM,29
+44,2,genomic,DNAJC4,30
+44,2,genomic,DCAF7,31
+44,2,genomic,POU2F1,32
+44,2,genomic,HAS2,33
+44,2,genomic,KCNK12,34
+44,2,genomic,TTC21B,35
+44,2,genomic,ERK,36
+44,2,genomic,PRR3,37
+44,2,genomic,EDM2,38
+44,2,genomic,DMPK,39
+44,2,genomic,INE2,40
+44,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",1
+44,2,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,2
+44,2,clinical,Gleason pattern secondary,3
+44,2,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],4
+44,2,clinical,Diagonstic MRI Result_NO,5
+44,2,clinical,Ct scan ab pelvis indicator_NO,6
+44,2,clinical,Patient Primary Tumor Site_Central Zone,7
+44,2,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,8
+44,2,clinical,Primary Therapy Outcome Success Type_Progressive Disease,9
+44,2,clinical,Surgical Margin Resection Status_R2,10
+44,2,clinical,Cause of death source_Death Certificate,11
+44,2,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",12
+44,2,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,13
+44,2,clinical,Ct scan ab pelvis indicator_YES,14
+44,2,clinical,Year Cancer Initial Diagnosis,15
+44,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,16
+44,2,clinical,Tissue Prospective Collection Indicator_YES,17
+44,2,clinical,Diagonstic MRI Result_YES,18
+44,2,clinical,Gleason pattern primary,19
+44,2,clinical,Tissue Retrospective Collection Indicator_YES,20
+44,2,clinical,Tissue Retrospective Collection Indicator_NO,21
+44,2,clinical,Mri results_Distant Metastasis [e.g. cM1],22
+44,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],23
+44,2,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),24
+44,2,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,25
+44,2,clinical,Ct scan ab pelvis results_Equivocal,26
+44,2,clinical,Surgical Margin Resection Status_R0,27
+44,2,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,28
+44,2,clinical,Mri results_No Evidence of Extraprostatic Extension,29
+44,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),30
+44,2,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],31
+44,2,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,32
+44,2,clinical,Surgical Margin Resection Status_RX,33
+44,2,clinical,Primary Therapy Outcome Success Type_Partial Remission/Response,34
+44,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",35
+44,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",36
+44,2,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",37
+44,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,38
+44,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,39
+44,2,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,40
+44,3,genomic,Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma,1
+44,3,genomic,DENND2A,2
+44,3,genomic,Tumor Other Histologic Subtype_acinar and cribriform,3
+44,3,genomic,ZNF324,4
+44,3,genomic,SIDT2,5
+44,3,genomic,DOPEY2,6
+44,3,genomic,OGT,7
+44,3,genomic,PRO2729,8
+44,3,genomic,MFSD6,9
+44,3,genomic,ZNF678,10
+44,3,genomic,CIT,11
+44,3,genomic,BMP8A,12
+44,3,genomic,GNAS-AS1,13
+44,3,genomic,PDCD11,14
+44,3,genomic,TRAF3IP3,15
+44,3,genomic,PWWP2A,16
+44,3,genomic,KIAA1508,17
+44,3,genomic,KLKP1,18
+44,3,genomic,PBLD,19
+44,3,genomic,PTPRF,20
+44,3,genomic,CELF4,21
+44,3,genomic,PROK1,22
+44,3,genomic,MINDY4,23
+44,3,genomic,SP8,24
+44,3,genomic,SLC5A6,25
+44,3,genomic,SOX7,26
+44,3,genomic,USP45,27
+44,3,genomic,NUP58,28
+44,3,genomic,SLC2A11,29
+44,3,genomic,ABI2,30
+44,3,genomic,ACACA,31
+44,3,genomic,TASP1,32
+44,3,genomic,DTNB,33
+44,3,genomic,C22orf31,34
+44,3,genomic,TEDC2,35
+44,3,genomic,ORC2,36
+44,3,genomic,ZRANB2,37
+44,3,genomic,RNF130,38
+44,3,genomic,CYB5B,39
+44,3,genomic,KIF9,40
+44,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",1
+44,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,2
+44,3,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,3
+44,3,clinical,Gleason pattern secondary,4
+44,3,clinical,Primary Therapy Outcome Success Type_Progressive Disease,5
+44,3,clinical,Tissue Prospective Collection Indicator_YES,6
+44,3,clinical,Year Cancer Initial Diagnosis,7
+44,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",8
+44,3,clinical,Ct scan ab pelvis indicator_YES,9
+44,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,10
+44,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",11
+44,3,clinical,Ct scan ab pelvis indicator_NO,12
+44,3,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,13
+44,3,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,14
+44,3,clinical,Patient Primary Tumor Site_Central Zone,15
+44,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),16
+44,3,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),17
+44,3,clinical,Surgical Margin Resection Status_R2,18
+44,3,clinical,Primary Therapy Outcome Success Type_Partial Remission/Response,19
+44,3,clinical,Gleason pattern primary,20
+44,3,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",21
+44,3,clinical,Tissue Retrospective Collection Indicator_NO,22
+44,3,clinical,Tissue Retrospective Collection Indicator_YES,23
+44,3,clinical,Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,24
+44,3,clinical,Patient Primary Tumor Site_Overlapping / Multiple Zones,25
+44,3,clinical,Ct scan ab pelvis results_Equivocal,26
+44,3,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],27
+44,3,clinical,Surgical Margin Resection Status_R0,28
+44,3,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,29
+44,3,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],30
+44,3,clinical,Mri results_No Evidence of Extraprostatic Extension,31
+44,3,clinical,Mri results_Equivocal,32
+44,3,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,33
+44,3,clinical,Diagonstic MRI Result_YES,34
+44,3,clinical,Mri results_Distant Metastasis [e.g. cM1],35
+44,3,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],36
+44,3,clinical,Surgical Margin Resection Status_RX,37
+44,3,clinical,Primary Therapy Outcome Success Type_Stable Disease,38
+44,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",39
+44,3,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",40
+44,4,genomic,FBXL18,1
+44,4,genomic,VWA5B2,2
+44,4,genomic,ANO8,3
+44,4,genomic,SKAP1,4
+44,4,genomic,SPAG5,5
+44,4,genomic,SSX2,6
+44,4,genomic,Tumor Other Histologic Subtype_acinar and cribriform,7
+44,4,genomic,GBGT1,8
+44,4,genomic,SF3B3,9
+44,4,genomic,SLC25A51P4,10
+44,4,genomic,PTPRO,11
+44,4,genomic,ASAP2,12
+44,4,genomic,COMMD10,13
+44,4,genomic,KIFC2,14
+44,4,genomic,PMAIP1,15
+44,4,genomic,CSMD2,16
+44,4,genomic,ZNF131,17
+44,4,genomic,DKFZP434H2235,18
+44,4,genomic,RHBDD1,19
+44,4,genomic,CC2D2B,20
+44,4,genomic,JKAMP,21
+44,4,genomic,ORC2,22
+44,4,genomic,KIF14,23
+44,4,genomic,PARP11,24
+44,4,genomic,LINC00883,25
+44,4,genomic,FBXO39,26
+44,4,genomic,PPP2R2C,27
+44,4,genomic,GGTLC2,28
+44,4,genomic,ZFP30,29
+44,4,genomic,SFPQ,30
+44,4,genomic,SCAND2P,31
+44,4,genomic,BMP2,32
+44,4,genomic,P2RX7,33
+44,4,genomic,HOXC13,34
+44,4,genomic,TMOD2,35
+44,4,genomic,RECK,36
+44,4,genomic,SLC7A9,37
+44,4,genomic,CCT8L2,38
+44,4,genomic,NOTUM,39
+44,4,genomic,GORASP1,40
+44,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T2b,1
+44,4,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,2
+44,4,clinical,Ct scan ab pelvis indicator_YES,3
+44,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",4
+44,4,clinical,Tissue Retrospective Collection Indicator_YES,5
+44,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,6
+44,4,clinical,Tissue Prospective Collection Indicator_YES,7
+44,4,clinical,Ct scan ab pelvis indicator_NO,8
+44,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",9
+44,4,clinical,Year Cancer Initial Diagnosis,10
+44,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,11
+44,4,clinical,Surgical Margin Resection Status_R0,12
+44,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",13
+44,4,clinical,Cause of death source_Death Certificate,14
+44,4,clinical,Tissue Retrospective Collection Indicator_NO,15
+44,4,clinical,Gleason pattern primary,16
+44,4,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,17
+44,4,clinical,Patient Primary Tumor Site_Central Zone,18
+44,4,clinical,Gleason pattern secondary,19
+44,4,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",20
+44,4,clinical,Diagonstic MRI Result_NO,21
+44,4,clinical,Diagonstic MRI Result_YES,22
+44,4,clinical,Ct scan ab pelvis results_Equivocal,23
+44,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),24
+44,4,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],25
+44,4,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],26
+44,4,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,27
+44,4,clinical,Mri results_No Evidence of Extraprostatic Extension,28
+44,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],29
+44,4,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),30
+44,4,clinical,Mri results_Distant Metastasis [e.g. cM1],31
+44,4,clinical,Mri results_Equivocal,32
+44,4,clinical,Surgical Margin Resection Status_R2,33
+44,4,clinical,Primary Lymph Node Presentation Assessment Ind-3_YES,34
+44,4,clinical,Primary Therapy Outcome Success Type_Stable Disease,35
+44,4,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,36
+44,4,clinical,Surgical Margin Resection Status_RX,37
+44,4,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",38
+44,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,39
+44,4,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
+44,5,genomic,LASP1,1
+44,5,genomic,CENPF,2
+44,5,genomic,PARP2,3
+44,5,genomic,ZNF324,4
+44,5,genomic,CALB1,5
+44,5,genomic,PHTF2,6
+44,5,genomic,CLDN8,7
+44,5,genomic,SGK1,8
+44,5,genomic,ZSCAN32,9
+44,5,genomic,NHLH1,10
+44,5,genomic,HEATR3,11
+44,5,genomic,PTGER1,12
+44,5,genomic,LCN2,13
+44,5,genomic,OIP5,14
+44,5,genomic,CARD17,15
+44,5,genomic,SLC16A1,16
+44,5,genomic,STK36,17
+44,5,genomic,RNF11,18
+44,5,genomic,APOC3,19
+44,5,genomic,LRP10,20
+44,5,genomic,TAX1BP3,21
+44,5,genomic,RPS2P32,22
+44,5,genomic,RSF1,23
+44,5,genomic,PAXIP1-AS1,24
+44,5,genomic,RASSF2,25
+44,5,genomic,ANKRD20A9P,26
+44,5,genomic,DDX17,27
+44,5,genomic,OR7C1,28
+44,5,genomic,GABARAPL3,29
+44,5,genomic,NUDT2,30
+44,5,genomic,TNFRSF8,31
+44,5,genomic,CLN8,32
+44,5,genomic,BCDO,33
+44,5,genomic,KIF18B,34
+44,5,genomic,CHPF,35
+44,5,genomic,TRMT10A,36
+44,5,genomic,TRAF3IP3,37
+44,5,genomic,CD63,38
+44,5,genomic,NR1H4,39
+44,5,genomic,PIK3C2B,40
+44,5,clinical,Gleason pattern primary,1
+44,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T3a,2
+44,5,clinical,Patient Primary Tumor Site_Overlapping / Multiple Zones,3
+44,5,clinical,Surgical Margin Resection Status_R0,4
+44,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T3b,5
+44,5,clinical,Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,6
+44,5,clinical,Ct scan ab pelvis results_Distant Metastasis [e.g. cM1],7
+44,5,clinical,Primary Lymph Node Presentation Assessment Ind-3_NO,8
+44,5,clinical,Patient Primary Tumor Site_Central Zone,9
+44,5,clinical,Gleason pattern secondary,10
+44,5,clinical,Radical Prostatectomy Gleason Score for Prostate Cancer,11
+44,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)|Extraprostatic Extension (regional lymphadenopathy) [e.g. cN1],12
+44,5,clinical,Surgical Margin Resection Status_RX,13
+44,5,clinical,Tissue Retrospective Collection Indicator_YES,14
+44,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8480/3",15
+44,5,clinical,Ct scan ab pelvis indicator_NO,16
+44,5,clinical,Diagonstic MRI Result_YES,17
+44,5,clinical,Mri results_No Evidence of Extraprostatic Extension|Equivocal,18
+44,5,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Synchronous/Bilateral Malignancy",19
+44,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8255/3",20
+44,5,clinical,"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",21
+44,5,clinical,Year Cancer Initial Diagnosis,22
+44,5,clinical,Mri results_No Evidence of Extraprostatic Extension,23
+44,5,clinical,Cause of death source_Death Certificate,24
+44,5,clinical,Tissue Retrospective Collection Indicator_NO,25
+44,5,clinical,Tissue Prospective Collection Indicator_YES,26
+44,5,clinical,Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),27
+44,5,clinical,Mri results_Distant Metastasis [e.g. cM1],28
+44,5,clinical,Mri results_Equivocal,29
+44,5,clinical,Ct scan ab pelvis indicator_YES,30
+44,5,clinical,Ct scan ab pelvis results_Equivocal,31
+44,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),32
+44,5,clinical,Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],33
+44,5,clinical,Primary Therapy Outcome Success Type_Stable Disease,34
+44,5,clinical,Did patient start adjuvant postoperative radiotherapy?_YES,35
+44,5,clinical,Did patient start adjuvant postoperative radiotherapy?_NO,36
+44,5,clinical,Surgical Margin Resection Status_R2,37
+44,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",38
+44,5,clinical,"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",39
+44,5,clinical,American Joint Committee on Cancer Tumor Stage Code_T4,40
