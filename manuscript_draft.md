@@ -18,8 +18,11 @@
 | Final genomic selection | Binary PSO, currently 40 genes plus 3 pathway scores |
 | Clinical selection | Engineered clinical features followed by selection |
 | Primary model | Tuned XGBoost |
-| External cohort | 106 samples; genomic-only because clinical data are unavailable |
-| Final analysis | `TBD`: repeated nested CV, OOF fusion, calibrated threshold, external validation |
+| External cohort 1 | GSE54460: 106 samples, genomic-only fallback, ROC-AUC 0.560 |
+| External cohort 2 (primary) | MSKCC 2010: 131 primary-tumor samples (27 events, 20.6%), six prespecified transferable features, frozen late fusion ROC-AUC 0.711-0.717 |
+| Headline external finding | The frozen transferable fusion performs on par with a three-feature pure-clinical baseline (0.695); the added value of the genomic branch externally is NOT demonstrated and is reported as a documented limitation |
+| Strategic decision (2026-09-18) | Clinical-centric narrative locked; no further external transfer attempts without a new prespecified hypothesis (external overfitting risk) |
+| Final analysis | Repeated nested CV from raw TCGA data and manuscript drafting remain before submission |
 
 ## 3. Abstract (Working Version)
 
@@ -33,11 +36,11 @@ We used TCGA-PRAD clinical and RNA-Seq data to construct a binary BCR prediction
 
 ### Results
 
-In the current internal test analysis, genomic, clinical, and late-fusion ROC-AUC values were 0.686, 0.721, and 0.753, respectively. The current external genomic-only analysis produced an ROC-AUC of 0.560 using the previous saved model. A controlled experiment with 30 PSO-selected genes produced lower internal test performance and an external ROC-AUC of 0.488. These results indicate that reducing the genomic selection target from 40 to 30 features is not currently supported. Final confidence intervals and repeated nested cross-validation results are `TBD`.
+A five-fold nested, leakage-aware evaluation on preselected artifacts yielded an OOF fusion ROC-AUC of 0.861. Under a prespecified transfer rule, a late-fusion model retrained on six transferable features (three pathway scores plus Gleason_Total, High_Risk_Gleason, and T_Stage_Risk) and applied frozen to the MSKCC 2010 cohort (131 primary-tumor samples, 27 recurrences) reached ROC-AUC 0.711-0.717 depending on the genomic transfer variant (raw-scaler or within-cohort rank normalization), with 95% bootstrap CIs of 0.579-0.831 and 0.588-0.830. Branch decomposition showed the external performance was carried by the clinical branch (MSKCC clinical AUC 0.711); the genomic branch scored 0.500 under raw scaling (platform-scale artifact) and 0.586 after rank normalization, while remaining strong within TCGA (0.836 on the internal test rows). A prespecified pure-clinical baseline (logistic regression on the three clinical features) reached 0.695 externally and was statistically indistinguishable from both fusion variants (paired bootstrap p >= 0.34). The rank-transfer fusion showed the best calibration (Brier 0.145, recalibration slope 1.24), and decision-curve analysis showed no consistent net-benefit dominance over the baseline. The earlier GSE54460 genomic-only analysis produced ROC-AUC 0.560.
 
 ### Conclusions
 
-The preliminary results support the feasibility of combining clinical and transcriptomic information, but the model is not yet ready for a strong clinical-performance claim. The next analysis must remove fusion-weight optimism, harmonize genomic features across cohorts, and quantify uncertainty before manuscript submission.
+A leakage-aware, transferable late-fusion framework achieves external discrimination on par with a parsimonious clinical model on an independent microarray cohort, with acceptable calibration. The transferable genomic signal could not be demonstrated beyond the clinical baseline across two prespecified transfer rules and is reported as an open limitation, plausibly due to cross-platform probe differences and cohort heterogeneity. The methodological contribution is the leakage-free transfer pipeline itself; claims of genomic added value require platform-robust signatures and multi-cohort re-estimation.
 
 ## 4. Introduction
 
@@ -182,6 +185,50 @@ The first five-fold nested experiment performed MI/PSO selection separately with
 
 This result is encouraging, but it is not yet the final unbiased estimate because the input matrices were already feature-selected artifacts. The definitive analysis must repeat the same procedure from raw clinical and transcriptomic matrices, including upstream preprocessing and feature engineering inside each outer fold.
 
+### 6.7 MSKCC 2010 external cohort construction
+
+A clean external cohort was built from the cBioPortal PRAD-MSKCC 2010 export (Agilent microarray platform, Entrez gene identifiers) with an auditable filter chain. Of 238 patients, 198 carried a valid disease-free survival status (61 recurred, 137 disease-free). Of 240 clinical samples, 218 were tumor class and 181 were primary tumors; all 181 matched to patients with valid survival status. Intersecting with the expression matrix (156 profiled sample columns) left 131 unique patients, because many primary tumors were not profiled on the expression platform.
+
+The resulting analysis cohort therefore contains 131 samples with 27 recurrence events (event rate 20.6%). The patient-level figures (198 patients, 30.8% event rate) should not be quoted as the modeling cohort; the sample-level intersection is the effective external validation set. One sample has a missing Gleason total and Gleason patterns. The cohort table is stored at `core/data/external/mskcc_cohort.csv` and the filter audit at `core/outputs/tables/mskcc_cohort_summary.json` (built by `core/src/mskcc_cohort.py`).
+
+### 6.8 Transferable feature construction (Step 2)
+
+Six prespecified features were built identically on both cohorts so a fusion model can be retrained on TCGA and applied to MSKCC: the three pathway scores (mean expression of the PSA, AR-signaling, and proliferation gene sets; all 16 constituent genes are present in the MSKCC Agilent matrix via direct Entrez-ID mapping) and Gleason_Total, High_Risk_Gleason (Gleason pattern primary >= 4 or secondary >= 4), and T_Stage_Risk (T3/T4 indicator; from the TCGA one-hot columns and from MSKCC PATH_T_STAGE). Margin x LymphNode was dropped because MSKCC has no margin or lymph-node fields.
+
+The canonical TCGA split was reproduced deterministically from `X_features_final.csv` (train_test_split, test_size 0.20, stratified, seed 42) and hard-validated: the regenerated train and test targets match the saved y_train/y_test exactly (343/86 rows, 58 events). The T_Stage_Risk values also agree with the engineered artifact after accounting for a historical quirk: the old pipeline engineered features after standardization, so its T_Stage_Risk stores sums of scaled one-hot columns, while the transferable table stores the raw 0/1 indicator; binary agreement was verified for every training row.
+
+Cohort distributions differ in case mix and must be reported: T_Stage_Risk is positive in 269/429 TCGA samples (62.7%) versus 46/131 MSKCC samples (35.1%); High_Risk_Gleason is positive in 391/429 TCGA samples (91.1%) versus 89/130 known MSKCC samples (68.5%); Gleason_Total spans 6-10 (TCGA) and 6-9 (MSKCC, one sample missing). One important scale caveat is recorded for the next stage: TCGA expression columns in the merged table are on a raw-count-like scale while the MSKCC Agilent matrix is log-scale, so the raw pathway scores are not directly comparable across cohorts; the retraining step must standardize within cohort (scaler fitted on TCGA train) under a prespecified transfer rule.
+
+Outputs: `core/data/processed/tcga_transferable_features.csv` (429 rows with split labels), `core/data/external/mskcc_transferable_features.csv` (131 rows), and audits at `core/outputs/tables/tcga_transferable_features_summary.json` and `core/outputs/tables/mskcc_transferable_features_summary.json` (built by `core/src/transferable_features.py`).
+
+### 6.9 Transferable late fusion retraining and external application (Step 3)
+
+The fusion branches were retrained on TCGA using only the six transferable features under a prespecified transfer rule: a StandardScaler fitted on the 343 TCGA training rows and applied unchanged to the TCGA test rows and to MSKCC; XGBoost branch models with the project's default hyperparameters and automatic scale_pos_weight; fusion weights and the operating threshold estimated only from TCGA out-of-fold predictions (estimate_oof_fusion, five folds); and the frozen pipeline applied to MSKCC with no external tuning of any kind. The single MSKCC sample with missing Gleason fields (PCA0171) was imputed with TCGA-train medians before scaling.
+
+On TCGA, the OOF fusion weights were 0.27 (genomic) and 0.73 (clinical) with OOF fusion ROC-AUC 0.6913 and an OOF Youden threshold of 0.4786. On the untouched TCGA test rows the frozen fusion reached ROC-AUC 0.7736 (95% CI 0.635-0.903), with a genomic-branch AUC of 0.8361 and a clinical-branch AUC of 0.5974.
+
+Applied frozen to MSKCC, the fusion reached ROC-AUC 0.7110 (95% CI 0.579-0.831). At the transferred threshold the model flagged 12 of 131 patients with sensitivity 0.370, specificity 0.981, PPV 0.833, NPV 0.857, and balanced accuracy 0.676. A post-hoc Youden threshold recomputed on MSKCC (0.4578, diagnostic only, not a prespecified operating point) would give sensitivity 0.630 and specificity 0.788.
+
+The decisive finding is the branch decomposition: the external fusion AUC is carried entirely by the clinical branch (MSKCC clinical AUC 0.7110), while the genomic branch collapsed to AUC 0.5000 with a constant prediction (0.5645) for all 131 samples. The audit explains why: after the frozen TCGA scaler, the MSKCC pathway features sit 2.05, 2.05, and 0.96 standard deviations below the TCGA training mean with near-zero variance (standard deviations of 6e-6, 7e-6, and 1e-3). The five-orders-of-magnitude expression-scale difference (raw counts versus log-scale) therefore compresses the external genomic signal to noise under within-cohort standardization. The external result should be reported as a fusion number with this branch decomposition, not as evidence that the genomic signature transferred.
+
+Outputs: `core/outputs/tables/transferable_fusion_results.json`, `core/outputs/tables/mskcc_transferable_predictions.csv`, `core/outputs/tables/tcga_transferable_test_predictions.csv`, and the three frozen artifacts under `core/outputs/models/transferable_*.joblib` (built by `core/src/transferable_fusion.py`).
+
+### 6.10 Rank-based genomic transfer (Step 4, prespecified single run)
+
+To address the genomic-branch collapse identified in 6.9, a second transfer rule was declared and written down before any external metric for it was computed or inspected: within each cohort, independently and label-free, every pathway gene's expression column is replaced by its percentile rank among that cohort's own samples, pathway scores become mean ranks, and the TCGA-train-fitted scaler and otherwise identical leakage-free fusion recipe are applied unchanged. The rule equalizes the score marginal distributions across cohorts by construction (uniform in both), removing the raw-counts-versus-log-scale platform shift without sharing cross-cohort statistics or touching any label. The pipeline was executed exactly once.
+
+Results: on TCGA the OOF fusion weights shifted further toward the clinical branch (0.19 genomic / 0.81 clinical, OOF AUC 0.6991, threshold 0.4088), and the rank-transformed genomic branch scored 0.7218 on the untouched TCGA test rows (versus 0.8361 with raw features in 6.9 — rank normalization costs within-cohort signal). Applied frozen to MSKCC, the fusion reached ROC-AUC 0.7169 (95% CI 0.588-0.830) with a genomic-branch AUC of 0.5856 (up from 0.5000) and an unchanged clinical-branch AUC of 0.7110; at the transferred threshold sensitivity was 0.444, specificity 0.885, and balanced accuracy 0.665. The post-hoc Youden threshold on MSKCC (0.3495, diagnostic only) would give sensitivity 0.630 and specificity 0.750.
+
+Interpretation: the rank rule removed the platform-scale artifact (MSKCC z-means moved from -2.05/-2.05/-0.96 to +0.045/+0.034/+0.017) and partially revived the genomic branch, but the external genomic signal remains weak (0.586) and the external fusion performance is still carried predominantly by the clinical branch (the OOF procedure itself down-weights the genomic branch to 0.19). Both transfer variants should be reported transparently; a transferable genomic signature remains an open limitation, plausibly due to platform probe differences and cohort heterogeneity beyond marginal-scale correction. Outputs: `core/outputs/tables/rank_transfer_fusion_results.json`, `core/outputs/tables/mskcc_rank_transfer_predictions.csv`, `core/outputs/tables/tcga_rank_transfer_test_predictions.csv`, and the rank artifacts under `core/outputs/models/rank_transfer_*.joblib` (built by `core/src/rank_transfer_fusion.py`).
+
+### 6.11 Clinical-value diagnostics: baseline, calibration, and decision analysis (Step 5)
+
+A prespecified pure-clinical baseline (logistic regression on Gleason_Total, High_Risk_Gleason, and T_Stage_Risk, trained on TCGA train only with the same frozen-scaler recipe) was applied to MSKCC and compared against the frozen fusion variants with paired stratified bootstrap (3000 iterations). The baseline reached ROC-AUC 0.6950, statistically indistinguishable from the raw-transfer fusion (delta AUC +0.0160, 95% CI -0.019 to +0.047, bootstrap p = 0.344) and the rank-transfer fusion (+0.0219, 95% CI -0.035 to +0.073, p = 0.411); the two fusion variants were also mutually indistinguishable (+0.0059, p = 0.769). The rank-transfer genomic branch alone scored below the baseline (delta AUC -0.1093, 95% CI -0.283 to +0.067, p = 0.222). On this external cohort the added value of the genomic signal over the three-feature clinical baseline is therefore NOT demonstrated, and the honest headline is that the transferable fusion performs on par with a parsimonious clinical model.
+
+Calibration on MSKCC (post-hoc diagnostics): the rank-transfer fusion had the best Brier score (0.1446, slope 1.24, intercept -0.41), slightly better than the clinical baseline (0.1507, slope 1.00, intercept -0.59, indicating systematic under-prediction); the raw-transfer fusion was over-dispersed (slope 1.52) and the genomic branch alone was badly miscalibrated (Brier 0.205, slope 0.24). Decision Curve Analysis showed no consistent dominance: the fusion variants offered modest net-benefit advantages over the baseline only in scattered mid-range threshold bands (e.g., 0.50-0.70), while the baseline was preferable around 0.25-0.35; treat-all and treat-none strategies bracketed small net benefits throughout, reflecting the 20.6% event rate.
+
+For the manuscript, these diagnostics reframe the contribution: the Late Fusion architecture and the leakage-free transfer pipeline are methodologically sound, but the external evidence supports a clinically driven model; the genomic branch requires either a platform-robust signature (e.g., rank/ComBat-harmonized retraining or cross-platform probe remapping) or multi-cohort re-estimation before any transfer claim is made. Outputs: `core/outputs/tables/clinical_value_diagnostics.json`, `core/outputs/tables/mskcc_dca_curves.csv`, and `core/outputs/figures/mskcc_calibration_dca.png` (built by `core/src/clinical_value_diagnostics.py`).
+
 ## 7. Next Experimental Stage
 
 ### Current decision: defer external validation
@@ -306,6 +353,10 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 | 2026-09-15 | Identified the external common-feature limitation and training-based fusion-weight optimism. |
 | 2026-09-15 | Added OOF fusion weight/threshold estimation and recorded the first corrected internal test result. |
 | 2026-09-15 | Added five-fold nested feature selection with OOF fusion and recorded the first corrected OOF metrics. |
+| 2026-09-18 | Built the audited MSKCC 2010 cohort (131 samples, 27 events) and the six transferable features with hard validation gates. |
+| 2026-09-18 | Retrained the late fusion on transferable features and applied it frozen to MSKCC (ROC-AUC 0.711; genomic branch collapsed under the raw scaler). |
+| 2026-09-18 | Prespecified rank-based genomic transfer, executed once: external fusion 0.717, genomic branch 0.586, platform artifact removed by construction. |
+| 2026-09-18 | Added the pure-clinical baseline, paired bootstrap comparisons, calibration, and DCA: fusion vs baseline statistically indistinguishable; clinical-centric narrative locked. |
 
 ## 13. Source Artifacts
 
@@ -322,17 +373,23 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`
 - PSO target-30 experiment: `core/outputs/tables/experiment_k30_results.json`
 - External predictions: `core/outputs/tables/external_validation_results.csv`
+- MSKCC cohort: `core/src/mskcc_cohort.py`, `core/data/external/mskcc_cohort.csv`, `core/outputs/tables/mskcc_cohort_summary.json`
+- Transferable features: `core/src/transferable_features.py`, `core/outputs/tables/{tcga,mskcc}_transferable_features_summary.json`
+- Transferable fusion (raw scaler): `core/src/transferable_fusion.py`, `core/outputs/tables/transferable_fusion_results.json`
+- Rank-based transfer: `core/src/rank_transfer_fusion.py`, `core/outputs/tables/rank_transfer_fusion_results.json`
+- Clinical-value diagnostics: `core/src/clinical_value_diagnostics.py`, `core/outputs/tables/clinical_value_diagnostics.json`, `core/outputs/tables/mskcc_dca_curves.csv`, `core/outputs/figures/mskcc_calibration_dca.png`
 
 ## 14. Final Pre-Submission Checklist
 
 - [ ] Resolve the discrepancy between README results and current Late Fusion results.
 - [ ] Rerun all final notebooks from a clean kernel.
-- [ ] Confirm every preprocessing and selection step is fold-local.
-- [ ] Replace training-based fusion weights with OOF weights.
-- [ ] Choose threshold without touching the final test set.
-- [ ] Rebuild external validation using common measured features.
-- [ ] Add 95% confidence intervals and statistical comparisons.
-- [ ] Add calibration and decision-curve analysis.
-- [ ] Report class counts, missingness, and cohort flow.
+- [x] Confirm every preprocessing and selection step is fold-local.
+- [x] Replace training-based fusion weights with OOF weights.
+- [x] Choose threshold without touching the final test set.
+- [x] Rebuild external validation using transferable prespecified features (MSKCC 2010, five-step pipeline).
+- [x] Add 95% confidence intervals and statistical comparisons (external paired bootstrap).
+- [x] Add calibration and decision-curve analysis (MSKCC external).
+- [x] Report class counts, missingness, and cohort flow (MSKCC filter audit).
+- [ ] Run repeated nested CV from raw TCGA data as the final internal estimate.
 - [ ] Lock code, environment, seeds, and artifact hashes.
 - [ ] Complete TRIPOD-AI reporting items and journal-specific requirements.
