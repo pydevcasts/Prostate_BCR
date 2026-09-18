@@ -73,6 +73,19 @@ The **OOF-fused** row is the leakage-free reference result: fusion weights (geno
 
 `*` Computed on pre-selected feature artifacts; the definitive estimate must rerun selection from raw data inside every outer fold.
 
+### External results on MSKCC 2010 (five-step transferable pipeline)
+
+A prespecified, leakage-free transfer pipeline (built by `core/src/mskcc_cohort.py`, `transferable_features.py`, `transferable_fusion.py`, `rank_transfer_fusion.py`, `clinical_value_diagnostics.py`) was applied **frozen** to the MSKCC 2010 cohort (131 primary-tumor samples, 27 recurrences, 20.6% event rate):
+
+| Model | External ROC-AUC (MSKCC) |
+|---|---:|
+| Pure-clinical baseline (logistic regression, 3 features) | 0.695 |
+| Transferable late fusion — raw-scaler transfer (Step 3) | 0.711 (CI95 0.579–0.831) |
+| **Transferable late fusion — rank-based transfer (Step 4)** | **0.717 (CI95 0.588–0.830)** |
+| Genomic branch alone (rank transfer) | 0.586 |
+
+**Honest headline:** the fusion is statistically indistinguishable from the parsimonious clinical baseline (paired bootstrap p ≥ 0.34); the external signal is carried by the clinical branch, and the genomic branch — strong within TCGA (0.836) — did not transfer (documented limitation; see `manuscript_draft.md` §6.9–6.11). The rank-transfer fusion had the best calibration (Brier 0.145).
+
 ### Selected Features
 
 - 🔬 **Genomic**: 40 genes by Binary PSO (from ~18,905 after variance filtering) + 3 pathway scores (`PSA_Pathway_Score`, `AR_Signaling_Score`, `Proliferation_Score`)
@@ -81,7 +94,7 @@ The **OOF-fused** row is the leakage-free reference result: fusion weights (geno
 ## External Validation
 
 - **GSE54460** (done): genomic-only fallback (no clinical data available), 106 samples (55 BCR-positive), ROC-AUC = **0.560** — highlights cross-cohort transferability challenges.
-- **MSKCC 2010** (downloaded, pending): the gold-standard prostatectomy cohort (`prad_mskcc.tar.gz` and `GSE70769_family.soft.gz` in `core/data/external/`) is ready for the same genomic-only validation pipeline.
+- **MSKCC 2010** (done): the gold-standard prostatectomy cohort, validated with the five-step transferable pipeline above — external fusion ROC-AUC **0.717**, on par with the pure-clinical baseline (0.695). Cohort files live in `core/data/external/` (`mskcc_cohort.csv`, `mskcc_transferable_features.csv`, `mskcc_rank_features.csv`, `prad_mskcc.tar.gz` + extracted `prad_mskcc/`).
 
 ## Project Structure
 
@@ -112,6 +125,11 @@ core/
 │   ├── clinical_engineer.py   # Domain-informed clinical features
 │   ├── features_config.py     # Engineered-feature definitions
 │   ├── clinical_benchmark.py  # Clinical feature-selection strategies
+│   ├── mskcc_cohort.py             # Step 1: audited MSKCC 2010 cohort
+│   ├── transferable_features.py    # Step 2: 6 transferable features + gates
+│   ├── transferable_fusion.py      # Step 3: frozen raw-scaler transfer
+│   ├── rank_transfer_fusion.py     # Step 4: frozen rank-based transfer
+│   ├── clinical_value_diagnostics.py # Step 5: baseline, calibration, DCA
 │   ├── models.py              # Model factories & registry (6 classifiers)
 │   ├── pipeline.py            # Nested CV & model comparison
 │   ├── evaluation.py          # Metrics + bootstrap CI
@@ -123,8 +141,8 @@ core/
 │       └── nested_evaluation.py  # Leakage-aware nested fusion eval
 ├── data/raw/                  # Raw TCGA data (not in Git)
 ├── data/processed/            # Processed datasets (not in Git)
-├── data/external/             # External cohort GSE54460 (not in Git)
-└── outputs/                   # Models, figures, tables (not in Git)
+├── data/external/             # External cohorts (tracked: MSKCC + GSE54460 artifacts)
+└── outputs/                   # Models, figures, tables (result tables/figures tracked)
 ```
 
 ## Setup

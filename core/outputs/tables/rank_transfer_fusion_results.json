@@ -1,0 +1,114 @@
+{
+  "step": 4,
+  "timestamp": "2026-09-18T17:11:35.564283+00:00",
+  "transfer_rule": "within-cohort per-gene percentile ranks -> pathway mean -> StandardScaler fit on TCGA train only -> frozen application; clinical branch unchanged from Step 3; declared before any external metric was computed; executed exactly once",
+  "features": {
+    "genomic": [
+      "PSA_Pathway_Score",
+      "AR_Signaling_Score",
+      "Proliferation_Score"
+    ],
+    "clinical": [
+      "Gleason_Total",
+      "High_Risk_Gleason",
+      "T_Stage_Risk"
+    ]
+  },
+  "audit": {
+    "rank_score_shift_check": {
+      "mskcc_z_mean": {
+        "PSA_Pathway_Score": 0.04547079254759165,
+        "AR_Signaling_Score": 0.03388729149734078,
+        "Proliferation_Score": 0.01728167483449237
+      },
+      "mskcc_z_std": {
+        "PSA_Pathway_Score": 0.912391899709507,
+        "AR_Signaling_Score": 0.9157580601884289,
+        "Proliferation_Score": 0.7568188978066785
+      },
+      "note": "rank scores should keep MSKCC near the TCGA scale by construction"
+    },
+    "clinical_imputation": {
+      "Gleason_Total": {
+        "n_missing": 1,
+        "fill": 7.0
+      },
+      "High_Risk_Gleason": {
+        "n_missing": 1,
+        "fill": 1.0
+      }
+    },
+    "oof": {
+      "genomic_weight": 0.19,
+      "clinical_weight": 0.81,
+      "oof_fusion_auc": 0.6990923730054165,
+      "threshold": 0.40881672918796547
+    }
+  },
+  "tcga_oof": {
+    "genomic_weight": 0.19,
+    "clinical_weight": 0.81,
+    "oof_fusion_auc": 0.6990923730054165,
+    "threshold": 0.40881672918796547
+  },
+  "tcga_test": {
+    "threshold": 0.40881672918796547,
+    "accuracy": 0.5465116279069767,
+    "balanced_accuracy": 0.5968468468468469,
+    "precision": 0.18604651162790697,
+    "recall": 0.6666666666666666,
+    "f1": 0.2909090909090909,
+    "sensitivity": 0.6666666666666666,
+    "specificity": 0.527027027027027,
+    "ppv": 0.18604651162790697,
+    "npv": 0.9069767441860465,
+    "n": 86,
+    "n_events": 12,
+    "predicted_positive": 43,
+    "fusion_auc": 0.6993243243243243,
+    "genomic_auc": 0.7218468468468469,
+    "clinical_auc": 0.5974099099099099,
+    "fusion_auc_ci95": [
+      0.5315033783783784,
+      0.8502252252252253
+    ]
+  },
+  "mskcc_external": {
+    "threshold": 0.40881672918796547,
+    "accuracy": 0.7938931297709924,
+    "balanced_accuracy": 0.6645299145299145,
+    "precision": 0.5,
+    "recall": 0.4444444444444444,
+    "f1": 0.47058823529411764,
+    "sensitivity": 0.4444444444444444,
+    "specificity": 0.8846153846153846,
+    "ppv": 0.5,
+    "npv": 0.8598130841121495,
+    "n": 131,
+    "n_events": 27,
+    "predicted_positive": 24,
+    "fusion_auc": 0.7168803418803419,
+    "genomic_auc": 0.5856481481481481,
+    "clinical_auc": 0.7110042735042734,
+    "fusion_auc_ci95": [
+      0.5883101851851853,
+      0.8304932336182336
+    ],
+    "posthoc_youden_threshold": 0.34953755140304565,
+    "posthoc_youden_metrics": {
+      "threshold": 0.34953755140304565,
+      "accuracy": 0.7251908396946565,
+      "balanced_accuracy": 0.6898148148148149,
+      "precision": 0.3953488372093023,
+      "recall": 0.6296296296296297,
+      "f1": 0.4857142857142857,
+      "sensitivity": 0.6296296296296297,
+      "specificity": 0.75,
+      "ppv": 0.3953488372093023,
+      "npv": 0.8863636363636364,
+      "n": 131,
+      "n_events": 27,
+      "predicted_positive": 43
+    }
+  }
+}

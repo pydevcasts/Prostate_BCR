@@ -1,0 +1,211 @@
+{
+  "step": 5,
+  "timestamp": "2026-09-18T17:12:05.361186+00:00",
+  "audit": {
+    "alignment_check": "PASS",
+    "baseline_imputation": {
+      "Gleason_Total": 7.0,
+      "High_Risk_Gleason": 1.0
+    },
+    "baseline": {
+      "model": "LogisticRegression(config.LOGISTIC_PARAMS, class_weight=balanced)",
+      "features": [
+        "Gleason_Total",
+        "High_Risk_Gleason",
+        "T_Stage_Risk"
+      ],
+      "train_rows": 343,
+      "scaler": "StandardScaler fit on TCGA train rows only"
+    }
+  },
+  "external_auc": {
+    "clinical_baseline": 0.6949786324786325,
+    "step3_fusion": 0.7110042735042734,
+    "step4_fusion": 0.7168803418803419,
+    "step4_genomic": 0.5856481481481481
+  },
+  "paired_comparisons": {
+    "step3_fusion_vs_baseline": {
+      "delta_auc": 0.01602564102564097,
+      "ci95": [
+        -0.019230769230769162,
+        0.04665242165242178
+      ],
+      "p_two_sided_bootstrap": 0.344,
+      "n_boot": 3000
+    },
+    "step4_fusion_vs_baseline": {
+      "delta_auc": 0.021901709401709435,
+      "ci95": [
+        -0.03454861111111123,
+        0.07336627492877498
+      ],
+      "p_two_sided_bootstrap": 0.4106666666666667,
+      "n_boot": 3000
+    },
+    "step4_fusion_vs_step3_fusion": {
+      "delta_auc": 0.005876068376068466,
+      "ci95": [
+        -0.035977564102564134,
+        0.0468349358974359
+      ],
+      "p_two_sided_bootstrap": 0.7693333333333333,
+      "n_boot": 3000
+    },
+    "step4_genomic_vs_baseline": {
+      "delta_auc": -0.10933048433048431,
+      "ci95": [
+        -0.28276353276353283,
+        0.06662215099715112
+      ],
+      "p_two_sided_bootstrap": 0.222,
+      "n_boot": 3000
+    }
+  },
+  "calibration": {
+    "clinical_baseline": {
+      "brier": 0.15067607148253143,
+      "recalibration_slope": 1.0001439554227223,
+      "recalibration_intercept": -0.5936113693894289,
+      "reliability_bins": [
+        {
+          "bin": "0.0-0.2",
+          "n": 48,
+          "mean_predicted": 0.16687613374849988,
+          "observed_rate": 0.14583333333333334
+        },
+        {
+          "bin": "0.2-0.4",
+          "n": 37,
+          "mean_predicted": 0.2213769295136819,
+          "observed_rate": 0.08108108108108109
+        },
+        {
+          "bin": "0.4-0.6",
+          "n": 39,
+          "mean_predicted": 0.47666359467570973,
+          "observed_rate": 0.3076923076923077
+        },
+        {
+          "bin": "0.6-0.8",
+          "n": 7,
+          "mean_predicted": 0.7171852367700408,
+          "observed_rate": 0.7142857142857143
+        },
+        {
+          "bin": "0.8-1.0",
+          "n": 0
+        }
+      ],
+      "note": "slope/intercept fitted ON MSKCC \u2014 post-hoc diagnostics only"
+    },
+    "step3_fusion": {
+      "brier": 0.1656940341602114,
+      "recalibration_slope": 1.5231825402269157,
+      "recalibration_intercept": -0.6930226088226582,
+      "reliability_bins": [
+        {
+          "bin": "0.0-0.2",
+          "n": 0
+        },
+        {
+          "bin": "0.2-0.4",
+          "n": 92,
+          "mean_predicted": 0.30974061,
+          "observed_rate": 0.10869565217391304
+        },
+        {
+          "bin": "0.4-0.6",
+          "n": 27,
+          "mean_predicted": 0.45781840000000007,
+          "observed_rate": 0.25925925925925924
+        },
+        {
+          "bin": "0.6-0.8",
+          "n": 12,
+          "mean_predicted": 0.6689424325000001,
+          "observed_rate": 0.8333333333333334
+        },
+        {
+          "bin": "0.8-1.0",
+          "n": 0
+        }
+      ],
+      "note": "slope/intercept fitted ON MSKCC \u2014 post-hoc diagnostics only"
+    },
+    "step4_fusion": {
+      "brier": 0.14460835246936155,
+      "recalibration_slope": 1.2401000813169556,
+      "recalibration_intercept": -0.40922341850269306,
+      "reliability_bins": [
+        {
+          "bin": "0.0-0.2",
+          "n": 39,
+          "mean_predicted": 0.14808222743589747,
+          "observed_rate": 0.1282051282051282
+        },
+        {
+          "bin": "0.2-0.4",
+          "n": 64,
+          "mean_predicted": 0.29789393625000005,
+          "observed_rate": 0.140625
+        },
+        {
+          "bin": "0.4-0.6",
+          "n": 19,
+          "mean_predicted": 0.45728999684210525,
+          "observed_rate": 0.21052631578947367
+        },
+        {
+          "bin": "0.6-0.8",
+          "n": 9,
+          "mean_predicted": 0.662399418888889,
+          "observed_rate": 1.0
+        },
+        {
+          "bin": "0.8-1.0",
+          "n": 0
+        }
+      ],
+      "note": "slope/intercept fitted ON MSKCC \u2014 post-hoc diagnostics only"
+    },
+    "step4_genomic": {
+      "brier": 0.20486273813727832,
+      "recalibration_slope": 0.24412703914591985,
+      "recalibration_intercept": -1.0996415310364507,
+      "reliability_bins": [
+        {
+          "bin": "0.0-0.2",
+          "n": 59,
+          "mean_predicted": 0.09467195655932203,
+          "observed_rate": 0.1694915254237288
+        },
+        {
+          "bin": "0.2-0.4",
+          "n": 37,
+          "mean_predicted": 0.29855209351351353,
+          "observed_rate": 0.1891891891891892
+        },
+        {
+          "bin": "0.4-0.6",
+          "n": 16,
+          "mean_predicted": 0.5054562362499999,
+          "observed_rate": 0.3125
+        },
+        {
+          "bin": "0.6-0.8",
+          "n": 12,
+          "mean_predicted": 0.6856806733333335,
+          "observed_rate": 0.16666666666666666
+        },
+        {
+          "bin": "0.8-1.0",
+          "n": 7,
+          "mean_predicted": 0.8592484814285714,
+          "observed_rate": 0.42857142857142855
+        }
+      ],
+      "note": "slope/intercept fitted ON MSKCC \u2014 post-hoc diagnostics only"
+    }
+  }
+}

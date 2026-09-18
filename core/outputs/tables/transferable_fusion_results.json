@@ -1,0 +1,142 @@
+{
+  "step": 3,
+  "timestamp": "2026-09-18T17:11:21.806910+00:00",
+  "transfer_rule": {
+    "scaler": "StandardScaler fit on TCGA train rows only, applied unchanged to TCGA test and MSKCC",
+    "models": "XGBoost (config defaults + scale_pos_weight), one per branch",
+    "weights_source": "estimate_oof_fusion on TCGA train (5-fold)",
+    "threshold_source": "Youden on TCGA OOF fusion predictions",
+    "external_tuning": "none \u2014 frozen pipeline applied to MSKCC"
+  },
+  "features": {
+    "genomic": [
+      "PSA_Pathway_Score",
+      "AR_Signaling_Score",
+      "Proliferation_Score"
+    ],
+    "clinical": [
+      "Gleason_Total",
+      "High_Risk_Gleason",
+      "T_Stage_Risk"
+    ]
+  },
+  "audit": {
+    "tcga_train_rows": 343,
+    "tcga_test_rows": 86,
+    "mskcc_imputed_rows": [
+      "PCA0171"
+    ],
+    "mskcc_imputation": {
+      "Gleason_Total": {
+        "n_missing": 1,
+        "fill_value": 7.0
+      },
+      "High_Risk_Gleason": {
+        "n_missing": 1,
+        "fill_value": 1.0
+      }
+    },
+    "z_score_shift": {
+      "tcga_train": {
+        "PSA_Pathway_Score": {
+          "mean": -6.991491933499529e-17,
+          "std": 1.0014609211587775
+        },
+        "AR_Signaling_Score": {
+          "mean": 7.509380224869863e-17,
+          "std": 1.0014609211587775
+        },
+        "Proliferation_Score": {
+          "mean": -1.3465095575628722e-16,
+          "std": 1.0014609211587773
+        }
+      },
+      "mskcc": {
+        "PSA_Pathway_Score": {
+          "mean": -2.0468167308768432,
+          "std": 6.447186041233801e-06
+        },
+        "AR_Signaling_Score": {
+          "mean": -2.0478102558600693,
+          "std": 7.002977207082315e-06
+        },
+        "Proliferation_Score": {
+          "mean": -0.9634630499008148,
+          "std": 0.0010920056075466775
+        }
+      }
+    },
+    "oof": {
+      "genomic_weight": 0.27,
+      "clinical_weight": 0.73,
+      "oof_fusion_auc": 0.6913336261162348,
+      "threshold": 0.47856824573129414
+    }
+  },
+  "tcga_oof": {
+    "genomic_weight": 0.27,
+    "clinical_weight": 0.73,
+    "oof_fusion_auc": 0.6913336261162348,
+    "threshold": 0.47856824573129414
+  },
+  "tcga_test": {
+    "threshold": 0.47856824573129414,
+    "accuracy": 0.5813953488372093,
+    "balanced_accuracy": 0.5822072072072072,
+    "precision": 0.18421052631578946,
+    "recall": 0.5833333333333334,
+    "f1": 0.28,
+    "sensitivity": 0.5833333333333334,
+    "specificity": 0.581081081081081,
+    "ppv": 0.18421052631578946,
+    "npv": 0.8958333333333334,
+    "n": 86,
+    "n_events": 12,
+    "predicted_positive": 38,
+    "fusion_auc": 0.7736486486486487,
+    "genomic_auc": 0.8361486486486487,
+    "clinical_auc": 0.5974099099099099,
+    "fusion_auc_ci95": [
+      0.6351351351351352,
+      0.9031813063063066
+    ]
+  },
+  "mskcc_external": {
+    "threshold": 0.47856824573129414,
+    "accuracy": 0.8549618320610687,
+    "balanced_accuracy": 0.6755698005698005,
+    "precision": 0.8333333333333334,
+    "recall": 0.37037037037037035,
+    "f1": 0.5128205128205128,
+    "sensitivity": 0.37037037037037035,
+    "specificity": 0.9807692307692307,
+    "ppv": 0.8333333333333334,
+    "npv": 0.8571428571428571,
+    "n": 131,
+    "n_events": 27,
+    "predicted_positive": 12,
+    "fusion_auc": 0.7110042735042734,
+    "genomic_auc": 0.5,
+    "clinical_auc": 0.7110042735042734,
+    "fusion_auc_ci95": [
+      0.5790553774928775,
+      0.8308449074074075
+    ],
+    "posthoc_youden_threshold": 0.4578183889389038,
+    "posthoc_youden_metrics": {
+      "threshold": 0.4578183889389038,
+      "accuracy": 0.7557251908396947,
+      "balanced_accuracy": 0.709045584045584,
+      "precision": 0.4358974358974359,
+      "recall": 0.6296296296296297,
+      "f1": 0.5151515151515151,
+      "sensitivity": 0.6296296296296297,
+      "specificity": 0.7884615384615384,
+      "ppv": 0.4358974358974359,
+      "npv": 0.8913043478260869,
+      "n": 131,
+      "n_events": 27,
+      "predicted_positive": 39
+    }
+  }
+}

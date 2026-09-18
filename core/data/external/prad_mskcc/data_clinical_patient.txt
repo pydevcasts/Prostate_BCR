@@ -1,0 +1,243 @@
+#Patient Identifier	Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage	American Joint Committee on Cancer Tumor Stage Code	Copy Number Cluster	Overall Survival (Months)	Overall Survival Status	Disease Free (Months)	Disease Free Status	Sex
+#Identifier to uniquely specify a patient.	Extent of the primary cancer based on evidence obtained from clinical assessment parameters determined prior to treatment.	Code of pathological T (primary tumor) to define the size or contiguous extension of the primary tumor (T), using staging criteria from the American Joint Committee on Cancer (AJCC).	Copy number cluster.	Overall survival in months since initial diagonosis.	Overall patient survival status.	Disease free (months) since initial treatment.	Disease free status since initial treatment.	Sex
+#STRING	STRING	STRING	STRING	NUMBER	STRING	NUMBER	STRING	STRING
+#1	1	1	1	1	1	1	1	1
+PATIENT_ID	CLIN_T_STAGE	PATH_T_STAGE	COPY_NUMBER_CLUSTER	OS_MONTHS	OS_STATUS	DFS_MONTHS	DFS_STATUS	SEX
+CWR22Rv1								Male
+DU145								Male
+LAPC3-1								Male
+LAPC3-2								Male
+LAPC4-1								Male
+LAPC4-2								Male
+LAPC9								Male
+LNCaP								Male
+LNCaP104R								Male
+LNCaP104S								Male
+LNM971								Male
+LuCAP35								Male
+PC3								Male
+PCA0001	T2A	T3C	6			18.5	1:Recurred	Male
+PCA0002	T1C	T2A	6			58.02	0:DiseaseFree	Male
+PCA0003	T2B	T3A	2			93.14	0:DiseaseFree	Male
+PCA0004	T2B	T3A	1			152.55	0:DiseaseFree	Male
+PCA0005	T1C	T2C	4			126.1	0:DiseaseFree	Male
+PCA0006	T2B	T2C	4			160.96	0:DiseaseFree	Male
+PCA0007	T1C	T2C	2			98.6	0:DiseaseFree	Male
+PCA0008	T2C	T3A	4			149.19	0:DiseaseFree	Male
+PCA0009	T2A	T2C	3			64.76	1:Recurred	Male
+PCA0010	T1C	T4	6			35.06	0:DiseaseFree	Male
+PCA0011	T1C	T2C	2			82.17	0:DiseaseFree	Male
+PCA0012	T2C	T2C	flat			128.43	0:DiseaseFree	Male
+PCA0013	T1C	T3A	2			10.38	0:DiseaseFree	Male
+PCA0014	T1C	T2C	2			76.45	0:DiseaseFree	Male
+PCA0015	T2C	T3A	2			22.7	0:DiseaseFree	Male
+PCA0016	T2B	T2C	2			74.22	0:DiseaseFree	Male
+PCA0017	T2A	T3A	2			104.38	0:DiseaseFree	Male
+PCA0018	T2A	T3A	1			18.96	0:DiseaseFree	Male
+PCA0019	T1C	T2C	2			110.33	1:Recurred	Male
+PCA0020	T2B	T3A	4			56.94	0:DiseaseFree	Male
+PCA0021	T2C	T3A	2			61.5	0:DiseaseFree	Male
+PCA0022	T1C	T2C	flat			39.95	1:Recurred	Male
+PCA0023	T1C	T2C	4			10.61	1:Recurred	Male
+PCA0024	T1C	T2C	2			3.94	1:Recurred	Male
+PCA0025	T2B	T2C	1			68.04	1:Recurred	Male
+PCA0026	T1C	T2A	3			78.16	0:DiseaseFree	Male
+PCA0027	T1C	T2B	2			116.83	0:DiseaseFree	Male
+PCA0028	T1C	T3B	3			27.6	1:Recurred	Male
+PCA0029	T2B	T2B	4			26.68	0:DiseaseFree	Male
+PCA0030	T2A	T2B	flat			115.09	0:DiseaseFree	Male
+PCA0031	T2A	T3A	2			35.35	1:Recurred	Male
+PCA0032	T2A	T3A	6			3.71	1:Recurred	Male
+PCA0033	T2B	T2B	2			69.09	0:DiseaseFree	Male
+PCA0034	T1C	T2B	1			92.98	1:Recurred	Male
+PCA0035	T2B	T3A	3			77.8	0:DiseaseFree	Male
+PCA0036	T1C	T2A	1			85.32	0:DiseaseFree	Male
+PCA0037	T2A	T2A	4			104.05	0:DiseaseFree	Male
+PCA0038	T2B	T2B	4			100.21	0:DiseaseFree	Male
+PCA0039	T2A	T3A	2			106.98	0:DiseaseFree	Male
+PCA0040	T2A	T2B	2			89.5	0:DiseaseFree	Male
+PCA0041	T3A	T3B	3			80.03	1:Recurred	Male
+PCA0042	T2C	T4	5			6.7	1:Recurred	Male
+PCA0043	T1C	T2B	4			20.27	1:Recurred	Male
+PCA0044	T2C	T3A	6			72.28	0:DiseaseFree	Male
+PCA0045	T2C	T2B	2			18.0	1:Recurred	Male
+PCA0046	T3B	T4	4			39.49	1:Recurred	Male
+PCA0047	T1C	T2B	6			79.51	0:DiseaseFree	Male
+PCA0048	T2C	T3A	4			40.9	1:Recurred	Male
+PCA0049	T2B	T2B	2			105.56	0:DiseaseFree	Male
+PCA0050	T2B	T2B	2			83.85	0:DiseaseFree	Male
+PCA0051	T1C	T4	flat			84.83	1:Recurred	Male
+PCA0052	T1C	T3A	5			102.54	0:DiseaseFree	Male
+PCA0053	T1C	T2B	3			36.8	0:DiseaseFree	Male
+PCA0054	T1C	T3C	1			2.1	1:Recurred	Male
+PCA0055	T2B	T4	2			92.06	0:DiseaseFree	Male
+PCA0056	T1C	T2A	flat			25.0	0:DiseaseFree	Male
+PCA0057	T1C	T2B	3			82.86	0:DiseaseFree	Male
+PCA0058	T1C	T2C	3			30.19	0:DiseaseFree	Male
+PCA0059	T2C	T2B	4			38.21	0:DiseaseFree	Male
+PCA0060	T3A	T4	5			1.81	1:Recurred	Male
+PCA0061	T1C	T4	3			63.08	0:DiseaseFree	Male
+PCA0062	T1C	T2B	2			42.94	0:DiseaseFree	Male
+PCA0063	T2B	T2B	5			74.12	0:DiseaseFree	Male
+PCA0064	T2B	T2B	4			24.28	0:DiseaseFree	Male
+PCA0065	T1C	T2B	1			77.37	0:DiseaseFree	Male
+PCA0066	T2B	T3B	4			77.11	0:DiseaseFree	Male
+PCA0067	T1C	T2B	flat			93.18	0:DiseaseFree	Male
+PCA0068	T2B	T2B	3			45.54	0:DiseaseFree	Male
+PCA0069	T2B	T2B	2			86.47	0:DiseaseFree	Male
+PCA0070	T2C	T2B	4			79.77	0:DiseaseFree	Male
+PCA0071	T2C	T2B	4			23.92	1:Recurred	Male
+PCA0072	T1C	T2B	1			65.12	0:DiseaseFree	Male
+PCA0073	T3A	T3A	1			13.04	1:Recurred	Male
+PCA0074	T1C	T2B	3			84.31	0:DiseaseFree	Male
+PCA0075	T2A	T2B	6			49.35	0:DiseaseFree	Male
+PCA0076	T2A	T2A	2			84.54	0:DiseaseFree	Male
+PCA0077	T2B	T2B	flat			61.7	0:DiseaseFree	Male
+PCA0078	T1C	T2B	3			82.33	0:DiseaseFree	Male
+PCA0079	T1C	T3A	2			85.36	0:DiseaseFree	Male
+PCA0080	T1C	T2B	6			55.39	1:Recurred	Male
+PCA0081	T2B	T4	4			9.86	1:Recurred	Male
+PCA0082	T1C	T2B	3			58.97	0:DiseaseFree	Male
+PCA0083	T3	T3A	3			31.8	1:Recurred	Male
+PCA0084	T1C	T2B	2			39.66	0:DiseaseFree	Male
+PCA0085	T1C	T3A	2			61.44	0:DiseaseFree	Male
+PCA0086	T1C	T2A	2			60.85	0:DiseaseFree	Male
+PCA0087	T2C	T3A	6			56.84	0:DiseaseFree	Male
+PCA0088	T2A	T2B	5			25.13	1:Recurred	Male
+PCA0089	T1C	T2C	2			70.18	0:DiseaseFree	Male
+PCA0090	T1C	T3B	2			48.43	0:DiseaseFree	Male
+PCA0091	T2C	T3A	2			69.26	0:DiseaseFree	Male
+PCA0092	T3A	T4	4			16.82	1:Recurred	Male
+PCA0093	T1C	T2B	flat			46.42	0:DiseaseFree	Male
+PCA0094	T1C	T2B	6			66.1	0:DiseaseFree	Male
+PCA0095	T1C	T4	2			51.58	0:DiseaseFree	Male
+PCA0096	T2A	T3B	4			42.38	0:DiseaseFree	Male
+PCA0097	T1C	T2B	4			1.87	0:DiseaseFree	Male
+PCA0098	T2A	T3B	1			8.97	1:Recurred	Male
+PCA0099	T2C	T3A	4			5.78	0:DiseaseFree	Male
+PCA0100	T2A	T2B	2			38.21	0:DiseaseFree	Male
+PCA0101	T1C	T2B	flat			62.36	0:DiseaseFree	Male
+PCA0102	T2B	T3A	2			0.1	0:DiseaseFree	Male
+PCA0103	T1C	T2B	4			28.65	1:Recurred	Male
+PCA0104	T2A	T2B	2			43.47	0:DiseaseFree	Male
+PCA0105	T2C	T2B	flat			23.0	0:DiseaseFree	Male
+PCA0106	T1C	T3A	3			31.21	1:Recurred	Male
+PCA0107	T2B	T2C	flat			56.15	0:DiseaseFree	Male
+PCA0108	T3A	T3A	3			59.14	0:DiseaseFree	Male
+PCA0109	T1C	T2B	2			13.86	0:DiseaseFree	Male
+PCA0110	T1C	T2C	2			58.91	0:DiseaseFree	Male
+PCA0111	T1C	T2C	flat			49.84	0:DiseaseFree	Male
+PCA0112	T3A	T3A	5			13.21	1:Recurred	Male
+PCA0113	T1C	T2C	flat			60.45	0:DiseaseFree	Male
+PCA0114	T1C	T3A	6			38.77	0:DiseaseFree	Male
+PCA0115	T2A	T2C	3			26.22	0:DiseaseFree	Male
+PCA0116	T1C	T3A	4			38.37	0:DiseaseFree	Male
+PCA0117	T1C	T3B	6			18.83	1:Recurred	Male
+PCA0118	T1C	T2B	2			43.83	0:DiseaseFree	Male
+PCA0119	T1C	T2B	6			46.49	0:DiseaseFree	Male
+PCA0120	T1C	T2A	flat			62.65	0:DiseaseFree	Male
+PCA0121	T1C	T2C	2			59.83	0:DiseaseFree	Male
+PCA0122	T1C	T2B	2			52.47	0:DiseaseFree	Male
+PCA0123	T1C	T2C	2			60.06	0:DiseaseFree	Male
+PCA0124	T2A	T2C	flat			55.2	0:DiseaseFree	Male
+PCA0125	T2C	T3A	2			61.37	0:DiseaseFree	Male
+PCA0126	T1C	T2C	3			51.85	0:DiseaseFree	Male
+PCA0127	T2A	T2C	4			43.53	0:DiseaseFree	Male
+PCA0128	T2A	T2C	1			53.82	1:Recurred	Male
+PCA0129	T2A	T2C	4			56.87	0:DiseaseFree	Male
+PCA0130	T1C	T2C	4			27.86	1:Recurred	Male
+PCA0131	T2B	T2C	1			61.24	0:DiseaseFree	Male
+PCA0132	T2A	T2C	2			48.56	0:DiseaseFree	Male
+PCA0133	T1C	T2B	4			28.06	0:DiseaseFree	Male
+PCA0134	T2A	T2B	flat			8.18	0:DiseaseFree	Male
+PCA0135	T1C	T2B	6			51.65	0:DiseaseFree	Male
+PCA0136	T1C	T3A	6			5.72	1:Recurred	Male
+PCA0137	T1C	T4	2			35.81	0:DiseaseFree	Male
+PCA0138	T2A	T3A	1			36.17	0:DiseaseFree	Male
+PCA0139	T3B	T3B	2			1.64	1:Recurred	Male
+PCA0140	T3A	T4	5			1.87	1:Recurred	Male
+PCA0141	T1C	T2A	1			41.76	0:DiseaseFree	Male
+PCA0142	T2B	T2B	2			34.27	0:DiseaseFree	Male
+PCA0143	T1C	T4	4			27.83	0:DiseaseFree	Male
+PCA0144	T1C	T2C	1			37.59	0:DiseaseFree	Male
+PCA0145	T1C	T2C	2			48.43	0:DiseaseFree	Male
+PCA0146	T1C	T2C	flat			50.89	0:DiseaseFree	Male
+PCA0147	T1C	T2C	flat			45.73	0:DiseaseFree	Male
+PCA0148	T2B	T3A	2			58.02	0:DiseaseFree	Male
+PCA0149	T2C	T3B	6			59.17	0:DiseaseFree	Male
+PCA0150	T2B	T3A	2			51.35	0:DiseaseFree	Male
+PCA0151	T1C	T2B	2			47.34	0:DiseaseFree	Male
+PCA0152	T2B	T4	2			2.92	1:Recurred	Male
+PCA0153	T1C	T2B	2			58.22	0:DiseaseFree	Male
+PCA0154	T1C	T2B	4			52.17	0:DiseaseFree	Male
+PCA0155	T2A	T2B	4			47.61	0:DiseaseFree	Male
+PCA0156	T1C	T4	6			10.81	0:DiseaseFree	Male
+PCA0157	T1C	T3A	3			39.85	0:DiseaseFree	Male
+PCA0158	T1C	T2C	2			31.61	0:DiseaseFree	Male
+PCA0159	T2A	T3B	flat			1.41	1:Recurred	Male
+PCA0160	T1C	T2A	4			12.98	0:DiseaseFree	Male
+PCA0161	T1C	T2B	4			19.02	1:Recurred	Male
+PCA0162	T1C	T2B	3			11.83	0:DiseaseFree	Male
+PCA0163	T1C	T3A	4			45.37	0:DiseaseFree	Male
+PCA0164	T1C	T2B	1			54.54	0:DiseaseFree	Male
+PCA0165	T1C	T2B	flat			30.52	0:DiseaseFree	Male
+PCA0166	T2A	T3A	2			23.39	0:DiseaseFree	Male
+PCA0167	T2B	T2B	4			26.84	0:DiseaseFree	Male
+PCA0168	T2C	T2B	6			49.02	0:DiseaseFree	Male
+PCA0169	T1C	T2B	flat			42.94	0:DiseaseFree	Male
+PCA0170	T2B	T3A	flat			52.17	0:DiseaseFree	Male
+PCA0171	T2A	T3A	4			8.84	0:DiseaseFree	Male
+PCA0172	T1C	T4	4			30.56	1:Recurred	Male
+PCA0173	T1C	T3B	6			32.69	0:DiseaseFree	Male
+PCA0174	T1C	T2B	6			43.3	0:DiseaseFree	Male
+PCA0175	T1C	T2B	flat			36.01	0:DiseaseFree	Male
+PCA0176	T1C	T3B	flat			2.56	1:Recurred	Male
+PCA0177	T1C	T2B	3			42.42	0:DiseaseFree	Male
+PCA0178	T1C	T2B	2			37.68	0:DiseaseFree	Male
+PCA0179	T1C	T3B	5			2.92	1:Recurred	Male
+PCA0180	T1C	T3A	6			1.38	1:Recurred	Male
+PCA0181	T1C	T3A	5			30.03	0:DiseaseFree	Male
+PCA0182	T2		5					Male
+PCA0183	T3		5					Male
+PCA0184	T1C		5					Male
+PCA0185	T1C		5					Male
+PCA0186	T2B		5					Male
+PCA0187	T2C	T2B	3			18.0	1:Recurred	Male
+PCA0188			5					Male
+PCA0189	T2B		6					Male
+PCA0190			6					Male
+PCA0191	T1C		5					Male
+PCA0192	T2C		5					Male
+PCA0193	T2A		5					Male
+PCA0194			6					Male
+PCA0195	T3A	T3B	5			12.68	1:Recurred	Male
+PCA0196	T3A	T3A	6			63.9	1:Recurred	Male
+PCA0197		T4	5					Male
+PCA0198	T2A	T3B	4			72.41	1:Recurred	Male
+PCA0199	T4	T4	5					Male
+PCA0200	T1C	T3B	3			2.89	1:Recurred	Male
+PCA0201	T2C	T3B	1			4.11	1:Recurred	Male
+PCA0202	T2	T3A	6			0.1	1:Recurred	Male
+PCA0203	T2	T2B	2			110.16	1:Recurred	Male
+PCA0204		T2B	6			14.36	1:Recurred	Male
+PCA0205			6					Male
+PCA0206	T1C	T4	6			1.61	1:Recurred	Male
+PCA0207	T1C	T3A	5			1.38	1:Recurred	Male
+PCA0208	T1C	T3B	5			11.79	1:Recurred	Male
+PCA0209	T2C		6					Male
+PCA0210	T2B	T3C	5			20.04	1:Recurred	Male
+PCA0211			6					Male
+PCA0212	T1C		5					Male
+PCA0213		T3C	3			64.66	1:Recurred	Male
+PCA0214	T3	T3B	5			0.1	1:Recurred	Male
+PCA0215	T3	T3A	6			5.95	1:Recurred	Male
+PCA0216	T3C	T4	5			41.4	1:Recurred	Male
+PCA0217	T1C		5					Male
+PCA0218			6					Male
+Vcap								Male
+LAPC14-5748								Male
+LAPC14-5749								Male
+LAPC17								Male
+LAPC23								Male
+LAPC25								Male
+LAPC4-1T								Male

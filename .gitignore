@@ -1,4 +1,3 @@
-```
 # Compiled Python files
 *.pyc
 __pycache__/
@@ -52,9 +51,30 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 
+# ---------------------------------------------------------------------------
 # Large local datasets and generated experiment artifacts
-data/
-core/data/
-outputs/
-core/outputs/
-```
+# NOTE: core/data/external (external-validation cohorts) and the manuscript-
+# backing result tables / figures / frozen models under core/outputs ARE
+# tracked. The bulky raw/interim TCGA inputs, notebook-run intermediates,
+# and training logs stay ignored.
+# ---------------------------------------------------------------------------
+/data/
+core/data/*
+!core/data/external/
+
+core/outputs/*
+!core/outputs/tables/
+core/outputs/tables/*
+!core/outputs/tables/*.csv
+!core/outputs/tables/*.json
+
+!core/outputs/figures/
+core/outputs/figures/*
+!core/outputs/figures/*.png
+
+!core/outputs/models/
+core/outputs/models/*
+!core/outputs/models/transferable_*.joblib
+!core/outputs/models/rank_transfer_*.joblib
+
+core/outputs/catboost_info/
