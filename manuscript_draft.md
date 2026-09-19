@@ -22,7 +22,7 @@
 | External cohort 2 (primary) | MSKCC 2010: 131 primary-tumor samples (27 events, 20.6%), six prespecified transferable features, frozen late fusion ROC-AUC 0.711-0.717 |
 | Headline external finding | The frozen transferable fusion performs on par with a three-feature pure-clinical baseline (0.695); the added value of the genomic branch externally is NOT demonstrated and is reported as a documented limitation |
 | Strategic decision (2026-09-18) | Clinical-centric narrative locked; no further external transfer attempts without a new prespecified hypothesis (external overfitting risk) |
-| Final analysis | Repeated nested CV from raw TCGA complete: mean OOF ROC-AUC 0.7551 +/- 0.0199 (5 folds x 3 repeats, fully fold-local); stability analysis and manuscript drafting remain |
+| Final analysis | Repeated nested CV from raw TCGA complete (branch-mask corrected): mean OOF ROC-AUC 0.7819 +/- 0.0203 (5 folds x 3 repeats, fully fold-local); stability analysis complete (6.13); manuscript drafting remains |
 
 ## 3. Abstract (Working Version)
 
@@ -36,7 +36,7 @@ We used TCGA-PRAD clinical and RNA-Seq data to construct a binary BCR prediction
 
 ### Results
 
-A five-fold nested, leakage-aware evaluation on preselected artifacts yielded an OOF fusion ROC-AUC of 0.861. Under a prespecified transfer rule, a late-fusion model retrained on six transferable features (three pathway scores plus Gleason_Total, High_Risk_Gleason, and T_Stage_Risk) and applied frozen to the MSKCC 2010 cohort (131 primary-tumor samples, 27 recurrences) reached ROC-AUC 0.711-0.717 depending on the genomic transfer variant (raw-scaler or within-cohort rank normalization), with 95% bootstrap CIs of 0.579-0.831 and 0.588-0.830. Branch decomposition showed the external performance was carried by the clinical branch (MSKCC clinical AUC 0.711); the genomic branch scored 0.500 under raw scaling (platform-scale artifact) and 0.586 after rank normalization, while remaining strong within TCGA (0.836 on the internal test rows). A prespecified pure-clinical baseline (logistic regression on the three clinical features) reached 0.695 externally and was statistically indistinguishable from both fusion variants (paired bootstrap p >= 0.34). The rank-transfer fusion showed the best calibration (Brier 0.145, recalibration slope 1.24), and decision-curve analysis showed no consistent net-benefit dominance over the baseline. The earlier GSE54460 genomic-only analysis produced ROC-AUC 0.560.
+A five-fold nested, leakage-aware evaluation on preselected artifacts yielded an OOF fusion ROC-AUC of 0.861; the definitive repeated nested evaluation, which refits preprocessing, feature selection and both branch models from the raw matrix inside every fold (5 folds x 3 repeats), gave a corrected mean OOF ROC-AUC of 0.7819 +/- 0.0203 with the OOF procedure weighting the clinical branch at 0.66-1.00. Feature-selection stability over 35 prespecified PSO events showed the genomic selection to be unstable (maximum selection frequency 0.31, no feature reaching the prespecified 0.70 threshold) whereas the clinical branch was stable (top features 0.80-1.00). Under a prespecified transfer rule, a late-fusion model retrained on six transferable features (three pathway scores plus Gleason_Total, High_Risk_Gleason, and T_Stage_Risk) and applied frozen to the MSKCC 2010 cohort (131 primary-tumor samples, 27 recurrences) reached ROC-AUC 0.711-0.717 depending on the genomic transfer variant (raw-scaler or within-cohort rank normalization), with 95% bootstrap CIs of 0.579-0.831 and 0.588-0.830. Branch decomposition showed the external performance was carried by the clinical branch (MSKCC clinical AUC 0.711); the genomic branch scored 0.500 under raw scaling (platform-scale artifact) and 0.586 after rank normalization, while remaining strong within TCGA (0.836 on the internal test rows). A prespecified pure-clinical baseline (logistic regression on the three clinical features) reached 0.695 externally and was statistically indistinguishable from both fusion variants (paired bootstrap p >= 0.34). The rank-transfer fusion showed the best calibration (Brier 0.145, recalibration slope 1.24), and decision-curve analysis showed no consistent net-benefit dominance over the baseline. The earlier GSE54460 genomic-only analysis produced ROC-AUC 0.560.
 
 ### Conclusions
 
@@ -231,24 +231,55 @@ For the manuscript, these diagnostics reframe the contribution: the Late Fusion 
 
 ### 6.12 Repeated nested CV from raw TCGA (definitive internal estimate)
 
-The final internal estimate was computed with repeated nested CV directly from the raw merged TCGA table (429 samples x 19,019 features) so that no preselected artifact enters an outer validation fold. Inside every outer fold the complete pipeline was refitted: preprocessing (log1p transformation, winsorization, z-scaling via `build_combined_pipeline`), variance filtering, mutual-information screening (top 200 per branch), binary PSO selection (target 40 per branch), and both XGBoost branch models. Fusion weights and the operating threshold were then estimated only from the aggregate out-of-fold predictions of all 343 training rows of that repeat. Three repeats (seeds 42, 43, 44) were run; the procedure was executed twice end-to-end and produced identical repeat AUCs, confirming determinism.
+The final internal estimate was computed with repeated nested CV directly from the raw merged TCGA table (429 samples x 19,019 features) so that no preselected artifact enters an outer validation fold. Inside every outer fold the complete pipeline was refitted: preprocessing (log1p transformation, winsorization, z-scaling via `build_combined_pipeline`), variance filtering, mutual-information screening (top 200 per branch), binary PSO selection (target 40 per branch), and both XGBoost branch models. Fusion weights and the operating threshold were then estimated only from the aggregate out-of-fold predictions of all 343 training rows of that repeat. Three repeats (seeds 42, 43, 44) were run; the procedure was executed three times end-to-end and produced identical repeat AUCs each time, confirming determinism.
+
+> **Branch-mask correction (2026-09-19).** An earlier revision of this module grouped the branch columns with a hand-rolled clinical-prefix list that matched only 70 of the 115 clinical columns. The 45 missed one-hot clinical features (e.g. `Tumor Other Histologic Subtype_*`) therefore entered the genomic branch, and the positional split mislabelled transformed columns. All numbers below are from the corrected run, which derives both masks from the project's canonical `identify_column_groups` (the same function `build_combined_pipeline` uses) and is gated by an explicit consistency check against that function's transformer column lists. The affected revision reported 0.7551 +/- 0.0199 with genomic-leaning weights; that number is superseded and must not be cited.
 
 | Repeat seed | OOF fusion AUC | Genomic/clinical weights | OOF threshold | Runtime |
 |---|---:|---|---:|---:|
-| 42 | 0.7773 | 0.98 / 0.02 | 0.0625 | 11.5 min |
-| 43 | 0.7391 | 0.78 / 0.22 | 0.1582 | 11.7 min |
-| 44 | 0.7489 | 0.91 / 0.09 | 0.1107 | 20.0 min |
-| **Mean +/- SD** | **0.7551 +/- 0.0199** | 0.89 / 0.11 (mean) | — | 41.7 min total |
+| 42 | 0.7817 | 0.33 / 0.67 | 0.2712 | 9.6 min |
+| 43 | 0.8023 | 0.00 / 1.00 | 0.1602 | 9.6 min |
+| 44 | 0.7616 | 0.34 / 0.66 | 0.1881 | 9.7 min |
+| **Mean +/- SD** | **0.7819 +/- 0.0203** | 0.22 / 0.78 (mean) | — | 28.9 min total |
 
-Fold-level branch AUCs ranged 0.638-0.841 (genomic) and 0.464-0.713 (clinical) across the 15 outer folds; per-fold PSO selected exactly 40 genomic and 40 clinical features in every fold. Three findings matter for interpretation:
+Per-fold PSO selected exactly 40 genomic and 40 clinical features in every fold. Fold-mean branch AUCs per repeat were 0.605 / 0.594 / 0.673 (genomic) and 0.778 / 0.805 / 0.751 (clinical); per-fold rows are in the artifact. Four findings matter for interpretation:
 
-1. The definitive internal estimate is 0.7551 +/- 0.0199, materially below the 0.861 artifact-based nested estimate (6.6). The earlier nested experiment ran MI/PSO selection on top of already-preselected matrices and inherited their optimism; this run repeats preprocessing, screening, and selection from raw data inside every fold and is the number that should headline the paper.
-2. Branch balance flips relative to the artifact-based run (6.6): OOF weights now favor the genomic branch (0.78-0.98) whereas the artifact-based run weighted clinical at 0.62. With fold-local preprocessing, the clinical branch selected within a fold is weaker (fold AUCs 0.46-0.71), and the OOF procedure assigns the weight accordingly. This is a reportable methodological finding: branch strength — and therefore fusion weights — depends on where preprocessing and selection sit in the pipeline.
-3. The OOF-derived thresholds are low (0.0625-0.1582), consistent with scale_pos_weight-adjusted XGBoost probabilities under the 13.5% event rate; thresholds must be reported with this caveat and recalibrated before any deployment framing.
+1. The definitive internal estimate is 0.7819 +/- 0.0203, below the 0.861 artifact-based nested estimate (6.6) — the expected direction, because that earlier estimate ran MI/PSO on top of already-preselected matrices and inherited their optimism. The corrected revision is also *higher* than the contaminated one (0.7551), i.e. the mask bug depressed, not inflated, the fusion estimate: leaked clinical one-hots diluted the genomic branch while starving the clinical branch of 45 of its own columns.
+2. Branch balance now leans clinical, consistent with the external result: the OOF procedure weights the clinical branch 0.66-1.00 (genomic 0.00-0.34), and fold-mean clinical AUC exceeds the genomic branch in every repeat (0.751-0.805 versus 0.594-0.673). Internal (6.12) and external (6.9-6.11) evidence therefore agree that the usable signal in this cohort is carried by the clinical modality — a coherence argument that should be stated in the Discussion.
+3. The OOF-derived thresholds remain low (0.16-0.27) relative to 0.5, consistent with scale_pos_weight-adjusted XGBoost probabilities under the 13.5% event rate; thresholds must be reported with this caveat and recalibrated before any deployment framing.
+4. In one of three repeats (seed 43) the OOF weight optimisation assigned zero weight to the genomic branch, i.e. the procedure itself selects a clinical-only fusion on that split. This is reported rather than smoothed away; it matches the branch-AUC ordering above.
 
 Per-fold PSO selections for both branches were logged for all 15 folds (`nested_cv_raw_pso_selections.csv`), providing the empirical selection-frequency input for the feature-stability analysis (next stage).
 
 Outputs: `core/outputs/tables/nested_cv_raw_results.json`, `nested_cv_raw_folds.csv`, `nested_cv_raw_oof_predictions.csv`, and `nested_cv_raw_pso_selections.csv` (built by `core/src/nested_cv_raw.py`).
+
+### 6.13 Feature-selection stability across 35 prespecified PSO events (Step 7)
+
+Because the wrapper selector is stochastic, the reproducibility of the selected feature sets was quantified under rules fixed before any stability number was computed: 35 selection events per branch (the 15 fold-local selections from 6.12 plus 20 fresh runs on the full canonical 343-row train split with the identical preprocessing/variance/MI/PSO recipe, PSO seeds 500-519), stability defined as selected-events / 35, and a stability threshold of 0.70 frozen in advance. The event count, seed list, and threshold are recorded in `stability_summary.json` with `frozen_before_running: true`.
+
+| Branch | Unique features over 35 events | Max fold-based frequency (of 15) | Max same-data frequency (of 20) | Features with stability >= 0.70 |
+|---|---:|---:|---:|---:|
+| Genomic | 644 | 8/15 | 10/20 | **0** |
+| Clinical | 80 | 15/15 | 20/20 | **8** |
+
+**Genomic selection is not reproducible.** Across 35 events the PSO selected 644 distinct genes out of 1,400 selection slots; the highest stability of any gene is 0.371 (TROAP and ACVRL1, each 13/35), only 6 genes exceed 10/35 events, and the median gene stability is 0.029. Instability has both sources: across folds no gene is ever selected by more than 8 of 15 fold selections (different training subsets), and even on identical data the best gene is selected in only 10 of 20 runs (optimizer stochasticity). No genomic feature reaches the prespecified 0.70 threshold, so no stable gene-level signature can be reported from this cohort. This result is fully consistent with the external findings in 6.9-6.11: a gene set that is not reproducible under resampling and seed variation within the development cohort cannot be expected to transfer across platforms, and it explains why the genomic branch could not be shown to add external value. The paper should therefore present the prespecified pathway scores - not the PSO gene list - as the genomic representation, and report gene-level instability as a result rather than hiding it in a supplementary note.
+
+**Clinical selection is reproducible.** Only 80 distinct clinical features appear across the same 35 events, the median feature stability is 0.486, and 8 features reach the frozen 0.70 threshold:
+
+| Clinical feature | Fold events (of 15) | Same-data events (of 20) | Stability |
+|---|---:|---:|---:|
+| Person Neoplasm Status_WITH TUMOR | 15 | 20 | 1.000 |
+| Year Cancer Initial Diagnosis | 12 | 20 | 0.914 |
+| SEX | 9 | 19 | 0.800 |
+| Mri results_Extraprostatic Extension Localized | 14 | 13 | 0.771 |
+| Positive Finding Lymph Node H&E Microscopy Count | 12 | 15 | 0.771 |
+| Surgical Margin Resection Status_R0 | 12 | 14 | 0.743 |
+| Neoplasm AJCC Clinical Primary Tumor T Stage_T2 | 9 | 16 | 0.714 |
+| Primary Therapy Outcome Success Type_Partial Remission/Response | 9 | 16 | 0.714 |
+
+Five of these are established prostatectomy prognostic factors (extraprostatic extension on MRI, lymph-node involvement, surgical margin status, T stage, and sex) and require no special comment. Three, however, must be treated as audit items before submission, because their stability may reflect outcome proximity rather than prognostic signal: `Person Neoplasm Status_WITH TUMOR` (perfectly stable at 35/35) and `Primary Therapy Outcome Success Type_Partial Remission/Response` are recorded in a disease-status/response field, and `Year Cancer Initial Diagnosis` (12/15 folds, 20/20 same-data) is a calendar variable that can encode cohort or batch structure. The next revision must verify the temporal provenance of these three fields against the TCGA data dictionary and, if any is recorded after the recurrence endpoint, re-run this analysis without it. Until then, the clinical feature set should be described with this caveat rather than presented as a validated signature.
+
+Together the two analyses define the paper's honest stability profile: the fusion performance is carried by a stable clinical branch and by prespecified pathway scores, while the machine-selected 40-gene signature is an artifact of a single optimizer run and does not survive resampling. Outputs: `core/outputs/tables/stability_summary.json`, `core/outputs/tables/stability_genomic.csv`, `core/outputs/tables/stability_clinical.csv`, `core/outputs/tables/stability_fresh_runs.csv` (per-run selections, resumable checkpoint), and `core/outputs/figures/feature_stability.png` (built by `core/src/stability_selection.py`; the aggregation code counts distinct events - an earlier revision that counted each feature once per group was corrected before these numbers were produced).
 
 ## 7. Next Experimental Stage
 
@@ -271,9 +302,11 @@ The raw-data repeated nested CV is implemented as `core/src/nested_cv_raw.py` an
 
 This is the most important next step because a high training fusion AUC is not evidence of generalization.
 
-The artifact-level first implementation (`evaluate_nested_late_fusion` in `core/src/fusion/nested_evaluation.py`) provided fold-level results, OOF probabilities, OOF-derived weights, and an OOF-derived Youden threshold. The raw-data wrapper (`core/src/nested_cv_raw.py`) wraps preprocessing and selection around the same recipe so that no preselected artifact enters an outer validation fold; its result (mean OOF AUC 0.7551 +/- 0.0199) is the definitive internal estimate.
+The artifact-level first implementation (`evaluate_nested_late_fusion` in `core/src/fusion/nested_evaluation.py`) provided fold-level results, OOF probabilities, OOF-derived weights, and an OOF-derived Youden threshold. The raw-data wrapper (`core/src/nested_cv_raw.py`) wraps preprocessing and selection around the same recipe so that no preselected artifact enters an outer validation fold; its result (mean OOF AUC 0.7819 +/- 0.0203 after the branch-mask correction, 6.12) is the definitive internal estimate.
 
-### Priority 2: Improve internal model stability
+### Priority 2: Improve internal model stability — COMPLETED (see 6.13)
+
+Feature-selection stability was quantified over 35 prespecified PSO events: the genomic selection is unstable (no feature at the frozen 0.70 threshold; median stability 0.029) while the clinical branch is stable (8 features >= 0.70). Any future change to the final feature count must be judged against this stability profile, not only against mean performance.
 
 Run repeated nested CV for the current internal cohort before changing the final feature count. Compare all clinical features, variance filtering plus PSO, and MI plus PSO using the same outer folds. Select the configuration using mean performance, uncertainty, and feature-selection stability rather than a single test accuracy.
 
@@ -361,7 +394,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 7. Calibration plot and Brier scores.
 8. Decision-curve analysis.
 9. External validation performance.
-10. Feature-selection stability plot.
+10. Feature-selection stability plot (produced: `core/outputs/figures/feature_stability.png`, Step 7).
 11. SHAP summary for the final locked model.
 12. Supplementary table of selected genes and pathway definitions.
 
@@ -379,6 +412,8 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 | 2026-09-18 | Prespecified rank-based genomic transfer, executed once: external fusion 0.717, genomic branch 0.586, platform artifact removed by construction. |
 | 2026-09-18 | Added the pure-clinical baseline, paired bootstrap comparisons, calibration, and DCA: fusion vs baseline statistically indistinguishable; clinical-centric narrative locked. |
 | 2026-09-19 | Repeated nested CV from raw TCGA (5 folds x 3 repeats, fully fold-local): mean OOF AUC 0.7551 +/- 0.0199 vs 0.861 artifact-based; PSO selections logged for stability analysis. |
+| 2026-09-19 | Found and fixed a branch-mask bug (45 one-hot clinical columns leaked into the genomic branch); canonical `identify_column_groups` masks + consistency gate. Corrected internal estimate 0.7819 +/- 0.0203 with clinical-leaning OOF weights. |
+| 2026-09-19 | Added feature-selection stability analysis (35 prespecified PSO events): genomic selection unstable (max 0.31), clinical branch stable (top feature 1.00); no genomic feature reaches the frozen 0.70 threshold. |
 
 ## 13. Source Artifacts
 
@@ -393,6 +428,7 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - Nested fusion implementation: `core/src/fusion/nested_evaluation.py`
 - Nested fusion metrics: `core/outputs/tables/nested_late_fusion_results.json`
 - Repeated nested CV from raw data: `core/src/nested_cv_raw.py`, `core/outputs/tables/nested_cv_raw_results.json`, `core/outputs/tables/nested_cv_raw_folds.csv`, `core/outputs/tables/nested_cv_raw_oof_predictions.csv`, `core/outputs/tables/nested_cv_raw_pso_selections.csv`
+- Feature-selection stability: `core/src/stability_selection.py`, `core/outputs/tables/stability_summary.json`, `core/outputs/tables/stability_genomic.csv`, `core/outputs/tables/stability_clinical.csv`, `core/outputs/tables/stability_fresh_runs.csv`, `core/outputs/figures/feature_stability.png`
 - Clinical benchmark results: `core/outputs/tables/clinical_strategy_benchmark_summary.csv`
 - PSO target-30 experiment: `core/outputs/tables/experiment_k30_results.json`
 - External predictions: `core/outputs/tables/external_validation_results.csv`
@@ -413,6 +449,8 @@ This study presents a leakage-aware framework for integrating clinical and RNA-S
 - [x] Add 95% confidence intervals and statistical comparisons (external paired bootstrap).
 - [x] Add calibration and decision-curve analysis (MSKCC external).
 - [x] Report class counts, missingness, and cohort flow (MSKCC filter audit).
-- [x] Run repeated nested CV from raw TCGA data as the final internal estimate (mean OOF AUC 0.7551 +/- 0.0199, 5 folds x 3 repeats).
+- [x] Run repeated nested CV from raw TCGA data as the final internal estimate (mean OOF AUC 0.7819 +/- 0.0203, 5 folds x 3 repeats).
+- [x] Quantify feature-selection stability (35 PSO events, prespecified 0.70 threshold) and report the unstable genomic selection honestly.
+- [ ] Verify the temporal provenance of the most stable clinical features (Person Neoplasm Status, Year of diagnosis) against the TCGA data dictionary.
 - [ ] Lock code, environment, seeds, and artifact hashes.
 - [ ] Complete TRIPOD-AI reporting items and journal-specific requirements.

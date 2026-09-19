@@ -1,0 +1,81 @@
+feature,fold_events,fresh_events,n_selected,n_events,stability,stable_at_0.70,mean_rank_when_selected
+Person Neoplasm Status_WITH TUMOR,15,20,35,35,1.0,True,1.4
+Year Cancer Initial Diagnosis,12,20,32,35,0.9143,True,8.9
+SEX,9,19,28,35,0.8,True,22.6
+Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles),14,13,27,35,0.7714,True,25.1
+Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count,12,15,27,35,0.7714,True,14.6
+Surgical Margin Resection Status_R0,12,14,26,35,0.7429,True,22.6
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2,9,16,25,35,0.7143,True,28.6
+Primary Therapy Outcome Success Type_Partial Remission/Response,9,16,25,35,0.7143,True,13.0
+American Joint Committee on Cancer Tumor Stage Code_T2a,11,13,24,35,0.6857,False,24.1
+"Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",11,12,23,35,0.6571,False,24.6
+Tissue Prospective Collection Indicator_YES,11,12,23,35,0.6571,False,24.1
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T3a,10,13,23,35,0.6571,False,14.3
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T3b,12,10,22,35,0.6286,False,19.3
+Ct scan ab pelvis results_Extraprostatic Extension (regional lymphadenopathy)[e.g. cN1],9,13,22,35,0.6286,False,23.8
+"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8500/3",10,11,21,35,0.6,False,29.3
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T1c,9,12,21,35,0.6,False,15.9
+Tumor Level_Apex|Base,9,12,21,35,0.6,False,22.3
+Primary Therapy Outcome Success Type_Progressive Disease,7,14,21,35,0.6,False,13.9
+Person Neoplasm Status_TUMOR FREE,11,9,20,35,0.5714,False,2.2
+American Joint Committee on Cancer Tumor Stage Code_T4,10,10,20,35,0.5714,False,26.2
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2b,6,14,20,35,0.5714,False,26.8
+Diagonstic MRI Result_YES,11,8,19,35,0.5429,False,24.5
+Gleason pattern tertiary_3,9,10,19,35,0.5429,False,18.0
+Primary Tumor Laterality_Left,9,10,19,35,0.5429,False,16.3
+"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8550/3",8,11,19,35,0.5429,False,23.1
+Neoplasm Disease Lymph Node Stage American Joint Committee on Cancer Code_N1,8,11,19,35,0.5429,False,24.8
+Bone Scan Result_Equivocal,8,10,18,35,0.5143,False,23.9
+Mri results_No Evidence of Extraprostatic Extension,8,10,18,35,0.5143,False,21.8
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2c,8,10,18,35,0.5143,False,30.0
+Patient Primary Tumor Site_Overlapping / Multiple Zones,8,10,18,35,0.5143,False,20.6
+Gleason pattern primary,7,11,18,35,0.5143,False,11.2
+Primary Lymph Node Presentation Assessment Ind-3_NO,7,11,18,35,0.5143,False,25.1
+Tissue Retrospective Collection Indicator_NO,7,11,18,35,0.5143,False,21.6
+Tumor Level_Middle,6,12,18,35,0.5143,False,18.9
+Adjuvant Postoperative Targeted Therapy Administered Indicator_YES,5,13,18,35,0.5143,False,25.2
+Neoplasm Disease Lymph Node Stage American Joint Committee on Cancer Code_N0,10,7,17,35,0.4857,False,24.2
+Primary Therapy Outcome Success Type_Complete Remission/Response,9,8,17,35,0.4857,False,21.6
+Tissue Prospective Collection Indicator_NO,9,8,17,35,0.4857,False,24.1
+Gleason pattern tertiary_5,8,9,17,35,0.4857,False,21.2
+Tumor Level_Base,8,9,17,35,0.4857,False,18.9
+Tumor Level_Middle|Base,8,9,17,35,0.4857,False,22.8
+Diagonstic MRI Result_NO,7,10,17,35,0.4857,False,20.6
+Gleason pattern tertiary_4,7,10,17,35,0.4857,False,14.9
+Race Category_WHITE,7,10,17,35,0.4857,False,24.6
+Tissue Retrospective Collection Indicator_YES,6,11,17,35,0.4857,False,24.5
+Primary Tumor Laterality_Bilateral,5,12,17,35,0.4857,False,25.1
+American Joint Committee on Cancer Tumor Stage Code_T3a,10,6,16,35,0.4571,False,30.1
+American Joint Committee on Cancer Tumor Stage Code_T2b,8,8,16,35,0.4571,False,19.3
+Bone Scan Result_Normal (no evidence of prostate cancer) [cM0],8,8,16,35,0.4571,False,23.1
+Ct scan ab pelvis indicator_YES,8,8,16,35,0.4571,False,20.7
+Patient Primary Tumor Site_Transition Zone,7,9,16,35,0.4571,False,16.2
+Bone Scan Result_Abnormal (not related to prostate cancer),4,12,16,35,0.4571,False,26.1
+Primary Tumor Laterality_Right,8,7,15,35,0.4286,False,18.0
+Ct scan ab pelvis indicator_NO,7,8,15,35,0.4286,False,18.2
+Did patient start adjuvant postoperative radiotherapy?_NO,7,8,15,35,0.4286,False,26.9
+Did patient start adjuvant postoperative radiotherapy?_YES,6,9,15,35,0.4286,False,16.2
+Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2a,6,9,15,35,0.4286,False,29.1
+Surgical Margin Resection Status_R1,6,9,15,35,0.4286,False,22.8
+Tumor Level_Apex|Middle|Base,6,9,15,35,0.4286,False,23.3
+Surgical Margin Resection Status_RX,5,10,15,35,0.4286,False,22.4
+Primary Lymph Node Presentation Assessment Ind-3_YES,2,13,15,35,0.4286,False,16.3
+American Joint Committee on Cancer Tumor Stage Code_T3b,8,6,14,35,0.4,False,15.9
+American Joint Committee on Cancer Tumor Stage Code_T2c,6,8,14,35,0.4,False,14.9
+Tumor Level_Apex|Middle,6,8,14,35,0.4,False,25.7
+Cause of death source_Medical Record,5,9,14,35,0.4,False,20.7
+Primary Therapy Outcome Success Type_Stable Disease,6,7,13,35,0.3714,False,23.9
+"International Classification of Diseases for Oncology, Third Edition ICD-O-3 Histology Code_8140/3",5,8,13,35,0.3714,False,23.1
+Adjuvant Postoperative Targeted Therapy Administered Indicator_NO,4,9,13,35,0.3714,False,24.2
+Ct scan ab pelvis results_Extraprostatic Extension  Localized (e.g. seminal vesicles),4,9,13,35,0.3714,False,18.7
+Prior Cancer Diagnosis Occurence_Yes,4,9,13,35,0.3714,False,23.5
+Prior Cancer Diagnosis Occurence_No,7,5,12,35,0.3429,False,19.6
+Ct scan ab pelvis results_No Evidence of Extraprostatic Extension,5,7,12,35,0.3429,False,21.1
+Gleason pattern secondary,5,7,12,35,0.3429,False,15.1
+Patient Primary Tumor Site_Peripheral Zone,5,7,12,35,0.3429,False,22.3
+Race Category_BLACK OR AFRICAN AMERICAN,3,9,12,35,0.3429,False,21.5
+Tumor Level_Apex,5,6,11,35,0.3143,False,24.3
+Lymph Node(s) Examined Number,3,7,10,35,0.2857,False,16.4
+Radical Prostatectomy Gleason Score for Prostate Cancer,4,3,7,35,0.2,False,7.9
+Diagnosis Age,3,4,7,35,0.2,False,23.9
+Ct scan ab pelvis results_Equivocal,3,0,3,35,0.0857,False,20.3

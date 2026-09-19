@@ -1,0 +1,145 @@
+{
+  "rules_prespecified": {
+    "events": "15 nested-CV fold selections + 20 full-train runs (seeds 500-519)",
+    "fresh_run_seeds": [
+      500,
+      501,
+      502,
+      503,
+      504,
+      505,
+      506,
+      507,
+      508,
+      509,
+      510,
+      511,
+      512,
+      513,
+      514,
+      515,
+      516,
+      517,
+      518,
+      519
+    ],
+    "stability_definition": "n_selected / n_events",
+    "n_events": 35,
+    "stable_threshold": 0.7,
+    "frozen_before_running": true
+  },
+  "genomic": {
+    "n_unique_features": 644,
+    "n_stable_at_0.70": 0,
+    "top10": [
+      {
+        "feature": "TROAP",
+        "stability": 0.3714,
+        "mean_rank_when_selected": 11.8
+      },
+      {
+        "feature": "ACVRL1",
+        "stability": 0.3714,
+        "mean_rank_when_selected": 5.6
+      },
+      {
+        "feature": "ORC2",
+        "stability": 0.3143,
+        "mean_rank_when_selected": 9.1
+      },
+      {
+        "feature": "KIAA1508",
+        "stability": 0.2857,
+        "mean_rank_when_selected": 21.0
+      },
+      {
+        "feature": "TAOK3",
+        "stability": 0.2857,
+        "mean_rank_when_selected": 7.3
+      },
+      {
+        "feature": "TEDC2",
+        "stability": 0.2857,
+        "mean_rank_when_selected": 32.2
+      },
+      {
+        "feature": "B2M",
+        "stability": 0.2571,
+        "mean_rank_when_selected": 17.9
+      },
+      {
+        "feature": "FTSJ2",
+        "stability": 0.2571,
+        "mean_rank_when_selected": 4.7
+      },
+      {
+        "feature": "C8orf58",
+        "stability": 0.2571,
+        "mean_rank_when_selected": 2.2
+      },
+      {
+        "feature": "FAM3B",
+        "stability": 0.2571,
+        "mean_rank_when_selected": 21.7
+      }
+    ]
+  },
+  "clinical": {
+    "n_unique_features": 80,
+    "n_stable_at_0.70": 8,
+    "top10": [
+      {
+        "feature": "Person Neoplasm Status_WITH TUMOR",
+        "stability": 1.0,
+        "mean_rank_when_selected": 1.4
+      },
+      {
+        "feature": "Year Cancer Initial Diagnosis",
+        "stability": 0.9143,
+        "mean_rank_when_selected": 8.9
+      },
+      {
+        "feature": "SEX",
+        "stability": 0.8,
+        "mean_rank_when_selected": 22.6
+      },
+      {
+        "feature": "Mri results_Extraprostatic Extension Localized (e.g. seminal vesicles)",
+        "stability": 0.7714,
+        "mean_rank_when_selected": 25.1
+      },
+      {
+        "feature": "Positive Finding Lymph Node Hematoxylin and Eosin Staining Microscopy Count",
+        "stability": 0.7714,
+        "mean_rank_when_selected": 14.6
+      },
+      {
+        "feature": "Surgical Margin Resection Status_R0",
+        "stability": 0.7429,
+        "mean_rank_when_selected": 22.6
+      },
+      {
+        "feature": "Neoplasm American Joint Committee on Cancer Clinical Primary Tumor T Stage_T2",
+        "stability": 0.7143,
+        "mean_rank_when_selected": 28.6
+      },
+      {
+        "feature": "Primary Therapy Outcome Success Type_Partial Remission/Response",
+        "stability": 0.7143,
+        "mean_rank_when_selected": 13.0
+      },
+      {
+        "feature": "American Joint Committee on Cancer Tumor Stage Code_T2a",
+        "stability": 0.6857,
+        "mean_rank_when_selected": 24.1
+      },
+      {
+        "feature": "Prior Cancer Diagnosis Occurence_Yes, History of Prior Malignancy",
+        "stability": 0.6571,
+        "mean_rank_when_selected": 24.6
+      }
+    ]
+  },
+  "runtime_minutes": 43.4,
+  "timestamp": "2026-09-19T00:41:46.566825+00:00"
+}
