@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prostate BCR — Project Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1419; --panel: #1a2129; --panel2: #212b36; --border: #2d3a47;
+    --text: #e6edf3; --muted: #8b98a5; --accent: #58a6ff; --green: #3fb950;
+    --amber: #d29922; --red: #f85149; --purple: #bc8cff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.7; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; }
+  h1 span { color: var(--accent); }
+  .subtitle { color: var(--muted); font-size: .9rem; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .card h2 { font-size: 1rem; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .stat-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row .k { color: var(--muted); }
+  .stat-row .v { font-weight: 600; }
+  .big { font-size: 2rem; font-weight: 700; color: var(--green); }
+  .big.warn { color: var(--amber); }
+  .big.bad { color: var(--red); }
+  .big.info { color: var(--accent); }
+  .stat-sub { color: var(--muted); font-size: .8rem; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+  .tag.done { background: rgba(63,185,80,.15); color: var(--green); }
+  .tag.active { background: rgba(88,166,255,.15); color: var(--accent); }
+  .tag.pending { background: rgba(210,153,34,.15); color: var(--amber); }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: .82rem; }
+  .footer { color: var(--muted); font-size: .78rem; margin-top: 28px; text-align: center; }
+  .note { background: var(--panel2); border-right: 3px solid var(--amber); border-radius: 6px; padding: 10px 14px; font-size: .85rem; color: var(--muted); margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🧬 Prostate BCR <span>Late Fusion</span> — داشبورد پروژه</h1>
+  <div class="subtitle">شاخه <code>feature/mskcc-pathway-external-validation</code> · به‌روزرسانی: ۲۰۲۶-۰۹-۱۹ · همه اعداد از خروجی واقعی پایپ‌لاین</div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>📦 کوهورت داخلی (TCGA)</h2>
+      <div class="stat-row"><span class="k">معماری</span><span class="v">Late Fusion (ژنومی + بالینی)</span></div>
+      <div class="stat-row"><span class="k">فیچر ژنومی</span><span class="v">۴۰ ژن + ۳ pathway score</span></div>
+      <div class="stat-row"><span class="k">فیچر بالینی</span><span class="v">۴۰ (۴ مهندسی‌شده)</span></div>
+      <div class="stat-row"><span class="k">روش وزن‌دهی</span><span class="v">OOF بدون نشت ✅</span></div>
+    </div>
+    <div class="card">
+      <h2>🎯 نتیجه داخلی قطعی (مرجع)</h2>
+      <div class="big">AUC 0.7819 ± 0.0203</div>
+      <div class="stat-sub">Repeated Nested CV از raw TCGA (ماسک اصلاح‌شده) — ۵ فولد × ۳ تکرار</div>
+      <div class="stat-row" style="margin-top:8px"><span class="k">وزن‌ها OOF (ژنومی/بالینی)</span><span class="v">0.00–0.34 / 0.66–1.00</span></div>
+      <div class="stat-row"><span class="k">AUC شاخه‌ها (میانگین فولد)</span><span class="v">ژنومی 0.59–0.67 / بالینی 0.75–0.81</span></div>
+      <div class="stat-row"><span class="k">اصلاح باگ ماسک شاخه‌ها</span><span class="v">۴۵ one-hot بالینی از شاخه ژنومی خارج شد ✅</span></div>
+      <div class="stat-row"><span class="k">Stability (۳۵ رویداد PSO)</span><span class="v">ژنومی ۰ پایدار / بالینی ۸ پایدار</span></div>
+    </div>
+    <div class="card">
+      <h2>🌍 اعتبارسنجی خارجی</h2>
+      <div class="big warn">AUC 0.717</div>
+      <div class="stat-sub">MSKCC 2010 — rank-based transfer منجمد (CI95: 0.588–0.830)</div>
+      <div class="stat-row" style="margin-top:8px"><span class="k">AUC بالینی / ژنومی</span><span class="v">0.711 / 0.586 ⚠️</span></div>
+      <div class="stat-row"><span class="k">Sens / Spec (آستانه منتقل‌شده)</span><span class="v">0.44 / 0.89</span></div>
+      <div class="stat-row"><span class="k">بیس‌لین بالینی محض</span><span class="v">AUC 0.695 (Δ ناچیز، p=0.41)</span></div>
+      <div class="stat-row"><span class="k">Brier بهترن فیوژن (rank)</span><span class="v">0.145 (شیب 1.24)</span></div>
+      <div class="stat-row"><span class="k">GSE54460 (قدیمی)</span><span class="v">AUC 0.56</span></div>
+    </div>
+    <div class="card">
+      <h2>🆕 کوهورت MSKCC 2010 (مرحله ۱)</h2>
+      <div class="big">131</div>
+      <div class="stat-sub">نمونه primary tumor با DFS معتبر و expression موجود</div>
+      <div class="stat-row" style="margin-top:8px"><span class="k">رویداد (Recurred)</span><span class="v">27 (20.6%)</span></div>
+      <div class="stat-row"><span class="k">زنجیره فیلتر</span><span class="v">238 → 198 → 181 → 131</span></div>
+      <div class="stat-row"><span class="k">فیچرهای قابل‌انتقال (گام ۲)</span><span class="v">16/16 ژن · T3/T4: 46 · HRG: 89</span></div>
+      <div class="stat-row"><span class="k">خروجی</span><span class="v">mskcc_transferable_features.csv ✅</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:24px">
+    <h2>🚦 نقشه راه MSKCC Pathway-Based External Validation</h2>
+    <table>
+      <tr><th>مرحله</th><th>شرح</th><th>وضعیت</th></tr>
+      <tr><td>۱</td><td>ساخت کوهورت تمیز MSKCC (فقط primary tumor + DFS معتبر)</td><td><span class="tag done">✅ انجام شد</span></td></tr>
+      <tr><td>۲</td><td>مهندسی فیچرهای قابل‌انتقال: ۳ pathway score + Gleason_Total / High_Risk_Gleason / T_Stage_Risk</td><td><span class="tag done">✅ انجام شد</span></td></tr>
+      <tr><td>۳</td><td>بازآموزی Late Fusion روی TCGA با ۶ فیچر + وزن/آستانه از estimate_oof_fusion</td><td><span class="tag done">✅ انجام شد — AUC خارجی 0.711</span></td></tr>
+      <tr><td>۴</td><td>نجات شاخه ژنومی با rank-based transfer (قانون ازپیش‌اعلام‌شده، اجرای یک‌باره)</td><td><span class="tag done">✅ AUC خارجی 0.717 · ژنومی 0.50→0.586</span></td></tr>
+      <tr><td>۵</td><td>Calibration / DCA / پایه بالینی محض — ارزش افزوده ژنوم مستند شود</td><td><span class="tag done">✅ بیس‌لین 0.695 — برتری ژنوم اثبات نشد</span></td></tr>
+      <tr><td>۶</td><td>تصمیم استراتژیک مقاله: روایت بالینی‌محور قفل شد (بدون تلاش انتقال بیشتر بدون فرضیه تازه)</td><td><span class="tag done">✅ 2026-09-18</span></td></tr>
+      <tr><td>۷</td><td>Repeated Nested CV از raw TCGA (۵×۳، پیش‌پردازش+انتخاب داخل هر فولد)</td><td><span class="tag done">✅ Mean OOF AUC 0.7551 ± 0.0199</span></td></tr>
+      <tr><td>۸</td><td>Stability Selection — ۳۵ رویداد PSO (۱۵ فولد + ۲۰ اجرای مستقل، آستانه 0.70 ازپیش‌اعلام)</td><td><span class="tag done">✅ ژنومی ناپایدار (max 0.37، صفر پایدار) · بالینی ۸ پایدار</span></td></tr>
+      <tr><td>۹</td><td>تحلیل بیولوژیکی (pathway enrichment) + شکل‌های انتشاراتی + TRIPOD-AI</td><td><span class="tag active">🔵 گام بعد</span></td></tr>
+    </table>
+    <div class="note">⚠️ ۱۶/۱۶ ژنِ pathwayها (KLK3, AR, FKBP5, MKI67, TOP2A, …) با Entrez ID در MSKCC موجودند. کوهورت مؤثر ۱۳۱ نمونه است (نه ۱۹۸) — طبق قانون «اعداد فقط از خروجی واقعی».</div>
+  </div>
+
+  <div class="card">
+    <h2>📁 آرتیفکت‌های کلیدی</h2>
+    <table>
+      <tr><th>فایل</th><th>محتوا</th></tr>
+      <tr><td><code>core/data/external/mskcc_cohort.csv</code></td><td>۱۳۱ نمونه × ۱۲ ستون — کوهورت خارجی تمیز</td></tr>
+      <tr><td><code>core/outputs/tables/mskcc_cohort_summary.json</code></td><td>audit کامل زنجیره فیلتر</td></tr>
+      <tr><td><code>core/outputs/tables/nested_cv_raw_results.json</code></td><td>برآورد قطعی داخلی — Nested CV از raw (0.7551 ± 0.0199) + انتخاب‌های PSO هر فولد</td></tr>
+      <tr><td><code>core/outputs/tables/nested_late_fusion_results.json</code></td><td>نتایج مرجع داخلی قدیمی مبتنی بر آرتیفکت (AUC 0.861 — خوش‌بینانه)</td></tr>
+      <tr><td><code>core/outputs/tables/stability_summary.json</code></td><td>مرحله ۷ — قوانین ازپیش‌اعلام + ۳۵ رویداد PSO + فیچرهای پایدار</td></tr>
+      <tr><td><code>core/outputs/tables/stability_fresh_runs.csv</code></td><td>انتخاب‌های هر ۲۰ اجرای مستقل (checkpoint قابل‌ادامه)</td></tr>
+      <tr><td><code>core/outputs/figures/feature_stability.png</code></td><td>نمودار stability ژنومی با خط آستانه 0.70</td></tr>
+      <tr><td><code>core/outputs/tables/oof_fusion_results.json</code></td><td>فیوژن OOF (تست AUC 0.738)</td></tr>
+      <tr><td><code>core/outputs/tables/transferable_fusion_results.json</code></td><td>نتایج مرحله ۳ — فیوژن منجمد (AUC 0.711، ژنومی فروپاشیده)</td></tr>
+      <tr><td><code>core/outputs/tables/rank_transfer_fusion_results.json</code></td><td>نتایج مرحله ۴ — rank-based transfer (AUC 0.717، ژنومی 0.586)</td></tr>
+      <tr><td><code>core/outputs/tables/clinical_value_diagnostics.json</code></td><td>مرحله ۵ — بیس‌لین، ΔAUC bootstrap، calibration، DCA</td></tr>
+      <tr><td><code>core/outputs/figures/mskcc_calibration_dca.png</code></td><td>شکل calibration + DCA روی MSKCC</td></tr>
+      <tr><td><code>core/src/mskcc_cohort.py</code></td><td>ماژول مرحله ۱ — با python -m src.mskcc_cohort</td></tr>
+    </table>
+  </div>
+
+  <div class="footer">داشبورد استاتیک — بدون سرور · Freebuff Preview · اعداد: nested_cv_raw_results.json (اصلاح‌شده)، stability_summary.json، transferable/rank_transfer/clinical_value_diagnostics، mskcc_cohort_summary.json</div>
+</div>
+</body>
+</html>
