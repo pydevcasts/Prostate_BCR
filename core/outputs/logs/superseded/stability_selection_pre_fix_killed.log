@@ -1,0 +1,96 @@
+2026-09-19 01:44:45 | INFO     | prostate_bcr | Fold selections loaded: 1200 rows, 15 events per branch
+2026-09-19 01:44:47 | INFO     | prostate_bcr | Raw merged table: 429 samples x 19019 features
+2026-09-19 01:44:47 | INFO     | prostate_bcr | Canonical train split reproduced: 343 rows
+2026-09-19 01:44:48 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:44:50 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:45:21 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:45:26 | INFO     | prostate_bcr | Stability genomic s500 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:45:45 | INFO     | prostate_bcr |   Stability genomic s500 PSO iter 5/10: best Fitness=0.8190 (Raw AUC ~= 0.8590)
+2026-09-19 01:46:05 | INFO     | prostate_bcr |   Stability genomic s500 PSO iter 10/10: best Fitness=0.8190 (Raw AUC ~= 0.8590)
+2026-09-19 01:46:05 | INFO     | prostate_bcr | Stability genomic s500 PSO selected 40 features with final fitness=0.8190
+2026-09-19 01:46:05 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:46:08 | INFO     | prostate_bcr | Stability clinical s500 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:46:24 | INFO     | prostate_bcr |   Stability clinical s500 PSO iter 5/10: best Fitness=0.7000 (Raw AUC ~= 0.7400)
+2026-09-19 01:46:40 | INFO     | prostate_bcr |   Stability clinical s500 PSO iter 10/10: best Fitness=0.7000 (Raw AUC ~= 0.7400)
+2026-09-19 01:46:40 | INFO     | prostate_bcr | Stability clinical s500 PSO selected 40 features with final fitness=0.7000
+2026-09-19 01:46:40 | INFO     | prostate_bcr | Fresh run seed=500 done in 1.9 min (genomic head: Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma, NOS3, DKFZP434H2235, TFCP2, IRF9)
+2026-09-19 01:46:41 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:46:44 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:47:15 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:47:19 | INFO     | prostate_bcr | Stability genomic s501 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:47:38 | INFO     | prostate_bcr |   Stability genomic s501 PSO iter 5/10: best Fitness=0.8176 (Raw AUC ~= 0.8576)
+2026-09-19 01:47:57 | INFO     | prostate_bcr |   Stability genomic s501 PSO iter 10/10: best Fitness=0.8368 (Raw AUC ~= 0.8768)
+2026-09-19 01:47:57 | INFO     | prostate_bcr | Stability genomic s501 PSO selected 40 features with final fitness=0.8368
+2026-09-19 01:47:58 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:48:01 | INFO     | prostate_bcr | Stability clinical s501 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:48:17 | INFO     | prostate_bcr |   Stability clinical s501 PSO iter 5/10: best Fitness=0.6883 (Raw AUC ~= 0.7283)
+2026-09-19 01:48:33 | INFO     | prostate_bcr |   Stability clinical s501 PSO iter 10/10: best Fitness=0.6883 (Raw AUC ~= 0.7283)
+2026-09-19 01:48:33 | INFO     | prostate_bcr | Stability clinical s501 PSO selected 40 features with final fitness=0.6883
+2026-09-19 01:48:33 | INFO     | prostate_bcr | Fresh run seed=501 done in 1.9 min (genomic head: SEL1L2, RAB11FIP1, ATP6V0E2-AS1, RASSF2, IRF9)
+2026-09-19 01:48:33 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:48:36 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:49:17 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:49:21 | INFO     | prostate_bcr | Stability genomic s502 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:49:41 | INFO     | prostate_bcr |   Stability genomic s502 PSO iter 5/10: best Fitness=0.8429 (Raw AUC ~= 0.8829)
+2026-09-19 01:50:01 | INFO     | prostate_bcr |   Stability genomic s502 PSO iter 10/10: best Fitness=0.8429 (Raw AUC ~= 0.8829)
+2026-09-19 01:50:01 | INFO     | prostate_bcr | Stability genomic s502 PSO selected 40 features with final fitness=0.8429
+2026-09-19 01:50:01 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:50:04 | INFO     | prostate_bcr | Stability clinical s502 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:50:20 | INFO     | prostate_bcr |   Stability clinical s502 PSO iter 5/10: best Fitness=0.7012 (Raw AUC ~= 0.7412)
+2026-09-19 01:50:37 | INFO     | prostate_bcr |   Stability clinical s502 PSO iter 10/10: best Fitness=0.7012 (Raw AUC ~= 0.7412)
+2026-09-19 01:50:37 | INFO     | prostate_bcr | Stability clinical s502 PSO selected 40 features with final fitness=0.7012
+2026-09-19 01:50:37 | INFO     | prostate_bcr | Fresh run seed=502 done in 2.1 min (genomic head: Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma, SH3RF2, RAB11FIP1, DKFZP434H2235, RASSF2)
+2026-09-19 01:50:38 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:50:41 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:51:18 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:51:21 | INFO     | prostate_bcr | Stability genomic s503 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:51:41 | INFO     | prostate_bcr |   Stability genomic s503 PSO iter 5/10: best Fitness=0.8414 (Raw AUC ~= 0.8814)
+2026-09-19 01:52:01 | INFO     | prostate_bcr |   Stability genomic s503 PSO iter 10/10: best Fitness=0.8578 (Raw AUC ~= 0.8978)
+2026-09-19 01:52:01 | INFO     | prostate_bcr | Stability genomic s503 PSO selected 40 features with final fitness=0.8578
+2026-09-19 01:52:01 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:52:04 | INFO     | prostate_bcr | Stability clinical s503 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:52:21 | INFO     | prostate_bcr |   Stability clinical s503 PSO iter 5/10: best Fitness=0.6592 (Raw AUC ~= 0.6992)
+2026-09-19 01:52:37 | INFO     | prostate_bcr |   Stability clinical s503 PSO iter 10/10: best Fitness=0.6726 (Raw AUC ~= 0.7126)
+2026-09-19 01:52:37 | INFO     | prostate_bcr | Stability clinical s503 PSO selected 40 features with final fitness=0.6726
+2026-09-19 01:52:37 | INFO     | prostate_bcr | Fresh run seed=503 done in 2.0 min (genomic head: NISCH, AQP10, ORC2, PRRG4, ASPA)
+2026-09-19 01:52:38 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:52:40 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:53:12 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:53:16 | INFO     | prostate_bcr | Stability genomic s504 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:53:35 | INFO     | prostate_bcr |   Stability genomic s504 PSO iter 5/10: best Fitness=0.8074 (Raw AUC ~= 0.8474)
+2026-09-19 01:53:55 | INFO     | prostate_bcr |   Stability genomic s504 PSO iter 10/10: best Fitness=0.8310 (Raw AUC ~= 0.8710)
+2026-09-19 01:53:55 | INFO     | prostate_bcr | Stability genomic s504 PSO selected 40 features with final fitness=0.8310
+2026-09-19 01:53:55 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:53:59 | INFO     | prostate_bcr | Stability clinical s504 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:54:15 | INFO     | prostate_bcr |   Stability clinical s504 PSO iter 5/10: best Fitness=0.7046 (Raw AUC ~= 0.7446)
+2026-09-19 01:54:31 | INFO     | prostate_bcr |   Stability clinical s504 PSO iter 10/10: best Fitness=0.7073 (Raw AUC ~= 0.7473)
+2026-09-19 01:54:31 | INFO     | prostate_bcr | Stability clinical s504 PSO selected 40 features with final fitness=0.7073
+2026-09-19 01:54:31 | INFO     | prostate_bcr | Fresh run seed=504 done in 1.9 min (genomic head: Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma, SH3RF2, LACTB2, ORC2, ASAP2)
+2026-09-19 01:54:31 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:54:34 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:55:05 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:55:09 | INFO     | prostate_bcr | Stability genomic s505 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:55:28 | INFO     | prostate_bcr |   Stability genomic s505 PSO iter 5/10: best Fitness=0.8252 (Raw AUC ~= 0.8652)
+2026-09-19 01:55:48 | INFO     | prostate_bcr |   Stability genomic s505 PSO iter 10/10: best Fitness=0.8579 (Raw AUC ~= 0.8979)
+2026-09-19 01:55:48 | INFO     | prostate_bcr | Stability genomic s505 PSO selected 40 features with final fitness=0.8579
+2026-09-19 01:55:48 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:55:51 | INFO     | prostate_bcr | Stability clinical s505 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:56:07 | INFO     | prostate_bcr |   Stability clinical s505 PSO iter 5/10: best Fitness=0.6757 (Raw AUC ~= 0.7157)
+2026-09-19 01:56:24 | INFO     | prostate_bcr |   Stability clinical s505 PSO iter 10/10: best Fitness=0.6761 (Raw AUC ~= 0.7161)
+2026-09-19 01:56:24 | INFO     | prostate_bcr | Stability clinical s505 PSO selected 40 features with final fitness=0.6761
+2026-09-19 01:56:24 | INFO     | prostate_bcr | Fresh run seed=505 done in 1.9 min (genomic head: Tumor Other Histologic Subtype_acinar and cribriform, C8orf58, NSP-CL, RASSF2, Tumor Other Histologic Subtype_Prostatic Adenocarcinoma Acinar Type Mixed with Prostatic Duct Adenocarcinoma)
+2026-09-19 01:56:25 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:56:28 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 01:57:00 | INFO     | prostate_bcr | Genomic selector: 18938 variance \u2192 200 MI features
+2026-09-19 01:57:03 | INFO     | prostate_bcr | Stability genomic s506 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:57:24 | INFO     | prostate_bcr |   Stability genomic s506 PSO iter 5/10: best Fitness=0.8264 (Raw AUC ~= 0.8664)
+2026-09-19 01:57:43 | INFO     | prostate_bcr |   Stability genomic s506 PSO iter 10/10: best Fitness=0.8300 (Raw AUC ~= 0.8700)
+2026-09-19 01:57:43 | INFO     | prostate_bcr | Stability genomic s506 PSO selected 40 features with final fitness=0.8300
+2026-09-19 01:57:43 | INFO     | prostate_bcr | Clinical selector: 45 variance -> 45 MI features
+2026-09-19 01:57:46 | INFO     | prostate_bcr | Stability clinical s506 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 01:58:02 | INFO     | prostate_bcr |   Stability clinical s506 PSO iter 5/10: best Fitness=0.6837 (Raw AUC ~= 0.7237)
+2026-09-19 01:58:18 | INFO     | prostate_bcr |   Stability clinical s506 PSO iter 10/10: best Fitness=0.6872 (Raw AUC ~= 0.7272)
+2026-09-19 01:58:18 | INFO     | prostate_bcr | Stability clinical s506 PSO selected 40 features with final fitness=0.6872
+2026-09-19 01:58:18 | INFO     | prostate_bcr | Fresh run seed=506 done in 1.9 min (genomic head: C8orf58, Tumor Other Histologic Subtype_acinar and cribriform, NISCH, NOS3, FTSJ2)
+2026-09-19 01:58:19 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 01:58:21 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples

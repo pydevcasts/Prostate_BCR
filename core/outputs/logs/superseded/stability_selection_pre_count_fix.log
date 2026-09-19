@@ -1,0 +1,304 @@
+2026-09-19 02:46:10 | INFO     | prostate_bcr | Fold selections loaded: 1200 rows, 15 events per branch
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Branch masks verified: 115 clinical / 18904 gene
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Raw merged table: 429 samples x 19019 features
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Canonical train split reproduced: 343 rows
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:46:13 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:46:16 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:46:50 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:46:55 | INFO     | prostate_bcr | Stability genomic s500 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:47:15 | INFO     | prostate_bcr |   Stability genomic s500 PSO iter 5/10: best Fitness=0.7694 (Raw AUC ~= 0.8094)
+2026-09-19 02:47:35 | INFO     | prostate_bcr |   Stability genomic s500 PSO iter 10/10: best Fitness=0.7694 (Raw AUC ~= 0.8094)
+2026-09-19 02:47:35 | INFO     | prostate_bcr | Stability genomic s500 PSO selected 40 features with final fitness=0.7694
+2026-09-19 02:47:35 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:47:39 | INFO     | prostate_bcr | Stability clinical s500 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:47:54 | INFO     | prostate_bcr |   Stability clinical s500 PSO iter 5/10: best Fitness=0.8280 (Raw AUC ~= 0.8680)
+2026-09-19 02:48:10 | INFO     | prostate_bcr |   Stability clinical s500 PSO iter 10/10: best Fitness=0.8413 (Raw AUC ~= 0.8813)
+2026-09-19 02:48:10 | INFO     | prostate_bcr | Stability clinical s500 PSO selected 40 features with final fitness=0.8413
+2026-09-19 02:48:11 | INFO     | prostate_bcr | Fresh run seed=500 done in 2.0 min (genomic head: C8orf58, CDC37, APOC4, FTSJ2, CYB5B)
+2026-09-19 02:48:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:48:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:48:15 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:48:48 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:48:51 | INFO     | prostate_bcr | Stability genomic s501 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:49:11 | INFO     | prostate_bcr |   Stability genomic s501 PSO iter 5/10: best Fitness=0.8185 (Raw AUC ~= 0.8585)
+2026-09-19 02:49:31 | INFO     | prostate_bcr |   Stability genomic s501 PSO iter 10/10: best Fitness=0.8185 (Raw AUC ~= 0.8585)
+2026-09-19 02:49:31 | INFO     | prostate_bcr | Stability genomic s501 PSO selected 40 features with final fitness=0.8185
+2026-09-19 02:49:31 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:49:35 | INFO     | prostate_bcr | Stability clinical s501 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:49:52 | INFO     | prostate_bcr |   Stability clinical s501 PSO iter 5/10: best Fitness=0.8067 (Raw AUC ~= 0.8467)
+2026-09-19 02:50:08 | INFO     | prostate_bcr |   Stability clinical s501 PSO iter 10/10: best Fitness=0.8067 (Raw AUC ~= 0.8467)
+2026-09-19 02:50:08 | INFO     | prostate_bcr | Stability clinical s501 PSO selected 40 features with final fitness=0.8067
+2026-09-19 02:50:08 | INFO     | prostate_bcr | Fresh run seed=501 done in 2.0 min (genomic head: ATP6V0E2-AS1, ASPA, ORC2, PRRG4, CARD19)
+2026-09-19 02:50:09 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:50:09 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:50:11 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:50:52 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:50:56 | INFO     | prostate_bcr | Stability genomic s502 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:51:15 | INFO     | prostate_bcr |   Stability genomic s502 PSO iter 5/10: best Fitness=0.7894 (Raw AUC ~= 0.8294)
+2026-09-19 02:51:34 | INFO     | prostate_bcr |   Stability genomic s502 PSO iter 10/10: best Fitness=0.8054 (Raw AUC ~= 0.8454)
+2026-09-19 02:51:34 | INFO     | prostate_bcr | Stability genomic s502 PSO selected 40 features with final fitness=0.8054
+2026-09-19 02:51:34 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:51:38 | INFO     | prostate_bcr | Stability clinical s502 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:51:54 | INFO     | prostate_bcr |   Stability clinical s502 PSO iter 5/10: best Fitness=0.8259 (Raw AUC ~= 0.8659)
+2026-09-19 02:52:10 | INFO     | prostate_bcr |   Stability clinical s502 PSO iter 10/10: best Fitness=0.8259 (Raw AUC ~= 0.8659)
+2026-09-19 02:52:10 | INFO     | prostate_bcr | Stability clinical s502 PSO selected 40 features with final fitness=0.8259
+2026-09-19 02:52:10 | INFO     | prostate_bcr | Fresh run seed=502 done in 2.0 min (genomic head: MRPS26, INE2, RASSF2, PRRG4, BRICD5)
+2026-09-19 02:52:10 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:52:10 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:52:14 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:53:01 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:53:05 | INFO     | prostate_bcr | Stability genomic s503 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:53:25 | INFO     | prostate_bcr |   Stability genomic s503 PSO iter 5/10: best Fitness=0.8014 (Raw AUC ~= 0.8414)
+2026-09-19 02:53:44 | INFO     | prostate_bcr |   Stability genomic s503 PSO iter 10/10: best Fitness=0.8191 (Raw AUC ~= 0.8591)
+2026-09-19 02:53:44 | INFO     | prostate_bcr | Stability genomic s503 PSO selected 40 features with final fitness=0.8191
+2026-09-19 02:53:44 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:53:48 | INFO     | prostate_bcr | Stability clinical s503 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:54:05 | INFO     | prostate_bcr |   Stability clinical s503 PSO iter 5/10: best Fitness=0.7887 (Raw AUC ~= 0.8287)
+2026-09-19 02:54:22 | INFO     | prostate_bcr |   Stability clinical s503 PSO iter 10/10: best Fitness=0.8137 (Raw AUC ~= 0.8537)
+2026-09-19 02:54:22 | INFO     | prostate_bcr | Stability clinical s503 PSO selected 40 features with final fitness=0.8137
+2026-09-19 02:54:22 | INFO     | prostate_bcr | Fresh run seed=503 done in 2.2 min (genomic head: C8orf58, MMADHC, DKFZp547O146, ACVRL1, TAOK3)
+2026-09-19 02:54:22 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:54:22 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:54:26 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:55:00 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:55:04 | INFO     | prostate_bcr | Stability genomic s504 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:55:24 | INFO     | prostate_bcr |   Stability genomic s504 PSO iter 5/10: best Fitness=0.7873 (Raw AUC ~= 0.8273)
+2026-09-19 02:55:44 | INFO     | prostate_bcr |   Stability genomic s504 PSO iter 10/10: best Fitness=0.8100 (Raw AUC ~= 0.8500)
+2026-09-19 02:55:44 | INFO     | prostate_bcr | Stability genomic s504 PSO selected 40 features with final fitness=0.8100
+2026-09-19 02:55:44 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:55:47 | INFO     | prostate_bcr | Stability clinical s504 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:56:04 | INFO     | prostate_bcr |   Stability clinical s504 PSO iter 5/10: best Fitness=0.8316 (Raw AUC ~= 0.8716)
+2026-09-19 02:56:20 | INFO     | prostate_bcr |   Stability clinical s504 PSO iter 10/10: best Fitness=0.8316 (Raw AUC ~= 0.8716)
+2026-09-19 02:56:20 | INFO     | prostate_bcr | Stability clinical s504 PSO selected 40 features with final fitness=0.8316
+2026-09-19 02:56:20 | INFO     | prostate_bcr | Fresh run seed=504 done in 2.0 min (genomic head: MRPS26, RASSF2, TFCP2, CYB5B, CARD19)
+2026-09-19 02:56:21 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:56:21 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:56:24 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:56:56 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:57:00 | INFO     | prostate_bcr | Stability genomic s505 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:57:19 | INFO     | prostate_bcr |   Stability genomic s505 PSO iter 5/10: best Fitness=0.7825 (Raw AUC ~= 0.8225)
+2026-09-19 02:57:39 | INFO     | prostate_bcr |   Stability genomic s505 PSO iter 10/10: best Fitness=0.8075 (Raw AUC ~= 0.8475)
+2026-09-19 02:57:39 | INFO     | prostate_bcr | Stability genomic s505 PSO selected 40 features with final fitness=0.8075
+2026-09-19 02:57:39 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:57:43 | INFO     | prostate_bcr | Stability clinical s505 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:57:59 | INFO     | prostate_bcr |   Stability clinical s505 PSO iter 5/10: best Fitness=0.7891 (Raw AUC ~= 0.8291)
+2026-09-19 02:58:15 | INFO     | prostate_bcr |   Stability clinical s505 PSO iter 10/10: best Fitness=0.7929 (Raw AUC ~= 0.8329)
+2026-09-19 02:58:15 | INFO     | prostate_bcr | Stability clinical s505 PSO selected 40 features with final fitness=0.7929
+2026-09-19 02:58:15 | INFO     | prostate_bcr | Fresh run seed=505 done in 1.9 min (genomic head: SH3RF2, C8orf58, LQFBS-1, MMADHC, INE2)
+2026-09-19 02:58:15 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:58:15 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:58:18 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:58:50 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:58:54 | INFO     | prostate_bcr | Stability genomic s506 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:59:14 | INFO     | prostate_bcr |   Stability genomic s506 PSO iter 5/10: best Fitness=0.7713 (Raw AUC ~= 0.8113)
+2026-09-19 02:59:34 | INFO     | prostate_bcr |   Stability genomic s506 PSO iter 10/10: best Fitness=0.7919 (Raw AUC ~= 0.8319)
+2026-09-19 02:59:34 | INFO     | prostate_bcr | Stability genomic s506 PSO selected 40 features with final fitness=0.7919
+2026-09-19 02:59:34 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:59:38 | INFO     | prostate_bcr | Stability clinical s506 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:59:54 | INFO     | prostate_bcr |   Stability clinical s506 PSO iter 5/10: best Fitness=0.7963 (Raw AUC ~= 0.8363)
+2026-09-19 03:00:11 | INFO     | prostate_bcr |   Stability clinical s506 PSO iter 10/10: best Fitness=0.7991 (Raw AUC ~= 0.8391)
+2026-09-19 03:00:11 | INFO     | prostate_bcr | Stability clinical s506 PSO selected 40 features with final fitness=0.7991
+2026-09-19 03:00:11 | INFO     | prostate_bcr | Fresh run seed=506 done in 1.9 min (genomic head: CDC37, LQFBS-1, INE2, CYB5B, DKFZp547O146)
+2026-09-19 03:00:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:00:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:00:14 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:00:46 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:00:50 | INFO     | prostate_bcr | Stability genomic s507 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:01:10 | INFO     | prostate_bcr |   Stability genomic s507 PSO iter 5/10: best Fitness=0.8053 (Raw AUC ~= 0.8453)
+2026-09-19 03:01:30 | INFO     | prostate_bcr |   Stability genomic s507 PSO iter 10/10: best Fitness=0.8053 (Raw AUC ~= 0.8453)
+2026-09-19 03:01:30 | INFO     | prostate_bcr | Stability genomic s507 PSO selected 40 features with final fitness=0.8053
+2026-09-19 03:01:30 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:01:33 | INFO     | prostate_bcr | Stability clinical s507 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:01:50 | INFO     | prostate_bcr |   Stability clinical s507 PSO iter 5/10: best Fitness=0.8210 (Raw AUC ~= 0.8610)
+2026-09-19 03:02:06 | INFO     | prostate_bcr |   Stability clinical s507 PSO iter 10/10: best Fitness=0.8210 (Raw AUC ~= 0.8610)
+2026-09-19 03:02:06 | INFO     | prostate_bcr | Stability clinical s507 PSO selected 40 features with final fitness=0.8210
+2026-09-19 03:02:06 | INFO     | prostate_bcr | Fresh run seed=507 done in 1.9 min (genomic head: MRPS26, ORC2, FTSJ2, ASAP2, BRICD5)
+2026-09-19 03:02:07 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:02:07 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:02:10 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:02:42 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:02:46 | INFO     | prostate_bcr | Stability genomic s508 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:03:05 | INFO     | prostate_bcr |   Stability genomic s508 PSO iter 5/10: best Fitness=0.7946 (Raw AUC ~= 0.8346)
+2026-09-19 03:03:25 | INFO     | prostate_bcr |   Stability genomic s508 PSO iter 10/10: best Fitness=0.8139 (Raw AUC ~= 0.8539)
+2026-09-19 03:03:25 | INFO     | prostate_bcr | Stability genomic s508 PSO selected 40 features with final fitness=0.8139
+2026-09-19 03:03:25 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:03:28 | INFO     | prostate_bcr | Stability clinical s508 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:03:45 | INFO     | prostate_bcr |   Stability clinical s508 PSO iter 5/10: best Fitness=0.8018 (Raw AUC ~= 0.8418)
+2026-09-19 03:04:02 | INFO     | prostate_bcr |   Stability clinical s508 PSO iter 10/10: best Fitness=0.8203 (Raw AUC ~= 0.8603)
+2026-09-19 03:04:02 | INFO     | prostate_bcr | Stability clinical s508 PSO selected 40 features with final fitness=0.8203
+2026-09-19 03:04:02 | INFO     | prostate_bcr | Fresh run seed=508 done in 1.9 min (genomic head: PRRG4, CDH16, HBE1, CARD19, ACVRL1)
+2026-09-19 03:04:02 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:04:02 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:04:05 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:04:37 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:04:41 | INFO     | prostate_bcr | Stability genomic s509 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:05:01 | INFO     | prostate_bcr |   Stability genomic s509 PSO iter 5/10: best Fitness=0.7881 (Raw AUC ~= 0.8281)
+2026-09-19 03:05:21 | INFO     | prostate_bcr |   Stability genomic s509 PSO iter 10/10: best Fitness=0.8005 (Raw AUC ~= 0.8405)
+2026-09-19 03:05:21 | INFO     | prostate_bcr | Stability genomic s509 PSO selected 40 features with final fitness=0.8005
+2026-09-19 03:05:21 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:05:24 | INFO     | prostate_bcr | Stability clinical s509 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:05:41 | INFO     | prostate_bcr |   Stability clinical s509 PSO iter 5/10: best Fitness=0.8080 (Raw AUC ~= 0.8480)
+2026-09-19 03:05:57 | INFO     | prostate_bcr |   Stability clinical s509 PSO iter 10/10: best Fitness=0.8156 (Raw AUC ~= 0.8556)
+2026-09-19 03:05:57 | INFO     | prostate_bcr | Stability clinical s509 PSO selected 40 features with final fitness=0.8156
+2026-09-19 03:05:57 | INFO     | prostate_bcr | Fresh run seed=509 done in 1.9 min (genomic head: CDC37, LQFBS-1, ASPA, FTSJ2, TMEM145)
+2026-09-19 03:05:57 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:05:58 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:06:00 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:06:33 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:06:37 | INFO     | prostate_bcr | Stability genomic s510 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:06:56 | INFO     | prostate_bcr |   Stability genomic s510 PSO iter 5/10: best Fitness=0.8057 (Raw AUC ~= 0.8457)
+2026-09-19 03:07:16 | INFO     | prostate_bcr |   Stability genomic s510 PSO iter 10/10: best Fitness=0.8223 (Raw AUC ~= 0.8623)
+2026-09-19 03:07:16 | INFO     | prostate_bcr | Stability genomic s510 PSO selected 40 features with final fitness=0.8223
+2026-09-19 03:07:16 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:07:19 | INFO     | prostate_bcr | Stability clinical s510 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:07:36 | INFO     | prostate_bcr |   Stability clinical s510 PSO iter 5/10: best Fitness=0.7974 (Raw AUC ~= 0.8374)
+2026-09-19 03:07:52 | INFO     | prostate_bcr |   Stability clinical s510 PSO iter 10/10: best Fitness=0.7974 (Raw AUC ~= 0.8374)
+2026-09-19 03:07:52 | INFO     | prostate_bcr | Stability clinical s510 PSO selected 40 features with final fitness=0.7974
+2026-09-19 03:07:52 | INFO     | prostate_bcr | Fresh run seed=510 done in 1.9 min (genomic head: C8orf58, LQFBS-1, ORC2, TFCP2, PLGLB2)
+2026-09-19 03:07:53 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:07:53 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:07:55 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:08:28 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:08:31 | INFO     | prostate_bcr | Stability genomic s511 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:08:51 | INFO     | prostate_bcr |   Stability genomic s511 PSO iter 5/10: best Fitness=0.7906 (Raw AUC ~= 0.8306)
+2026-09-19 03:09:11 | INFO     | prostate_bcr |   Stability genomic s511 PSO iter 10/10: best Fitness=0.7906 (Raw AUC ~= 0.8306)
+2026-09-19 03:09:11 | INFO     | prostate_bcr | Stability genomic s511 PSO selected 40 features with final fitness=0.7906
+2026-09-19 03:09:11 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:09:14 | INFO     | prostate_bcr | Stability clinical s511 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:09:30 | INFO     | prostate_bcr |   Stability clinical s511 PSO iter 5/10: best Fitness=0.8076 (Raw AUC ~= 0.8476)
+2026-09-19 03:09:47 | INFO     | prostate_bcr |   Stability clinical s511 PSO iter 10/10: best Fitness=0.8152 (Raw AUC ~= 0.8552)
+2026-09-19 03:09:47 | INFO     | prostate_bcr | Stability clinical s511 PSO selected 40 features with final fitness=0.8152
+2026-09-19 03:09:47 | INFO     | prostate_bcr | Fresh run seed=511 done in 1.9 min (genomic head: SH3RF2, C8orf58, RASSF2, KRTAP13-1, PLGLB2)
+2026-09-19 03:09:47 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:09:47 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:09:50 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:10:22 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:10:26 | INFO     | prostate_bcr | Stability genomic s512 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:10:45 | INFO     | prostate_bcr |   Stability genomic s512 PSO iter 5/10: best Fitness=0.7979 (Raw AUC ~= 0.8379)
+2026-09-19 03:11:05 | INFO     | prostate_bcr |   Stability genomic s512 PSO iter 10/10: best Fitness=0.7979 (Raw AUC ~= 0.8379)
+2026-09-19 03:11:05 | INFO     | prostate_bcr | Stability genomic s512 PSO selected 40 features with final fitness=0.7979
+2026-09-19 03:11:06 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:11:09 | INFO     | prostate_bcr | Stability clinical s512 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:11:25 | INFO     | prostate_bcr |   Stability clinical s512 PSO iter 5/10: best Fitness=0.8099 (Raw AUC ~= 0.8499)
+2026-09-19 03:11:42 | INFO     | prostate_bcr |   Stability clinical s512 PSO iter 10/10: best Fitness=0.8211 (Raw AUC ~= 0.8611)
+2026-09-19 03:11:42 | INFO     | prostate_bcr | Stability clinical s512 PSO selected 40 features with final fitness=0.8211
+2026-09-19 03:11:42 | INFO     | prostate_bcr | Fresh run seed=512 done in 1.9 min (genomic head: C8orf58, TFCP2, ASAP2, CARD19, ACVRL1)
+2026-09-19 03:11:43 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:11:43 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:11:46 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:12:30 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:12:34 | INFO     | prostate_bcr | Stability genomic s513 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:12:52 | INFO     | prostate_bcr |   Stability genomic s513 PSO iter 5/10: best Fitness=0.7712 (Raw AUC ~= 0.8112)
+2026-09-19 03:13:10 | INFO     | prostate_bcr |   Stability genomic s513 PSO iter 10/10: best Fitness=0.7712 (Raw AUC ~= 0.8112)
+2026-09-19 03:13:10 | INFO     | prostate_bcr | Stability genomic s513 PSO selected 40 features with final fitness=0.7712
+2026-09-19 03:13:10 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:13:13 | INFO     | prostate_bcr | Stability clinical s513 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:13:28 | INFO     | prostate_bcr |   Stability clinical s513 PSO iter 5/10: best Fitness=0.7942 (Raw AUC ~= 0.8342)
+2026-09-19 03:13:44 | INFO     | prostate_bcr |   Stability clinical s513 PSO iter 10/10: best Fitness=0.7980 (Raw AUC ~= 0.8380)
+2026-09-19 03:13:44 | INFO     | prostate_bcr | Stability clinical s513 PSO selected 40 features with final fitness=0.7980
+2026-09-19 03:13:44 | INFO     | prostate_bcr | Fresh run seed=513 done in 2.0 min (genomic head: C8orf58, LQFBS-1, RASSF2, MT1Q, TMEM145)
+2026-09-19 03:13:44 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:13:44 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:13:48 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:14:34 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:14:38 | INFO     | prostate_bcr | Stability genomic s514 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:14:56 | INFO     | prostate_bcr |   Stability genomic s514 PSO iter 5/10: best Fitness=0.7960 (Raw AUC ~= 0.8360)
+2026-09-19 03:15:14 | INFO     | prostate_bcr |   Stability genomic s514 PSO iter 10/10: best Fitness=0.7960 (Raw AUC ~= 0.8360)
+2026-09-19 03:15:14 | INFO     | prostate_bcr | Stability genomic s514 PSO selected 40 features with final fitness=0.7960
+2026-09-19 03:15:14 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:15:17 | INFO     | prostate_bcr | Stability clinical s514 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:15:32 | INFO     | prostate_bcr |   Stability clinical s514 PSO iter 5/10: best Fitness=0.7879 (Raw AUC ~= 0.8279)
+2026-09-19 03:15:47 | INFO     | prostate_bcr |   Stability clinical s514 PSO iter 10/10: best Fitness=0.7996 (Raw AUC ~= 0.8396)
+2026-09-19 03:15:47 | INFO     | prostate_bcr | Stability clinical s514 PSO selected 40 features with final fitness=0.7996
+2026-09-19 03:15:47 | INFO     | prostate_bcr | Fresh run seed=514 done in 2.1 min (genomic head: OR6B2P, NOS3, MRPS26, ORC2, ASAP2)
+2026-09-19 03:15:48 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:15:48 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:15:52 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:16:31 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:16:35 | INFO     | prostate_bcr | Stability genomic s515 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:16:54 | INFO     | prostate_bcr |   Stability genomic s515 PSO iter 5/10: best Fitness=0.7870 (Raw AUC ~= 0.8270)
+2026-09-19 03:17:16 | INFO     | prostate_bcr |   Stability genomic s515 PSO iter 10/10: best Fitness=0.7870 (Raw AUC ~= 0.8270)
+2026-09-19 03:17:16 | INFO     | prostate_bcr | Stability genomic s515 PSO selected 40 features with final fitness=0.7870
+2026-09-19 03:17:16 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:17:19 | INFO     | prostate_bcr | Stability clinical s515 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:17:38 | INFO     | prostate_bcr |   Stability clinical s515 PSO iter 5/10: best Fitness=0.8019 (Raw AUC ~= 0.8419)
+2026-09-19 03:17:55 | INFO     | prostate_bcr |   Stability clinical s515 PSO iter 10/10: best Fitness=0.8168 (Raw AUC ~= 0.8568)
+2026-09-19 03:17:55 | INFO     | prostate_bcr | Stability clinical s515 PSO selected 40 features with final fitness=0.8168
+2026-09-19 03:17:55 | INFO     | prostate_bcr | Fresh run seed=515 done in 2.1 min (genomic head: CDC37, MRPS26, LACTB2, RGPD7, ATP6V0E2-AS1)
+2026-09-19 03:17:56 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:17:56 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:17:59 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:18:33 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:18:38 | INFO     | prostate_bcr | Stability genomic s516 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:19:03 | INFO     | prostate_bcr |   Stability genomic s516 PSO iter 5/10: best Fitness=0.7999 (Raw AUC ~= 0.8399)
+2026-09-19 03:19:28 | INFO     | prostate_bcr |   Stability genomic s516 PSO iter 10/10: best Fitness=0.7999 (Raw AUC ~= 0.8399)
+2026-09-19 03:19:28 | INFO     | prostate_bcr | Stability genomic s516 PSO selected 40 features with final fitness=0.7999
+2026-09-19 03:19:28 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:19:32 | INFO     | prostate_bcr | Stability clinical s516 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:19:51 | INFO     | prostate_bcr |   Stability clinical s516 PSO iter 5/10: best Fitness=0.8027 (Raw AUC ~= 0.8427)
+2026-09-19 03:20:10 | INFO     | prostate_bcr |   Stability clinical s516 PSO iter 10/10: best Fitness=0.8027 (Raw AUC ~= 0.8427)
+2026-09-19 03:20:10 | INFO     | prostate_bcr | Stability clinical s516 PSO selected 40 features with final fitness=0.8027
+2026-09-19 03:20:10 | INFO     | prostate_bcr | Fresh run seed=516 done in 2.3 min (genomic head: LACTB2, ATP6V0E2-AS1, ORC2, PLGLB2, SNHG1)
+2026-09-19 03:20:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:20:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:20:14 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:20:47 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:20:51 | INFO     | prostate_bcr | Stability genomic s517 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:21:14 | INFO     | prostate_bcr |   Stability genomic s517 PSO iter 5/10: best Fitness=0.7695 (Raw AUC ~= 0.8095)
+2026-09-19 03:21:37 | INFO     | prostate_bcr |   Stability genomic s517 PSO iter 10/10: best Fitness=0.7714 (Raw AUC ~= 0.8114)
+2026-09-19 03:21:37 | INFO     | prostate_bcr | Stability genomic s517 PSO selected 40 features with final fitness=0.7714
+2026-09-19 03:21:37 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:21:41 | INFO     | prostate_bcr | Stability clinical s517 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:22:01 | INFO     | prostate_bcr |   Stability clinical s517 PSO iter 5/10: best Fitness=0.8017 (Raw AUC ~= 0.8417)
+2026-09-19 03:22:21 | INFO     | prostate_bcr |   Stability clinical s517 PSO iter 10/10: best Fitness=0.8167 (Raw AUC ~= 0.8567)
+2026-09-19 03:22:21 | INFO     | prostate_bcr | Stability clinical s517 PSO selected 40 features with final fitness=0.8167
+2026-09-19 03:22:21 | INFO     | prostate_bcr | Fresh run seed=517 done in 2.2 min (genomic head: LQFBS-1, MRPS26, ATP6V0E2-AS1, ORC2, FTSJ2)
+2026-09-19 03:22:21 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:22:21 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:22:24 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:22:58 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:23:02 | INFO     | prostate_bcr | Stability genomic s518 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:23:26 | INFO     | prostate_bcr |   Stability genomic s518 PSO iter 5/10: best Fitness=0.7898 (Raw AUC ~= 0.8298)
+2026-09-19 03:23:47 | INFO     | prostate_bcr |   Stability genomic s518 PSO iter 10/10: best Fitness=0.7898 (Raw AUC ~= 0.8298)
+2026-09-19 03:23:47 | INFO     | prostate_bcr | Stability genomic s518 PSO selected 40 features with final fitness=0.7898
+2026-09-19 03:23:48 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:23:52 | INFO     | prostate_bcr | Stability clinical s518 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:24:10 | INFO     | prostate_bcr |   Stability clinical s518 PSO iter 5/10: best Fitness=0.7937 (Raw AUC ~= 0.8337)
+2026-09-19 03:24:26 | INFO     | prostate_bcr |   Stability clinical s518 PSO iter 10/10: best Fitness=0.8112 (Raw AUC ~= 0.8512)
+2026-09-19 03:24:26 | INFO     | prostate_bcr | Stability clinical s518 PSO selected 40 features with final fitness=0.8112
+2026-09-19 03:24:26 | INFO     | prostate_bcr | Fresh run seed=518 done in 2.1 min (genomic head: MRPS26, RASSF2, ACVRL1, NDUFA5, KCNK12)
+2026-09-19 03:24:26 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:24:26 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:24:30 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 03:25:19 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 03:25:22 | INFO     | prostate_bcr | Stability genomic s519 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:25:40 | INFO     | prostate_bcr |   Stability genomic s519 PSO iter 5/10: best Fitness=0.7590 (Raw AUC ~= 0.7990)
+2026-09-19 03:26:00 | INFO     | prostate_bcr |   Stability genomic s519 PSO iter 10/10: best Fitness=0.7612 (Raw AUC ~= 0.8012)
+2026-09-19 03:26:00 | INFO     | prostate_bcr | Stability genomic s519 PSO selected 40 features with final fitness=0.7612
+2026-09-19 03:26:00 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 03:26:03 | INFO     | prostate_bcr | Stability clinical s519 PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 03:26:19 | INFO     | prostate_bcr |   Stability clinical s519 PSO iter 5/10: best Fitness=0.8412 (Raw AUC ~= 0.8812)
+2026-09-19 03:26:36 | INFO     | prostate_bcr |   Stability clinical s519 PSO iter 10/10: best Fitness=0.8412 (Raw AUC ~= 0.8812)
+2026-09-19 03:26:36 | INFO     | prostate_bcr | Stability clinical s519 PSO selected 40 features with final fitness=0.8412
+2026-09-19 03:26:36 | INFO     | prostate_bcr | Fresh run seed=519 done in 2.2 min (genomic head: SH3RF2, C8orf58, OR56A6, CDC37, NOS3)
+2026-09-19 03:26:36 | INFO     | prostate_bcr | genomic stability: 644 unique features, 0 stable at 0.70 (max 0.31)
+2026-09-19 03:26:36 | INFO     | prostate_bcr | clinical stability: 80 unique features, 0 stable at 0.70 (max 0.60)
+=== Step 7: feature-selection stability ===
+Events: 35 per branch | threshold 0.7
+Genomic:  644 unique, 0 stable
+Clinical: 80 unique, 0 stable
+Top-10 genomic:
+  ACVRL1       stability=0.31 (mean rank 5.6)
+  TROAP        stability=0.29 (mean rank 11.8)
+  C8orf58      stability=0.26 (mean rank 2.2)
+  FAM3B        stability=0.26 (mean rank 21.7)
+  LPPR2        stability=0.26 (mean rank 27.0)
+  TAOK3        stability=0.26 (mean rank 7.3)
+  TEDC2        stability=0.26 (mean rank 32.2)
+  KIAA1508     stability=0.23 (mean rank 21.0)
+  LIG1         stability=0.23 (mean rank 18.4)
+  MRPS26       stability=0.23 (mean rank 2.9)
+Runtime: 40.4 min

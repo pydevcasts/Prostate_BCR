@@ -78,3 +78,11 @@ core/outputs/models/*
 !core/outputs/models/rank_transfer_*.joblib
 
 core/outputs/catboost_info/
+
+# ---------------------------------------------------------------------------
+# Pipeline run logs ARE tracked: they are the evidence behind the Step 6/7
+# determinism and runtime claims in the manuscript (see logs/README.md).
+# The global *.log rule above is overridden here.
+# ---------------------------------------------------------------------------
+!core/outputs/logs/
+!core/outputs/logs/**

@@ -1,0 +1,10 @@
+2026-09-19 03:18:09 | INFO     | prostate_bcr | Fold selections loaded: 1200 rows, 15 events per branch
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Branch masks verified: 115 clinical / 18904 gene
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Raw merged table: 429 samples x 19019 features
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Canonical train split reproduced: 343 rows
+2026-09-19 03:18:11 | INFO     | prostate_bcr | Fresh runs: 0/20 already checkpointed, 20 remaining
+2026-09-19 03:18:12 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:18:12 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 03:18:15 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples

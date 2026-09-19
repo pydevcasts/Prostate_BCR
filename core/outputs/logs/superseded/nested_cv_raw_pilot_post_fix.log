@@ -1,0 +1,79 @@
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Branch masks verified: 115 clinical / 18904 gene
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Raw merged table: 429 samples x 19019 features
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Repeat seed=42 fold 1/5 ...
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:01:17 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:01:20 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:01:51 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:01:52 | INFO     | prostate_bcr | Clinical selector: 76 variance -> 76 MI features
+2026-09-19 02:01:56 | INFO     | prostate_bcr | NestedCV genomic PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:02:16 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 5/10: best Fitness=0.8287 (Raw AUC ~= 0.8687)
+2026-09-19 02:02:34 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 10/10: best Fitness=0.8293 (Raw AUC ~= 0.8693)
+2026-09-19 02:02:34 | INFO     | prostate_bcr | NestedCV genomic PSO selected 40 features with final fitness=0.8293
+2026-09-19 02:02:37 | INFO     | prostate_bcr | NestedCV clinical PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:03:07 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 5/10: best Fitness=0.8038 (Raw AUC ~= 0.8438)
+2026-09-19 02:03:22 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 10/10: best Fitness=0.8043 (Raw AUC ~= 0.8443)
+2026-09-19 02:03:22 | INFO     | prostate_bcr | NestedCV clinical PSO selected 40 features with final fitness=0.8043
+2026-09-19 02:03:23 | INFO     | prostate_bcr | Repeat seed=42 fold 2/5 ...
+2026-09-19 02:03:23 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:03:24 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:03:28 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:04:17 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:04:18 | INFO     | prostate_bcr | Clinical selector: 77 variance -> 77 MI features
+2026-09-19 02:04:21 | INFO     | prostate_bcr | NestedCV genomic PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:04:39 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 5/10: best Fitness=0.8120 (Raw AUC ~= 0.8520)
+2026-09-19 02:04:57 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 10/10: best Fitness=0.8146 (Raw AUC ~= 0.8546)
+2026-09-19 02:04:57 | INFO     | prostate_bcr | NestedCV genomic PSO selected 40 features with final fitness=0.8146
+2026-09-19 02:05:00 | INFO     | prostate_bcr | NestedCV clinical PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:05:15 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 5/10: best Fitness=0.7593 (Raw AUC ~= 0.7993)
+2026-09-19 02:05:30 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 10/10: best Fitness=0.7593 (Raw AUC ~= 0.7993)
+2026-09-19 02:05:30 | INFO     | prostate_bcr | NestedCV clinical PSO selected 40 features with final fitness=0.7593
+2026-09-19 02:05:30 | INFO     | prostate_bcr | Repeat seed=42 fold 3/5 ...
+2026-09-19 02:05:31 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:05:31 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:05:35 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:06:25 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:06:26 | INFO     | prostate_bcr | Clinical selector: 79 variance -> 79 MI features
+2026-09-19 02:06:29 | INFO     | prostate_bcr | NestedCV genomic PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:06:47 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 5/10: best Fitness=0.7774 (Raw AUC ~= 0.8174)
+2026-09-19 02:07:05 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 10/10: best Fitness=0.7789 (Raw AUC ~= 0.8189)
+2026-09-19 02:07:05 | INFO     | prostate_bcr | NestedCV genomic PSO selected 40 features with final fitness=0.7789
+2026-09-19 02:07:08 | INFO     | prostate_bcr | NestedCV clinical PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:07:23 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 5/10: best Fitness=0.7900 (Raw AUC ~= 0.8300)
+2026-09-19 02:07:38 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 10/10: best Fitness=0.8027 (Raw AUC ~= 0.8427)
+2026-09-19 02:07:38 | INFO     | prostate_bcr | NestedCV clinical PSO selected 40 features with final fitness=0.8027
+2026-09-19 02:07:39 | INFO     | prostate_bcr | Repeat seed=42 fold 4/5 ...
+2026-09-19 02:07:40 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:07:40 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:07:44 | INFO     | prostate_bcr | Preprocessing fitted on 343 training samples
+2026-09-19 02:08:33 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:08:33 | INFO     | prostate_bcr | Clinical selector: 78 variance -> 78 MI features
+2026-09-19 02:08:36 | INFO     | prostate_bcr | NestedCV genomic PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:08:54 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 5/10: best Fitness=0.7631 (Raw AUC ~= 0.8031)
+2026-09-19 02:09:12 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 10/10: best Fitness=0.7910 (Raw AUC ~= 0.8310)
+2026-09-19 02:09:12 | INFO     | prostate_bcr | NestedCV genomic PSO selected 40 features with final fitness=0.7910
+2026-09-19 02:09:15 | INFO     | prostate_bcr | NestedCV clinical PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:09:30 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 5/10: best Fitness=0.7968 (Raw AUC ~= 0.8368)
+2026-09-19 02:09:45 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 10/10: best Fitness=0.8031 (Raw AUC ~= 0.8431)
+2026-09-19 02:09:45 | INFO     | prostate_bcr | NestedCV clinical PSO selected 40 features with final fitness=0.8031
+2026-09-19 02:09:46 | INFO     | prostate_bcr | Repeat seed=42 fold 5/5 ...
+2026-09-19 02:09:46 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:09:47 | INFO     | prostate_bcr | Column groups: 115 clinical, 18904 gene
+2026-09-19 02:09:51 | INFO     | prostate_bcr | Preprocessing fitted on 344 training samples
+2026-09-19 02:10:41 | INFO     | prostate_bcr | Genomic selector: 18904 variance \u2192 200 MI features
+2026-09-19 02:10:41 | INFO     | prostate_bcr | Clinical selector: 77 variance -> 77 MI features
+2026-09-19 02:10:44 | INFO     | prostate_bcr | NestedCV genomic PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:11:02 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 5/10: best Fitness=0.7756 (Raw AUC ~= 0.8156)
+2026-09-19 02:11:20 | INFO     | prostate_bcr |   NestedCV genomic PSO iter 10/10: best Fitness=0.8054 (Raw AUC ~= 0.8454)
+2026-09-19 02:11:20 | INFO     | prostate_bcr | NestedCV genomic PSO selected 40 features with final fitness=0.8054
+2026-09-19 02:11:23 | INFO     | prostate_bcr | NestedCV clinical PSO: 12 particles, 10 iterations, target 40 features, alpha=0.0010
+2026-09-19 02:11:39 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 5/10: best Fitness=0.7941 (Raw AUC ~= 0.8341)
+2026-09-19 02:11:54 | INFO     | prostate_bcr |   NestedCV clinical PSO iter 10/10: best Fitness=0.8085 (Raw AUC ~= 0.8485)
+2026-09-19 02:11:54 | INFO     | prostate_bcr | NestedCV clinical PSO selected 40 features with final fitness=0.8085
+2026-09-19 02:11:55 | INFO     | prostate_bcr | Repeat seed=42 done: OOF AUC=0.7817 (weights 0.33/0.67), 10.6 min
+=== Step 6: repeated nested CV from raw TCGA ===
+Repeats: 1 x 5 folds | runtime 10.6 min
+  seed 42: OOF AUC=0.7817, weights=0.33/0.67, threshold=0.2712
+Mean OOF AUC = 0.7817 ± 0.0000

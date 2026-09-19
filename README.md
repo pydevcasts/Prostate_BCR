@@ -61,17 +61,41 @@ Raw Data (Clinical + RNA-Seq)
 
 ## Key Results (Late Fusion)
 
-> ⚠️ These are current single-split results from the Late Fusion pipeline (see `manuscript_draft.md` and `core/outputs/tables/final_evaluation.json`). Repeated nested CV from raw data is pending.
+### 🎯 Definitive internal estimate — repeated nested CV from raw data
+
+`core/src/nested_cv_raw.py` refits the complete pipeline from the raw matrix (429 samples x 19,019 features) inside **every** outer fold — preprocessing, variance filter, MI screening, PSO selection and both branch models — with fusion weights and the threshold estimated only from the aggregate OOF predictions. Five outer folds x three repeats (seeds 42/43/44):
+
+| Repeat | OOF ROC-AUC | Genomic / clinical weights |
+|---|---:|---|
+| 42 | 0.7817 | 0.33 / 0.67 |
+| 43 | 0.8023 | 0.00 / 1.00 |
+| 44 | 0.7616 | 0.34 / 0.66 |
+| **Mean ± SD** | **0.7819 ± 0.0203** | 0.22 / 0.78 (mean) |
+
+> ⚠️ **Branch-mask correction (2026-09-19):** an earlier revision grouped branch columns with a hand-rolled prefix list that matched only 70 of the 115 clinical columns, leaking 45 one-hot clinical features into the genomic branch (and shifting the positional split). After switching both masks to the canonical `identify_column_groups` plus a consistency gate against `build_combined_pipeline`, the estimate moved from 0.7551 to **0.7819** and the OOF weights became clinical-leaning — coherent with the external MSKCC finding. The superseded 0.7551 must not be cited.
+
+### Earlier artifact-level results (kept for comparison)
 
 | Metric | Genomic | Clinical | Late Fusion |
 |--------|--------:|---------:|------------:|
 | Test ROC-AUC (legacy train-optimized weights) | 0.686 | 0.721 | 0.753 |
-| **OOF-fused test ROC-AUC (reference, leakage-free)** | — | — | **0.738** |
-| Nested 5-fold OOF ROC-AUC | — | — | 0.861* |
+| OOF-fused test ROC-AUC (leakage-free, single split) | — | — | 0.738 |
+| Nested 5-fold OOF ROC-AUC (artifact-based, optimistic) | — | — | 0.861* |
 
-The **OOF-fused** row is the leakage-free reference result: fusion weights (genomic 0.48 / clinical 0.52) and the Youden threshold (~0.312) are estimated exclusively from out-of-fold predictions. The legacy 0.753 comes from the old train-optimized `optimize_weights` method (kept for comparison only). The nested 5-fold evaluation yields balanced accuracy 0.795 with OOF weights genomic 0.62 / clinical 0.38.
+The **OOF-fused** row is the leakage-free single-split reference: fusion weights (genomic 0.48 / clinical 0.52) and the Youden threshold (~0.312) are estimated exclusively from out-of-fold predictions. The legacy 0.753 comes from the old train-optimized `optimize_weights` method (comparison only).
 
-`*` Computed on pre-selected feature artifacts; the definitive estimate must rerun selection from raw data inside every outer fold.
+`*` Computed on pre-selected feature artifacts, which inherit the optimism of that selection — the raw-data estimate above supersedes it (see `manuscript_draft.md` §6.6 and §6.12).
+
+### 🧪 Feature-selection stability (35 prespecified PSO events)
+
+`core/src/stability_selection.py` quantifies how reproducible the wrapper selector is: 15 fold selections (from the repeated nested CV) plus 20 fresh runs on the full canonical train split (seeds 500–519), with the 0.70 stability threshold frozen before running.
+
+| Branch | Unique features | Max fold frequency (of 15) | Max same-data frequency (of 20) | Stable at ≥ 0.70 |
+|---|---:|---:|---:|---:|
+| 🔬 Genomic | **644** | 8 | 10 | **0** |
+| 🏥 Clinical | 80 | 15 | 20 | **8** |
+
+**The machine-selected 40-gene signature is not reproducible** (best gene TROAP/ACVRL1 at 0.371, median 0.029), while the clinical branch is stable (eight features ≥ 0.70, led by `Person Neoplasm Status_WITH TUMOR` at 35/35). The paper therefore presents the prespecified **pathway scores** as the genomic representation and reports gene-level instability as a result, not a footnote. Three highly stable clinical fields (`Person Neoplasm Status_WITH TUMOR`, `Primary Therapy Outcome Success Type_*`, `Year Cancer Initial Diagnosis`) are flagged in the pre-submission checklist for a temporal-provenance audit.
 
 ### External results on MSKCC 2010 (five-step transferable pipeline)
 
@@ -125,6 +149,8 @@ core/
 │   ├── clinical_engineer.py   # Domain-informed clinical features
 │   ├── features_config.py     # Engineered-feature definitions
 │   ├── clinical_benchmark.py  # Clinical feature-selection strategies
+│   ├── nested_cv_raw.py            # Step 6: repeated nested CV from the raw matrix
+│   ├── stability_selection.py      # Step 7: PSO stability (35 events, checkpointed)
 │   ├── mskcc_cohort.py             # Step 1: audited MSKCC 2010 cohort
 │   ├── transferable_features.py    # Step 2: 6 transferable features + gates
 │   ├── transferable_fusion.py      # Step 3: frozen raw-scaler transfer
@@ -142,7 +168,8 @@ core/
 ├── data/raw/                  # Raw TCGA data (not in Git)
 ├── data/processed/            # Processed datasets (not in Git)
 ├── data/external/             # External cohorts (tracked: MSKCC + GSE54460 artifacts)
-└── outputs/                   # Models, figures, tables (result tables/figures tracked)
+└── outputs/                   # Models, figures, tables, run logs (tracked)
+                               #   logs/ -> nested_cv_raw_final.log, stability_selection_final.log
 ```
 
 ## Setup
